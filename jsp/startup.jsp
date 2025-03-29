@@ -26,7 +26,14 @@
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <!-- Main page -->
 <html>
-<head>
+	<head>
+		<script>
+			// prevent 209601 (idle on a page, times the user out)
+			var wiishop = new wiiShop();
+			const unused = wiishop.connecting;
+		</script>
+	
+	
   <title>Wii Shop Channel</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
   <style type="text/css">

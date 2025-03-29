@@ -25,7 +25,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
-<head>
+	<head>
+		<script>
+			// prevent 209601 (idle on a page, times the user out)
+			var wiishop = new wiiShop();
+			const unused = wiishop.connecting;
+		</script>
+	
+	
   <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -438,7 +445,7 @@ function initPage()
 //-->
 </script>
 </head>
-<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
+<body onload="initPage();">
 
 <% if (request.getParameter("p").equals("1")) { %>
 	<div id="text" style="overflow:hidden" class="textImportantInfo" >

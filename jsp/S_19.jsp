@@ -457,7 +457,7 @@ function initPage()
 </script>
 </head>
 
-<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
+<body onload="initPage();">
 
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
