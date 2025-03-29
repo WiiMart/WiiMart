@@ -339,7 +339,13 @@ function getIcrPurchaseInfo() {
 
 <html style="overflow:hidden">
 <head>
-  
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <link rel="shortcut icon" href="/oss/favicon.ico" /> 
 <link href="/oss/oss/common/css/oss.css" rel="stylesheet" type="text/css" />

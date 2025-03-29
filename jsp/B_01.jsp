@@ -31,6 +31,11 @@
 <!-- Links -->
 <html>
 <head>
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
   <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -56,6 +61,9 @@
 	var ossCheck = false;
 //-->
 </script>
+
+
+  
 
 <SCRIPT language="JavaScript" src="/oss/oss/common/js//ec.js"></SCRIPT>
 <SCRIPT language="JavaScript" src='/oss/oss/common/js//error.js'></SCRIPT>
@@ -563,7 +571,7 @@ function initPage()
 <script type="text/JavaScript" src='/oss/oss/common/js//keyboard.js'></script>
 </head>
 
-<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
+<body onload="initPage();">
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->

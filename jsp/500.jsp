@@ -6,6 +6,12 @@
 <!-- 500 Page -->
 <html>
 <head>
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+  
   <title>WiiMart - Server Error</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
   <style type="text/css">

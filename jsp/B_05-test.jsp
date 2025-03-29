@@ -5,8 +5,7 @@
 
 <script src="/oss/oss/common/js/games.js"></script>
 <script>
-	var wiishop = new wiiShop();
-	const unused = wiishop.connecting;
+
     /**
     * Returns the value of the URL parameter 
     * @param {string} param
@@ -347,7 +346,15 @@ function getIcrPurchaseInfo() {
 <!--  -----------------------------------------------------  -->
 <html style="overflow:hidden">
 <head>
-  <!--  -----------------------------------------------------  -->
+        <script>
+          // prevent 209601 (idle on a page, times the user out)
+          var wiishop = new wiiShop();
+          const unused = wiishop.connecting;
+        </script>
+      
+      
+
+ <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->
