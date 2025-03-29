@@ -49,7 +49,13 @@
 <!-- Title Rating Images -->
 <html>
 <head>
-  <!--  -----------------------------------------------------  -->
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+<!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->
@@ -626,7 +632,7 @@ function kdown()
 </script>
 </head>
 
-<body onkeypress="kdown();" onload="initPage(); cautionArea.focus();var shop = new wiiShop();var unused = shop.connecting;">
+<body onkeypress="kdown();" onload="initPage(); cautionArea.focus();">
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->

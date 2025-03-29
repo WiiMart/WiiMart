@@ -5,7 +5,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="/oss/oss/common/js/oss.js"></script>
+
+
+      <script src="/oss/oss/common/js/oss.js"></script>
         <script src="/oss/oss/common/js/shop.js"></script>
         <script src="/oss/oss/common/js/json2.js"></script>
     </head>
