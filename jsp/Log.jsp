@@ -29,7 +29,14 @@
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <!-- Main page -->
 <html>
-<head>
+	<head>
+		<script>
+			// prevent 209601 (idle on a page, times the user out)
+			var wiishop = new wiiShop();
+			const unused = wiishop.connecting;
+		</script>
+	
+	
   <title>WiiMart</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
   <style type="text/css">
@@ -693,7 +700,7 @@ function initPage()
 //-->
 </script>
 
-<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
+<body onload="initPage();">
 
 <div class="dot" id="line01">･･･････････････････････････････････････････････････････････････････････････</div>
 <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>

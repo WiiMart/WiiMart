@@ -44,7 +44,14 @@
 <!-- Title Rating Images -->
 <!-- Use bilingual icons if language is french or country is canada -->
 		<html>
-<head>
+			<head>
+				<script>
+					// prevent 209601 (idle on a page, times the user out)
+					var wiishop = new wiiShop();
+					const unused = wiishop.connecting;
+				</script>
+			
+			
   <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -432,7 +439,7 @@ function needSyncEticket(progress)
 <title>M_01.title</title>
 </head>
 <% String titleId = request.getParameter("titleId"); %>
-<body onload="initPageCommon();goodsfree2.focus();var shop = new wiiShop();var unused = shop.connecting;">
+<body onload="initPageCommon();goodsfree2.focus();">
 <div id="goodsfree2" style="position:absolute; left:0px; top:0px; width:608px; height:456px; z-index:31; overflow:auto;">
 	<%
 		String url = "/oss/oss/ext/manual/" + titleId + "/html/index.html?language=en&country=US&countryRegion=USA&region=USA&titleId=" + titleId;
