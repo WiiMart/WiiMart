@@ -44,11 +44,6 @@ conn.close();
 <!-- Main page -->
 <html>
 <head>
-  <script>
-    // prevent 209601 (idle on a page, times the user out)
-    var wiishop = new wiiShop();
-    const unused = wiishop.connecting;
-  </script>
 
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
