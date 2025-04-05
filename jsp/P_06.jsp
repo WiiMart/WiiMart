@@ -898,7 +898,7 @@ function next(selection)
     <div id="text_AU_lower" class="contentsBlackS">
 Please note that your credit card provider may impose a foreign transaction fee on this purchase. Please contact your provider for details.
 </div>
-<div id="disclaimer" style="position:absolute; left:150px; top:320px; text-align:center; font-size:12px; color:#ACACAC;  ">
+<div id="disclaimer" style="position:absolute; left:150px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
   Please Note: Adding Wii Points does <span style="font-weight:bold; color:#34BEED;">NOT</span> require any credit info. <br> (it ignores your input anyways)</div>
 </div>
 
