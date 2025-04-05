@@ -773,7 +773,7 @@ function initPage()
 <div class="titleBlueL" id="text01-01">
   WiiMart</div>
 <div align="center" class="titleBlueL" id="text02-01">
-Connecting. Please wait...<!--  -----------------------------------------------------  -->
+	<script type="text/javascript">document.write(shop.connecting)</script><!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->
