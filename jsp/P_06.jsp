@@ -899,6 +899,10 @@ function next(selection)
 Please note that your credit card provider may impose a foreign transaction fee on this purchase. Please contact your provider for details.
 </div>
 
+<div id="disclaimer" style="position:absolute; left:150px; top:320px; text-align:center; font-size:12px; color:#ACACAC;  ">
+  Please Note: Adding Wii Points does not require any real payment information. <br> no information is sent to the server, it skips the input requirement <br> even if filled out and adds points for free anyways.</div>
+</div>
+
 <div id="errorMsg">
 	<div align="center" id="warningMsg" style="display:none" class="contentsBlackM"><table height="100%"><tr><td align="left" valign="middle">
 	    Some options above are not available to you at this time because you cannot purchase Wii Points that will cause you to have more than <span id="warnMaximumPoints"></span> Wii Points in your account.</td></tr></table></div>
