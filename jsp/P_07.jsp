@@ -693,7 +693,9 @@ function select(index)
     <img id='card03Shadow' class='cardShadow' src='/oss/oss/common/images//banner/banner03_shadow.gif' />	
     <div id="text05-01" class="cardText buttonTextBlackM">Visa</div>
 </div>
-
+<div id="disclaimer" style="position:absolute; left:150px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
+  Please Note: Adding Wii Points does <span style="font-weight:bold; color:#34BEED;">NOT</span> require any credit info. <br> (it ignores your input anyways)</div>
+</div>
 <div id="text01-01" class="titleBlackL">Wii Points Purchase</div>
 <div id="text02-01"  class="catalogTitleBlack_02" align="left">Please select the credit-card type you would like to use to buy Wii Points.</div>
 </body>
