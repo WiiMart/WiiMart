@@ -1376,6 +1376,11 @@ function fieldBackColorRestore(field)
     </div>
 </div>
 
+<div id="disclaimer" style="font-weight:normal;position:absolute; left:110px; top:137px; text-align:center; font-size:11px; color:#868686;  ">
+  Don't enter any credit card info here!!! (it wont take it anyways and will ignore your input)</div>
+</div>
+
+<!-- all inputs have been set to only allow 1 number/letter (no info can be put in.) -->
 <form id="cardInfo" method="POST" name="cardInfo" action="https://oss-auth.blinklab.com/oss/serv/P_12.jsp">
 <div id="cardfields">
     <img id="cardicon" width="100%" height="100%" />
@@ -1390,7 +1395,7 @@ function fieldBackColorRestore(field)
     <div id="creditCardNumber">
     	<div id="creditCard_word" class="contentsBlackM bold">Credit-Card Number</div>
 	<div id="creditCard_Field" >
-	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" maxLength="16" size="24"
+	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" maxLength="0" size="24"
 	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
 	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );"/>
     	</div>
@@ -1401,14 +1406,14 @@ function fieldBackColorRestore(field)
 	
 	<div id="expirationMonth">
 	<center>
-	    <img src='/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
-		onmouseover="MM_swapImage('expMonthUpArrow','','/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
+	    <img src='/static/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
+		onmouseover="MM_swapImage('expMonthUpArrow','','/static/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
 		onclick="increaseMonth()" class="arrowUp" id="expMonthUpArrow"/>
-		<img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
-		<img src="/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
-		onmouseover="MM_swapImage('expMonthDownArrow','','/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
+		<img src='/static/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
+		<img src="/static/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
+		onmouseover="MM_swapImage('expMonthDownArrow','','/static/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
 		onclick="decreaseMonth()" class="arrowDown" id="expMonthDownArrow"/>
-		<img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
+		<img src='/static/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
 
 		<div id="expirationFieldMM">
 			<input type="text" class="inputTypeC inputStyle" name="cardExpMM" id="cardExpMM" maxlength="2" size="2" 
@@ -1419,15 +1424,15 @@ function fieldBackColorRestore(field)
        
 	<div id="expirationYear">
 	    <center>
-	    <img src='/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
-		onmouseover="MM_swapImage('expYearUpArrow','','/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
+	    <img src='/static/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
+		onmouseover="MM_swapImage('expYearUpArrow','','/static/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
 		onclick="increaseYear()" class="arrowUp"   id="expYearUpArrow"/>
-	    <img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
+	    <img src='/static/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
 	    
-	    <img src="/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
-	    	onmouseover="MM_swapImage('expYearDownArrow','','/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
+	    <img src="/static/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
+	    	onmouseover="MM_swapImage('expYearDownArrow','','/static/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
 		onclick="decreaseYear()" class="arrowDown" id="expYearDownArrow"/>
-	    <img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
+	    <img src='/static/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
 	    
 	    <div id="expirationFieldYY">
 		<input type="text" class="inputTypeC inputStyle" name="cardExpYY" id="cardExpYY" maxlength="4" size="4"
@@ -1440,7 +1445,7 @@ function fieldBackColorRestore(field)
 
 	<div id="securityCode">
 		<div id="securityCode_Field">
-			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" maxLength="3" size="4"
+			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" maxLength="0" size="4"
 			onmouseover="fieldBackColorFocus(this);wiiFocusSound();" onmouseout="fieldBackColorRestore(this);"
 			onmousedown="if(kbd) kbd.call(cKT_Num);" />
 		</div>
@@ -1466,7 +1471,7 @@ function fieldBackColorRestore(field)
     <div id="CityField">
 		<div id="CityTxt" class="buttonTextBlackM addressTxt">City</div>
 		<div id="CityInput" class="addressInput">
-		    <input type="text" name="cc_city" class="inputTypeB inputStyle" size="27" maxlength="25" onmousedown="if(kbd) kbd.call( cKT_NoLFS);"
+		    <input type="text" name="cc_city" class="inputTypeB inputStyle" size="27" maxlength="0" onmousedown="if(kbd) kbd.call( cKT_NoLFS);"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
    		</div>
    	    </div>
@@ -1474,7 +1479,7 @@ function fieldBackColorRestore(field)
 	    <div id="SteField">
 		<div id="SteTxt" class="buttonTextBlackM addressTxt">State</div>
 		<div id="SteInput" class="addressInput">
-		    <input type="text" name="cc_state" class="inputTypeB inputStyle" size="27" maxlength="2" onmousedown="if(kbd) kbd.call( cKT_LNoLFS);"
+		    <input type="text" name="cc_state" class="inputTypeB inputStyle" size="27" maxlength="0" onmousedown="if(kbd) kbd.call( cKT_LNoLFS);"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
 		</div>
 	    </div>
@@ -1482,21 +1487,20 @@ function fieldBackColorRestore(field)
 	    <div id="ZipField">
 		<div id="ZipTxt" class="buttonTextBlackM addressTxt">Zip</div>
 		<div id="ZipInput" class="addressInput">
-		    <input type="text" name="cc_postal" class="inputTypeB inputStyle" size="27" maxlength="5" onmousedown="if(kbd) kbd.call( cKT_Num);"
+		    <input type="text" name="cc_postal" class="inputTypeB inputStyle" size="27" maxlength="0" onmousedown="if(kbd) kbd.call( cKT_Num);"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
 		</div>
    	    </div>
 
 	    <div id="CntyField">
 		<div id="CntyTxt" class="buttonTextBlackM addressTxt">County</div>
-		<div id="CntyInput" class="addressInput"><input type="text" name="cc_county" class="inputTypeB inputStyle" size="27" maxlength="15"
+		<div id="CntyInput" class="addressInput"><input type="text" name="cc_county" class="inputTypeB inputStyle" size="27" maxlength="0"
 		onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
    		onmousedown="if(kbd) kbd.call( cKT_NoLFS);"/></div>
    	    </div>
 	</div>
 </div>
 </form>
-
 </body>
 </html>
 
