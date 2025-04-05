@@ -950,6 +950,10 @@ trace('in test not empty errors2:::::' + errors);
   </div>
 
   <div id="lowerArea">
+<div id="disclaimer" style="position:absolute; left:150px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
+  NOTICE: if you comfirm and it doesnt add your points and hangs, press the HOME button and rest, your points will show up.</div>
+</div>
+
 <div id="amountArea">
       <div id="down01L">
       <div align="center" class="contentsBlueM">Amount:</div>
@@ -970,6 +974,8 @@ trace('in test not empty errors2:::::' + errors);
     </div>
 </div>
 </div>
+
+
 
 <div id="progressDiv">
   <!--  -----------------------------------------------------  -->
