@@ -1406,14 +1406,14 @@ function fieldBackColorRestore(field)
 	
 	<div id="expirationMonth">
 	<center>
-	    <img src='/static/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
-		onmouseover="MM_swapImage('expMonthUpArrow','','/static/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
+	    <img src='/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
+		onmouseover="MM_swapImage('expMonthUpArrow','','/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
 		onclick="increaseMonth()" class="arrowUp" id="expMonthUpArrow"/>
-		<img src='/static/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
-		<img src="/static/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
-		onmouseover="MM_swapImage('expMonthDownArrow','','/static/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
+		<img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
+		<img src="/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
+		onmouseover="MM_swapImage('expMonthDownArrow','','/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
 		onclick="decreaseMonth()" class="arrowDown" id="expMonthDownArrow"/>
-		<img src='/static/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
+		<img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
 
 		<div id="expirationFieldMM">
 			<input type="text" class="inputTypeC inputStyle" name="cardExpMM" id="cardExpMM" maxlength="2" size="2" 
@@ -1424,15 +1424,15 @@ function fieldBackColorRestore(field)
        
 	<div id="expirationYear">
 	    <center>
-	    <img src='/static/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
-		onmouseover="MM_swapImage('expYearUpArrow','','/static/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
+	    <img src='/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
+		onmouseover="MM_swapImage('expYearUpArrow','','/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
 		onclick="increaseYear()" class="arrowUp"   id="expYearUpArrow"/>
-	    <img src='/static/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
+	    <img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
 	    
-	    <img src="/static/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
-	    	onmouseover="MM_swapImage('expYearDownArrow','','/static/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
+	    <img src="/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
+	    	onmouseover="MM_swapImage('expYearDownArrow','','/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
 		onclick="decreaseYear()" class="arrowDown" id="expYearDownArrow"/>
-	    <img src='/static/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
+	    <img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
 	    
 	    <div id="expirationFieldYY">
 		<input type="text" class="inputTypeC inputStyle" name="cardExpYY" id="cardExpYY" maxlength="4" size="4"
