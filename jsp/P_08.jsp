@@ -1322,6 +1322,7 @@ function fieldBackColorRestore(field)
 <div align="left" class="contentsRedM" id="errorText" style="display:none">
      <span id="errorTextPlaceholder"></span>
 </div><div id="P_08-text">
+    <div style="text-align:left;font-size:12px; visibility:hidden;">Transaction Country: null</div>
     <div id="P_08-text01-01" class="titleBlackL">Wii Points Purchase</div>
     <div id="P_08-text02-01" class="catalogTitleBlack_01">Please enter your credit-card information.<BR>(Your credit-card information will be sent over a secure connection.)</div>
 </div>
