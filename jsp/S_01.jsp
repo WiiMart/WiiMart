@@ -347,7 +347,7 @@ function initPage()
 }
 </script>
 <script type="text/javascript">
-	function doPreload() {
+	function PreloadImgs() {
 		MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif',
 		'/oss/oss/common/images//banner/help_b.gif',
 		'/oss/oss/common/images//banner/icr_b_E.gif',
@@ -359,10 +359,11 @@ function initPage()
 		'/oss/oss/common/images//banner/gamecard_b.gif',
 		'/oss/oss/common/images//banner/connect_b.gif',
 		'/oss/oss/common/images//banner/mynintendo_b.gif',
-		'/oss/oss/common/images//banner/mynintendoEU_b.gif');
+		'/oss/oss/common/images//banner/mynintendoEU_b.gif',
+		'/oss/oss/common/images//banner/accessible_b.gif');
 	}	
 </script>
-<script type="text/javascript">window.onload = doPreload();</script>
+<script type="text/javascript">window.onload = PreloadImgs();</script>
 <script type="text/javascript">
 	var scroll_step = 30;
 	function kdown() {
@@ -380,14 +381,6 @@ function initPage()
     	}
 	}
 </script>
-<style type="text/css">
-	.blackTTLL {
-		font-family: "Wii NTLG PGothic JPN Regular";
-		font-size: 28px;
-		color: #323232;
-		font-weight: bold;
-	}	
-</style>
 <title>WiiMart</title>
 </head>
 <body onload="initPage();" style="overflow:hidden" onkeypress="kdown();">
@@ -540,7 +533,7 @@ function initPage()
             <img src="/oss/oss/common/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL">
         </div>
         <div id="underspacerL" class="buttonSpacer">
-          <a href="javascript:showBack();" id="underlinkL">
+          <a href="javascript:showHome();" id="underlinkL">
             <img id="underimageL" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"
 		        onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images/banner/under_banner_b.gif',1);snd.playSE(cSE_Forcus);"
 		        onmouseout="MM_swapImgRestore()"
