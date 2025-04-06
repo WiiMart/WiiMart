@@ -1395,7 +1395,7 @@ function fieldBackColorRestore(field)
     <div id="creditCardNumber">
     	<div id="creditCard_word" class="contentsBlackM bold">Credit-Card Number</div>
 	<div id="creditCard_Field" >
-	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" maxLength="1" size="24"
+	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" readonly="readonly" size="24"
 	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
 	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );"/>
     	</div>
@@ -1445,7 +1445,7 @@ function fieldBackColorRestore(field)
 
 	<div id="securityCode">
 		<div id="securityCode_Field">
-			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" maxLength="1" size="4"
+			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" readonly="readonly" size="4"
 			onmouseover="fieldBackColorFocus(this);wiiFocusSound();" onmouseout="fieldBackColorRestore(this);"
 			onmousedown="if(kbd) kbd.call(cKT_Num);" />
 		</div>
@@ -1471,7 +1471,7 @@ function fieldBackColorRestore(field)
     <div id="CityField">
 		<div id="CityTxt" class="buttonTextBlackM addressTxt">City</div>
 		<div id="CityInput" class="addressInput">
-		    <input type="text" name="cc_city" class="inputTypeB inputStyle" size="27" maxlength="1" onmousedown="if(kbd) kbd.call( cKT_NoLFS);"
+		    <input type="text" name="cc_city" class="inputTypeB inputStyle" size="27" readonly="readonly" onmousedown="if(kbd) kbd.call( cKT_NoLFS);"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
    		</div>
    	    </div>
@@ -1479,7 +1479,7 @@ function fieldBackColorRestore(field)
 	    <div id="SteField">
 		<div id="SteTxt" class="buttonTextBlackM addressTxt">State</div>
 		<div id="SteInput" class="addressInput">
-		    <input type="text" name="cc_state" class="inputTypeB inputStyle" size="27" maxlength="1" onmousedown="if(kbd) kbd.call( cKT_LNoLFS);"
+		    <input type="text" name="cc_state" class="inputTypeB inputStyle" size="27" readonly="readonly" onmousedown="if(kbd) kbd.call( cKT_LNoLFS);"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
 		</div>
 	    </div>
@@ -1487,14 +1487,14 @@ function fieldBackColorRestore(field)
 	    <div id="ZipField">
 		<div id="ZipTxt" class="buttonTextBlackM addressTxt">Zip</div>
 		<div id="ZipInput" class="addressInput">
-		    <input type="text" name="cc_postal" class="inputTypeB inputStyle" size="27" maxlength="1" onmousedown="if(kbd) kbd.call( cKT_Num);"
+		    <input type="text" name="cc_postal" class="inputTypeB inputStyle" size="27" readonly="readonly" onmousedown="if(kbd) kbd.call( cKT_Num);"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
 		</div>
    	    </div>
 
 	    <div id="CntyField">
 		<div id="CntyTxt" class="buttonTextBlackM addressTxt">County</div>
-		<div id="CntyInput" class="addressInput"><input type="text" name="cc_county" class="inputTypeB inputStyle" size="27" maxlength="1"
+		<div id="CntyInput" class="addressInput"><input type="text" name="cc_county" class="inputTypeB inputStyle" size="27" readonly="readonly"
 		onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
    		onmousedown="if(kbd) kbd.call( cKT_NoLFS);"/></div>
    	    </div>
