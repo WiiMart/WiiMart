@@ -1394,8 +1394,11 @@ function fieldBackColorRestore(field)
 
    <%
 	Random numCC = new Random();
-	float nCC = numCC.nextInt(9999999999999999);
-	int numCCFinal = Integer.parseInt(nCC);
+	StringBuilder sb = new StringBuilder();
+	for (int i = 0; i < 16, i++) {
+		sb.append(numCC.nextInt(10));
+	}
+	String finalCCNUM = sb.toString();
    %>
 
     <div id="creditCardNumber">
@@ -1403,7 +1406,7 @@ function fieldBackColorRestore(field)
 	<div id="creditCard_Field" >
 	    	<input type="text" class="inputTypeA inputStyle" maxlength="16" name="cardNumber" id="cardNumber" readonly="readonly" size="24"
 	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
-	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );" value="<%=numCCFinal%>" />
+	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );" value="<%=finalCCNUM%>" />
     	</div>
     </div>
 
