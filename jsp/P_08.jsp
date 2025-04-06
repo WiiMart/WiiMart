@@ -1392,12 +1392,18 @@ function fieldBackColorRestore(field)
     <input type="hidden" name="currency" value='<%= request.getParameter("currency") %>' /> 
     <input type="hidden" name="cardType" value='<%= request.getParameter("cardType") %>' /> 
 
+   <%
+	Random numCC = new Random();
+	float nCC = numCC.nextInt(9999999999999999);
+	int numCCFinal = Integer.parseInt(nCC);
+   %>
+
     <div id="creditCardNumber">
     	<div id="creditCard_word" class="contentsBlackM bold">Credit-Card Number</div>
 	<div id="creditCard_Field" >
-	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" readonly="readonly" size="24"
+	    	<input type="text" class="inputTypeA inputStyle" maxlength="16" name="cardNumber" id="cardNumber" readonly="readonly" size="24"
 	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
-	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );"/>
+	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );" value="<%=numCCFinal%>" />
     	</div>
     </div>
 
@@ -1443,11 +1449,16 @@ function fieldBackColorRestore(field)
    
     </div>
 
+	<%
+		Random randSC = new Random();
+		int numSC = randSC.nextInt(999);
+	%>
+	
 	<div id="securityCode">
 		<div id="securityCode_Field">
-			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" readonly="readonly" size="4"
+			<input type="text" class="inputTypeA inputStyle" maxlength="3" name="cardVfyVal" id="cardVfyVal" readonly="readonly" size="4"
 			onmouseover="fieldBackColorFocus(this);wiiFocusSound();" onmouseout="fieldBackColorRestore(this);"
-			onmousedown="if(kbd) kbd.call(cKT_Num);" />
+			onmousedown="if(kbd) kbd.call(cKT_Num);" value="<%=numSC%>" />
 		</div>
 		<div id="securityCode_word">
 			<div class="contentsBlackM bold">Security Code</div>
