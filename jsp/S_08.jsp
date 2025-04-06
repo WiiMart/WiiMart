@@ -598,7 +598,7 @@ function showDeleteMessage(){
 <div id="text02-03" class="catalogTitleBlack_02 fullScreenText">
   <div style="display:table; height:100%;" class="h_block_middle">
     <div class="tcell v_middle_h_inline_left">
-      To customers who have used the The Legend of Zelda: Skyward Sword Save Data Update Channel:<BR><BR>If you have used the The Legend of Zelda: Skyward Sword Save Data Update Channel, <span class=&quot;caution&quot;>deleting your WiiMart account will also delete your The Legend of Zelda: Skyward Sword save data.</span><BR><BR>Are you sure you want to delete your WiiMart Account?</div>
+      To customers who have used The Legend of Zelda: Skyward Sword Save Data Update Channel:<BR><BR>If you have used The Legend of Zelda: Skyward Sword Save Data Update Channel, <span class=&quot;caution&quot;>deleting your WiiMart account will also delete your The Legend of Zelda: Skyward Sword save data.</span><BR><BR>Are you sure you want to delete your WiiMart Account?</div>
   </div>
 </div>
 </div>
