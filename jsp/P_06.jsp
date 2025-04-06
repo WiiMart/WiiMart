@@ -1,5 +1,9 @@
+
 <%@ page import = "java.io.*,java.util.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+
 
 
 
@@ -36,14 +40,12 @@
     startLeft:    Furthest left location
  -->
 <html>
-	<head>
-		<script>
-			// prevent 209601 (idle on a page, times the user out)
-			var wiishop = new wiiShop();
-			const unused = wiishop.connecting;
-		</script>
-	
-	
+<head>
+	<script>
+		// prevent 209601 (idle on a page, times the user out)
+		var wiishop = new wiiShop();
+		const unused = wiishop.connecting;
+	</script>
 <title>WiiMart</title>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -898,8 +900,9 @@ function next(selection)
     <div id="text_AU_lower" class="contentsBlackS">
 Please note that your credit card provider may impose a foreign transaction fee on this purchase. Please contact your provider for details.
 </div>
-<div id="disclaimer" style="position:absolute; left:150px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
-  Please Note: Adding Wii Points does <span style="font-weight:bold; color:#34BEED;">NOT</span> require any credit info. <br> (it ignores your input anyways)</div>
+
+<div id="disclaimer"  style="position:absolute; left:110px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
+  Please Note: Adding Wii Points does <span style="font-weight:bold; color:#34BEED;">NOT</span> require any credit info. <br> (any attempt to enter numbers will just randomize them)
 </div>
 
 <div id="errorMsg">
