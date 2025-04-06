@@ -1084,7 +1084,7 @@ function closeExplain()
 function showAddress()
 {
 	var needInput = true;
-	//Skip checking if numbers are even correct
+	//Skip checking if numbers are even correct (ignores your info)
 	document.getElementById("cardInfo").submit();
 	return;
 	
@@ -1192,7 +1192,7 @@ function fieldBackColorRestore(field)
 <script type="text/JavaScript" src='/oss/oss/common/js//keyboard.js'></script>
 </head>
 
-<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
+<body onload="initPage();">
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -1322,7 +1322,7 @@ function fieldBackColorRestore(field)
 <div align="left" class="contentsRedM" id="errorText" style="display:none">
      <span id="errorTextPlaceholder"></span>
 </div><div id="P_08-text">
-    <div style="text-align:left;font-size:12px;">Transaction Country: United States of America</div><div id="P_08-text01-01" class="titleBlackL">Wii Points Purchase</div>
+    <div id="P_08-text01-01" class="titleBlackL">Wii Points Purchase</div>
     <div id="P_08-text02-01" class="catalogTitleBlack_01">Please enter your credit-card information.<BR>(Your credit-card information will be sent over a secure connection.)</div>
 </div>
 
@@ -1376,13 +1376,14 @@ function fieldBackColorRestore(field)
     </div>
 </div>
 
-<div id="disclaimer" style="font-weight:normal;position:absolute; left:110px; top:137px; text-align:center; font-size:11px; color:#868686;  ">
-  Don't enter any credit card info here!!! (it wont take it anyways and will ignore your input)</div>
-</div>
 
-<!-- all inputs have been set to only allow 1 number/letter (no info can be put in.) -->
+<!-- all inputs have been set to randomize after input (prevents any real info from being entered)-->
 <form id="cardInfo" method="POST" name="cardInfo" action="https://oss-auth.blinklab.com/oss/serv/P_12.jsp">
 <div id="cardfields">
+  <blink id="disclaimer" style="font-weight:normal;position:absolute; left:110px; top:137px; text-align:center; font-size:11px; color:#868686;  ">
+		Don't enter any credit card info here!!! (any attempt to enter numbers will just randomize them)
+	</blink>
+
     <img id="cardicon" width="100%" height="100%" />
     <div id="commonFields"></div>
     
@@ -1391,15 +1392,18 @@ function fieldBackColorRestore(field)
     <input type="hidden" name="price"    value='<%= request.getParameter("pointsCost") %>' />
     <input type="hidden" name="currency" value='<%= request.getParameter("currency") %>' /> 
     <input type="hidden" name="cardType" value='<%= request.getParameter("cardType") %>' /> 
+<!-- randomizier for the credit input -->
+    <%
+    Random numCC = new Random();
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < 16, i++) {
+      sb.append(numCC.nextInt(10));
+    }
+    String finalCCNUM = sb.toString();
+     %>
+<!-- randomizier for the credit input -->
 
-   <%
-	Random numCC = new Random();
-	StringBuilder sb = new StringBuilder();
-	for (int i = 0; i < 16, i++) {
-		sb.append(numCC.nextInt(10));
-	}
-	String finalCCNUM = sb.toString();
-   %>
+   <!-- disabled to prevent real info from being entered (randomizes numbers if attemped to enter info)-->
 
     <div id="creditCardNumber">
     	<div id="creditCard_word" class="contentsBlackM bold">Credit-Card Number</div>
@@ -1409,7 +1413,9 @@ function fieldBackColorRestore(field)
 	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );" value="<%=finalCCNUM%>" />
     	</div>
     </div>
+    <!-- disabled to prevent real info from being entered (randomizes numbers if attemped to enter info)-->
 
+    <!-- these dont randomize as they are just month and year, not anything crazy -->
     <div id="expirationDate">
 	<div id="expirationDate_word" class="contentsBlackM bold">Expiration Date</div>
 	
@@ -1426,7 +1432,7 @@ function fieldBackColorRestore(field)
 
 		<div id="expirationFieldMM">
 			<input type="text" class="inputTypeC inputStyle" name="cardExpMM" id="cardExpMM" maxlength="2" size="2" 
-			readonly="readonly""/>
+			readonly="readonly">
 		</div>
 	</center>
 	</div>
@@ -1445,18 +1451,24 @@ function fieldBackColorRestore(field)
 	    
 	    <div id="expirationFieldYY">
 		<input type="text" class="inputTypeC inputStyle" name="cardExpYY" id="cardExpYY" maxlength="4" size="4"
-		   readonly="readonly""/>
+		   readonly="readonly">
 	    </div>
 	    </center>
  	</div>
    
     </div>
+<!-- these dont randomize as they are just month and year, not anything crazy -->
 
-	<%
-		Random randSC = new Random();
-		int numSC = randSC.nextInt(999);
-	%>
-	
+<!-- randomizier for the security code input-->
+ 
+<%
+Random randSC = new Random();
+int numSC = randSC.nextInt(999);
+%>
+	<!-- randomizier for the security code input-->
+ 
+
+  <!-- disabled to prevent real info from being entered (randomizes numbers if attemped to enter info)-->
 	<div id="securityCode">
 		<div id="securityCode_Field">
 			<input type="text" class="inputTypeA inputStyle" maxlength="3" name="cardVfyVal" id="cardVfyVal" readonly="readonly" size="4"
@@ -1467,15 +1479,23 @@ function fieldBackColorRestore(field)
 			<div class="contentsBlackM bold">Security Code</div>
 		</div>
 	</div>
+<!-- disabled to prevent real info from being entered (randomizes numbers if attemped to enter info)-->
 
+
+<!-- these have been emptied out for security -->
     <div id="encryptedInfo">
     </div>
 
     <div id="paymentMethodId">
     </div>
+<!-- these have been emptied out for security -->
+
 </div>
 
+
+
 <!-- P_10 data: address information (Note, return button and ok button change functionality) -->
+ <!-- UNUSED (IS NOT USED WITHIN THE SHOP) -->
 <div id="addressInfo" style="display:none">
     <div id="P_10-text02-01">
       <div class="catalogTitleBlack">Please enter the following information from your credit-card billing address.</div>
@@ -1514,6 +1534,9 @@ function fieldBackColorRestore(field)
    	    </div>
 	</div>
 </div>
+<!-- UNUSED (IS NOT USED WITHIN THE SHOP) -->
+
+
 </form>
 </body>
 </html>
