@@ -28,14 +28,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
-	<head>
-		<script>
-			// prevent 209601 (idle on a page, times the user out)
-			var wiishop = new wiiShop();
-			const unused = wiishop.connecting;
-		</script>
-	
-	
+<head>
+	<script>
+		// prevent 209601 (idle on a page, times the user out)
+		var wiishop = new wiiShop();
+		const unused = wiishop.connecting;
+	</script>
 <title>WiiMart</title>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -537,10 +535,10 @@ function select(index)
 		form.id = "ccardSelectForm";
 		form.innerHTML = "";
 		form.innerHTML += '<div id="commonFields"></div>';
-		form.innerHTML += '<input type="hidden" name="pointsValue" value="' + '<%= request.getParameter("pointsValue") %>' + '"/>';
-		form.innerHTML += '<input type="hidden" name="pointsCost" value="' + '<%= request.getParameter("pointsCost") %>' + '"/>';
-		form.innerHTML += '<input type="hidden" name="itemId" value="' + '<%= request.getParameter("itemId") %>' + '"/>';
-		form.innerHTML += '<input type="hidden" name="currency" value="' + '<%= request.getParameter("currency") %>' + '"/>';
+		form.innerHTML += '<input type="hidden" name="pointsValue" value="' + 'null' + '"/>';
+		form.innerHTML += '<input type="hidden" name="pointsCost" value="' + 'null' + '"/>';
+		form.innerHTML += '<input type="hidden" name="itemId" value="' + 'null' + '"/>';
+		form.innerHTML += '<input type="hidden" name="currency" value="' + 'null' + '"/>';
 		form.innerHTML += '<input type="hidden" name="cardType" value="' + companyNames[index] + '"/>';
 		document.body.appendChild(form);
 		initCommonFields("commonFields");
@@ -666,8 +664,11 @@ function select(index)
     <div id="underword" align="center" class="buttonTextBlackM buttonWord"></div>
 </div>
 
+<div id="disclaimer" style="position:absolute; left:100px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
+  Please Note: Adding Wii Points does <span style="font-weight:bold; color:#34BEED;">NOT</span> require any credit info. <br> (any attempt to enter numbers will just randomize them)</div>
+</div>
 
-<div id="card01" name="cardJCB" >
+<div id="card01" name="cardJCB"  >
     <img src='/oss/oss/common/images//spacer.gif' class='cardSpacer' id="card01Spacer" 
     onmouseout="MM_swapImgRestore()" onclick="select(0)"
     onmouseover="MM_swapImage('card01Img','','/oss/oss/common/images//banner/card01_b.gif',1); wiiFocusSound();"/>
@@ -693,10 +694,9 @@ function select(index)
     <img id='card03Shadow' class='cardShadow' src='/oss/oss/common/images//banner/banner03_shadow.gif' />	
     <div id="text05-01" class="cardText buttonTextBlackM">Visa</div>
 </div>
-<div id="disclaimer" style="position:absolute; left:150px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
-  Please Note: Adding Wii Points does <span style="font-weight:bold; color:#34BEED;">NOT</span> require any credit info. <br> (it ignores your input anyways)</div>
-</div>
+
+
 <div id="text01-01" class="titleBlackL">Wii Points Purchase</div>
-<div id="text02-01"  class="catalogTitleBlack_02" align="left">Please select the credit-card type you would like to use to buy Wii Points.</div>
+<div id="text02-01"  class="catalogTitleBlack_02" align="left" >Please select the credit-card type you would like to use to buy Wii Points.</div>
 </body>
 </html>
