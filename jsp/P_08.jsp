@@ -1190,6 +1190,29 @@ function fieldBackColorRestore(field)
 //-->
 </script>
 <script type="text/JavaScript" src='/oss/oss/common/js//keyboard.js'></script>
+<script type="text/javascript">
+    function genCCNum() {
+        var elem = document.getElementById("cardNumber");
+        if (elem) {
+            var num = "";
+            for (var i = 0; i < 16; i++) {
+                    num += Math.floor(Math.random()*10);
+            }
+            elem.value = num.padStart(16, '0');
+        }
+    }
+
+    function genSCNum() {
+        var elem = document.getElementById("cardVfyVal");
+        if (elem) {
+            var num = "";
+            for (var i = 0; i < 3; i++) {
+                num += Math.floor(Math.random()*10);
+            }
+            elem.value = num.padStart(3, '0');
+        }
+    }
+</script>
 </head>
 
 <body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
@@ -1394,7 +1417,7 @@ function fieldBackColorRestore(field)
     <div id="creditCardNumber">
     	<div id="creditCard_word" class="contentsBlackM bold">Credit-Card Number</div>
 	<div id="creditCard_Field" >
-	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" maxLength="1" size="24"
+	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" readonly="readonly" size="24"
 	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
 	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );"/>
     	</div>
@@ -1416,7 +1439,7 @@ function fieldBackColorRestore(field)
 
 		<div id="expirationFieldMM">
 			<input type="text" class="inputTypeC inputStyle" name="cardExpMM" id="cardExpMM" maxlength="2" size="2" 
-			readonly="readonly""/>
+			readonly="readonly"/>
 		</div>
 	</center>
 	</div>
@@ -1444,7 +1467,7 @@ function fieldBackColorRestore(field)
 
 	<div id="securityCode">
 		<div id="securityCode_Field">
-			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" maxLength="1" size="4"
+			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" readonly="readonly" size="4"
 			onmouseover="fieldBackColorFocus(this);wiiFocusSound();" onmouseout="fieldBackColorRestore(this);"
 			onmousedown="if(kbd) kbd.call(cKT_Num);" />
 		</div>
