@@ -1,9 +1,5 @@
 
-
 <a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
-
-
-
 
 
 
@@ -106,8 +102,8 @@ function initPageCommon()
     	}
     
     	if (isShoppingManualEnabled != "true") {
-    		showElement("tophelpshadow");
-	    	showElement("help");
+    		hideElement("tophelpshadow");
+	    	hideElement("help");
     	}
     	
 	var ecsUrl = null;
@@ -147,9 +143,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.com/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -1004,10 +1000,10 @@ function returnToCardType()
 	form.id = "return07Form";
 	form.innerHTML = "";
 	form.innerHTML += '<div id="commonFields2"></div>';
-	form.innerHTML += '<input maxlength="1" type="hidden" name="pointsValue" value="' + 'null' + '"/>';
-	form.innerHTML += '<input maxlength="1" type="hidden" name="pointsCost" value="' + 'null' + '"/>';
-	form.innerHTML += '<input maxlength="1" type="hidden" name="itemId" value="' + 'null' + '"/>';
-	form.innerHTML += '<input maxlength="1" type="hidden" name="currency" value="' + 'null' + '"/>';
+	form.innerHTML += '<input type="hidden" name="pointsValue" value="' + 'null' + '"/>';
+	form.innerHTML += '<input type="hidden" name="pointsCost" value="' + 'null' + '"/>';
+	form.innerHTML += '<input type="hidden" name="itemId" value="' + 'null' + '"/>';
+	form.innerHTML += '<input type="hidden" name="currency" value="' + 'null' + '"/>';
 	document.body.appendChild(form);
 	initCommonFields('commonFields2');
 	form.submit();
@@ -1100,12 +1096,12 @@ function showAddress()
 				
 			var encryptedInfo = encryptCC();
 			var encryptedInfoField = document.getElementById("encryptedInfo");
-			encryptedInfoField.innerHTML = '<input maxlength="1" type="hidden" name="cardEncrypted" value="' + encryptedInfo + '"/>';
+			encryptedInfoField.innerHTML = '<input type="hidden" name="cardEncrypted" value="' + encryptedInfo + '"/>';
 			
 			var paymentMethodIdField = document.getElementById("paymentMethodId");
 			var cardNum  = document.getElementById("cardNumber").value;
 			var paymentMethodId = cardNum.substring(12,16);
-			paymentMethodIdField.innerHTML = '<input maxlength="1" type="hidden" name="paymentMethodId" value="' + paymentMethodId + '"/>';
+			paymentMethodIdField.innerHTML = '<input type="hidden" name="paymentMethodId" value="' + paymentMethodId + '"/>';
 
 			document.getElementById("cardExpMM").value = '';
 			document.getElementById("cardExpYY").value = '';
@@ -1135,12 +1131,12 @@ function showAddress()
 		if(validateNumbers()) {
 			var encryptedInfo = encryptCC();
 			var encryptedInfoField = document.getElementById("encryptedInfo");
-			encryptedInfoField.innerHTML = '<input maxlength="1" type="hidden" name="cardEncrypted" value="' + encryptedInfo + '"/>';
+			encryptedInfoField.innerHTML = '<input type="hidden" name="cardEncrypted" value="' + encryptedInfo + '"/>';
 			
 			var paymentMethodIdField = document.getElementById("paymentMethodId");
 			var cardNum  = document.getElementById("cardNumber").value;
 			var paymentMethodId = cardNum.substring(12,16);
-			paymentMethodIdField.innerHTML = '<input maxlength="1" type="hidden" name="paymentMethodId" value="' + paymentMethodId + '"/>';
+			paymentMethodIdField.innerHTML = '<input type="hidden" name="paymentMethodId" value="' + paymentMethodId + '"/>';
 
 			document.getElementById("cardExpMM").value = '';
 			document.getElementById("cardExpYY").value = '';
@@ -1196,7 +1192,7 @@ function fieldBackColorRestore(field)
 <script type="text/JavaScript" src='/oss/oss/common/js//keyboard.js'></script>
 </head>
 
-<body onload="initPage(); snd.playBGM();">
+<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -1326,8 +1322,7 @@ function fieldBackColorRestore(field)
 <div align="left" class="contentsRedM" id="errorText" style="display:none">
      <span id="errorTextPlaceholder"></span>
 </div><div id="P_08-text">
-	<div style="text-align:left;font-size:12px; visibility:hidden;">Transaction Country: NULL <!-- why does this even exist, it doesnt take ur info --></div>
-    <div id="P_08-text01-01" class="titleBlackL">Wii Points Purchase</div>
+    <div style="text-align:left;font-size:12px;">Transaction Country: United States of America</div><div id="P_08-text01-01" class="titleBlackL">Wii Points Purchase</div>
     <div id="P_08-text02-01" class="catalogTitleBlack_01">Please enter your credit-card information.<BR>(Your credit-card information will be sent over a secure connection.)</div>
 </div>
 
@@ -1381,37 +1376,30 @@ function fieldBackColorRestore(field)
     </div>
 </div>
 
-
-<!-- all inputs have been set to only allow 1 number/letter (no info can be put in.) -->
 <form id="cardInfo" method="POST" name="cardInfo" action="https://oss-auth.blinklab.com/oss/serv/P_12.jsp">
 <div id="cardfields">
-	<blink id="disclaimer" onclick="window.location.reload();" style="font-weight:normal;position:absolute; left:110px; top:137px; text-align:center; font-size:11px; color:#868686;  ">
-		Don't enter any credit card info here!!! (it wont take it and will randomize the numbers)
-	</blink>
-
+    <blink id="disclaimer" onclick="window.location.reload();" style="font-weight:normal;position:absolute; left:110px; top:137px; text-align:center; font-size:11px; color:#868686;  ">
+        Don't enter any credit card info here!!! (it wont let you enter any anyways)
+    </blink>
 
     <img id="cardicon" width="100%" height="100%" />
     <div id="commonFields"></div>
     
-    <input maxlength="1" type="hidden" name="itemId"   value='null' />
-    <input maxlength="1" type="hidden" name="points"   value='null' /> 
-    <input maxlength="1" type="hidden" name="price"    value='null' />
-    <input maxlength="1" type="hidden" name="currency" value='null' /> 
-    <input maxlength="1" type="hidden" name="cardType" value='null' /> 
+    <input type="hidden" name="itemId"   value='null' />
+    <input type="hidden" name="points"   value='null' /> 
+    <input type="hidden" name="price"    value='null' />
+    <input type="hidden" name="currency" value='null' /> 
+    <input type="hidden" name="cardType" value='null' /> 
 
     <div id="creditCardNumber">
     	<div id="creditCard_word" class="contentsBlackM bold">Credit-Card Number</div>
 	<div id="creditCard_Field" >
-
-
-			<!-- disabled to prevent real info from being entered (auto resets to 0 when anything is attempted.)-->
-	    	<input   maxlength="1" type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" maxLength="0" size="24"
+	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" maxLength="1" size="24"
 	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
-	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );" />
+	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );"/>
     	</div>
     </div>
 
-		<!-- these are not disabled as they dont reveal anything and the shop cant take the date provided anyways -->
     <div id="expirationDate">
 	<div id="expirationDate_word" class="contentsBlackM bold">Expiration Date</div>
 	
@@ -1428,7 +1416,7 @@ function fieldBackColorRestore(field)
 
 		<div id="expirationFieldMM">
 			<input type="text" class="inputTypeC inputStyle" name="cardExpMM" id="cardExpMM" maxlength="2" size="2" 
-			readonly="readonly" />
+			readonly="readonly""/>
 		</div>
 	</center>
 	</div>
@@ -1447,39 +1435,30 @@ function fieldBackColorRestore(field)
 	    
 	    <div id="expirationFieldYY">
 		<input type="text" class="inputTypeC inputStyle" name="cardExpYY" id="cardExpYY" maxlength="4" size="4"
-		   readonly="readonly"/>
+		   readonly="readonly""/>
 	    </div>
 	    </center>
  	</div>
    
     </div>
 
-
-
-		<!-- disabled to only take one letter and clears after input (to prevent any real info from being entered)-->
 	<div id="securityCode">
 		<div id="securityCode_Field">
-
-			<input  maxlength="1"  type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" maxLength="0" size="4"
+			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" maxLength="1" size="4"
 			onmouseover="fieldBackColorFocus(this);wiiFocusSound();" onmouseout="fieldBackColorRestore(this);"
-			onmousedown="if(kbd) kbd.call(cKT_Num);"  />
+			onmousedown="if(kbd) kbd.call(cKT_Num);" />
 		</div>
 		<div id="securityCode_word">
 			<div class="contentsBlackM bold">Security Code</div>
 		</div>
 	</div>
 
-
-	<!-- cleared out for your safety -->
     <div id="encryptedInfo">
     </div>
 
     <div id="paymentMethodId">
     </div>
 </div>
-
-
-<!-- UNUSED -->
 
 <!-- P_10 data: address information (Note, return button and ok button change functionality) -->
 <div id="addressInfo" style="display:none">
@@ -1491,7 +1470,7 @@ function fieldBackColorRestore(field)
     <div id="CityField">
 		<div id="CityTxt" class="buttonTextBlackM addressTxt">City</div>
 		<div id="CityInput" class="addressInput">
-		    <input maxlength="1" type="text" name="cc_city" class="inputTypeB inputStyle" size="27" maxlength="0" onmousedown="if(kbd) kbd.call( cKT_NoLFS);"
+		    <input type="text" name="cc_city" class="inputTypeB inputStyle" size="27" maxlength="1" onmousedown="if(kbd) kbd.call( cKT_NoLFS);"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
    		</div>
    	    </div>
@@ -1499,7 +1478,7 @@ function fieldBackColorRestore(field)
 	    <div id="SteField">
 		<div id="SteTxt" class="buttonTextBlackM addressTxt">State</div>
 		<div id="SteInput" class="addressInput">
-		    <input  maxlength="1" type="text" name="cc_state" class="inputTypeB inputStyle" size="27" maxlength="0" onmousedown="if(kbd) kbd.call( cKT_LNoLFS);"
+		    <input type="text" name="cc_state" class="inputTypeB inputStyle" size="27" maxlength="1" onmousedown="if(kbd) kbd.call( cKT_LNoLFS);"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
 		</div>
 	    </div>
@@ -1507,26 +1486,21 @@ function fieldBackColorRestore(field)
 	    <div id="ZipField">
 		<div id="ZipTxt" class="buttonTextBlackM addressTxt">Zip</div>
 		<div id="ZipInput" class="addressInput">
-		    <input  maxlength="1" type="text" name="cc_postal" class="inputTypeB inputStyle" size="27" maxlength="0" onmousedown="if(kbd) kbd.call( cKT_Num);"
+		    <input type="text" name="cc_postal" class="inputTypeB inputStyle" size="27" maxlength="1" onmousedown="if(kbd) kbd.call( cKT_Num);"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
 		</div>
    	    </div>
 
 	    <div id="CntyField">
 		<div id="CntyTxt" class="buttonTextBlackM addressTxt">County</div>
-		<div id="CntyInput" class="addressInput">
-			<input  maxlength="1" type="text" name="cc_county" class="inputTypeB inputStyle" size="27" maxlength="0"
+		<div id="CntyInput" class="addressInput"><input type="text" name="cc_county" class="inputTypeB inputStyle" size="27" maxlength="1"
 		onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
-   		onmousedown="if(kbd) kbd.call( cKT_NoLFS);"/>
-		</div>
+   		onmousedown="if(kbd) kbd.call( cKT_NoLFS);"/></div>
    	    </div>
 	</div>
 </div>
-
-
-<!-- UNUSED -->
-
 </form>
+
 </body>
 </html>
 
