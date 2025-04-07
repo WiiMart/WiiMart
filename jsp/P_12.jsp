@@ -1,10 +1,10 @@
-<%@ page import = "java.io.*,java.util.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
+
 <a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
 
 
 
-<%@ page buffer="8192kb" autoFlush="true" %>
+
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -30,14 +30,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
-	<head>
-		<script>
-			// prevent 209601 (idle on a page, times the user out)
-			var wiishop = new wiiShop();
-			const unused = wiishop.connecting;
-		</script>
-	
-	
+<head>
 <title>WiiMart</title>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -79,7 +72,7 @@ var testMode = 'false';
 
 function getMethod() 
 {
-	return "<%= request.getMethod() %>"
+	return "GET"
 }
 
 function getPostParams()
@@ -502,9 +495,9 @@ function needSyncEticket(progress)
 /* Errors handled in error.css */
 </style>
 <script language="JavaScript" type="text/javascript">
-var refillValue = '<%= request.getParameter("points") %>';
-console.log('points::<%= request.getParameter("points") %>');
-console.log('contentType:::<%= request.getContentType() %>')
+var refillValue = 'null';
+console.log('points::null');
+console.log('contentType:::null')
 console.log("refillValue::"+refillValue);
 //var refillValue = '0';
 
@@ -546,8 +539,8 @@ function getPayment()
 
 function getPrice() //  needed for both
 {
-	var amount      = '<%= request.getParameter("price") %>.00'
-	var currency    = '<%= request.getParameter("currency") %>'
+	var amount      = 'null.00'
+	var currency    = 'null'
 //    var amount = '';
 //    var currency = '';
 	// NOTE: For Credit Card, we use amount returned by NOA (which does not include tax)
@@ -557,7 +550,7 @@ function getPrice() //  needed for both
 	
 function getRefillPoints() // needed for both 
 {
-	return '<%= request.getParameter("points") %>';
+	return 'null';
 //    return '';
 }
 
@@ -581,7 +574,7 @@ function buyPoints(payment)
 	var price = getPrice();
             
     // Request
-	var itemId = '<%= request.getParameter("itemId") %>';
+	var itemId = 'null';
     //var itemId = '';
 	//var payment = getPayment();
 		
@@ -766,7 +759,7 @@ function toggleMessage()
 function initPage()
 {
   var errors = 0;
-	trace('itemId::::<%= request.getParameter("itemId") %>')
+	trace('itemId::::null')
     initPageCommon();
     disableWiiPointButton();
     MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif','/oss/oss/common/images//banner/help_b.gif','/oss/oss/common/images//banner/top_b.gif');
@@ -780,11 +773,11 @@ function initPage()
     trace("cardExpYY:::::"+'');
     trace("cardNumber:::::"+'');
     trace("cardVfyVal:::::"+'');
-    trace("itemId:::::"+'<%= request.getParameter("itemId") %>');
-    trace("pointsValue:::::"+'<%= request.getParameter("points") %>'); 
-    trace("pointsCost:::::"+'<%= request.getParameter("price") %>');
-    trace("currency:::::"+'<%= request.getParameter("currency") %>');
-    trace("cardType:::::"+'<%= request.getParameter("cardType") %>');
+    trace("itemId:::::"+'null');
+    trace("pointsValue:::::"+'null'); 
+    trace("pointsCost:::::"+'null');
+    trace("currency:::::"+'null');
+    trace("cardType:::::"+'null');
 
 trace('maxPointcheck');
 
@@ -943,17 +936,13 @@ trace('in test not empty errors2:::::' + errors);
   <img src="/oss/oss/common/images//banner/point_frame02.gif" width="100%" height="100%" />
 
   <div id="topArea">
-    <div id="top01" class="buttonTextBlackM">Wii Points<div id="top02" align="right"><span class="buttonTextBlackM" id="pointsValue"><%= request.getParameter("points") %></span>
+    <div id="top01" class="buttonTextBlackM">Wii Points<div id="top02" align="right"><span class="buttonTextBlackM" id="pointsValue">null</span>
         <div id="top03" class="buttonTextBlackM">Wii Points</div>
       </div>
     </div>
   </div>
 
   <div id="lowerArea">
-<div id="disclaimer" style="position:absolute; left:150px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
-  NOTICE: if you comfirm and it doesnt add your points and hangs, press the HOME button and rest, your points will show up.</div>
-</div>
-
 <div id="amountArea">
       <div id="down01L">
       <div align="center" class="contentsBlueM">Amount:</div>
@@ -974,8 +963,6 @@ trace('in test not empty errors2:::::' + errors);
     </div>
 </div>
 </div>
-
-
 
 <div id="progressDiv">
   <!--  -----------------------------------------------------  -->
