@@ -1417,7 +1417,7 @@ function fieldBackColorRestore(field)
     <div id="creditCardNumber">
     	<div id="creditCard_word" class="contentsBlackM bold">Credit-Card Number</div>
 	<div id="creditCard_Field" >
-	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" readonly="readonly" size="24"
+	    	<input type="text" class="inputTypeA inputStyle" maxlength="16" name="cardNumber" id="cardNumber" readonly="readonly" size="24"
 	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
 	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );"/>
     	</div>
@@ -1467,7 +1467,7 @@ function fieldBackColorRestore(field)
 
 	<div id="securityCode">
 		<div id="securityCode_Field">
-			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" readonly="readonly" size="4"
+			<input type="text" class="inputTypeA inputStyle" maxlength="3" name="cardVfyVal" id="cardVfyVal" readonly="readonly" size="4"
 			onmouseover="fieldBackColorFocus(this);wiiFocusSound();" onmouseout="fieldBackColorRestore(this);"
 			onmousedown="if(kbd) kbd.call(cKT_Num);" />
 		</div>
