@@ -1150,7 +1150,7 @@ function change_Header_titlelistName0()
 {
     var titleElem = document.getElementById("txtSoftList");
     var headerURLElem = document.getElementById("headerURL");
-    titleElem.innerHTML="<span class='style1'>WiiMart</span><span class='style2'>Recommended Titles</span>";
+    titleElem.innerHTML="<span class='style1'>WiiMart</span><span class='style2'>&nbsp;Recommended Titles</span>";
     headerURLElem.href = "javascript:showPage('B_04.jsp?p=1&rec=true')"
 }
 
@@ -2699,7 +2699,7 @@ function add_scroll_counter()
     <div id="SofList01"><img src="/oss/oss/common/images//banner/GifA_SoftList_noAction.png" name="SofList"/></div>
 <div id="txtSoftList" align="center">
     <span class="style1">WiiMart</span>
-    <span class="style2">Recommended Titles</span>
+    <span class="style2">&nbsp;Recommended Titles</span>
 </div>
 <div id="SoftListSpacer">
     <a id="headerURL" href="javascript:showPage('B_04.jsp?p=1&rec=true')">
