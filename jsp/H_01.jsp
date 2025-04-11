@@ -701,7 +701,8 @@ function initPage()
 	  <a href="javascript:showHome()" id="underlinkL">
     	<img id="underimageL" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"  
     	onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
-    	onmouseout="MM_swapImgRestore()"/>
+    	onmouseout="MM_swapImgRestore()"
+	onclick="snd.playSE(cSE_Cancel)"/>
       </a>	
     </div>
     <div id="underwordL" align="center" class="buttonTextBlackM buttonWord"><table width="100%" height="100%"><tr><td align="center" valign="middle">Back</tr></td></table></div>
