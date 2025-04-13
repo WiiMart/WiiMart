@@ -1192,26 +1192,32 @@ function fieldBackColorRestore(field)
 <script type="text/JavaScript" src='/oss/oss/common/js//keyboard.js'></script>
 <script type="text/javascript">
     function genCCNum() {
-        var elem = document.getElementById("cardNumber");
-        if (elem) {
-            var num = "";
-            for (var i = 0; i < 16; i++) {
-                    num += Math.floor(Math.random()*10);
-            }
-            elem.value = num.padStart(16, '0');
+    var elem = document.getElementById("cardNumber");
+    if (elem) {
+        var num = "";
+        for (var i = 0; i < 16; i++) {
+            num += Math.floor(Math.random() * 10);
         }
+        while (num.length < 16) {
+            num = '0' + num;
+        }
+        elem.value = num;
     }
+}
 
-    function genSCNum() {
-        var elem = document.getElementById("cardVfyVal");
-        if (elem) {
-            var num = "";
-            for (var i = 0; i < 3; i++) {
-                num += Math.floor(Math.random()*10);
-            }
-            elem.value = num.padStart(3, '0');
+function genSCNum() {
+    var elem = document.getElementById("cardVfyVal");
+    if (elem) {
+        var num = "";
+        for (var i = 0; i < 3; i++) {
+            num += Math.floor(Math.random() * 10);
         }
+        while (num.length < 3) {
+            num = '0' + num;
+        }
+        elem.value = num;
     }
+}
 </script>
 </head>
 
