@@ -525,22 +525,22 @@ function initPage()
             <span id="currentBalance"></span>
         </div>
     </div>
-    <div id="underButtonL">
-        <div id="underbannershadowL" class="buttonBannerShadow">
-             <img src="/oss/oss/common/images//banner/under_banner_shadow.gif" width="211" height="75">
-           </div>
-        <div id="underbannerL" class="buttonBanner">
-            <img src="/oss/oss/common/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL">
-        </div>
-        <div id="underspacerL" class="buttonSpacer">
-          <a href="javascript:showHome();" id="underlinkL">
-            <img id="underimageL" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"
-		        onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images/banner/under_banner_b.gif',1);snd.playSE(cSE_Forcus);"
-		        onmouseout="MM_swapImgRestore()"
-		        onclick="snd.playSE(cSE_Cancel)">
-          </a>	
-        </div>
-        <div id="underwordL" align="center" class="buttonTextBlackM buttonWord" style="position: absolute"><table width="100%" height="100%"><tbody><tr><td align="center" valign="middle">Back</td></tr></tbody></table></div>
+<div id="underButtonL">
+    <div id="underbannershadowL" class="buttonBannerShadow">
+   	  <img src="/oss/oss/common/images//banner/under_banner_shadow.gif" width="211" height="75" />
+   	</div>
+    <div id="underbannerL" class="buttonBanner">
+    	<img src="/oss/oss/common/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL" />
     </div>
+    <div id="underspacerL" class="buttonSpacer">
+	  <a href="javascript:showHome()" id="underlinkL">
+    	<img id="underimageL" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"  
+    	onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
+    	onmouseout="MM_swapImgRestore()"
+	onclick="snd.playSE(cSE_Cancel)"/>
+      </a>	
+    </div>
+    <div id="underwordL" align="center" class="buttonTextBlackM buttonWord"><table width="100%" height="100%"><tr><td align="center" valign="middle">Back</tr></td></table></div>
+</div>
 </body>
 </html>
