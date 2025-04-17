@@ -677,7 +677,7 @@ function initPage()
 </script>
 </head>
 
-<body onload="initPage()">
+<body onload="initPage();MM_preloadImages('/oss/oss/common/images//banner/account_activity.png');">
 
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
