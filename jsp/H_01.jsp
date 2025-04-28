@@ -753,9 +753,33 @@ function initPage()
   <div id="point" class="wiiPoint"><span id="currentBalance"></span></div>
 </div>
 	
+<div id="constElements">
+  <div id="tophelpshadow"><img src="/oss/oss/common/images//banner/top_help_shadow01.gif" width="132" height="75" /></div>
+  <div id="help">
+    <img src="/oss/oss/common/images//banner/help_a.gif" name="ManualImage"
+     width="52" height="55" border="0" id="ManualImageID"  onmouseout="MM_swapImgRestore()" 
+     onmouseover="MM_swapImage('ManualImage','','/oss/oss/common/images//banner/help_b.gif',1); wiiFocusSound();"
+     onclick="showHelp(); wiiSelectSound();"/>
+    <img src="/oss/oss/common/images//banner/help_gray.gif" 
+     width="52" height="55" border="0" id="ManualGrayImageID" style="display:none" />
+    <img src="/oss/oss/common/images//spacer.gif" name="HelpSpacer" width="52" height="55" border="0"
+     id='HelpSpacer' style="position:absolute; top:0px; left:0px; display:none"/>
+  </div>
+
+  <div id="top">
+    <img src="/oss/oss/common/images//banner/top_a.gif" name="TopImage" 
+     width="52" height="55" border="0" id="TopImageID" onmouseout="MM_swapImgRestore()" 
+     onmouseover="MM_swapImage('TopImage','','/oss/oss/common/images//banner/top_b.gif',1); wiiFocusSound();"
+     onclick="showHome(); wiiCancelSound();"/>
+    <img src="/oss/oss/common/images//banner/top_gray.gif" 
+     width="52" height="55" border="0" id="TopGrayImageID" style="display:none" />
+    <img src="/oss/oss/common/images//spacer.gif" name="MainSpacer" width="52" height="55" border="0"
+     id='MainSpacer' style="position:absolute; top:0px; left:0px; display:none"/>
+  </div>
+
 <div class="dot" id="line01">･･･････････････････････････････････････････････････････････････････････････</div>
 <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>
-  
+
 <div class="titleBlackL" id="text01-01">
 <div align="left">Account Activity</div>
 </div>
@@ -783,7 +807,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type01" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM01" align="center">typeofactivitiy</div> <!-- first typeofactivity -->
+           <div id="typeM01" align="center">typeofactivity</div> <!-- first typeofactivity -->
         </div>
        
         <div class="contentsBlack" id="content">
@@ -822,7 +846,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type02" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM02" align="center">typeofactivitiy</div>
+           <div id="typeM02" align="center">typeofactivity</div>
         </div>
        
         <div class="contentsBlack" id="content">
@@ -864,7 +888,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type03" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM03" align="center">typeofactivitiy</div>
+           <div id="typeM03" align="center">typeofactivity</div>
         </div>
        
         <div class="contentsBlack" id="content">
@@ -906,7 +930,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type03" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM03" align="center">typeofactivitiy</div>
+           <div id="typeM03" align="center">typeofactivity</div>
         </div>
        
         <div class="contentsBlack" id="content">
@@ -970,7 +994,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type01" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM01" align="center">typeofactivitiy</div> <!-- first typeofactivity -->
+           <div id="typeM01" align="center">typeofactivity</div> <!-- first typeofactivity -->
         </div>
        
         <div class="contentsBlack" id="content">
@@ -1008,7 +1032,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type02" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM02" align="center">typeofactivitiy</div>
+           <div id="typeM02" align="center">typeofactivity</div>
         </div>
        
         <div class="contentsBlack" id="content">
@@ -1050,7 +1074,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type03" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM03" align="center">typeofactivitiy</div>
+           <div id="typeM03" align="center">typeofactivity</div>
         </div>
        
         <div class="contentsBlack" id="content">
@@ -1092,7 +1116,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type03" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM03" align="center">typeofactivitiy</div>
+           <div id="typeM03" align="center">typeofactivity</div>
         </div>
        
         <div class="contentsBlack" id="content">
