@@ -1,6 +1,8 @@
-<%@ page import = "java.io.*,java.util.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+
+
+<script>debugger;</script>
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<a href="javascript:window.location.reload()">reload</a>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -36,14 +38,7 @@
 <!--  Technology, Inc.                                       -->
 <!--  -----------------------------------------------------  -->
 <html>
-	<head>
-		<script>
-			// prevent 209601 (idle on a page, times the user out)
-			var wiishop = new wiiShop();
-			const unused = wiishop.connecting;
-		</script>
-	
-	
+<head>
   <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -145,13 +140,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.blinklab.com/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.thecheese.io/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.blinklab.com/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
+	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 
-	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -161,8 +156,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
+	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -478,7 +473,7 @@ function initPage()
 //-->
 </script>
 </head>
-<body onload="initPage();">
+<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -559,23 +554,4 @@ function initPage()
 <div id="goodsdetails">
   <div id="title02">
     <div nowrap align="center">
-		<%
-		String titleString = "";
-		if (request.getParameter("p").equals("1")) {
-			titleString = "Welcome to WiiMart!";
-		} else if (request.getParameter("p").equals("2")) {
-			titleString = "[NEW] Wii Channels now display correctly!";
-		} else if (request.getParameter("p").equals("3")) {
-			titleString = "[NEW] Catalog updated! Games added March 26.";
-		}
-		%>
-    <div align="left"><span style="overflow:hidden" class="headerWhiteM"><script language="JavaScript">document.write('<%= titleString %>'.replace('[NEW]', '<img src="/oss/oss/common/images//banner/NEW_en.gif"> '));</script></span></div>
-    </div>
-  </div>
-  <img src="/oss/oss/common/images//banner/box.gif" width="540" height="272" />
-  <div id="free">
-    <iframe src='W_02_1.jsp?p=<%= request.getParameter("p") %>' frameborder="0" style="border:solid 1px #FFFFFF;" scrolling="Auto" width="530" height="240"></iframe>
-  </div>
-</div>
-</body>
-</html>
+		

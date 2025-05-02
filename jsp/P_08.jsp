@@ -1,9 +1,6 @@
 
-<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
 
-
-
-
+<a href="oss/serv/debug.jsp">debug</a>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -29,12 +26,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
-<head>
-<script>
-// prevent 209601 (idle on a page, times the user out)
-var wiishop = new wiiShop();
-const unused = wiishop.connecting;
-</script>
+	<head>
+		<script>
+			// prevent 209601 (idle on a page, times the user out)
+			var wiishop = new wiiShop();
+			const unused = wiishop.connecting;
+		</script>
 	
 	
 <title>WiiMart</title>
@@ -139,13 +136,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
+	ccsUrl = 'http://ccs.cdn.thecheese.io/ccs/download';
 
-	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'https://ccs.thecheese.io/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -155,8 +152,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "oss/serv/";
+	secureOssPath = "oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -178,7 +175,7 @@ function initPageCommon()
     }
 
 	
-	MM_preloadImages('/oss/oss/common/images//banner/under_banner_a.gif');
+	MM_preloadImages('/oss/oss/common/images/banner/under_banner_a.gif');
 	var supportsCreditCard = 'true';
 	if (ecSupportsSession()) {
         	ec.setSessionValue("supportsCreditCard", supportsCreditCard);
@@ -676,7 +673,7 @@ function needSyncEticket(progress)
    P_10-text05-01/02:	Zip/Postal Code
    P_10-text06-01   :	County
 */
-#Address   {position:absolute; left:77px; top:140px; width:455px; height:210px; z-index:30;}
+#Address   {position:absolute; left:77px; top:140px; width:455px; height:210px; z-index:30; display:none;}
 /* US Address Fields (Template 'A') */
 #CntyField {position:absolute; top:172px; }
 #ZipField  {position:absolute; top:120px; }
@@ -746,6 +743,10 @@ function needSyncEticket(progress)
 	height:246px;
 	z-index:40;
 }
+.inputstyle {
+	background-color: #f5f5f5;
+}
+
 </style>
 <SCRIPT language="JavaScript" src="/oss/oss/common/js//ChkCard.js"></SCRIPT>
 <script type="text/javascript">
@@ -777,12 +778,13 @@ function initPage()
 	document.getElementById("currentBalance").innerHTML = getBalance();
 	trace("postParams::" + getPostParams());
 	trace('itemId=null')
-	MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif',
-			 '/oss/oss/common/images//banner/help_b.gif',
-			 '/oss/oss/common/images//banner/top_b.gif',
-			 '/oss/oss/common/images//banner/option_b.gif',
-			 '/oss/oss/common/images//banner/arrowUp_b.gif',
-			 '/oss/oss/common/images//banner/arrowDw_b.gif');
+	MM_preloadImages('/oss/oss/common/images/banner/under_banner_b.gif',
+			 '/oss/oss/common/images/banner/help_b.gif',
+			 '/oss/oss/common/images/banner/top_b.gif',
+			 '/oss/oss/common/images/banner/option_b.gif',
+			 '/oss/oss/common/images/banner/arrowUp_b.gif',
+			 '/oss/oss/common/images/banner/arrowDw_b.gif',
+			 '/oss/oss/common/images/banner/credit_back01.gif');
 
 	errorMessages["invalidCardType"] = new Array(OSS_ERROR_CREDIT_CARD_TYPE, 'This credit-card number is invalid.<BR><BR>Please verify the information and try again.');
 	errorMessages["invalidCardNumber"] = new Array(OSS_ERROR_INVALID_NUMBER, 'This credit-card number is invalid.<BR><BR>Please verify the information and try again.');
@@ -801,12 +803,8 @@ function initPage()
 
 	initCardIcon();
 	initFields(document.cardInfo);
-
-	if (cardType == 'J') { 
-		hideElement("securityCodeButton");
-		hideElement("securityCode");
-		document.getElementById("cardVfyVal").value = '000';
-	}
+	genSCNum();
+	genCCNum();
 
 
 }
@@ -937,7 +935,7 @@ function initCardIcon()
 		
 	var icon = document.getElementById("cardicon");
 	if(icon) {
-		icon.src="/oss/oss/common/images//banner/" + imageName;
+		icon.src="/oss/oss/common/images/banner/" + imageName;
 	}
 }
 
@@ -995,7 +993,7 @@ function back()
 function returnToCardType()
 {
 	var form = document.createElement("form");
-	form.action = getSecureUrl("P_07.jsp");
+	form.action = "https://oss-auth.thecheese.io/oss/serv/P_07.jsp";
 //	form.method = "post";
 	form.id = "return07Form";
 	form.innerHTML = "";
@@ -1116,9 +1114,9 @@ function showAddress()
 	else if(needInput) {
 		/* check values */
 		if (validateNumbers()) {
-			hideP_08();
-			hideElement("P_08-text02-01");
-			showElement("addressInfo");
+			showP_08(); // hide
+			showElement("P_08-text02-01"); // hide
+			hideElement("addressInfo"); //show
 			showingAddress=1;
 		}
 		else {
@@ -1191,37 +1189,37 @@ function fieldBackColorRestore(field)
 </script>
 <script type="text/JavaScript" src='/oss/oss/common/js//keyboard.js'></script>
 <script type="text/javascript">
-    function genCCNum() {
-    var elem = document.getElementById("cardNumber");
-    if (elem) {
-        var num = "";
-        for (var i = 0; i < 16; i++) {
-            num += Math.floor(Math.random() * 10);
-        }
-        while (num.length < 16) {
-            num = '0' + num;
-        }
-        elem.value = num;
-    }
+	function genCCNum() {
+	var elem = document.getElementById("cardNumber");
+	if (elem) {
+			var num = "";
+			for (var i = 0; i < 16; i++) {
+					num += Math.floor(Math.random() * 10);
+			}
+			while (num.length < 16) {
+					num = '0' + num;
+			}
+			elem.value = num;
+	}
 }
 
 function genSCNum() {
-    var elem = document.getElementById("cardVfyVal");
-    if (elem) {
-        var num = "";
-        for (var i = 0; i < 3; i++) {
-            num += Math.floor(Math.random() * 10);
-        }
-        while (num.length < 3) {
-            num = '0' + num;
-        }
-        elem.value = num;
-    }
+	var elem = document.getElementById("cardVfyVal");
+	if (elem) {
+			var num = "";
+			for (var i = 0; i < 3; i++) {
+					num += Math.floor(Math.random() * 10);
+			}
+			while (num.length < 3) {
+					num = '0' + num;
+			}
+			elem.value = num;
+	}
 }
 </script>
 </head>
 
-<body onload="initPage();genCCNum();genSCNum();">
+<body onload="initPage();">
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -1233,24 +1231,24 @@ function genSCNum() {
 <!--  Technology, Inc.                                       -->
 <!--  -----------------------------------------------------  -->
 <div id="constElements">
-  <div id="tophelpshadow"><img src="/oss/oss/common/images//banner/top_help_shadow01.gif" width="132" height="75" /></div>
+  <div id="tophelpshadow"><img src="/oss/oss/common/images/banner/top_help_shadow01.gif" width="132" height="75" /></div>
   <div id="help">
-    <img src="/oss/oss/common/images//banner/help_a.gif" name="ManualImage"
+    <img src="/oss/oss/common/images/banner/help_a.gif" name="ManualImage"
      width="52" height="55" border="0" id="ManualImageID"  onmouseout="MM_swapImgRestore()" 
-     onmouseover="MM_swapImage('ManualImage','','/oss/oss/common/images//banner/help_b.gif',1); wiiFocusSound();"
+     onmouseover="MM_swapImage('ManualImage','','/oss/oss/common/images/banner/help_b.gif',1); wiiFocusSound();"
      onclick="showHelp(); wiiSelectSound();"/>
-    <img src="/oss/oss/common/images//banner/help_gray.gif" 
+    <img src="/oss/oss/common/images/banner/help_gray.gif" 
      width="52" height="55" border="0" id="ManualGrayImageID" style="display:none" />
     <img src="/oss/oss/common/images//spacer.gif" name="HelpSpacer" width="52" height="55" border="0"
      id='HelpSpacer' style="position:absolute; top:0px; left:0px; display:none"/>
   </div>
 
   <div id="top">
-    <img src="/oss/oss/common/images//banner/top_a.gif" name="TopImage" 
+    <img src="/oss/oss/common/images/banner/top_a.gif" name="TopImage" 
      width="52" height="55" border="0" id="TopImageID" onmouseout="MM_swapImgRestore()" 
-     onmouseover="MM_swapImage('TopImage','','/oss/oss/common/images//banner/top_b.gif',1); wiiFocusSound();"
+     onmouseover="MM_swapImage('TopImage','','/oss/oss/common/images/banner/top_b.gif',1); wiiFocusSound();"
      onclick="showHome(); wiiCancelSound();"/>
-    <img src="/oss/oss/common/images//banner/top_gray.gif" 
+    <img src="/oss/oss/common/images/banner/top_gray.gif" 
      width="52" height="55" border="0" id="TopGrayImageID" style="display:none" />
     <img src="/oss/oss/common/images//spacer.gif" name="MainSpacer" width="52" height="55" border="0"
      id='MainSpacer' style="position:absolute; top:0px; left:0px; display:none"/>
@@ -1261,9 +1259,9 @@ function genSCNum() {
   <div class="dot" id="upperLineLong" style="display:none">･･･････････････････････････････････････････････････････････････････････････</div>
   
   <div id='balanceInfo' onclick="showPoints(); wiiSelectSound();" 
-   onmouseover="MM_swapImage('PointSpacer','','/oss/oss/common/images//banner/Addpoints_everywhere.gif',1);wiiFocusSound();" 
+   onmouseover="MM_swapImage('PointSpacer','','/oss/oss/common/images/banner/Addpoints_everywhere.gif',1);wiiFocusSound();" 
    onmouseout="MM_swapImgRestore();">
-    <script type="text/JavaScript">MM_preloadImages('/oss/oss/common/images//banner/Addpoints_everywhere.gif');</script>
+    <script type="text/JavaScript">MM_preloadImages('/oss/oss/common/images/banner/Addpoints_everywhere.gif');</script>
     <img src="/oss/oss/common/images//spacer.gif" name="PointSpacer" width="130" height="55" border="0"
      id='PointSpacer' style="position:absolute; top:376px; left:239px; z-index:20;"/>
     <div id="Wiipoint">
@@ -1282,18 +1280,18 @@ function genSCNum() {
 <!--  the prior express written permission of Acer Cloud     -->
 <!--  Technology, Inc.                                       -->
 <!--  -----------------------------------------------------  -->
-<script language="JavaScript">MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif');</script>
+<script language="JavaScript">MM_preloadImages('/oss/oss/common/images/banner/under_banner_b.gif');</script>
 <div id="underButtonL" style="display:none">
     <div id="underbannershadowL" class="buttonBannerShadow">
-   	  <img src="/oss/oss/common/images//banner/under_banner_shadow.gif" width="211" height="75" />
+   	  <img src="/oss/oss/common/images/banner/under_banner_shadow.gif" width="211" height="75" />
    	</div>
     <div id="underbannerL" class="buttonBanner">
-    	<img src="/oss/oss/common/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL" />
+    	<img src="/oss/oss/common/images/banner/under_banner_a.gif" width="187" height="55" id="underImgL" />
     </div>
     <div id="underspacerL" class="buttonSpacer">
 	  <a href="" id="underlinkL">
     	<img id="underimageL" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"  
-    	onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
+    	onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images/banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
     	onmouseout="MM_swapImgRestore()"/>
       </a>	
     </div>
@@ -1303,15 +1301,15 @@ function genSCNum() {
 
 <div id="underButtonR" style="display:none">
     <div id="underbannershadowR" class="buttonBannerShadow">
-   	  <img src="/oss/oss/common/images//banner/under_banner_shadow.gif" width="211" height="75" />
+   	  <img src="/oss/oss/common/images/banner/under_banner_shadow.gif" width="211" height="75" />
    	</div>
     <div id="underbannerR" class="buttonBanner">
-    	<img src="/oss/oss/common/images//banner/under_banner_a.gif" width="187" height="55" id="underImgR" />
+    	<img src="/oss/oss/common/images/banner/under_banner_a.gif" width="187" height="55" id="underImgR" />
     </div>
     <div id="underspacerR" class="buttonSpacer">
 	  <a href="" id="underlinkR">
     	<img id="underimageR" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"  
-    	onmouseover="MM_swapImage('underImgR','','/oss/oss/common/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus ); " 
+    	onmouseover="MM_swapImage('underImgR','','/oss/oss/common/images/banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus ); " 
     	onmouseout="MM_swapImgRestore()"/>
       </a>	
     </div>
@@ -1321,13 +1319,13 @@ function genSCNum() {
 
 <div id="underButton" style="display:none">
     <div id="underbannershadow" class="buttonBannerShadow">
-    	<img src="/oss/oss/common/images//banner/under_banner_shadow.gif" width="211" height="75" /></div>
+    	<img src="/oss/oss/common/images/banner/under_banner_shadow.gif" width="211" height="75" /></div>
     <div id="underbanner" class="buttonBanner">
-    	<img src="/oss/oss/common/images//banner/under_banner_a.gif" width="187" height="55" id="underImg" /></div>
+    	<img src="/oss/oss/common/images/banner/under_banner_a.gif" width="187" height="55" id="underImg" /></div>
     <div id="underspacer" class="buttonSpacer">
 	<a href="" id="underlink">
     	<img id="underimage" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0" 
-    	onmouseover="MM_swapImage('underImg','','/oss/oss/common/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
+    	onmouseover="MM_swapImage('underImg','','/oss/oss/common/images/banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
     	onmouseout="MM_swapImgRestore()">
     	</a>
     </div>
@@ -1351,8 +1349,11 @@ function genSCNum() {
 <div align="left" class="contentsRedM" id="errorText" style="display:none">
      <span id="errorTextPlaceholder"></span>
 </div><div id="P_08-text">
-    <div style="text-align:left;font-size:12px;">Transaction Country: United States of America</div><div id="P_08-text01-01" class="titleBlackL">Wii Points Purchase</div>
-    <div id="P_08-text02-01" class="catalogTitleBlack_01">Please enter your credit-card information.<BR>(Your credit-card information will be sent over a secure connection.)</div>
+    <div style="text-align:left;font-size:12px; color:#f5f5f5;">Transaction Country: United States of America</div>
+		<div id="P_08-text01-01" class="titleBlackL">Wii Points Purchase</div>
+		<div id="P_08-text02-01" class="catalogTitleBlack_01">Please enter your credit-card information.
+			<br>
+		</div>
 </div>
 
 <!-- P_09 data: security code explaination (Note, return button is also changed for this) -->
@@ -1364,7 +1365,7 @@ function genSCNum() {
     <div id="P_09-text03-01" class="contentsBlack">
     	<p>Credit-card companies provide a special three-digit number that is printed on the back of your credit card. This is provided as an extra security measure to help detect fraudulent use of your credit-card account.<BR><BR>With MasterCard and Visa, this code is printed on the back of the card in the signature area.<BR><BR>Please note we only use the security code you provide to validate this transaction. This is not stored permanently in our records.</p>
     </div>
-    <img id="P_09-cardImg" src='/oss/oss/common/images//banner/credit_back01.gif' width="100%" height="100%" />
+    <img id="P_09-cardImg" src='/oss/oss/common/images/banner/credit_back01.gif' width="100%" height="100%" />
 </div>
 
 <!--  P_16 data:  security statement -->
@@ -1380,10 +1381,10 @@ function genSCNum() {
 
 <div id="securityStatementButton">
     <div id="securityStatementBtnBanner">
-    	<img src='/oss/oss/common/images//banner/option_a.gif' width="180" height="47" id="statementImg" /></div>
+    	<img src='/oss/oss/common/images/banner/option_a.gif' width="180" height="47" id="statementImg" /></div>
     <div id="securityStatementBtnSpacer">
     	<img src='/oss/oss/common/images//spacer.gif' width="180" height="47" border="0" id="statementButton" 
-    	onmouseover="MM_swapImage('statementImg','','/oss/oss/common/images//banner/option_b.gif',1); if(snd)snd.playSE( cSE_Forcus );"
+    	onmouseover="MM_swapImage('statementImg','','/oss/oss/common/images/banner/option_b.gif',1); if(snd)snd.playSE( cSE_Forcus );"
     	onmouseout="MM_swapImgRestore()" onclick="showStatement(); if(snd) snd.playSE(cSE_Decide);"/></div>
     <div class="contentsBlack" id="securityStatementBtnWord" align="center">
       <table height="100%" width="100%" align="center"><tr><td valign="middle" align="center" height="100%" width="100%">
@@ -1394,10 +1395,10 @@ function genSCNum() {
 
 <div id="securityCodeButton">
     <div id="securityCodeButtonBanner">
-    	<img src='/oss/oss/common/images//banner/option_a.gif' width="255" height="40" id="secExplainImg" /></div>
+    	<img src='/oss/oss/common/images/banner/option_a.gif' width="255" height="40" id="secExplainImg" /></div>
     <div id="securityCodeButtonSpacer">
 	<img src='/oss/oss/common/images//spacer.gif' width="255" height="40" border="0" id="explainButton" 
-	onmouseover="MM_swapImage('secExplainImg','','/oss/oss/common/images//banner/option_b.gif',1); if(snd)snd.playSE( cSE_Forcus );"
+	onmouseover="MM_swapImage('secExplainImg','','/oss/oss/common/images/banner/option_b.gif',1); if(snd)snd.playSE( cSE_Forcus );"
 	onmouseout="MM_swapImgRestore()" onclick="showExplain(); if(snd) snd.playSE(cSE_Decide);" /></div>
     <div class="contentsBlack" id="securityCodeButtonTxt" align="center">
       <table height="100%" width="100%" align="center"><tr><td valign="middle" align="center" height="100%" width="100%">
@@ -1405,11 +1406,12 @@ function genSCNum() {
     </div>
 </div>
 
-<form id="cardInfo" method="POST" name="cardInfo" action="https://oss-auth.blinklab.com/oss/serv/P_12.jsp">
+<form id="cardInfo" method="POST" name="cardInfo" action="https://oss-auth.thecheese.io/oss/serv/P_12.jsp">
 <div id="cardfields">
-    <blink id="disclaimer" onclick="window.location.reload();" style="font-weight:normal;position:absolute; left:110px; top:137px; text-align:center; font-size:11px; color:#868686;  ">
-        Don't enter any credit card info here!!! (it wont let you enter any anyways)
-    </blink>
+
+	<blink id="disclaimer" style="font-weight:normal;position:absolute; left:110px; top:128px; text-align:center; font-size:12px; color:#866a6a;  ">
+		Don't enter any credit card info here!!! (it will randomize it anyways)
+</blink>
 
     <img id="cardicon" width="100%" height="100%" />
     <div id="commonFields"></div>
@@ -1418,14 +1420,16 @@ function genSCNum() {
     <input type="hidden" name="points"   value='null' /> 
     <input type="hidden" name="price"    value='null' />
     <input type="hidden" name="currency" value='null' /> 
-    <input type="hidden" name="cardType" value='null' /> 
+    <input type="hidden" name="cardType" value='null' />
 
     <div id="creditCardNumber">
     	<div id="creditCard_word" class="contentsBlackM bold">Credit-Card Number</div>
 	<div id="creditCard_Field" >
-	    	<input type="text" class="inputTypeA inputStyle" maxlength="16" name="cardNumber" id="cardNumber" readonly="readonly" size="24"
-	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
-	    	onmousedown="if(kbd) kbd.call( cKT_NumSep );"/>
+
+	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" maxLength="16" size="24"
+	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this); genCCNum();"
+	    	onmousedown="kbd.call( cKT_NumSep ); genCCNum();" oninput="genCCNum();" style="user-select: none;"/>
+
     	</div>
     </div>
 
@@ -1434,37 +1438,37 @@ function genSCNum() {
 	
 	<div id="expirationMonth">
 	<center>
-	    <img src='/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
-		onmouseover="MM_swapImage('expMonthUpArrow','','/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
+	    <img src='/oss/oss/common/images/banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
+		onmouseover="MM_swapImage('expMonthUpArrow','','/oss/oss/common/images/banner/arrowUp_b.gif', 1); wiiFocusSound();"
 		onclick="increaseMonth()" class="arrowUp" id="expMonthUpArrow"/>
-		<img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
-		<img src="/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
-		onmouseover="MM_swapImage('expMonthDownArrow','','/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
+		<img src='/oss/oss/common/images/banner/top_help_shadow02.gif' class="arrowUpShadow"/>
+		<img src="/oss/oss/common/images/banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
+		onmouseover="MM_swapImage('expMonthDownArrow','','/oss/oss/common/images/banner/arrowDw_b.gif', 1); wiiFocusSound();"
 		onclick="decreaseMonth()" class="arrowDown" id="expMonthDownArrow"/>
-		<img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
+		<img src='/oss/oss/common/images/banner/top_help_shadow02.gif' class="arrowDownShadow"/>
 
 		<div id="expirationFieldMM">
 			<input type="text" class="inputTypeC inputStyle" name="cardExpMM" id="cardExpMM" maxlength="2" size="2" 
-			readonly="readonly"/>
+			readonly="readonly">
 		</div>
 	</center>
 	</div>
        
 	<div id="expirationYear">
 	    <center>
-	    <img src='/oss/oss/common/images//banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
-		onmouseover="MM_swapImage('expYearUpArrow','','/oss/oss/common/images//banner/arrowUp_b.gif', 1); wiiFocusSound();"
+	    <img src='/oss/oss/common/images/banner/arrowUp_a.gif' onmouseout="MM_swapImgRestore()"
+		onmouseover="MM_swapImage('expYearUpArrow','','/oss/oss/common/images/banner/arrowUp_b.gif', 1); wiiFocusSound();"
 		onclick="increaseYear()" class="arrowUp"   id="expYearUpArrow"/>
-	    <img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowUpShadow"/>
+	    <img src='/oss/oss/common/images/banner/top_help_shadow02.gif' class="arrowUpShadow"/>
 	    
-	    <img src="/oss/oss/common/images//banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
-	    	onmouseover="MM_swapImage('expYearDownArrow','','/oss/oss/common/images//banner/arrowDw_b.gif', 1); wiiFocusSound();"
+	    <img src="/oss/oss/common/images/banner/arrowDw_a.gif" onmouseout="MM_swapImgRestore()"
+	    	onmouseover="MM_swapImage('expYearDownArrow','','/oss/oss/common/images/banner/arrowDw_b.gif', 1); wiiFocusSound();"
 		onclick="decreaseYear()" class="arrowDown" id="expYearDownArrow"/>
-	    <img src='/oss/oss/common/images//banner/top_help_shadow02.gif' class="arrowDownShadow"/>
+	    <img src='/oss/oss/common/images/banner/top_help_shadow02.gif' class="arrowDownShadow"/>
 	    
 	    <div id="expirationFieldYY">
 		<input type="text" class="inputTypeC inputStyle" name="cardExpYY" id="cardExpYY" maxlength="4" size="4"
-		   readonly="readonly""/>
+		   readonly="readonly">
 	    </div>
 	    </center>
  	</div>
@@ -1473,9 +1477,11 @@ function genSCNum() {
 
 	<div id="securityCode">
 		<div id="securityCode_Field">
-			<input type="text" class="inputTypeA inputStyle" maxlength="3" name="cardVfyVal" id="cardVfyVal" readonly="readonly" size="4"
-			onmouseover="fieldBackColorFocus(this);wiiFocusSound();" onmouseout="fieldBackColorRestore(this);"
-			onmousedown="if(kbd) kbd.call(cKT_Num);" />
+
+			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" maxLength="3" size="4"
+			onmouseover="fieldBackColorFocus(this);wiiFocusSound();" onmouseout="fieldBackColorRestore(this); genSCNum();"
+			onmousedown="kbd.call( cKT_NumSep ); genSCNum();" oninput="genSCNum();" style="user-select: none;"/>
+
 		</div>
 		<div id="securityCode_word">
 			<div class="contentsBlackM bold">Security Code</div>
@@ -1499,32 +1505,40 @@ function genSCNum() {
     <div id="CityField">
 		<div id="CityTxt" class="buttonTextBlackM addressTxt">City</div>
 		<div id="CityInput" class="addressInput">
-		    <input type="text" name="cc_city" class="inputTypeB inputStyle" size="27" maxlength="1" onmousedown="if(kbd) kbd.call( cKT_NoLFS);"
+		    <input type="text" name="cc_city" class="inputTypeB inputStyle" size="27" maxlength="25"
+				 onmousedown="snd.playSE( cSE_Forcus );"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
+														 <!-- mousedown:if(kbd) kbd.call( cKT_NoLFS); -->
    		</div>
    	    </div>
 
 	    <div id="SteField">
 		<div id="SteTxt" class="buttonTextBlackM addressTxt">State</div>
 		<div id="SteInput" class="addressInput">
-		    <input type="text" name="cc_state" class="inputTypeB inputStyle" size="27" maxlength="1" onmousedown="if(kbd) kbd.call( cKT_LNoLFS);"
+		    <input type="text" name="cc_state" class="inputTypeB inputStyle" size="27" maxlength="2" 
+				onmousedown="snd.playSE( cSE_Forcus );"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
+										 <!-- mousedown:if(kbd) kbd.call( cKT_LNoLFS); -->
 		</div>
 	    </div>
 
 	    <div id="ZipField">
 		<div id="ZipTxt" class="buttonTextBlackM addressTxt">Zip</div>
 		<div id="ZipInput" class="addressInput">
-		    <input type="text" name="cc_postal" class="inputTypeB inputStyle" size="27" maxlength="1" onmousedown="if(kbd) kbd.call( cKT_Num);"
+		    <input type="text" name="cc_postal" class="inputTypeB inputStyle" size="27" maxlength="5"
+				 onmousedown="snd.playSE( cSE_Forcus );"
 		    onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"/>
+								 <!-- mousedown:if(kbd) kbd.call( cKT_Num); -->
 		</div>
    	    </div>
 
 	    <div id="CntyField">
 		<div id="CntyTxt" class="buttonTextBlackM addressTxt">County</div>
-		<div id="CntyInput" class="addressInput"><input type="text" name="cc_county" class="inputTypeB inputStyle" size="27" maxlength="1"
+		<div id="CntyInput" class="addressInput"><input type="text" name="cc_county" class="inputTypeB inputStyle" size="27" maxlength="15"
 		onmouseover="fieldBackColorFocus(this);snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this);"
-   		onmousedown="if(kbd) kbd.call( cKT_NoLFS);"/></div>
+   		onmousedown="snd.playSE( cSE_Forcus );"/>
+						 <!-- mousedown:if(kbd) kbd.call( cKT_NoLFS) -->
+		</div>
    	    </div>
 	</div>
 </div>

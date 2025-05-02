@@ -5,7 +5,7 @@ String customValue1 = request.getParameter("platform") == null ? "WII" : request
 String customHeader2 = "X-Custom-Header2";
 String customValue2 = request.getParameter("p") == null ? "1" : request.getParameter("p");
 String vcParam = request.getParameter("vc") != null ? "&vc=true" : "";
-String targetURL = "http://oss-auth.blinklab.com/getTitles?p=" + customValue2 + vcParam;
+String targetURL = "http://oss-auth.thecheese.io/getTitles?p=" + customValue2 + vcParam;
 StringBuilder res = new StringBuilder();
 
 try {

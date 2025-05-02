@@ -1,89 +1,7 @@
-<%@ page import = "java.io.*,java.util.*,java.util.Random,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
-<a href="javascript:location.reload()">reload</a>
-<%
-String titleId = request.getParameter("titleId") == null ? "" : request.getParameter("titleId");
-String targetURL = "http://127.0.0.1:8082/getTitle?titleId=" + titleId;
 
-StringBuilder res = new StringBuilder();
 
-try {
-    URL url = new URL(targetURL);
-    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-    connection.setRequestMethod("GET");
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
 
-    int responseCode = connection.getResponseCode();
-    BufferedReader reader;
-
-    if (responseCode == HttpURLConnection.HTTP_OK) {
-        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-    } else {
-        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-    }
-
-    String line;
-    while ((line = reader.readLine()) != null) {
-        res.append(line);
-    }
-    reader.close();
-} catch (Exception e) {
-    //e.printStacktrace();
-}
-
-String games = res.toString();
-//Tmd size stuff
-String tmdUrl = "http://198.62.122.200/ccs/download/" + titleId + "/tmd";
-StringBuilder tmdRes = new StringBuilder();
-long tmdSize = 0;
-try {
-    URL url = new URL(tmdUrl);
-    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-    connection.setRequestMethod("GET");
-    tmdSize = connection.getContentLengthLong();
-    int responseCode = connection.getResponseCode();
-    BufferedReader reader;
-
-    if (responseCode == HttpURLConnection.HTTP_OK) {
-        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-    } else {
-        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-    }
-
-    String line;
-    //String contentLength = connection.getHeaderField("Content-Length");
-    //tmdSize = contentLength;
-    while ((line = reader.readLine()) != null) {
-        tmdRes.append(line);
-    }
-    reader.close();
-} catch (Exception e) {
-    //e.printStacktrace(out);
-    res.append("Error: ").append(e.getMessage());
-}
-// Parse JSON response
-JSONObject title = new JSONObject(games);
-String id = title.getString("id");
-String thumbnail = title.getString("thumbnail");
-String title1 = title.getString("title1");
-String title2 = title.getString("title2");
-String platform = title.getString("console");
-if (platform.equals("WII")) {
-    platform = "Wii Channels";
-} else if (platform.equals("WIIWARE")) {
-    platform = "WiiWare";
-};
-String releaseDate = title.getString("date");
-String genre = title.getString("genre");
-String publisher = title.getString("publisher");
-String points = title.getString("points");
-String players = title.getString("players");
-String ratingDetails = title.getString("ratingdetails");
-String rating = title.getString("rating").toUpperCase();
-String controllers = title.getString("controllers");
-String size = title.getString("size");
-String latestVersion = title.getString("titleVersion");
-%>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -378,13 +296,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://oss-auth.blinklab.com/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://oss-auth.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.com/ccs/download';
+	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -394,10 +312,10 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
+	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
 
-	ecTimeout = new ECTimeout(parseInt("60000"));
+	ecTimeout = new ECTimeout(parseInt("120000"));
 	
 	
 	currBalance = document.getElementById("currentBalance");
@@ -808,19 +726,19 @@ function needSyncEticket(progress)
 
     trace("before all vars");
     var licenseType = '';
-    var titleId = '<%= id %>'.replace('00010002', '00010001');
-    var titleSize = '<%= size %>';
-    var titlePoints = '<%= points %>';
-    var titleTmdSize = '<%= tmdSize %>';
+    var titleId = ''.replace('00010002', '00010001');
+    var titleSize = '';
+    var titlePoints = '';
+    var titleTmdSize = '-1';
     
-    var latestVersion = parseInt('<%= latestVersion %>');
+    var latestVersion = parseInt('-1');
     var redownloadFlag = 'Y';
     
     var titleManager = new TitleManager(titleId, titleSize, titleTmdSize, latestVersion);
     titleManager.traceLog();
     
     var titleIsGame = 'true';
-    var sd = '<%= request.getParameter("SD") == null ? "" : request.getParameter("SD") %>';
+    var sd = '';
     
     var titleSizeKB = titleManager.getTitleKBSize();
     trace("titleSizeKB:" + titleSizeKB)
@@ -836,7 +754,7 @@ function needSyncEticket(progress)
     {
         // Doesn't really launch title - just show health and warning page 
         if (titleIsGame == "true") {
-            showPage('B_13.jsp?titleId=<%= id %>');
+            showPage('B_13.jsp?titleId=');
         } else {
             goGiftNext('');
         }
@@ -865,11 +783,8 @@ function needSyncEticket(progress)
         }else{
             wiiSetSCARank(0);
         }*/
-	<%
-	    Random rand = new Random();
-	    int rank = rand.nextInt(4);
-	%>
-	wiiSetSCARank(parseInt('<%= rank %>'));
+	
+	wiiSetSCARank(parseInt('1'));
     }
     function purchaseTitle(titleId, itemId, price, limits)
     {
@@ -1013,7 +928,7 @@ function needSyncEticket(progress)
             nwc24.dispError((sdError * -1) + 209630, 2);
         } else {
             // some SD error is returned 
-            setUnderButton(true, "Try Again", "javascript:window.history.go(-1)", "wiiSelectSound();");
+            setUnderButton(true, "Try Again", "javascript:shop.retry();", "wiiSelectSound();");
             document.getElementById("details").style.display='none';
             document.getElementById("text02-01").style.display='none';
             document.getElementById("TitleName").style.display='none';
@@ -1097,7 +1012,7 @@ function needSyncEticket(progress)
               '<div align="center"><span class="contentsRedM">'+
               "Error Code: <span id='errorCode'></span><br>" +
               'Please wait a moment and try again.</span></div>';
-            document.getElementById("OKBtnAnchor").href='javascript:shop.retry()';
+            document.getElementById("OKBtnAnchor").href='javascript:window.location.reload()';
             document.getElementById("OKBtnWord").innerHTML="Try Again";
         }
     
@@ -1167,7 +1082,7 @@ function needSyncEticket(progress)
     function doPurchase()
     {
         
-        purchaseTitle('<%= id %>'.replace('00010002', "00010001"), "0", new ECPrice('<%= points %>', "POINTS"), new ECTitleLimits());
+        purchaseTitle(''.replace('00010002', "00010001"), "0", new ECPrice('', "POINTS"), new ECTitleLimits());
         //downloadTitle(titleId.replace('00010002', "00010001"));
     }
     
@@ -1253,7 +1168,7 @@ function needSyncEticket(progress)
         document.getElementById("details").style.display='none';
         document.getElementById("text02-01").style.display='none';
         document.getElementById("TitleName").style.display='none';
-        setUnderButton(true, "Try Again", "javascript:shop.retry();", "wiiSelectSound()");
+        setUnderButton(true, "Try Again", "javascript:window.location.reload();", "wiiSelectSound()");
         setUnderButtonL(false);
         setUnderButtonR(false);
         disableTopHelpElements();
@@ -1296,7 +1211,7 @@ function needSyncEticket(progress)
             document.getElementById("labelPointBlock").innerHTML = 'Wii Points after Download:<BR>SD Card Blocks after Download:';
         }
     
-        var reportDownloadDone = '<%= request.getParameter("reportDownloadDone") == null ? "" : "true" %>';
+        var reportDownloadDone = '';
         trace("reportDownloadDone : " + reportDownloadDone);
         if (reportDownloadDone=="true") {
             refreshBalance();
@@ -1467,13 +1382,9 @@ function needSyncEticket(progress)
 </div>
 <div id="TitleName">
 <div id="TitleName1stline" nowrap style="position:absolute; left:64px; top:110px; width:480px; overflow:hidden; z-index:34">
-  <div align="center" class="contentsBlueM"><%= title1 %></div>
+  <div align="center" class="contentsBlueM"></div>
 </div>
-<% if (!title2.equals("")) { %>
-    <div style="overflow:hidden" nowrap="" id="TitleName2stline">
-        <div align="center"><span class="contentsBlueM"><%= title2 %></span></div>
-      </div>
-<% } %>
+
 </div>
 <div id="details">
   <div id="free03">

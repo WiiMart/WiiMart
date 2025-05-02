@@ -135,13 +135,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://oss-auth.blinklab.com/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://oss-auth.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'https://oss-auth.blinklab.com/oss/ccs/download';
+	ccsUrl = 'https://oss-auth.thecheese.io/oss/ccs/download';
 
-	ucsUrl = 'https://oss-auth.blinklab.com/oss/ccs/download';
+	ucsUrl = 'https://oss-auth.thecheese.io/oss/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -151,8 +151,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
+	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("60000"));
 	

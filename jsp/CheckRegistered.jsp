@@ -1,25 +1,10 @@
-<%@ page import = "java.io.*,java.util.*,java.sql.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<%
-String url = "jdbc:postgresql://127.0.0.1/wiisoap";
-Properties props = new Properties();
-props.setProperty("user", "wiisoap");
-props.setProperty("password", "wiisoap");
-//props.setProperty("ssl", "true");
-Connection conn = DriverManager.getConnection(url, props);
-String updateSQL = "SELECT altregion FROM public.userbase WHERE serial_number = ?";
-PreparedStatement pst = conn.prepareStatement(updateSQL);
-pst.setString(1, request.getParameter("Serial"));
 
-ResultSet rs = pst.executeQuery();
-String altRegion = "";
-while (rs.next()) {
-	altRegion = rs.getString("altregion");
-}
-conn.close();
-%>
-<script>trace("altRegion: <%= altRegion %>")</script>
-<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+
+
+<script>trace("altRegion: null");var x=new wiiShop();var unused=x.connecting;</script>
+
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+
 <!--                                                         -->
 <!--  This software contains confidential information and    -->
 <!--  trade secrets of Acer Cloud Technology, Inc.           -->
@@ -44,8 +29,7 @@ conn.close();
 <!-- Main page -->
 <html>
 <head>
-
-<!--  -----------------------------------------------------  -->
+  <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->
@@ -145,13 +129,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://oss-auth.blinklab.com/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://oss-auth.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://oss-auth.blinklab.com/ccs/download';
+	ccsUrl = 'http://oss-auth.thecheese.io/ccs/download';
 
-	ucsUrl = 'http://oss-auth.blinklab.com/ccs/download';
+	ucsUrl = 'http://ccs.thecheese.io/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -161,8 +145,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
+	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -667,8 +651,8 @@ function OnSetTask()
 {
     try {
     	var objDlTask = new wiiDlTask();
-	    //var strTaskUrl = "http://ccs.cdn.blinklab.com/ccs/download/0001000248414241/dynamicBanner_en_US";
-		var strTaskUrl = "http://ccs.larsenv.com/bnr";	
+	    //var strTaskUrl = "http://ccs.cdn.thecheese.io/ccs/download/0001000248414241/dynamicBanner_en_US";
+		var strTaskUrl = "http://oss-auth.thecheese.io/BNR.bin";	
 		var nTaskInterval = 1440;
 	    trace("Adding download task: " + strTaskUrl);
 	    objDlTask.addDownloadTask(strTaskUrl, nTaskInterval); 
@@ -679,10 +663,13 @@ function OnSetTask()
 
 function initPage()
 {
-	var altRegion = "<%= altRegion %>";
-	if (altRegion != "N/A") {
+	var altRegion = "null";
+	if (altRegion != "N/A" && altRegion != "") {
 		ec.setSessionValue("altRegion", altRegion);
 	}
+	var ogMode = "false";
+	ec.setSessionValue("ogMode", ogMode);
+	ec.setSessionValue("currTitle", "WiiMart");
 	trace("initPage");
     MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif');
     var ok;
@@ -690,11 +677,8 @@ function initPage()
     initPageCommon();
     //target = countryInfo.getCountryId();
     
-    //if(target) {
-        OnSetTask();
-        trace("Wii Sales Target!!");
-    //}
-    
+	OnSetTask();
+
     ok = checkShopApp();
     if (ok) {
         checkRegistered();
@@ -771,18 +755,11 @@ function initPage()
 <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>
 
 <div class="titleBlueL" id="text01-01">
-  WiiMart</div>
+	WiiMart</div>
 <div align="center" class="titleBlueL" id="text02-01">
-	<script type="text/javascript">document.write(shop.connecting)</script><!--  -----------------------------------------------------  -->
-<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
-<!--  All Rights Reserved.                                   -->
-<!--                                                         -->
-<!--  This software contains confidential information and    -->
-<!--  trade secrets of Acer Cloud Technology, Inc.           -->
-<!--  Use, disclosure or reproduction is prohibited without  -->
-<!--  the prior express written permission of Acer Cloud     -->
-<!--  Technology, Inc.                                       -->
-<!--  -----------------------------------------------------  -->
+
+Checking if you're registered...
+
 <div id="Progress">
 	<div id="dynDiv1" class="contentsBlackS"></div>
     <div id="dynDiv2" class="contentsBlackS"></div>

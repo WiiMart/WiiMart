@@ -1,5 +1,5 @@
-<%@ page import = "java.io.*,java.util.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
 
 
 
@@ -29,14 +29,7 @@
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <!-- Main page -->
 <html>
-	<head>
-		<script>
-			// prevent 209601 (idle on a page, times the user out)
-			var wiishop = new wiiShop();
-			const unused = wiishop.connecting;
-		</script>
-	
-	
+<head>
   <title>WiiMart</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
   <style type="text/css">
@@ -637,7 +630,7 @@ function showCheckRegistered()
     var shop = new wiiShop();
     // Redirects to CheckRegistered.jsp with important device info	
     var ec = new ECommerceInterface ();
-    var url = "https://oss-auth.blinklab.com/oss/serv/CheckRegistered.jsp";
+    var url = "https://oss-auth.thecheese.io/oss/serv/CheckRegistered.jsp";
     var r = ec.getDeviceInfo();
     var shopAppTitleId = r.titleId;
     if (shopAppTitleId != null) {
@@ -700,7 +693,7 @@ function initPage()
 //-->
 </script>
 
-<body onload="initPage();">
+<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
 
 <div class="dot" id="line01">･･･････････････････････････････････････････････････････････････････････････</div>
 <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>

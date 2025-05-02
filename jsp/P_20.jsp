@@ -1,5 +1,5 @@
-<%@ page import = "java.io.*,java.util.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
 
 
 
@@ -29,14 +29,7 @@
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <!-- Links -->
 <html>
-	<head>
-		<script>
-			// prevent 209601 (idle on a page, times the user out)
-			var wiishop = new wiiShop();
-			const unused = wiishop.connecting;
-		</script>
-	
-	
+<head>
 <title>WiiMart</title>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -139,13 +132,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
+	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 
-	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -155,8 +148,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
+	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -573,7 +566,7 @@ function initPage()
 <script type="text/JavaScript" src='/oss/oss/common/js//keyboard.js'></script>
 </head>
 
-<body onload="initPage();">
+<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -693,7 +686,7 @@ function initPage()
 <img id="pointcard"/>
 <div id="inputs">
 <div id="text03-01" align="center" class="buttonTextBlackM">Activation number</div>
-<form id="cardForm" action="https://oss-auth.blinklab.com/oss/serv/P_04.jsp" method="post" name="cardForm">
+<form id="cardForm" action="https://oss-auth.thecheese.io/oss/serv/P_04.jsp" method="post" name="cardForm">
   <div id="commonFields"></div>
   <div id="numberfield" align="center">
      <input type="text" class="inputStyle" name="cardNumber" id="cardNumber" maxlength="16" size="25" onmousedown="if(kbd) kbd.call( cKT_LNoLFS, 2 );"

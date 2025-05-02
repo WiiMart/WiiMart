@@ -1,60 +1,12 @@
-<%@ page import = "java.io.*,java.util.*,java.sql.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<%
-    String currRegion = request.getParameter("region") == null ? "" : request.getParameter("region");
-    String regionToChange = request.getParameter("regionToChange") == null ? "" : request.getParameter("regionToChange");
-    %>
-    <script>console.log('<%= regionToChange %>')</script>
-    <%
-    String serial = request.getParameter("serialNo") == null ? "" : request.getParameter("serialNo");
-    String altRegion = regionToChange;
-    switch (regionToChange) {
-        case "EUR":
-            regionToChange = "Europe";
-            break;
-        case "USA":
-            regionToChange = "United States";
-            break;
-        case "JPN":
-            regionToChange = "Japan";
-            break;
-        case "KOR":
-            regionToChange = "Korea";
-            break;
-    }
-    switch (currRegion) {
-        case "EUR":
-            currRegion = "Europe";
-            break;
-        case "USA":
-            currRegion = "United States";
-            break;
-        case "JPN":
-            currRegion = "Japan";
-            break;
-        case "KOR":
-            currRegion = "Korea";
-            break;
-    }
-    String url = "jdbc:postgresql://127.0.0.1/wiisoap";
-    Properties props = new Properties();
-    props.setProperty("user", "wiisoap");
-    props.setProperty("password", "wiisoap");
-    //props.setProperty("ssl", "true");
-    Connection conn = DriverManager.getConnection(url, props);
-    String updateSQL = "UPDATE public.userbase SET altregion = ? WHERE serial_number = ?";
-    PreparedStatement pst = conn.prepareStatement(updateSQL);
-    pst.setString(1, altRegion);
-    pst.setString(2, serial);
 
-	int rowsAffected = pst.executeUpdate();
-	pst.close();
-	conn.close();
-%>
+
+
+<script>console.log('')</script>
+    
 <script>
-    console.log("Changing to <%= regionToChange %> from <%= currRegion %>")
+    console.log("Changing to  from ")
 </script>
-<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
 <a href="javascript:location.reload();">reload page</a>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -69,14 +21,7 @@
     startLeft:    Furthest left location
  -->
 <html>
-	<head>
-		<script>
-			// prevent 209601 (idle on a page, times the user out)
-			var wiishop = new wiiShop();
-			const unused = wiishop.connecting;
-		</script>
-	
-	
+<head>
 <title>WiiMart</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <link rel="shortcut icon" href="/oss/favicon.ico" /> 
@@ -167,13 +112,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
+	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 
-	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -183,8 +128,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
+	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("60000"));
 	
@@ -647,7 +592,7 @@ function initPage()
 {
 	initPageCommon();
 	currBalance = getBalance();
-	ec.setSessionValue("altRegion", "<%= altRegion %>");
+	ec.setSessionValue("altRegion", "");
 	MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif',
 				'/oss/oss/common/images//banner/help_b.gif',
 				'/oss/oss/common/images//banner/top_b.gif',
@@ -691,7 +636,7 @@ function next(selection)
 </script>
 </head>
 
-<body onload="initPage();">
+<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -807,7 +752,7 @@ function next(selection)
 
 <div id="text01-01" class="titleBlackL">Region Change</div>
 <div class="titleBlackL" id="text02-01" style="text-align: center;">
-    You're region is now <%= regionToChange %>!
+    Your region is now !
     </div>
 </body>
 

@@ -1,6 +1,6 @@
-<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+
+
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
 <button onclick="window.location.reload()">reload</button>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8,13 +8,7 @@
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
 <head>
-  <script>
-    // prevent 209601 (idle on a page, times the user out)
-    var wiishop = new wiiShop();
-    const unused = wiishop.connecting;
-  </script>
-
-
+  
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <link rel="shortcut icon" href="/oss/favicon.ico" /> 
 <link href="/oss/oss/common/css/oss.css" rel="stylesheet" type="text/css" />
@@ -106,13 +100,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.blinklab.com/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.thecheese.io/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.blinklab.com/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
+	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 
-	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
+	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -124,8 +118,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
+	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("60000"));
 	
@@ -495,7 +489,7 @@ function needSyncEticket(progress)
 <script type="text/JavaScript">
 <!--
 
-var titleId = '<%= request.getParameter("titleId") == null ? "" : request.getParameter("titleId") %>';
+var titleId = '';
 var itemId = '101449';
 var nwc24 = new wiiNwc24 ;
 

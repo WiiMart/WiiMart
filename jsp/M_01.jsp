@@ -1,5 +1,5 @@
-<%@ page import = "java.io.*,java.util.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
 
 
 
@@ -44,14 +44,7 @@
 <!-- Title Rating Images -->
 <!-- Use bilingual icons if language is french or country is canada -->
 		<html>
-			<head>
-				<script>
-					// prevent 209601 (idle on a page, times the user out)
-					var wiishop = new wiiShop();
-					const unused = wiishop.connecting;
-				</script>
-			
-			
+<head>
   <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -153,13 +146,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
+	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 
-	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -169,8 +162,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
+	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -438,13 +431,11 @@ function needSyncEticket(progress)
 </script>
 <title>M_01.title</title>
 </head>
-<% String titleId = request.getParameter("titleId"); %>
-<body onload="initPageCommon();goodsfree2.focus();">
+
+<body onload="initPageCommon();goodsfree2.focus();var shop = new wiiShop();var unused = shop.connecting;">
 <div id="goodsfree2" style="position:absolute; left:0px; top:0px; width:608px; height:456px; z-index:31; overflow:auto;">
-	<%
-		String url = "/oss/oss/ext/manual/" + titleId + "/html/index.html?language=en&country=US&countryRegion=USA&region=USA&titleId=" + titleId;
-	%>
-  <iframe name="manualFrame" src="/oss/oss/ext/manual/<%= titleId %>/FFFD1AAA/html/index.html?language=en&country=US&countryRegion=USA&region=USA&titleId=<%= titleId %>" frameborder="0" scrolling="Auto" width="608" height="456"></iframe>
+	
+  <iframe name="manualFrame" src="/oss/oss/ext/manual/null/FFFD1AAA/html/index.html?language=en&country=US&countryRegion=USA&region=USA&titleId=null" frameborder="0" scrolling="Auto" width="608" height="456"></iframe>
 </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <%@ page import = "java.io.*,java.util.*" %>
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
 
 
 
@@ -636,7 +636,7 @@ function showCheckRegistered()
     var shop = new wiiShop();
     // Redirects to CheckRegistered.jsp with important device info	
     var ec = new ECommerceInterface ();
-    var url = "https://oss-auth.blinklab.com/oss/serv/CheckRegistered.jsp";
+    var url = "https://oss-auth.thecheese.io/oss/serv/CheckRegistered.jsp";
     var r = ec.getDeviceInfo();
     var shopAppTitleId = r.titleId;
     if (shopAppTitleId != null) {
