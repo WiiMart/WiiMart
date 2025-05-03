@@ -563,7 +563,7 @@ function initPage()
 		        onclick="snd.playSE(cSE_Cancel)">
           </a>	
         </div>
-        <div id="underwordL" align="center" class="buttonTextBlackM buttonWord" style="position: absolute"><table width="100%" height="100%"><tbody><tr><td align="center" valign="middle">Back</td></tr></tbody></table></div>
+        <div id="underwordL" align="center" class="buttonTextBlackM buttonWord" style="position: absolute"><table width="100%" height="100%"><tr><td align="center" valign="middle">Back</tr></td></table></</div>
     </div>
 </body>
 </html>
