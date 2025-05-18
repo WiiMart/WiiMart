@@ -1,5 +1,5 @@
-
-
+<%@ page import = "java.io.*,java.util.*,java.sql.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -29,8 +29,8 @@
 <head>
   <title>Wii Shop Channel</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-  <style type="text/css">
-    /* GENERAL */
+<style type="text/css">
+/* GENERAL */
 
 /* Limit page to 640 by 480 (NTSC TV resolution) */
 /* Note: PAL resolution is 640 by 528 */
@@ -654,7 +654,28 @@ function showCheckRegistered()
         url = addParam(url, "Serial", r.serial);
     }
     if (ec && "setSessionValue" in ec) {   
-
+<%  if (request.getParameter("initpage") != null) {
+    if (request.getParameter("titleId") != null) { 
+	if (request.getParameter("titleId").equals("DEBUG")) { %>
+		trace("doing DEBUG");
+		url = "https://oss-auth.thecheese.io/oss/serv/debugMode.jsp"
+	<% } else { %>
+        var titleId = '<%= request.getParameter("titleId") %>';
+        ec.setSessionValue("initialPage", "javascript:showTitle('" + titleId + "')");
+        ec.setSessionValue("shopEntryPage", "showTitle");
+        var launchcode = shop.launchCode;
+        if (launchcode == 4 || launchcode == 9 || launchcode == 10) {
+           	ec.setSessionValue("tid", titleId);
+           	url = addParam(url, "tid", titleId);
+           	url = addParam(url, "launchcode", launchcode);
+      	}
+<% }} else if (request.getParameter("transId") != null) { %>
+		var transId = parseInt('<%= request.getParameter("transId") %>');
+      	ec.setSessionValue("initialPage", "javascript:showGiftTrans('" + transId + "')");
+      	ec.setSessionValue("shopEntryPage", "showGiftReceived");
+<% } 
+}
+%>
 
         ec.setSessionValue("state", 'init');
         
@@ -681,9 +702,6 @@ function initPage()
 	    shop.beginWaiting();
 	}
 	
-	if (shop && "disableHRP" in shop) {
-		shop.disableHRP();
-	}
 	// The method called here is showCheckRegistered in index.jsp, not in oss.js
 	showCheckRegistered(false);
 }

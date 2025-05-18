@@ -1,19 +1,102 @@
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
-
-
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
+<%@ page buffer="8192kb" autoFlush="true" %>
+<%
+String titleId = request.getParameter("titleId") == null ? "" : request.getParameter("titleId");
+String targetURL = "http://127.0.0.1:8082/getTitle?titleId=" + titleId;
+%>
 <script>
-    console.log("")
+    console.log("<%= titleId %>")
 </script>
+<%
+StringBuilder res = new StringBuilder();
 
+try {
+    URL url = new URL(targetURL);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    while ((line = reader.readLine()) != null) {
+        res.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    e.printStackTrace();
+    res.append("Error: ").append(e.getMessage());
+}
+
+String games = res.toString();
+//Tmd size stuff
+String tmdUrl = "http://198.62.122.200/ccs/download/" + titleId + "/tmd";
+StringBuilder tmdRes = new StringBuilder();
+long tmdSize = 0;
+try {
+    URL url = new URL(tmdUrl);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+    tmdSize = connection.getContentLengthLong();
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    //String contentLength = connection.getHeaderField("Content-Length");
+    //tmdSize = contentLength;
+    while ((line = reader.readLine()) != null) {
+        tmdRes.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    //e.printStacktrace(out);
+    res.append("Error: ").append(e.getMessage());
+}
+%>
 <script>
-	console.log('{"id":"","title1":"","title2":"","console":"","controllers":"","region":"","language":"","attributes":"","date":"","added":"","publisher":"","genre":"","points":"","players":"","rating":"","ratingdetails":"","thumbnail":"","size":"","titleVersion":-1,"page":-1}');
+	console.log('<%= games %>');
 </script>
-
+<%
+// Parse JSON response
+JSONObject title = new JSONObject(games);
+String id = title.getString("id").replace("00010002", "00010001");
+String thumbnail = title.getString("thumbnail");
+String title1 = title.getString("title1");
+String title2 = title.getString("title2");
+String platform = title.getString("console");
+if (platform.equals("WII")) {
+    platform = "Wii Channels";
+} else if (platform.equals("WIIWARE")) {
+    platform = "WiiWare";
+};
+String releaseDate = title.getString("date");
+String genre = title.getString("genre");
+String publisher = title.getString("publisher");
+String points = title.getString("points");
+String players = title.getString("players");
+String ratingDetails = title.getString("ratingdetails");
+String rating = title.getString("rating").toUpperCase();
+String controllers = title.getString("controllers");
+String size = title.getString("size");
+String latestVersion = title.getString("titleVersion");
+%>
 <script>
-    console.log("")
+    console.log("<%= id %>")
 </script>
 
 
@@ -329,9 +412,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -644,12 +727,12 @@ var sdErrorMessage = ['An SD Card process failed.',
                       'An SD Card process failed.',
                       'There is not enough available space in Wii system memory.<BR>Create '+0+' block(s) of free space either by moving data to an SD Card or deleting data in the Wii console&rsquo;s Data Management screen.' ];
 
-var titleId = '';
-var titleSize = '';
-var titleTmdSize = '-1';
-var latestVersion = parseInt('-1');
+var titleId = '<%= titleId %>';
+var titleSize = '<%= size %>';
+var titleTmdSize = '<%= tmdSize %>';
+var latestVersion = parseInt('<%= latestVersion %>');
 
-var titlePoints = '';
+var titlePoints = '<%= points %>';
 var trialPoints = '';
 
 if(titlePoints != "") {
@@ -1000,7 +1083,7 @@ function statusOfPurchase(){
 }
 
 function statusOfGift(){
-    var titleId = '000100014E414345';
+    var titleId = '<%= titleId %>';
     var giftable = 'true';
     var itemPrice = '';
 
@@ -1042,17 +1125,17 @@ function showICRExpirePage(){
 
 function showPurchasePage(){
     hideElement("icrWarningPage");
-    onBuyButtonPressed('000100014E414345', '');
+    onBuyButtonPressed('<%= titleId %>', '');
     showElement("purchasePage");
 }
 
 
 function initPurchaseButtonArea() {
 	function setFree(caption) {
-		titlePoints = "";
+		titlePoints = "<%= points %>";
 		document.getElementById("text03-01").innerHTML = caption;
     trace("setting caption to: " + caption)
-		//document.getElementById("price").innerHTML = ' Wii Points';
+		//document.getElementById("price").innerHTML = '<%= points %> Wii Points';
 	}
 
 
@@ -1106,9 +1189,9 @@ function initPurchaseButtonArea() {
 
     
     if(purchaseButton == "UPDATE" || purchaseButton == "RE"){
-       document.getElementById("BuyAnchor").href = 'javascript:onBuyButtonPressed("")';
-       document.getElementById("NANDAnchor").href = 'javascript:onNANDButtonPressed("")';
-       document.getElementById("SDAnchor").href = 'javascript:onSDButtonPressed("")';
+       document.getElementById("BuyAnchor").href = 'javascript:onBuyButtonPressed("<%= titleId %>")';
+       document.getElementById("NANDAnchor").href = 'javascript:onNANDButtonPressed("<%= titleId %>")';
+       document.getElementById("SDAnchor").href = 'javascript:onSDButtonPressed("<%= titleId %>")';
     }
 
     var shop = new wiiShop;
@@ -1119,10 +1202,10 @@ function initPurchaseButtonArea() {
     
     if(giftButton == "NULL"){
     }else if(giftButton == "SCA"){
-		giftTitlePoints = "";
+		giftTitlePoints = "<%= points %>";
         showElement("giftButton");
         document.getElementById("giftButtonText").innerHTML = 'SCA Free Gift'
-        document.getElementById("giftPrice").innerHTML = ' Wii Points';
+        document.getElementById("giftPrice").innerHTML = '<%= points %> Wii Points';
     }else{//PRICE
         showElement("giftButton");
         document.getElementById("giftButtonText").innerHTML = 'Gift'
@@ -1130,14 +1213,14 @@ function initPurchaseButtonArea() {
     
     
     if(getURLParam("icr") == "true"){//IF come from B_04ICRPAGE
-        document.getElementById("BuyAnchor").href = "javascript:onBuyButtonPressed('000100014E414345', '')";
+        document.getElementById("BuyAnchor").href = "javascript:onBuyButtonPressed('<%= titleId %>', '')";
         //document.getElementById("buyButton").style.left = '189px';
     }
     
     //if(purchaseButton != "NULL" && giftButton != "NULL"){
-    //    document.getElementById("buyButton").style.left = '67px';
+        document.getElementById("buyButton").style.left = '189px';
     if(purchaseButton != "NULL" && giftButton == "NULL"){
-        //document.getElementById("buyButton").style.left = '189px';
+        document.getElementById("buyButton").style.left = '189px';
     }else if(purchaseButton == "NULL" && giftButton != "NULL"){
         document.getElementById("giftButton").style.left = '189px';
     }else if(purchaseButton == "NULL" && giftButton == "NULL"){
@@ -1203,7 +1286,7 @@ function initPage()
         }
     }
     //Ticket info stuff
-    var infos = ec.getTicketInfos("");
+    var infos = ec.getTicketInfos("<%= titleId %>");
     trace(infos.length + " ticket(s) found");
     var ticket = infos.get(0);
 
@@ -1295,7 +1378,6 @@ var icrExactDiscount = '';
     trace("WiFi indicator: "+wifiIndicator);
 
 	initPurchaseButtonArea();
-  document.getElementById("buyButton").style.left = '189px';
 
     if (ecSupportsSession()) {
         ec.setSessionValue("giftStatus", null);
@@ -1306,7 +1388,7 @@ var icrExactDiscount = '';
 </script>
 </head>
 
-<body onload="initPage();">
+<body onload="initPage();document.getElementById('buyButton').style.left = '189px';">
 
 <div id="constElements">
   <div id="tophelpshadow"><img src="/oss/oss/common/images//banner/top_help_shadow01.gif" width="132" height="75" /></div>
@@ -1418,7 +1500,7 @@ var icrExactDiscount = '';
     <table height="100%">
     <tr>
       <td align="left" valign="middle">
-        This software requires  Wii Points to download.<BR>You do not have enough Wii Points.</td>
+        This software requires <%= points %> Wii Points to download.<BR>You do not have enough Wii Points.</td>
     </tr>
     </table>
     </div>
@@ -1478,33 +1560,33 @@ var icrExactDiscount = '';
 
 <div id="details">
   <div id="Photo">
-    <img src="/oss/ccs//" width="160" height="120" />
+    <img src="/oss/ccs/<%= titleId %>/<%= thumbnail %>" width="160" height="120" />
     </div>
   <div style="overflow: hidden;" class="catalogTitleBlack_01" id="DisplayCategory" align="left">
-    </div>
+    <%= genre %></div>
   <div class="contentsBlackS" id="date">
-    <div align="left" class="catalogTitleBlack_01">Released </div>
+    <div align="left" class="catalogTitleBlack_01">Released <%= releaseDate %></div>
   </div>
   <div class="catalogTitleBlack_01" id="Publisher">
-    <div align="left"></div>
+    <div align="left"><%= publisher %></div>
   </div>
   <div id="Players">
-    <div align="left" class="catalogTitleBlack_01"></div>
+    <div align="left" class="catalogTitleBlack_01"><%= players %></div>
   </div>
   <div style="overflow:hidden" nowrap class="contentsBlue" id="TitleName1">
-    <div align="center" class="headerBlueM"></div>
+    <div align="center" class="headerBlueM"><%= title1 %></div>
   </div>
   <div style="overflow:hidden" nowrap class="contentsBlue" id="TitleName2">
-      <div align="center" class="headerBlueM"></div>
+      <div align="center" class="headerBlueM"><%= title2 %></div>
     </div>
   <div id="Platform">
-    <div align="left" class="headerWhiteS"></div>
+    <div align="left" class="headerWhiteS"><%= platform %></div>
   </div>
   <div id="controller">
     <img src="/oss/oss/common/images//banner/controller_msg1_E_en.gif" width="77" height="65" id="Image3control" />
   </div>
   <div id="controllerLink">
-      <a id="ControlAnchor" href="javascript:onControlButtonPressed('')">
+      <a id="ControlAnchor" href="javascript:onControlButtonPressed('<%= titleId %>')">
       <img src="/oss/oss/common/images//spacer.gif" width="77" height="65" border="0" id="Image2control" 
        onmouseover="MM_swapImage('Image3control','','/oss/oss/common/images//banner/controller_msg2_E_en.gif',1);wiiFocusSound();" 
        onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
@@ -1513,21 +1595,25 @@ var icrExactDiscount = '';
   <div id="Rating">
   <!-- content descriptors uses text for ESRB and OFLC, images for PEGI and CERO -->
     <div id="ESRB_Rating">
-        
+        <%
+            if (!rating.equals("")) { %>
+                <img src="/oss/oss/common/images//Pic_Rating/ESRB//ESRB_<%= rating %>.gif" 
+                alt="ESRBE" width="46" height="69" />
+           <% } %>
           </div>
-          <div class="style8" id="Descriptors"></div>
+          <div class="style8" id="Descriptors"><%= ratingDetails %></div>
           </div>
   <img src="/oss/oss/common/images//banner/Details.gif" width="537" height="217" />
   </div>
 <!-- ordinary pricing -->
-<div id="buyButton">
+<div id="buyButton" style="left: 189px">
     <div id="buybanner" style="z-index:32;"><img src="/oss/oss/common/images//banner/buy_a.gif" width="241" height="76" id="Image3" /></div>
     <div id="text03-01" class="buttonTextWhiteL buttonText">
       Download</div>
     <div id="price" class="buttonTextWhiteL buttonText">
-         Wii Points</div>
+        <%= points %> Wii Points</div>
     <div id="buyspacer">
-      <a id="BuyAnchor" href="javascript:onBuyButtonPressed('', '')">
+      <a id="BuyAnchor" href="javascript:onBuyButtonPressed('<%= titleId %>', '')">
         <img src="/oss/oss/common/images//spacer.gif" width="241" height="76" border="0" id="Image2" 
          onmouseover="MM_swapImage('Image3','','/oss/oss/common/images//banner/buy_b.gif',1);wiiFocusSound();" 
          onmouseout="MM_swapImgRestore()" 
@@ -1543,9 +1629,9 @@ var icrExactDiscount = '';
       <img src="/oss/oss/common/images//banner/buy_a.gif" width="241" height="76" id="giftImage3"></div>
     <div id="giftButtonText" class="buttonTextWhiteL buttonText">Gift</div>
     <div id="giftPrice" class="buttonTextWhiteL buttonText">
-       Wii Points</div>
+      <%= points %> Wii Points</div>
     <div id="giftSpacer" style="position:absolute; left:0px; top:0px; width:100%; height:100%; z-index:35; ">
-      <a id="giftAnchor" href="javascript:onGiftButtonPressed('', '')">
+      <a id="giftAnchor" href="javascript:onGiftButtonPressed('<%= id %>', '')">
         <img src="/oss/oss/common/images//spacer.gif" width="241" height="76" border="0" id="giftImage2" onmouseover="MM_swapImage('giftImage3','','/oss/oss/common/images//banner/buy_b.gif',1);wiiFocusSound();" i="" onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();">
       </a>
     </div>
@@ -1631,7 +1717,7 @@ var icrExactDiscount = '';
       </div>
     </div>
     <div id="spacer01">
-      <a id="NANDAnchor" href="javascript:onNANDButtonPressed('', '', redownloadFlagExt)">
+      <a id="NANDAnchor" href="javascript:onNANDButtonPressed('<%= titleId %>', '', redownloadFlagExt)">
         <img src="/oss/oss/common/images//spacer.gif" name="Image01s" width="236" height="184" border="0" id="Image01s" 
         onmouseover="MM_swapImage('Image01','','/oss/oss/common/images//banner/sdToNAND_b.png',1);snd.playSE( cSE_Forcus );" 
         onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" />
@@ -1652,7 +1738,7 @@ var icrExactDiscount = '';
       </div>
     </div>
     <div id="spacer02">
-      <a id="SDAnchor" href="javascript:onSDButtonPressed('000100014E414345', '', redownloadFlagExt)">
+      <a id="SDAnchor" href="javascript:onSDButtonPressed('<%= titleId %>', '', redownloadFlagExt)">
         <img src="/oss/oss/common/images//spacer.gif" name="Image02s" width="236" height="184" border="0" id="Image02s" 
          onmouseover="MM_swapImage('Image02','','/oss/oss/common/images//banner/sdToSD_b.png',1);snd.playSE( cSE_Forcus );" 
          onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" />

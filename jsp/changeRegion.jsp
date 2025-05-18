@@ -1,12 +1,60 @@
+<%@ page import = "java.io.*,java.util.*,java.sql.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%
+    String currRegion = request.getParameter("region") == null ? "" : request.getParameter("region");
+    String regionToChange = request.getParameter("regionToChange") == null ? "" : request.getParameter("regionToChange");
+    %>
+    <script>console.log('<%= regionToChange %>')</script>
+    <%
+    String serial = request.getParameter("serialNo") == null ? "" : request.getParameter("serialNo");
+    String altRegion = regionToChange;
+    switch (regionToChange) {
+        case "EUR":
+            regionToChange = "Europe";
+            break;
+        case "USA":
+            regionToChange = "United States";
+            break;
+        case "JPN":
+            regionToChange = "Japan";
+            break;
+        case "KOR":
+            regionToChange = "Korea";
+            break;
+    }
+    switch (currRegion) {
+        case "EUR":
+            currRegion = "Europe";
+            break;
+        case "USA":
+            currRegion = "United States";
+            break;
+        case "JPN":
+            currRegion = "Japan";
+            break;
+        case "KOR":
+            currRegion = "Korea";
+            break;
+    }
+    String url = "jdbc:postgresql://127.0.0.1/wiisoap";
+    Properties props = new Properties();
+    props.setProperty("user", "wiisoap");
+    props.setProperty("password", "wiisoap");
+    //props.setProperty("ssl", "true");
+    Connection conn = DriverManager.getConnection(url, props);
+    String updateSQL = "UPDATE public.userbase SET altregion = ? WHERE serial_number = ?";
+    PreparedStatement pst = conn.prepareStatement(updateSQL);
+    pst.setString(1, altRegion);
+    pst.setString(2, serial);
 
-
-
-<script>console.log('')</script>
-    
+	int rowsAffected = pst.executeUpdate();
+	pst.close();
+	conn.close();
+%>
 <script>
-    console.log("Changing to  from ")
+    console.log("Changing to <%= regionToChange %> from <%= currRegion %>")
 </script>
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <a href="javascript:location.reload();">reload page</a>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -116,9 +164,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -592,7 +640,7 @@ function initPage()
 {
 	initPageCommon();
 	currBalance = getBalance();
-	ec.setSessionValue("altRegion", "");
+	ec.setSessionValue("altRegion", "<%= altRegion %>");
 	MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif',
 				'/oss/oss/common/images//banner/help_b.gif',
 				'/oss/oss/common/images//banner/top_b.gif',
@@ -752,7 +800,7 @@ function next(selection)
 
 <div id="text01-01" class="titleBlackL">Region Change</div>
 <div class="titleBlackL" id="text02-01" style="text-align: center;">
-    Your region is now !
+    Your region is now <%= regionToChange %>!
     </div>
 </body>
 

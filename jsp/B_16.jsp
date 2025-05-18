@@ -1,7 +1,6 @@
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
-<button onclick="window.location.reload()">reload</button>
+<%@ page import = "java.io.*,java.util.*,javax.servlet.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -133,9 +132,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -587,242 +586,3841 @@ function kdown()
   <img src="/oss/oss/common/images//spacer.gif" name="ktouch" width="1" height="1" border="0" id="ktouch"/>
 </div>
 
-
+<%
+if (request.getParameter("vc") != null && request.getParameter("vc").equals("true")) { %>
 	<div id="searchItem" class="searchItem">
-
-		<div id="banner01" style="position:absolute; left:0px; top:1.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image01" /></div>
-			<div id="word01" style="position:absolute; left:15px; top:6.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Demo</span></td></tr></table>
-			</div>
-			<div id="hit01-01" style="position:absolute; left:114px; top:60.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit01-02" style="position:absolute; left:198px; top:60.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">47</span></td></tr></table>
-			</div>
-			<div id="spacer01" style="position:absolute; left:0px; top:1.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=TRIAL')"><img src="/oss/oss/common/images//spacer.gif" name="Image01s" width="244" height="91" border="0" id="Image01s" onmouseover="MM_swapImage('Image01','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner02" style="position:absolute; left:244px; top:1.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image02" /></div>
-			<div id="word02" style="position:absolute; left:259px; top:6.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Action</span></td></tr></table>
-			</div>
-			<div id="hit02-01" style="position:absolute; left:358px; top:60.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit02-02" style="position:absolute; left:442px; top:60.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">422</span></td></tr></table>
-			</div>
-			<div id="spacer02" style="position:absolute; left:244px; top:1.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=ACTION')"><img src="/oss/oss/common/images//spacer.gif" name="Image02s" width="244" height="91" border="0" id="Image02s" onmouseover="MM_swapImage('Image02','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner03" style="position:absolute; left:0px; top:93.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image03" /></div>
-			<div id="word03" style="position:absolute; left:15px; top:98.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Adventure</span></td></tr></table>
-			</div>
-			<div id="hit03-01" style="position:absolute; left:114px; top:152.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit03-02" style="position:absolute; left:198px; top:152.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">147</span></td></tr></table>
-			</div>
-			<div id="spacer03" style="position:absolute; left:0px; top:93.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=ADVENTURE')"><img src="/oss/oss/common/images//spacer.gif" name="Image03s" width="244" height="91" border="0" id="Image03s" onmouseover="MM_swapImage('Image03','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner04" style="position:absolute; left:244px; top:93.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image04" /></div>
-			<div id="word04" style="position:absolute; left:259px; top:98.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Fighting</span></td></tr></table>
-			</div>
-			<div id="hit04-01" style="position:absolute; left:358px; top:152.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit04-02" style="position:absolute; left:442px; top:152.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">62</span></td></tr></table>
-			</div>
-			<div id="spacer04" style="position:absolute; left:244px; top:93.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=FIGHTING')"><img src="/oss/oss/common/images//spacer.gif" name="Image04s" width="244" height="91" border="0" id="Image04s" onmouseover="MM_swapImage('Image04','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner05" style="position:absolute; left:0px; top:185.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image05" /></div>
-			<div id="word05" style="position:absolute; left:15px; top:190.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Puzzle</span></td></tr></table>
-			</div>
-			<div id="hit05-01" style="position:absolute; left:114px; top:244.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit05-02" style="position:absolute; left:198px; top:244.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">152</span></td></tr></table>
-			</div>
-			<div id="spacer05" style="position:absolute; left:0px; top:185.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=PUZZLE')"><img src="/oss/oss/common/images//spacer.gif" name="Image05s" width="244" height="91" border="0" id="Image05s" onmouseover="MM_swapImage('Image05','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner06" style="position:absolute; left:244px; top:185.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image06" /></div>
-			<div id="word06" style="position:absolute; left:259px; top:190.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Racing</span></td></tr></table>
-			</div>
-			<div id="hit06-01" style="position:absolute; left:358px; top:244.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit06-02" style="position:absolute; left:442px; top:244.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">40</span></td></tr></table>
-			</div>
-			<div id="spacer06" style="position:absolute; left:244px; top:185.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=RACING')"><img src="/oss/oss/common/images//spacer.gif" name="Image06s" width="244" height="91" border="0" id="Image06s" onmouseover="MM_swapImage('Image06','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner07" style="position:absolute; left:0px; top:277.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image07" /></div>
-			<div id="word07" style="position:absolute; left:15px; top:282.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">RPG</span></td></tr></table>
-			</div>
-			<div id="hit07-01" style="position:absolute; left:114px; top:336.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit07-02" style="position:absolute; left:198px; top:336.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">46</span></td></tr></table>
-			</div>
-			<div id="spacer07" style="position:absolute; left:0px; top:277.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=RPG')"><img src="/oss/oss/common/images//spacer.gif" name="Image07s" width="244" height="91" border="0" id="Image07s" onmouseover="MM_swapImage('Image07','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner08" style="position:absolute; left:244px; top:277.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image08" /></div>
-			<div id="word08" style="position:absolute; left:259px; top:282.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Simulation</span></td></tr></table>
-			</div>
-			<div id="hit08-01" style="position:absolute; left:358px; top:336.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit08-02" style="position:absolute; left:442px; top:336.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">57</span></td></tr></table>
-			</div>
-			<div id="spacer08" style="position:absolute; left:244px; top:277.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=SIMULATION')"><img src="/oss/oss/common/images//spacer.gif" name="Image08s" width="244" height="91" border="0" id="Image08s" onmouseover="MM_swapImage('Image08','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner09" style="position:absolute; left:0px; top:369.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image09" /></div>
-			<div id="word09" style="position:absolute; left:15px; top:374.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Sports</span></td></tr></table>
-			</div>
-			<div id="hit09-01" style="position:absolute; left:114px; top:428.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit09-02" style="position:absolute; left:198px; top:428.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">82</span></td></tr></table>
-			</div>
-			<div id="spacer09" style="position:absolute; left:0px; top:369.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=SPORTS')"><img src="/oss/oss/common/images//spacer.gif" name="Image09s" width="244" height="91" border="0" id="Image09s" onmouseover="MM_swapImage('Image09','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner010" style="position:absolute; left:244px; top:369.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image010" /></div>
-			<div id="word010" style="position:absolute; left:259px; top:374.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Shooter</span></td></tr></table>
-			</div>
-			<div id="hit010-01" style="position:absolute; left:358px; top:428.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit010-02" style="position:absolute; left:442px; top:428.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">111</span></td></tr></table>
-			</div>
-			<div id="spacer010" style="position:absolute; left:244px; top:369.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=SHOOTING')"><img src="/oss/oss/common/images//spacer.gif" name="Image010s" width="244" height="91" border="0" id="Image010s" onmouseover="MM_swapImage('Image010','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner011" style="position:absolute; left:0px; top:461.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image011" /></div>
-			<div id="word011" style="position:absolute; left:15px; top:466.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Board Game</span></td></tr></table>
-			</div>
-			<div id="hit011-01" style="position:absolute; left:114px; top:520.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit011-02" style="position:absolute; left:198px; top:520.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">29</span></td></tr></table>
-			</div>
-			<div id="spacer011" style="position:absolute; left:0px; top:461.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=BOARD%2fTABLE')"><img src="/oss/oss/common/images//spacer.gif" name="Image011s" width="244" height="91" border="0" id="Image011s" onmouseover="MM_swapImage('Image011','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner012" style="position:absolute; left:244px; top:461.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image012" /></div>
-			<div id="word012" style="position:absolute; left:259px; top:466.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Strategy</span></td></tr></table>
-			</div>
-			<div id="hit012-01" style="position:absolute; left:358px; top:520.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit012-02" style="position:absolute; left:442px; top:520.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">31</span></td></tr></table>
-			</div>
-			<div id="spacer012" style="position:absolute; left:244px; top:461.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=STRATEGY')"><img src="/oss/oss/common/images//spacer.gif" name="Image012s" width="244" height="91" border="0" id="Image012s" onmouseover="MM_swapImage('Image012','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner013" style="position:absolute; left:0px; top:553.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image013" /></div>
-			<div id="word013" style="position:absolute; left:15px; top:558.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">First-Person Shooter</span></td></tr></table>
-			</div>
-			<div id="hit013-01" style="position:absolute; left:114px; top:612.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit013-02" style="position:absolute; left:198px; top:612.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">5</span></td></tr></table>
-			</div>
-			<div id="spacer013" style="position:absolute; left:0px; top:553.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=FPS')"><img src="/oss/oss/common/images//spacer.gif" name="Image013s" width="244" height="91" border="0" id="Image013s" onmouseover="MM_swapImage('Image013','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner014" style="position:absolute; left:244px; top:553.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image014" /></div>
-			<div id="word014" style="position:absolute; left:259px; top:558.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Education</span></td></tr></table>
-			</div>
-			<div id="hit014-01" style="position:absolute; left:358px; top:612.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit014-02" style="position:absolute; left:442px; top:612.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">25</span></td></tr></table>
-			</div>
-			<div id="spacer014" style="position:absolute; left:244px; top:553.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=EDUCATION')"><img src="/oss/oss/common/images//spacer.gif" name="Image014s" width="244" height="91" border="0" id="Image014s" onmouseover="MM_swapImage('Image014','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner015" style="position:absolute; left:0px; top:645.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image015" /></div>
-			<div id="word015" style="position:absolute; left:15px; top:650.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Arcade</span></td></tr></table>
-			</div>
-			<div id="hit015-01" style="position:absolute; left:114px; top:704.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit015-02" style="position:absolute; left:198px; top:704.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">205</span></td></tr></table>
-			</div>
-			<div id="spacer015" style="position:absolute; left:0px; top:645.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=ARCADE')"><img src="/oss/oss/common/images//spacer.gif" name="Image015s" width="244" height="91" border="0" id="Image015s" onmouseover="MM_swapImage('Image015','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner016" style="position:absolute; left:244px; top:645.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image016" /></div>
-			<div id="word016" style="position:absolute; left:259px; top:650.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Platformer</span></td></tr></table>
-			</div>
-			<div id="hit016-01" style="position:absolute; left:358px; top:704.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit016-02" style="position:absolute; left:442px; top:704.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">82</span></td></tr></table>
-			</div>
-			<div id="spacer016" style="position:absolute; left:244px; top:645.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=PLATFORMER')"><img src="/oss/oss/common/images//spacer.gif" name="Image016s" width="244" height="91" border="0" id="Image016s" onmouseover="MM_swapImage('Image016','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner017" style="position:absolute; left:0px; top:737.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image017" /></div>
-			<div id="word017" style="position:absolute; left:15px; top:742.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Multiplayer</span></td></tr></table>
-			</div>
-			<div id="hit017-01" style="position:absolute; left:114px; top:796.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit017-02" style="position:absolute; left:198px; top:796.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">186</span></td></tr></table>
-			</div>
-			<div id="spacer017" style="position:absolute; left:0px; top:737.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=MULTIPLAYER')"><img src="/oss/oss/common/images//spacer.gif" name="Image017s" width="244" height="91" border="0" id="Image017s" onmouseover="MM_swapImage('Image017','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner018" style="position:absolute; left:244px; top:737.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image018" /></div>
-			<div id="word018" style="position:absolute; left:259px; top:742.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Import</span></td></tr></table>
-			</div>
-			<div id="hit018-01" style="position:absolute; left:358px; top:796.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit018-02" style="position:absolute; left:442px; top:796.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">25</span></td></tr></table>
-			</div>
-			<div id="spacer018" style="position:absolute; left:244px; top:737.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=IMPORT')"><img src="/oss/oss/common/images//spacer.gif" name="Image018s" width="244" height="91" border="0" id="Image018s" onmouseover="MM_swapImage('Image018','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner019" style="position:absolute; left:0px; top:829.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image019" /></div>
-			<div id="word019" style="position:absolute; left:15px; top:834.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Nintendo Wi-Fi Connection</span></td></tr></table>
-			</div>
-			<div id="hit019-01" style="position:absolute; left:114px; top:888.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit019-02" style="position:absolute; left:198px; top:888.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">4</span></td></tr></table>
-			</div>
-			<div id="spacer019" style="position:absolute; left:0px; top:829.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=WIFIFREE')"><img src="/oss/oss/common/images//spacer.gif" name="Image019s" width="244" height="91" border="0" id="Image019s" onmouseover="MM_swapImage('Image019','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner020" style="position:absolute; left:244px; top:829.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image020" /></div>
-			<div id="word020" style="position:absolute; left:259px; top:834.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Nintendo WFC Pay & Play</span></td></tr></table>
-			</div>
-			<div id="hit020-01" style="position:absolute; left:358px; top:888.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit020-02" style="position:absolute; left:442px; top:888.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">27</span></td></tr></table>
-			</div>
-			<div id="spacer020" style="position:absolute; left:244px; top:829.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=WIFIPAY')"><img src="/oss/oss/common/images//spacer.gif" name="Image020s" width="244" height="91" border="0" id="Image020s" onmouseover="MM_swapImage('Image020','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  <div id="banner021" style="position:absolute; left:0px; top:921.0px; width:244px; height:91px; z-index:5;"><img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image021" /></div>
-			<div id="word021" style="position:absolute; left:15px; top:926.0px; width:212px; height:52px; z-index:6;" align="center">
-			  <table height="100%"><tr><td align="left" valign="middle"><span class="catalogTitleBlack">Other</span></td></tr></table>
-			</div>
-			<div id="hit021-01" style="position:absolute; left:114px; top:980.0px; width:84px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">Titles:</span></td></tr></table>
-			</div>
-			  <div id="hit021-02" style="position:absolute; left:198px; top:980.0px; width:27px; height:16px; z-index:6;">
-			  <table width="100%" height="100%"><tr><td align="right" valign="top"><span class="contentsBlack">113</span></td></tr></table>
-			</div>
-			<div id="spacer021" style="position:absolute; left:0px; top:921.0px; width:244px; height:91px; z-index:7;"><a href="javascript:showPage('B_04.jsp?platform=WIIWARE&p=1&genre=OTHER')"><img src="/oss/oss/common/images//spacer.gif" name="Image021s" width="244" height="91" border="0" id="Image021s" onmouseover="MM_swapImage('Image021','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );" onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" /></a></div>
-		  </div>
-
+	<div id="banner01" style="position: absolute; left: 0px; top: 1px; width: 244px; height: 91px; z-index: 5; ">
+		<img src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image01" ></div>
+		<div id="word01" style="position: absolute; left: 15px; top: 6px; width: 212px; height: 52px; z-index: 6; " align="center"><table height="100%" >
+			<tbody >
+				<tr >
+					<td align="left" valign="middle" >
+						<span class="catalogTitleBlack" >Action</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="hit01-01" style="position: absolute; left: 114px; top: 60px; width: 84px; height: 16px; z-index: 6; ">
+		<table width="100%" height="100%">
+			<tbody>
+				<tr>
+					<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<div id="hit1-02"
+			style="position: absolute; left: 198px; top: 60px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">93</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer01"
+			style="position: absolute; left: 0px; top: 1px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Action')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image01s" width="244" height="91" border="0" id="Image01s"
+					onmouseover="MM_swapImage('Image01','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner02"
+			style="position: absolute; left: 244px; top: 1px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image02"></div>
+		<div id="word02"
+			style="position: absolute; left: 259px; top: 6px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Action / Adventure</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit02-01"
+			style="position: absolute; left: 358px; top: 60px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit2-02"
+			style="position: absolute; left: 442px; top: 60px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">3</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer02"
+			style="position: absolute; left: 244px; top: 1px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Action / Adventure')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image02s" width="244" height="91" border="0" id="Image02s"
+					onmouseover="MM_swapImage('Image02','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner03"
+			style="position: absolute; left: 0px; top: 93px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image03"></div>
+		<div id="word03"
+			style="position: absolute; left: 15px; top: 98px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Action Adventure</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit03-01"
+			style="position: absolute; left: 114px; top: 152px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit3-02"
+			style="position: absolute; left: 198px; top: 152px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">2</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer03"
+			style="position: absolute; left: 0px; top: 93px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Action Adventure')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image03s" width="244" height="91" border="0" id="Image03s"
+					onmouseover="MM_swapImage('Image03','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner04"
+			style="position: absolute; left: 244px; top: 93px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image04"></div>
+		<div id="word04"
+			style="position: absolute; left: 259px; top: 98px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Action RPG</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit04-01"
+			style="position: absolute; left: 358px; top: 152px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit4-02"
+			style="position: absolute; left: 442px; top: 152px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">5</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer04"
+			style="position: absolute; left: 244px; top: 93px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Action RPG')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image04s" width="244" height="91" border="0" id="Image04s"
+					onmouseover="MM_swapImage('Image04','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner05"
+			style="position: absolute; left: 0px; top: 185px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image05"></div>
+		<div id="word05"
+			style="position: absolute; left: 15px; top: 190px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Action Shooter</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit05-01"
+			style="position: absolute; left: 114px; top: 244px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit5-02"
+			style="position: absolute; left: 198px; top: 244px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer05"
+			style="position: absolute; left: 0px; top: 185px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Action Shooter')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image05s" width="244" height="91" border="0" id="Image05s"
+					onmouseover="MM_swapImage('Image05','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner06"
+			style="position: absolute; left: 244px; top: 185px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image06"></div>
+		<div id="word06"
+			style="position: absolute; left: 259px; top: 190px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Action/Puzzle</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit06-01"
+			style="position: absolute; left: 358px; top: 244px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit6-02"
+			style="position: absolute; left: 442px; top: 244px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">2</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer06"
+			style="position: absolute; left: 244px; top: 185px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Action/Puzzle')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image06s" width="244" height="91" border="0" id="Image06s"
+					onmouseover="MM_swapImage('Image06','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner07"
+			style="position: absolute; left: 0px; top: 277px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image07"></div>
+		<div id="word07"
+			style="position: absolute; left: 15px; top: 282px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Adventure</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit07-01"
+			style="position: absolute; left: 114px; top: 336px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit7-02"
+			style="position: absolute; left: 198px; top: 336px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">29</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer07"
+			style="position: absolute; left: 0px; top: 277px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Adventure')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image07s" width="244" height="91" border="0" id="Image07s"
+					onmouseover="MM_swapImage('Image07','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner08"
+			style="position: absolute; left: 244px; top: 277px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image08"></div>
+		<div id="word08"
+			style="position: absolute; left: 259px; top: 282px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Adventure Platformer</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit08-01"
+			style="position: absolute; left: 358px; top: 336px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit8-02"
+			style="position: absolute; left: 442px; top: 336px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer08"
+			style="position: absolute; left: 244px; top: 277px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Adventure Platformer')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image08s" width="244" height="91" border="0" id="Image08s"
+					onmouseover="MM_swapImage('Image08','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner09"
+			style="position: absolute; left: 0px; top: 369px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image09"></div>
+		<div id="word09"
+			style="position: absolute; left: 15px; top: 374px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Arcade</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit09-01"
+			style="position: absolute; left: 114px; top: 428px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit9-02"
+			style="position: absolute; left: 198px; top: 428px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">19</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer09"
+			style="position: absolute; left: 0px; top: 369px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Arcade')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image09s" width="244" height="91" border="0" id="Image09s"
+					onmouseover="MM_swapImage('Image09','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner010"
+			style="position: absolute; left: 244px; top: 369px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image010"></div>
+		<div id="word010"
+			style="position: absolute; left: 259px; top: 374px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Arcade Platformer</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit010-01"
+			style="position: absolute; left: 358px; top: 428px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit10-02"
+			style="position: absolute; left: 442px; top: 428px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">2</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer010"
+			style="position: absolute; left: 244px; top: 369px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Arcade Platformer')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image010s" width="244" height="91" border="0" id="Image010s"
+					onmouseover="MM_swapImage('Image010','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner011"
+			style="position: absolute; left: 0px; top: 461px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image011"></div>
+		<div id="word011"
+			style="position: absolute; left: 15px; top: 466px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Arcade Shoot'Em Up</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit011-01"
+			style="position: absolute; left: 114px; top: 520px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit11-02"
+			style="position: absolute; left: 198px; top: 520px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer011"
+			style="position: absolute; left: 0px; top: 461px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Arcade Shoot'Em Up')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image011s" width="244" height="91" border="0" id="Image011s"
+					onmouseover="MM_swapImage('Image011','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner012"
+			style="position: absolute; left: 244px; top: 461px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image012"></div>
+		<div id="word012"
+			style="position: absolute; left: 259px; top: 466px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Beat 'Em Up</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit012-01"
+			style="position: absolute; left: 358px; top: 520px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit12-02"
+			style="position: absolute; left: 442px; top: 520px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">4</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer012"
+			style="position: absolute; left: 244px; top: 461px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Beat 'Em Up')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image012s" width="244" height="91" border="0" id="Image012s"
+					onmouseover="MM_swapImage('Image012','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner013"
+			style="position: absolute; left: 0px; top: 553px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image013"></div>
+		<div id="word013"
+			style="position: absolute; left: 15px; top: 558px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Billiards</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit013-01"
+			style="position: absolute; left: 114px; top: 612px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit13-02"
+			style="position: absolute; left: 198px; top: 612px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer013"
+			style="position: absolute; left: 0px; top: 553px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Billiards')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image013s" width="244" height="91" border="0" id="Image013s"
+					onmouseover="MM_swapImage('Image013','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner014"
+			style="position: absolute; left: 244px; top: 553px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image014"></div>
+		<div id="word014"
+			style="position: absolute; left: 259px; top: 558px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Board Game</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit014-01"
+			style="position: absolute; left: 358px; top: 612px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit14-02"
+			style="position: absolute; left: 442px; top: 612px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer014"
+			style="position: absolute; left: 244px; top: 553px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Board Game')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image014s" width="244" height="91" border="0" id="Image014s"
+					onmouseover="MM_swapImage('Image014','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner015"
+			style="position: absolute; left: 0px; top: 645px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image015"></div>
+		<div id="word015"
+			style="position: absolute; left: 15px; top: 650px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Classic Arcade Game</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit015-01"
+			style="position: absolute; left: 114px; top: 704px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit15-02"
+			style="position: absolute; left: 198px; top: 704px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer015"
+			style="position: absolute; left: 0px; top: 645px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Classic Arcade Game')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image015s" width="244" height="91" border="0" id="Image015s"
+					onmouseover="MM_swapImage('Image015','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner016"
+			style="position: absolute; left: 244px; top: 645px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image016"></div>
+		<div id="word016"
+			style="position: absolute; left: 259px; top: 650px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Education</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit016-01"
+			style="position: absolute; left: 358px; top: 704px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit16-02"
+			style="position: absolute; left: 442px; top: 704px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer016"
+			style="position: absolute; left: 244px; top: 645px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Education')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image016s" width="244" height="91" border="0" id="Image016s"
+					onmouseover="MM_swapImage('Image016','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner017"
+			style="position: absolute; left: 0px; top: 737px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image017"></div>
+		<div id="word017"
+			style="position: absolute; left: 15px; top: 742px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Fantasy</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit017-01"
+			style="position: absolute; left: 114px; top: 796px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit17-02"
+			style="position: absolute; left: 198px; top: 796px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer017"
+			style="position: absolute; left: 0px; top: 737px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Fantasy')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image017s" width="244" height="91" border="0" id="Image017s"
+					onmouseover="MM_swapImage('Image017','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner018"
+			style="position: absolute; left: 244px; top: 737px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image018"></div>
+		<div id="word018"
+			style="position: absolute; left: 259px; top: 742px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Fighting</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit018-01"
+			style="position: absolute; left: 358px; top: 796px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit18-02"
+			style="position: absolute; left: 442px; top: 796px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">33</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer018"
+			style="position: absolute; left: 244px; top: 737px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Fighting')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image018s" width="244" height="91" border="0" id="Image018s"
+					onmouseover="MM_swapImage('Image018','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner019"
+			style="position: absolute; left: 0px; top: 829px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image019"></div>
+		<div id="word019"
+			style="position: absolute; left: 15px; top: 834px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Multiplayer</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit019-01"
+			style="position: absolute; left: 114px; top: 888px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit19-02"
+			style="position: absolute; left: 198px; top: 888px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">2</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer019"
+			style="position: absolute; left: 0px; top: 829px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Multiplayer')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image019s" width="244" height="91" border="0" id="Image019s"
+					onmouseover="MM_swapImage('Image019','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner020"
+			style="position: absolute; left: 244px; top: 829px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image020"></div>
+		<div id="word020"
+			style="position: absolute; left: 259px; top: 834px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Platformer</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit020-01"
+			style="position: absolute; left: 358px; top: 888px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit20-02"
+			style="position: absolute; left: 442px; top: 888px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">17</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer020"
+			style="position: absolute; left: 244px; top: 829px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Platformer')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image020s" width="244" height="91" border="0" id="Image020s"
+					onmouseover="MM_swapImage('Image020','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner021"
+			style="position: absolute; left: 0px; top: 921px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image021"></div>
+		<div id="word021"
+			style="position: absolute; left: 15px; top: 926px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Puzzle</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit021-01"
+			style="position: absolute; left: 114px; top: 980px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit21-02"
+			style="position: absolute; left: 198px; top: 980px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">14</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer021"
+			style="position: absolute; left: 0px; top: 921px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Puzzle')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image021s" width="244" height="91" border="0" id="Image021s"
+					onmouseover="MM_swapImage('Image021','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner022"
+			style="position: absolute; left: 244px; top: 921px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image022"></div>
+		<div id="word022"
+			style="position: absolute; left: 259px; top: 926px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Racing</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit022-01"
+			style="position: absolute; left: 358px; top: 980px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit22-02"
+			style="position: absolute; left: 442px; top: 980px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">11</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer022"
+			style="position: absolute; left: 244px; top: 921px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Racing')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image022s" width="244" height="91" border="0" id="Image022s"
+					onmouseover="MM_swapImage('Image022','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner023"
+			style="position: absolute; left: 0px; top: 1013px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image023"></div>
+		<div id="word023"
+			style="position: absolute; left: 15px; top: 1018px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">RPG</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit023-01"
+			style="position: absolute; left: 114px; top: 1072px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit23-02"
+			style="position: absolute; left: 198px; top: 1072px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">19</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer023"
+			style="position: absolute; left: 0px; top: 1013px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=RPG')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image023s" width="244" height="91" border="0" id="Image023s"
+					onmouseover="MM_swapImage('Image023','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner024"
+			style="position: absolute; left: 244px; top: 1013px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image024"></div>
+		<div id="word024"
+			style="position: absolute; left: 259px; top: 1018px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Shooter</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit024-01"
+			style="position: absolute; left: 358px; top: 1072px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit24-02"
+			style="position: absolute; left: 442px; top: 1072px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">28</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer024"
+			style="position: absolute; left: 244px; top: 1013px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Shooter')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image024s" width="244" height="91" border="0" id="Image024s"
+					onmouseover="MM_swapImage('Image024','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner025"
+			style="position: absolute; left: 0px; top: 1105px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image025"></div>
+		<div id="word025"
+			style="position: absolute; left: 15px; top: 1110px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Simulation</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit025-01"
+			style="position: absolute; left: 114px; top: 1164px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit25-02"
+			style="position: absolute; left: 198px; top: 1164px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">5</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer025"
+			style="position: absolute; left: 0px; top: 1105px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Simulation')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image025s" width="244" height="91" border="0" id="Image025s"
+					onmouseover="MM_swapImage('Image025','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner026"
+			style="position: absolute; left: 244px; top: 1105px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image026"></div>
+		<div id="word026"
+			style="position: absolute; left: 259px; top: 1110px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Sports</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit026-01"
+			style="position: absolute; left: 358px; top: 1164px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit26-02"
+			style="position: absolute; left: 442px; top: 1164px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">20</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer026"
+			style="position: absolute; left: 244px; top: 1105px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Sports')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image026s" width="244" height="91" border="0" id="Image026s"
+					onmouseover="MM_swapImage('Image026','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner027"
+			style="position: absolute; left: 0px; top: 1197px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image027"></div>
+		<div id="word027"
+			style="position: absolute; left: 15px; top: 1202px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Strategy</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit027-01"
+			style="position: absolute; left: 114px; top: 1256px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit27-02"
+			style="position: absolute; left: 198px; top: 1256px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer027"
+			style="position: absolute; left: 0px; top: 1197px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Strategy')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image027s" width="244" height="91" border="0" id="Image027s"
+					onmouseover="MM_swapImage('Image027','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner028"
+			style="position: absolute; left: 244px; top: 1197px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+				id="Image028"></div>
+		<div id="word028"
+			style="position: absolute; left: 259px; top: 1202px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Top-Down Shooter</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit028-01"
+			style="position: absolute; left: 358px; top: 1256px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit28-02"
+			style="position: absolute; left: 442px; top: 1256px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer028"
+			style="position: absolute; left: 244px; top: 1197px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Top-Down Shooter')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image028s" width="244" height="91" border="0" id="Image028s"
+					onmouseover="MM_swapImage('Image028','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner029"
+			style="position: absolute; left: 0px; top: 1289px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image029"></div>
+		<div id="word029"
+			style="position: absolute; left: 15px; top: 1294px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Vertically-scrolling Shooter</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit029-01"
+			style="position: absolute; left: 114px; top: 1348px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit29-02"
+			style="position: absolute; left: 198px; top: 1348px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer029"
+			style="position: absolute; left: 0px; top: 1289px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Vertically-scrolling Shooter')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image029s" width="244" height="91" border="0" id="Image029s"
+					onmouseover="MM_swapImage('Image029','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		<div id="banner030"
+			style="position: absolute; left: 244px; top: 1289px; width: 244px; height: 91px; z-index: 5; "><img
+				src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image030"></div>
+		<div id="word030"
+			style="position: absolute; left: 259px; top: 1294px; width: 212px; height: 52px; z-index: 6; "
+			align="center">
+			<table height="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><span class="catalogTitleBlack">Action/Shooter</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit030-01"
+			style="position: absolute; left: 358px; top: 1348px; width: 84px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">Titles:</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="hit30-02"
+			style="position: absolute; left: 442px; top: 1348px; width: 27px; height: 16px; z-index: 6; ">
+			<table width="100%" height="100%">
+				<tbody>
+					<tr>
+						<td align="right" valign="top"><span class="contentsBlack">1</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="spacer030"
+			style="position: absolute; left: 244px; top: 1289px; width: 244px; height: 91px; z-index: 7; "><a
+				href="javascript:showPage('B_04.jsp?vc=true&amp;p=1&amp;genre=Action/Shooter')"><img
+					src="/oss/oss/common/images//spacer.gif" name="Image030s" width="244" height="91" border="0" id="Image030s"
+					onmouseover="MM_swapImage('Image030','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+					onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);"></a></div>
+		</div>
+<% } else { %>
+<div id="searchItem" class="searchItem" >
+    <!-- this is where the genres go -->
+    <div id="banner01"
+        style="position: absolute; left: 0px; top: 1px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+            id="Image01" ></div>
+    <div id="word01"
+        style="position: absolute; left: 15px; top: 6px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >3-D Puzzle</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit01-01"
+        style="position: absolute; left: 114px; top: 60px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit1-02"
+        style="position: absolute; left: 198px; top: 60px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer01"
+        style="position: absolute; left: 0px; top: 1px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=3-D Puzzle')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image01s" width="244" height="91"
+                border="0" id="Image01s"
+                onmouseover="MM_swapImage('Image01','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner02"
+        style="position: absolute; left: 244px; top: 1px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+            id="Image02" ></div>
+    <div id="word02"
+        style="position: absolute; left: 259px; top: 6px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >3D Action Adventure</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit02-01"
+        style="position: absolute; left: 358px; top: 60px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit2-02"
+        style="position: absolute; left: 442px; top: 60px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer02"
+        style="position: absolute; left: 244px; top: 1px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=3D Action Adventure')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image02s" width="244" height="91"
+                border="0" id="Image02s"
+                onmouseover="MM_swapImage('Image02','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner03"
+        style="position: absolute; left: 0px; top: 93px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image03"
+            ></div>
+    <div id="word03"
+        style="position: absolute; left: 15px; top: 98px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Abstract Puzzle</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit03-01"
+        style="position: absolute; left: 114px; top: 152px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit3-02"
+        style="position: absolute; left: 198px; top: 152px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer03"
+        style="position: absolute; left: 0px; top: 93px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Abstract Puzzle')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image03s" width="244" height="91"
+                border="0" id="Image03s"
+                onmouseover="MM_swapImage('Image03','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner04"
+        style="position: absolute; left: 244px; top: 93px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+            id="Image04" ></div>
+    <div id="word04"
+        style="position: absolute; left: 259px; top: 98px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Action</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit04-01"
+        style="position: absolute; left: 358px; top: 152px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit4-02"
+        style="position: absolute; left: 442px; top: 152px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >31</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer04"
+        style="position: absolute; left: 244px; top: 93px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Action')" ><img
+                src="/oss/oss/common/images//spacer.gif" name="Image04s" width="244" height="91" border="0"
+                id="Image04s"
+                onmouseover="MM_swapImage('Image04','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner05"
+        style="position: absolute; left: 0px; top: 185px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image05"
+            ></div>
+    <div id="word05"
+        style="position: absolute; left: 15px; top: 190px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Action Fantasy</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit05-01"
+        style="position: absolute; left: 114px; top: 244px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit5-02"
+        style="position: absolute; left: 198px; top: 244px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer05"
+        style="position: absolute; left: 0px; top: 185px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Action Fantasy')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image05s" width="244" height="91"
+                border="0" id="Image05s"
+                onmouseover="MM_swapImage('Image05','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner06"
+        style="position: absolute; left: 244px; top: 185px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+            id="Image06" ></div>
+    <div id="word06"
+        style="position: absolute; left: 259px; top: 190px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Adventure</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit06-01"
+        style="position: absolute; left: 358px; top: 244px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit6-02"
+        style="position: absolute; left: 442px; top: 244px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >21</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer06"
+        style="position: absolute; left: 244px; top: 185px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Adventure')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image06s" width="244" height="91"
+                border="0" id="Image06s"
+                onmouseover="MM_swapImage('Image06','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner07"
+        style="position: absolute; left: 0px; top: 277px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image07"
+            ></div>
+    <div id="word07"
+        style="position: absolute; left: 15px; top: 282px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Animal Sim</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit07-01"
+        style="position: absolute; left: 114px; top: 336px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit7-02"
+        style="position: absolute; left: 198px; top: 336px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer07"
+        style="position: absolute; left: 0px; top: 277px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Animal Sim')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image07s" width="244" height="91"
+                border="0" id="Image07s"
+                onmouseover="MM_swapImage('Image07','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner08"
+        style="position: absolute; left: 244px; top: 277px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image08"
+            ></div>
+    <div id="word08"
+        style="position: absolute; left: 259px; top: 282px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Arcade</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit08-01"
+        style="position: absolute; left: 358px; top: 336px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit8-02"
+        style="position: absolute; left: 442px; top: 336px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >32</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer08"
+        style="position: absolute; left: 244px; top: 277px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Arcade')" ><img
+                src="/oss/oss/common/images//spacer.gif" name="Image08s" width="244" height="91" border="0"
+                id="Image08s"
+                onmouseover="MM_swapImage('Image08','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner09"
+        style="position: absolute; left: 0px; top: 369px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image09"
+            ></div>
+    <div id="word09"
+        style="position: absolute; left: 15px; top: 374px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Arcade Shooter</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit09-01"
+        style="position: absolute; left: 114px; top: 428px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit9-02"
+        style="position: absolute; left: 198px; top: 428px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer09"
+        style="position: absolute; left: 0px; top: 369px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Arcade Shooter')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image09s" width="244" height="91"
+                border="0" id="Image09s"
+                onmouseover="MM_swapImage('Image09','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner010"
+        style="position: absolute; left: 244px; top: 369px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image010"
+            ></div>
+    <div id="word010"
+        style="position: absolute; left: 259px; top: 374px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Barber Simulation (Bonsai)</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit010-01"
+        style="position: absolute; left: 358px; top: 428px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit10-02"
+        style="position: absolute; left: 442px; top: 428px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer010"
+        style="position: absolute; left: 244px; top: 369px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Barber Simulation (Bonsai)')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image010s" width="244" height="91"
+                border="0" id="Image010s"
+                onmouseover="MM_swapImage('Image010','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner011"
+        style="position: absolute; left: 0px; top: 461px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image011"
+            ></div>
+    <div id="word011"
+        style="position: absolute; left: 15px; top: 466px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Battle Action</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit011-01"
+        style="position: absolute; left: 114px; top: 520px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit11-02"
+        style="position: absolute; left: 198px; top: 520px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer011"
+        style="position: absolute; left: 0px; top: 461px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Battle Action')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image011s" width="244" height="91"
+                border="0" id="Image011s"
+                onmouseover="MM_swapImage('Image011','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner012"
+        style="position: absolute; left: 244px; top: 461px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image012"
+            ></div>
+    <div id="word012"
+        style="position: absolute; left: 259px; top: 466px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Board Game</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit012-01"
+        style="position: absolute; left: 358px; top: 520px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit12-02"
+        style="position: absolute; left: 442px; top: 520px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer012"
+        style="position: absolute; left: 244px; top: 461px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Board Game')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image012s" width="244" height="91"
+                border="0" id="Image012s"
+                onmouseover="MM_swapImage('Image012','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner013"
+        style="position: absolute; left: 0px; top: 553px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image013"
+            ></div>
+    <div id="word013"
+        style="position: absolute; left: 15px; top: 558px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Bowling</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit013-01"
+        style="position: absolute; left: 114px; top: 612px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit13-02"
+        style="position: absolute; left: 198px; top: 612px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer013"
+        style="position: absolute; left: 0px; top: 553px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Bowling')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image013s" width="244" height="91"
+                border="0" id="Image013s"
+                onmouseover="MM_swapImage('Image013','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner014"
+        style="position: absolute; left: 244px; top: 553px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image014"
+            ></div>
+    <div id="word014"
+        style="position: absolute; left: 259px; top: 558px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Brain Training</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit014-01"
+        style="position: absolute; left: 358px; top: 612px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit14-02"
+        style="position: absolute; left: 442px; top: 612px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer014"
+        style="position: absolute; left: 244px; top: 553px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Brain Training')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image014s" width="244" height="91"
+                border="0" id="Image014s"
+                onmouseover="MM_swapImage('Image014','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner015"
+        style="position: absolute; left: 0px; top: 645px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image015"
+            ></div>
+    <div id="word015"
+        style="position: absolute; left: 15px; top: 650px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Card Creator</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit015-01"
+        style="position: absolute; left: 114px; top: 704px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit15-02"
+        style="position: absolute; left: 198px; top: 704px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer015"
+        style="position: absolute; left: 0px; top: 645px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Card Creator')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image015s" width="244" height="91"
+                border="0" id="Image015s"
+                onmouseover="MM_swapImage('Image015','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner016"
+        style="position: absolute; left: 244px; top: 645px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+            id="Image016" ></div>
+    <div id="word016"
+        style="position: absolute; left: 259px; top: 650px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Card Game</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit016-01"
+        style="position: absolute; left: 358px; top: 704px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit16-02"
+        style="position: absolute; left: 442px; top: 704px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer016"
+        style="position: absolute; left: 244px; top: 645px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Card Game')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image016s" width="244" height="91"
+                border="0" id="Image016s"
+                onmouseover="MM_swapImage('Image016','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner017"
+        style="position: absolute; left: 0px; top: 737px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image017"
+            ></div>
+    <div id="word017"
+        style="position: absolute; left: 15px; top: 742px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Cartoon Game</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit017-01"
+        style="position: absolute; left: 114px; top: 796px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit17-02"
+        style="position: absolute; left: 198px; top: 796px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer017"
+        style="position: absolute; left: 0px; top: 737px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Cartoon Game')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image017s" width="244" height="91"
+                border="0" id="Image017s"
+                onmouseover="MM_swapImage('Image017','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner018"
+        style="position: absolute; left: 244px; top: 737px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image018"
+            ></div>
+    <div id="word018"
+        style="position: absolute; left: 259px; top: 742px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Comic Action</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit018-01"
+        style="position: absolute; left: 358px; top: 796px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit18-02"
+        style="position: absolute; left: 442px; top: 796px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer018"
+        style="position: absolute; left: 244px; top: 737px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Comic Action')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image018s" width="244" height="91"
+                border="0" id="Image018s"
+                onmouseover="MM_swapImage('Image018','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner019"
+        style="position: absolute; left: 0px; top: 829px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image019"
+            ></div>
+    <div id="word019"
+        style="position: absolute; left: 15px; top: 834px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Education</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit019-01"
+        style="position: absolute; left: 114px; top: 888px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit19-02"
+        style="position: absolute; left: 198px; top: 888px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >5</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer019"
+        style="position: absolute; left: 0px; top: 829px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Education')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image019s" width="244" height="91"
+                border="0" id="Image019s"
+                onmouseover="MM_swapImage('Image019','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner020"
+        style="position: absolute; left: 244px; top: 829px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image020"
+            ></div>
+    <div id="word020"
+        style="position: absolute; left: 259px; top: 834px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Fantasy Role-Playing</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit020-01"
+        style="position: absolute; left: 358px; top: 888px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit20-02"
+        style="position: absolute; left: 442px; top: 888px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer020"
+        style="position: absolute; left: 244px; top: 829px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Fantasy Role-Playing')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image020s" width="244" height="91"
+                border="0" id="Image020s"
+                onmouseover="MM_swapImage('Image020','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner021"
+        style="position: absolute; left: 0px; top: 921px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image021"
+            ></div>
+    <div id="word021"
+        style="position: absolute; left: 15px; top: 926px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Fighting</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit021-01"
+        style="position: absolute; left: 114px; top: 980px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit21-02"
+        style="position: absolute; left: 198px; top: 980px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer021"
+        style="position: absolute; left: 0px; top: 921px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Fighting')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image021s" width="244" height="91"
+                border="0" id="Image021s"
+                onmouseover="MM_swapImage('Image021','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner022"
+        style="position: absolute; left: 244px; top: 921px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image022"
+            ></div>
+    <div id="word022"
+        style="position: absolute; left: 259px; top: 926px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >First Person Shooter</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit022-01"
+        style="position: absolute; left: 358px; top: 980px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit22-02"
+        style="position: absolute; left: 442px; top: 980px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer022"
+        style="position: absolute; left: 244px; top: 921px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=First Person Shooter')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image022s" width="244" height="91"
+                border="0" id="Image022s"
+                onmouseover="MM_swapImage('Image022','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner023"
+        style="position: absolute; left: 0px; top: 1013px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image023"
+            ></div>
+    <div id="word023"
+        style="position: absolute; left: 15px; top: 1018px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Fishing</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit023-01"
+        style="position: absolute; left: 114px; top: 1072px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit23-02"
+        style="position: absolute; left: 198px; top: 1072px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer023"
+        style="position: absolute; left: 0px; top: 1013px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Fishing')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image023s" width="244" height="91"
+                border="0" id="Image023s"
+                onmouseover="MM_swapImage('Image023','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner024"
+        style="position: absolute; left: 244px; top: 1013px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image024"
+            ></div>
+    <div id="word024"
+        style="position: absolute; left: 259px; top: 1018px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Fitness</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit024-01"
+        style="position: absolute; left: 358px; top: 1072px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit24-02"
+        style="position: absolute; left: 442px; top: 1072px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer024"
+        style="position: absolute; left: 244px; top: 1013px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Fitness')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image024s" width="244" height="91"
+                border="0" id="Image024s"
+                onmouseover="MM_swapImage('Image024','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner025"
+        style="position: absolute; left: 0px; top: 1105px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image025"
+            ></div>
+    <div id="word025"
+        style="position: absolute; left: 15px; top: 1110px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Futuristic Racer</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit025-01"
+        style="position: absolute; left: 114px; top: 1164px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit25-02"
+        style="position: absolute; left: 198px; top: 1164px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer025"
+        style="position: absolute; left: 0px; top: 1105px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Futuristic Racer')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image025s" width="244" height="91"
+                border="0" id="Image025s"
+                onmouseover="MM_swapImage('Image025','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner026"
+        style="position: absolute; left: 244px; top: 1105px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image026"
+            ></div>
+    <div id="word026"
+        style="position: absolute; left: 259px; top: 1110px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Hidden Object Game</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit026-01"
+        style="position: absolute; left: 358px; top: 1164px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit26-02"
+        style="position: absolute; left: 442px; top: 1164px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer026"
+        style="position: absolute; left: 244px; top: 1105px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Hidden Object Game')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image026s" width="244" height="91"
+                border="0" id="Image026s"
+                onmouseover="MM_swapImage('Image026','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner027"
+        style="position: absolute; left: 0px; top: 1197px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image027"
+            ></div>
+    <div id="word027"
+        style="position: absolute; left: 15px; top: 1202px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Home Karaoke</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit027-01"
+        style="position: absolute; left: 114px; top: 1256px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit27-02"
+        style="position: absolute; left: 198px; top: 1256px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer027"
+        style="position: absolute; left: 0px; top: 1197px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Home Karaoke')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image027s" width="244" height="91"
+                border="0" id="Image027s"
+                onmouseover="MM_swapImage('Image027','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner028"
+        style="position: absolute; left: 244px; top: 1197px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image028"
+            ></div>
+    <div id="word028"
+        style="position: absolute; left: 259px; top: 1202px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Hydro Action</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit028-01"
+        style="position: absolute; left: 358px; top: 1256px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit28-02"
+        style="position: absolute; left: 442px; top: 1256px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer028"
+        style="position: absolute; left: 244px; top: 1197px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Hydro Action')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image028s" width="244" height="91"
+                border="0" id="Image028s"
+                onmouseover="MM_swapImage('Image028','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner029"
+        style="position: absolute; left: 0px; top: 1289px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image029"
+            ></div>
+    <div id="word029"
+        style="position: absolute; left: 15px; top: 1294px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Interactive Cartoon</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit029-01"
+        style="position: absolute; left: 114px; top: 1348px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit29-02"
+        style="position: absolute; left: 198px; top: 1348px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer029"
+        style="position: absolute; left: 0px; top: 1289px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Interactive Cartoon')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image029s" width="244" height="91"
+                border="0" id="Image029s"
+                onmouseover="MM_swapImage('Image029','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner030"
+        style="position: absolute; left: 244px; top: 1289px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+            id="Image030" ></div>
+    <div id="word030"
+        style="position: absolute; left: 259px; top: 1294px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Macho Posing Action</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit030-01"
+        style="position: absolute; left: 358px; top: 1348px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit30-02"
+        style="position: absolute; left: 442px; top: 1348px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer030"
+        style="position: absolute; left: 244px; top: 1289px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Macho Posing Action')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image030s" width="244" height="91"
+                border="0" id="Image030s"
+                onmouseover="MM_swapImage('Image030','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner031"
+        style="position: absolute; left: 0px; top: 1381px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image031"
+            ></div>
+    <div id="word031"
+        style="position: absolute; left: 15px; top: 1386px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Minigame Collection</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit031-01"
+        style="position: absolute; left: 114px; top: 1440px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit31-02"
+        style="position: absolute; left: 198px; top: 1440px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer031"
+        style="position: absolute; left: 0px; top: 1381px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Minigame Collection')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image031s" width="244" height="91"
+                border="0" id="Image031s"
+                onmouseover="MM_swapImage('Image031','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner032"
+        style="position: absolute; left: 244px; top: 1381px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image032"
+            ></div>
+    <div id="word032"
+        style="position: absolute; left: 259px; top: 1386px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Multiplayer</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit032-01"
+        style="position: absolute; left: 358px; top: 1440px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit32-02"
+        style="position: absolute; left: 442px; top: 1440px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer032"
+        style="position: absolute; left: 244px; top: 1381px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Multiplayer')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image032s" width="244" height="91"
+                border="0" id="Image032s"
+                onmouseover="MM_swapImage('Image032','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner033"
+        style="position: absolute; left: 0px; top: 1473px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image033"
+            ></div>
+    <div id="word033"
+        style="position: absolute; left: 15px; top: 1478px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Music</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit033-01"
+        style="position: absolute; left: 114px; top: 1532px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit33-02"
+        style="position: absolute; left: 198px; top: 1532px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >4</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer033"
+        style="position: absolute; left: 0px; top: 1473px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Music')" ><img
+                src="/oss/oss/common/images//spacer.gif" name="Image033s" width="244" height="91" border="0"
+                id="Image033s"
+                onmouseover="MM_swapImage('Image033','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner034"
+        style="position: absolute; left: 244px; top: 1473px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image034"
+            ></div>
+    <div id="word034"
+        style="position: absolute; left: 259px; top: 1478px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Non-stop Digging Action</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit034-01"
+        style="position: absolute; left: 358px; top: 1532px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit34-02"
+        style="position: absolute; left: 442px; top: 1532px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer034"
+        style="position: absolute; left: 244px; top: 1473px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Non-stop Digging Action')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image034s" width="244" height="91"
+                border="0" id="Image034s"
+                onmouseover="MM_swapImage('Image034','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner035"
+        style="position: absolute; left: 0px; top: 1565px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image035"
+            ></div>
+    <div id="word035"
+        style="position: absolute; left: 15px; top: 1570px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Other</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit035-01"
+        style="position: absolute; left: 114px; top: 1624px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit35-02"
+        style="position: absolute; left: 198px; top: 1624px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer035"
+        style="position: absolute; left: 0px; top: 1565px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Other')" ><img
+                src="/oss/oss/common/images//spacer.gif" name="Image035s" width="244" height="91" border="0"
+                id="Image035s"
+                onmouseover="MM_swapImage('Image035','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner036"
+        style="position: absolute; left: 244px; top: 1565px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image036"
+            ></div>
+    <div id="word036"
+        style="position: absolute; left: 259px; top: 1570px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Painting Program</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit036-01"
+        style="position: absolute; left: 358px; top: 1624px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit36-02"
+        style="position: absolute; left: 442px; top: 1624px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer036"
+        style="position: absolute; left: 244px; top: 1565px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Painting Program')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image036s" width="244" height="91"
+                border="0" id="Image036s"
+                onmouseover="MM_swapImage('Image036','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner037"
+        style="position: absolute; left: 0px; top: 1657px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image037"
+            ></div>
+    <div id="word037"
+        style="position: absolute; left: 15px; top: 1662px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Party Game</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit037-01"
+        style="position: absolute; left: 114px; top: 1716px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit37-02"
+        style="position: absolute; left: 198px; top: 1716px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer037"
+        style="position: absolute; left: 0px; top: 1657px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Party Game')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image037s" width="244" height="91"
+                border="0" id="Image037s"
+                onmouseover="MM_swapImage('Image037','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner038"
+        style="position: absolute; left: 244px; top: 1657px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image038"
+            ></div>
+    <div id="word038"
+        style="position: absolute; left: 259px; top: 1662px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Physics-based Action Puzzler</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit038-01"
+        style="position: absolute; left: 358px; top: 1716px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit38-02"
+        style="position: absolute; left: 442px; top: 1716px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer038"
+        style="position: absolute; left: 244px; top: 1657px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Physics-based Action Puzzler')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image038s" width="244" height="91"
+                border="0" id="Image038s"
+                onmouseover="MM_swapImage('Image038','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner039"
+        style="position: absolute; left: 0px; top: 1749px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image039"
+            ></div>
+    <div id="word039"
+        style="position: absolute; left: 15px; top: 1754px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Physics-based Platformer</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit039-01"
+        style="position: absolute; left: 114px; top: 1808px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit39-02"
+        style="position: absolute; left: 198px; top: 1808px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer039"
+        style="position: absolute; left: 0px; top: 1749px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Physics-based Platformer')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image039s" width="244" height="91"
+                border="0" id="Image039s"
+                onmouseover="MM_swapImage('Image039','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner040"
+        style="position: absolute; left: 244px; top: 1749px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image040"
+            ></div>
+    <div id="word040"
+        style="position: absolute; left: 259px; top: 1754px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Physics-based Puzzle</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit040-01"
+        style="position: absolute; left: 358px; top: 1808px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit40-02"
+        style="position: absolute; left: 442px; top: 1808px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer040"
+        style="position: absolute; left: 244px; top: 1749px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Physics-based Puzzle')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image040s" width="244" height="91"
+                border="0" id="Image040s"
+                onmouseover="MM_swapImage('Image040','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner041"
+        style="position: absolute; left: 0px; top: 1841px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image041"
+            ></div>
+    <div id="word041"
+        style="position: absolute; left: 15px; top: 1846px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Platform Adventure</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit041-01"
+        style="position: absolute; left: 114px; top: 1900px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit41-02"
+        style="position: absolute; left: 198px; top: 1900px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer041"
+        style="position: absolute; left: 0px; top: 1841px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Platform Adventure')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image041s" width="244" height="91"
+                border="0" id="Image041s"
+                onmouseover="MM_swapImage('Image041','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner042"
+        style="position: absolute; left: 244px; top: 1841px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image042"
+            ></div>
+    <div id="word042"
+        style="position: absolute; left: 259px; top: 1846px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Platformer</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit042-01"
+        style="position: absolute; left: 358px; top: 1900px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit42-02"
+        style="position: absolute; left: 442px; top: 1900px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >7</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer042"
+        style="position: absolute; left: 244px; top: 1841px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Platformer')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image042s" width="244" height="91"
+                border="0" id="Image042s"
+                onmouseover="MM_swapImage('Image042','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner043"
+        style="position: absolute; left: 0px; top: 1933px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image043"
+            ></div>
+    <div id="word043"
+        style="position: absolute; left: 15px; top: 1938px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Pokémon Interaction</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit043-01"
+        style="position: absolute; left: 114px; top: 1992px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit43-02"
+        style="position: absolute; left: 198px; top: 1992px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer043"
+        style="position: absolute; left: 0px; top: 1933px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Pokémon Interaction')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image043s" width="244" height="91"
+                border="0" id="Image043s"
+                onmouseover="MM_swapImage('Image043','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner044"
+        style="position: absolute; left: 244px; top: 1933px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image044"
+            ></div>
+    <div id="word044"
+        style="position: absolute; left: 259px; top: 1938px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Poker</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit044-01"
+        style="position: absolute; left: 358px; top: 1992px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit44-02"
+        style="position: absolute; left: 442px; top: 1992px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer044"
+        style="position: absolute; left: 244px; top: 1933px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Poker')" ><img
+                src="/oss/oss/common/images//spacer.gif" name="Image044s" width="244" height="91" border="0"
+                id="Image044s"
+                onmouseover="MM_swapImage('Image044','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner045"
+        style="position: absolute; left: 0px; top: 2025px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image045"
+            ></div>
+    <div id="word045"
+        style="position: absolute; left: 15px; top: 2030px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Puzzle</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit045-01"
+        style="position: absolute; left: 114px; top: 2084px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit45-02"
+        style="position: absolute; left: 198px; top: 2084px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >25</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer045"
+        style="position: absolute; left: 0px; top: 2025px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Puzzle')" ><img
+                src="/oss/oss/common/images//spacer.gif" name="Image045s" width="244" height="91" border="0"
+                id="Image045s"
+                onmouseover="MM_swapImage('Image045','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner046"
+        style="position: absolute; left: 244px; top: 2025px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image046"
+            ></div>
+    <div id="word046"
+        style="position: absolute; left: 259px; top: 2030px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Puzzle Adventure</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit046-01"
+        style="position: absolute; left: 358px; top: 2084px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit46-02"
+        style="position: absolute; left: 442px; top: 2084px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer046"
+        style="position: absolute; left: 244px; top: 2025px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Puzzle Adventure')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image046s" width="244" height="91"
+                border="0" id="Image046s"
+                onmouseover="MM_swapImage('Image046','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner047"
+        style="position: absolute; left: 0px; top: 2117px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image047"
+            ></div>
+    <div id="word047"
+        style="position: absolute; left: 15px; top: 2122px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Rabbid Simulation</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit047-01"
+        style="position: absolute; left: 114px; top: 2176px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit47-02"
+        style="position: absolute; left: 198px; top: 2176px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer047"
+        style="position: absolute; left: 0px; top: 2117px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Rabbid Simulation')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image047s" width="244" height="91"
+                border="0" id="Image047s"
+                onmouseover="MM_swapImage('Image047','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner048"
+        style="position: absolute; left: 244px; top: 2117px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+            id="Image048" ></div>
+    <div id="word048"
+        style="position: absolute; left: 259px; top: 2122px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Racing</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit048-01"
+        style="position: absolute; left: 358px; top: 2176px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit48-02"
+        style="position: absolute; left: 442px; top: 2176px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >11</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer048"
+        style="position: absolute; left: 244px; top: 2117px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Racing')" ><img
+                src="/oss/oss/common/images//spacer.gif" name="Image048s" width="244" height="91" border="0"
+                id="Image048s"
+                onmouseover="MM_swapImage('Image048','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner049"
+        style="position: absolute; left: 0px; top: 2209px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image049"
+            ></div>
+    <div id="word049"
+        style="position: absolute; left: 15px; top: 2214px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Relaxation</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit049-01"
+        style="position: absolute; left: 114px; top: 2268px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit49-02"
+        style="position: absolute; left: 198px; top: 2268px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer049"
+        style="position: absolute; left: 0px; top: 2209px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Relaxation')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image049s" width="244" height="91"
+                border="0" id="Image049s"
+                onmouseover="MM_swapImage('Image049','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner050"
+        style="position: absolute; left: 244px; top: 2209px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image050"
+            ></div>
+    <div id="word050"
+        style="position: absolute; left: 259px; top: 2214px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Retro Arcade Adventure</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit050-01"
+        style="position: absolute; left: 358px; top: 2268px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit50-02"
+        style="position: absolute; left: 442px; top: 2268px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer050"
+        style="position: absolute; left: 244px; top: 2209px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Retro Arcade Adventure')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image050s" width="244" height="91"
+                border="0" id="Image050s"
+                onmouseover="MM_swapImage('Image050','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner051"
+        style="position: absolute; left: 0px; top: 2301px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image051"
+            ></div>
+    <div id="word051"
+        style="position: absolute; left: 15px; top: 2306px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Shooter</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit051-01"
+        style="position: absolute; left: 114px; top: 2360px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit51-02"
+        style="position: absolute; left: 198px; top: 2360px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >6</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer051"
+        style="position: absolute; left: 0px; top: 2301px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Shooter')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image051s" width="244" height="91"
+                border="0" id="Image051s"
+                onmouseover="MM_swapImage('Image051','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner052"
+        style="position: absolute; left: 244px; top: 2301px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image052"
+            ></div>
+    <div id="word052"
+        style="position: absolute; left: 259px; top: 2306px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Shooter / Simulation</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit052-01"
+        style="position: absolute; left: 358px; top: 2360px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit52-02"
+        style="position: absolute; left: 442px; top: 2360px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer052"
+        style="position: absolute; left: 244px; top: 2301px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Shooter / Simulation')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image052s" width="244" height="91"
+                border="0" id="Image052s"
+                onmouseover="MM_swapImage('Image052','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner053"
+        style="position: absolute; left: 0px; top: 2393px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image053"
+            ></div>
+    <div id="word053"
+        style="position: absolute; left: 15px; top: 2398px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Simulation</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit053-01"
+        style="position: absolute; left: 114px; top: 2452px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit53-02"
+        style="position: absolute; left: 198px; top: 2452px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >10</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer053"
+        style="position: absolute; left: 0px; top: 2393px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Simulation')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image053s" width="244" height="91"
+                border="0" id="Image053s"
+                onmouseover="MM_swapImage('Image053','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner054"
+        style="position: absolute; left: 244px; top: 2393px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image054"
+            ></div>
+    <div id="word054"
+        style="position: absolute; left: 259px; top: 2398px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Simulation / Strategy</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit054-01"
+        style="position: absolute; left: 358px; top: 2452px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit54-02"
+        style="position: absolute; left: 442px; top: 2452px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer054"
+        style="position: absolute; left: 244px; top: 2393px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Simulation / Strategy')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image054s" width="244" height="91"
+                border="0" id="Image054s"
+                onmouseover="MM_swapImage('Image054','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner055"
+        style="position: absolute; left: 0px; top: 2485px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image055"
+            ></div>
+    <div id="word055"
+        style="position: absolute; left: 15px; top: 2490px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Sports</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit055-01"
+        style="position: absolute; left: 114px; top: 2544px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit55-02"
+        style="position: absolute; left: 198px; top: 2544px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >8</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer055"
+        style="position: absolute; left: 0px; top: 2485px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Sports')" ><img
+                src="/oss/oss/common/images//spacer.gif" name="Image055s" width="244" height="91" border="0"
+                id="Image055s"
+                onmouseover="MM_swapImage('Image055','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner056"
+        style="position: absolute; left: 244px; top: 2485px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+            id="Image056" ></div>
+    <div id="word056"
+        style="position: absolute; left: 259px; top: 2490px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Strategy</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit056-01"
+        style="position: absolute; left: 358px; top: 2544px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit56-02"
+        style="position: absolute; left: 442px; top: 2544px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >2</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer056"
+        style="position: absolute; left: 244px; top: 2485px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Strategy')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image056s" width="244" height="91"
+                border="0" id="Image056s"
+                onmouseover="MM_swapImage('Image056','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner057"
+        style="position: absolute; left: 0px; top: 2577px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91" id="Image057"
+            ></div>
+    <div id="word057"
+        style="position: absolute; left: 15px; top: 2582px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Trivia Quiz</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit057-01"
+        style="position: absolute; left: 114px; top: 2636px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit57-02"
+        style="position: absolute; left: 198px; top: 2636px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >3</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer057"
+        style="position: absolute; left: 0px; top: 2577px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Trivia Quiz')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image057s" width="244" height="91"
+                border="0" id="Image057s"
+                onmouseover="MM_swapImage('Image057','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+    <div id="banner058"
+        style="position: absolute; left: 244px; top: 2577px; width: 244px; height: 91px; z-index: 5; "><img
+            src="/oss/oss/common/images//banner/B_04_half_genre_a.png" width="244" height="91"
+            id="Image058" ></div>
+    <div id="word058"
+        style="position: absolute; left: 259px; top: 2582px; width: 212px; height: 52px; z-index: 6; "
+        align="center">
+        <table height="100%" >
+            <tbody >
+                <tr >
+                    <td align="left" valign="middle" ><span class="catalogTitleBlack"
+                            >Comical Action Shooter</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit058-01"
+        style="position: absolute; left: 358px; top: 2636px; width: 84px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >Titles:</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="hit58-02"
+        style="position: absolute; left: 442px; top: 2636px; width: 27px; height: 16px; z-index: 6; ">
+        <table width="100%" height="100%" >
+            <tbody >
+                <tr >
+                    <td align="right" valign="top" ><span class="contentsBlack"
+                            >1</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="spacer058"
+        style="position: absolute; left: 244px; top: 2577px; width: 244px; height: 91px; z-index: 7; "><a
+            href="javascript:showPage('B_04.jsp?platform=WIIWARE&amp;p=1&amp;genre=Comical Action Shooter')"
+            ><img src="/oss/oss/common/images//spacer.gif" name="Image058s" width="244" height="91"
+                border="0" id="Image058s"
+                onmouseover="MM_swapImage('Image058','','/oss/oss/common/images//banner/B_04_half_genre_b.png',1);snd.playSE( cSE_Forcus );"
+                onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" ></a></div>
+</div>
+<% } %>
 
 
 <img src="/oss/oss/common/images//spacer.gif" width="1" height="1" id="Image10" />

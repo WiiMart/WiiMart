@@ -1,8 +1,8 @@
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <a href=javascript:window.location.reload();>reload</a>
-
+<%@ page buffer="8192kb" autoFlush="true" %>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -70,7 +70,7 @@ var testMode = 'false';
 
 function getMethod() 
 {
-	return "GET"
+	return "<%= request.getMethod() %>"
 }
 
 function getPostParams()
@@ -130,13 +130,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://oss-auth.thecheese.io/oss/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://oss-auth.thecheese.io/oss/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -493,9 +493,9 @@ function needSyncEticket(progress)
 /* Errors handled in error.css */
 </style>
 <script language="JavaScript" type="text/javascript">
-var refillValue = 'null';
-console.log('points::null');
-console.log('contentType:::null')
+var refillValue = '<%= request.getParameter("points") %>';
+console.log('points::<%= request.getParameter("points") %>');
+console.log('contentType:::<%= request.getContentType() %>')
 console.log("refillValue::"+refillValue);
 //var refillValue = '0';
 
@@ -537,8 +537,8 @@ function getPayment()
 
 function getPrice() //  needed for both
 {
-	var amount      = 'null.00'
-	var currency    = 'null'
+	var amount      = '<%= request.getParameter("price") %>.00'
+	var currency    = '<%= request.getParameter("currency") %>'
 //    var amount = '';
 //    var currency = '';
 	// NOTE: For Credit Card, we use amount returned by NOA (which does not include tax)
@@ -548,7 +548,7 @@ function getPrice() //  needed for both
 	
 function getRefillPoints() // needed for both 
 {
-	return 'null';
+	return '<%= request.getParameter("points") %>';
 //    return '';
 }
 
@@ -573,7 +573,7 @@ function buyPoints(payment)
 	var price = getPrice();
             
     // Request
-	var itemId = 'null';
+	var itemId = '<%= request.getParameter("itemId") %>';
     //var itemId = '';
 	//var payment = getPayment();
 		
@@ -758,7 +758,7 @@ function toggleMessage()
 function initPage()
 {
   var errors = 0;
-	trace('itemId::::null')
+	trace('itemId::::<%= request.getParameter("itemId") %>')
     initPageCommon();
     disableWiiPointButton();
     MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif','/oss/oss/common/images//banner/help_b.gif','/oss/oss/common/images//banner/top_b.gif');
@@ -772,11 +772,11 @@ function initPage()
     trace("cardExpYY:::::"+'');
     trace("cardNumber:::::"+'');
     trace("cardVfyVal:::::"+'');
-    trace("itemId:::::"+'null');
-    trace("pointsValue:::::"+'null'); 
-    trace("pointsCost:::::"+'null');
-    trace("currency:::::"+'null');
-    trace("cardType:::::"+'null');
+    trace("itemId:::::"+'<%= request.getParameter("itemId") %>');
+    trace("pointsValue:::::"+'<%= request.getParameter("points") %>'); 
+    trace("pointsCost:::::"+'<%= request.getParameter("price") %>');
+    trace("currency:::::"+'<%= request.getParameter("currency") %>');
+    trace("cardType:::::"+'<%= request.getParameter("cardType") %>');
 
 trace('maxPointcheck');
 
@@ -935,7 +935,7 @@ trace('in test not empty errors2:::::' + errors);
   <img src="/oss/oss/common/images//banner/point_frame02.gif" width="100%" height="100%" />
 
   <div id="topArea">
-    <div id="top01" class="buttonTextBlackM">Wii Points<div id="top02" align="right"><span class="buttonTextBlackM" id="pointsValue">null</span>
+    <div id="top01" class="buttonTextBlackM">Wii Points<div id="top02" align="right"><span class="buttonTextBlackM" id="pointsValue"><%= request.getParameter("points") %></span>
         <div id="top03" class="buttonTextBlackM">Wii Points</div>
       </div>
     </div>

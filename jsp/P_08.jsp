@@ -1,5 +1,5 @@
-
-
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <a href="oss/serv/debug.jsp">debug</a>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -136,13 +136,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.thecheese.io/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'https://ccs.thecheese.io/ccs/download';
+	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -759,14 +759,14 @@ var showingStatement = 0;
 var currentError = "";
 var submitted = false;
 
-var region = 'null';
-var country = 'null';
+var region = '<%= request.getParameter("region") %>';
+var country = '<%= request.getParameter("country") %>';
 var countryEUR = false;
 if (region == "EUR" && country != "AU" && country != "NZ") {
 	countryEUR = true;
 }
 
-var cardType = 'null';
+var cardType = '<%= request.getParameter("cardType") %>';
 
 var errorMessages = new Array();
 
@@ -1416,11 +1416,11 @@ function genSCNum() {
     <img id="cardicon" width="100%" height="100%" />
     <div id="commonFields"></div>
     
-    <input type="hidden" name="itemId"   value='null' />
-    <input type="hidden" name="points"   value='null' /> 
-    <input type="hidden" name="price"    value='null' />
-    <input type="hidden" name="currency" value='null' /> 
-    <input type="hidden" name="cardType" value='null' />
+    <input type="hidden" name="itemId"   value='<%= request.getParameter("itemId") %>' />
+    <input type="hidden" name="points"   value='<%= request.getParameter("pointsValue") %>' /> 
+    <input type="hidden" name="price"    value='<%= request.getParameter("pointsCost") %>' />
+    <input type="hidden" name="currency" value='<%= request.getParameter("currency") %>' /> 
+    <input type="hidden" name="cardType" value='<%= request.getParameter("cardType") %>' />
 
     <div id="creditCardNumber">
     	<div id="creditCard_word" class="contentsBlackM bold">Credit-Card Number</div>
@@ -1428,7 +1428,7 @@ function genSCNum() {
 
 	    	<input type="text" class="inputTypeA inputStyle" name="cardNumber" id="cardNumber" maxLength="16" size="24"
 	    	onmouseover="fieldBackColorFocus(this); if(snd) snd.playSE( cSE_Forcus );" onmouseout="fieldBackColorRestore(this); genCCNum();"
-	    	onmousedown="kbd.call( cKT_NumSep ); genCCNum();" oninput="genCCNum();" style="user-select: none;"/>
+	    	onmousedown="genCCNum()" oninput="genCCNum();" style="user-select: none;"/>
 
     	</div>
     </div>
@@ -1480,7 +1480,7 @@ function genSCNum() {
 
 			<input type="text" class="inputTypeA inputStyle" name="cardVfyVal" id="cardVfyVal" maxLength="3" size="4"
 			onmouseover="fieldBackColorFocus(this);wiiFocusSound();" onmouseout="fieldBackColorRestore(this); genSCNum();"
-			onmousedown="kbd.call( cKT_NumSep ); genSCNum();" oninput="genSCNum();" style="user-select: none;"/>
+			onmousedown="genSCNum()" oninput="genSCNum();" style="user-select: none;"/>
 
 		</div>
 		<div id="securityCode_word">

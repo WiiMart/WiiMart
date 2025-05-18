@@ -1,6 +1,6 @@
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <!--<a href="https://oss-auth.thecheese.io/oss/serv/debugMode.jsp">debug mode</a>
 <a href="https://oss-auth.thecheese.io/oss/serv/W_01.jsp">Click here to skip checking account status</a>-->
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
@@ -606,7 +606,7 @@ function isRegistered() {
   var ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
   var iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
   var ccsUrl = 'http://oss-auth.thecheese.io/ccs/download';
-  var ucsUrl = 'http://ccs.thecheese.io/ccs/download';
+  var ucsUrl = 'https://ccs.blinklab.com/ccs/download';
   ec.setWebSvcUrls(ecsUrl, iasUrl);
   ec.setContentUrls (ccsUrl, ucsUrl);
   opName = "checking registration status";
@@ -694,7 +694,7 @@ function isRegistered() {
   var ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
   var iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
   var ccsUrl = 'http://oss-auth.thecheese.io/ccs/download';
-  var ucsUrl = 'http://ccs.thecheese.io/ccs/download';
+  var ucsUrl = 'https://ccs.blinklab.com/ccs/download';
   ec.setWebSvcUrls(ecsUrl, iasUrl);
   ec.setContentUrls (ccsUrl, ucsUrl);
   opName = "checking registration status";

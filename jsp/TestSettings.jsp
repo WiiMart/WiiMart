@@ -1,5 +1,5 @@
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 
 
 
@@ -134,9 +134,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -450,7 +450,11 @@ function needSyncEticket(progress)
 		return null;
 	}
 	<!--
-	
+	<%
+		String region = request.getParameter("region") == null ? "USA" : request.getParameter("region");
+		String country = request.getParameter("country") == null ? "US" : request.getParameter("country");
+		String language = request.getParameter("language") == null ? "en" : request.getParameter("language");
+	%>
 	-->
 	function showTestSettings()
 	{
@@ -459,15 +463,15 @@ function needSyncEticket(progress)
 			agefield.value = '';			
 		}
 		var ind;
-		ind = showSelectedOption("regionList", 'USA');
-		ind = showSelectedOption("countryList", 'US');
+		ind = showSelectedOption("regionList", '<%= region%>');
+		ind = showSelectedOption("countryList", '<%= country %>');
 		if (ind == null) {
 			ind = setDefault("countryList");
 			if (ind >= 0) {
 				changeCountry();
 			}
 		} 
-		ind = showSelectedOption("languageList", 'en;en_US');
+		ind = showSelectedOption("languageList", '<%= language %>;<%= language %>_<%= country %>');
 		
 		if (ind == null) {
 			ind = setDefault("languageList");

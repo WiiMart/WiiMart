@@ -1,10 +1,41 @@
-
-
-
-<script>trace("altRegion: null");var x=new wiiShop();var unused=x.connecting;</script>
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
-
+<%@ page import = "java.io.*,java.util.*,java.sql.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%
+String url = "jdbc:postgresql://127.0.0.1/wiisoap";
+Properties props = new Properties();
+props.setProperty("user", "wiisoap");
+props.setProperty("password", "wiisoap");
+//props.setProperty("ssl", "true");
+Connection conn = DriverManager.getConnection(url, props);
+String updateSQL = "SELECT altregion, og_mode FROM public.userbase WHERE serial_number = ?";
+PreparedStatement pst = conn.prepareStatement(updateSQL);
+pst.setString(1, request.getParameter("Serial"));
+String currTitle = "WiiMart";
+ResultSet rs = pst.executeQuery();
+String altRegion = request.getParameter("region");
+boolean ogMode = false;
+ArrayList al = new ArrayList();
+while (rs.next()) {
+	altRegion = rs.getString("altregion");
+	al.add(altRegion);
+	ogMode = rs.getBoolean("og_mode");
+	al.add(ogMode);
+}
+if (al.size() == 0) {
+	altRegion = request.getParameter("region");
+	ogMode = false;
+}
+conn.close();
+if (ogMode) {
+	currTitle = "Wii Shop Channel";
+} else {
+	currTitle = "WiiMart";
+}
+%>
+<script>trace("altRegion: <%= altRegion %>");var x=new wiiShop();var unused=x.connecting;</script>
+<% if (!ogMode) {%>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
+<% } %>
 <!--                                                         -->
 <!--  This software contains confidential information and    -->
 <!--  trade secrets of Acer Cloud Technology, Inc.           -->
@@ -62,7 +93,18 @@
 <script language="javascript" src='/oss/oss/common/js//sound.js'></script>
 <script language="javascript" src="/oss/oss/common/js//shop.js"></script>
 <script language="javascript" src="/oss/oss/common/js//oss.js"></script>
-
+<% /*if (request.getParameter("Serial") != null && request.getParameter("Serial") != "" && !(request.getParameter("Serial").equals("LU310714499")
+ || request.getParameter("Serial").equals("LU202431985")
+  || request.getParameter("Serial").equals("LU570267988")
+   || request.getParameter("Serial").equals("LU362861790")
+    || request.getParameter("Serial").equals("OW111040476")
+    || request.getParameter("Serial").equals("LU403640919")
+    || request.getParameter("Serial").equals("LU121123756")
+    || request.getParameter("Serial").equals("OEM110937425")
+    || request.getParameter("Serial").equals("LU715326754")
+    || request.getParameter("Serial").equals("LU596438324"))) {*/ %>
+<script>/*shop.error(999999, 0);ec.cancelOperation();*/</script>	
+<% /*}*/ %>
 <script type="text/javascript">
 var testMode = 'false';
 
@@ -135,7 +177,7 @@ function initPageCommon()
 
 	ccsUrl = 'http://oss-auth.thecheese.io/ccs/download';
 
-	ucsUrl = 'http://ccs.thecheese.io/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -663,13 +705,13 @@ function OnSetTask()
 
 function initPage()
 {
-	var altRegion = "null";
+	var altRegion = "<%= altRegion %>";
 	if (altRegion != "N/A" && altRegion != "") {
 		ec.setSessionValue("altRegion", altRegion);
 	}
-	var ogMode = "false";
+	var ogMode = "<%= ogMode %>";
 	ec.setSessionValue("ogMode", ogMode);
-	ec.setSessionValue("currTitle", "WiiMart");
+	ec.setSessionValue("currTitle", "<%= currTitle %>");
 	trace("initPage");
     MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif');
     var ok;
@@ -755,11 +797,13 @@ function initPage()
 <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>
 
 <div class="titleBlueL" id="text01-01">
-	WiiMart</div>
+	<%= currTitle %></div>
 <div align="center" class="titleBlueL" id="text02-01">
-
+<% if (ogMode == true) { %>
+Connecting. Please wait...
+<% } else { %>
 Checking if you're registered...
-
+<% } %>
 <div id="Progress">
 	<div id="dynDiv1" class="contentsBlackS"></div>
     <div id="dynDiv2" class="contentsBlackS"></div>

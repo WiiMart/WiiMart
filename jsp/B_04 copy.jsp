@@ -1,10 +1,84 @@
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.URLEncoder,java.net.URLDecoder,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*,java.util.stream.Collectors" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %><button id="urlBtn" onclick="document.location.reload();">reload page</button>
+<%@ page buffer="8192kb" autoFlush="true" %>
+<%
+String customHeader1 = "platform";
+String customValue1 = request.getParameter("platform") == null ? "WII" : request.getParameter("platform");
+String customHeader2 = "X-Custom-Header2";
+String customValue2 = request.getParameter("p") == null ? "1" : request.getParameter("p");
+String vcParam = request.getParameter("vc") != null ? "&vc=true" : "";
+String titleParam = request.getParameter("title") == null ? "" : "&title=" + request.getParameter("title");
+String publisherParam = request.getParameter("publisher") == null ? "" : "&publisher=" + URLEncoder.encode(request.getParameter("publisher"), "UTF-8");
+String[] titleIds = request.getParameterValues("titleId") == null ? new String[]{""} : request.getParameterValues("titleId");
+String recParam = request.getParameter("rec") == null ? "" : "&rec=true";
+String genreParam = request.getParameter("genre") == null ? "" : "&genre=" + request.getParameter("genre");
+String region = request.getParameter("country") == null ? "&country=US" : "&country=" + request.getParameter("country");
+String region3Letter = request.getParameter("region") == null ? "&region=USA" : "&region=" + request.getParameter("region");
+String language = request.getParameter("language") == null ? "&language=en" : "&language=" + request.getParameter("language");
+String targetURL = "http://127.0.0.1:8082/getTitles?p=" + customValue2 + vcParam + titleParam + publisherParam + recParam + genreParam + region + language;
+boolean noResults = false;
+for (String titleIdHex : titleIds) {
+	if (titleIdHex.equals("")) break;
+	targetURL += "&titleId=" + titleIdHex;
+}
+String titleList1 = request.getParameter("titlelist1") == null ? "" : "&titlelist1=true";
+String titleList2 = request.getParameter("titlelist2") == null ? "" : "&titlelist2=true";
+String titleList3 = request.getParameter("titlelist3") == null ? "" : "&titlelist3=true";
+String titleList4 = request.getParameter("titlelist4") == null ? "" : "&titlelist4=true";
+targetURL += titleList1 + titleList2 + titleList3 + titleList4;
+if (customValue1.equals("WIIWARE")) {
+	targetURL = "http://127.0.0.1:8082/getTitlesWiiWare?p=" + customValue2 + language + region + genreParam + publisherParam + titleParam.replaceAll(" ", "%20") + publisherParam + region3Letter;
+}
+if (customValue1.equals("WII")) {
+	targetURL = "http://127.0.0.1:8082/getTitlesWiiChannels?p=" + customValue2 + language + region + titleList1 + titleList2 + titleList3 + titleList4 + recParam + region3Letter;
+}
+if (request.getParameter("vc") != null && request.getParameter("vc").equals("true")) {
+	targetURL = "http://127.0.0.1:8082/getTitlesVc?p=" + customValue2 + language + region + genreParam + publisherParam + titleParam.replaceAll(" ", "%20") + "&platform=" + URLEncoder.encode(customValue1, StandardCharsets.UTF_8) + publisherParam + region3Letter;
+	
+}
 
+%>
+<%
+StringBuilder res = new StringBuilder();
+String games = "";
+String totalPages = "";
+try {
+    URL url = new URL(targetURL);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
 
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><button id="urlBtn" onclick="document.location.reload();">reload page</button>
+    // Set custom headers
+    connection.setRequestProperty(customHeader1, URLEncoder.encode(customValue1, StandardCharsets.UTF_8));
+    connection.setRequestProperty(customHeader2, customValue2);
 
+    int responseCode = connection.getResponseCode();
+	totalPages = connection.getHeaderField("Total-Pages");
+    BufferedReader reader;
 
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line;
+	while ((line = reader.readLine()) != null) {
+	    res.append(line);
+	}
+	reader.close();
+	games = res.toString();
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
 
-<script>console.log("total pages: 2")</script>
+} catch (Exception e) {
+	e.printStackTrace();
+	res.append("Error: ").append(e.getMessage());
+}
+
+//Now for the tmd size
+if (games.equals("[]")) {
+	noResults = true;
+}
+%>
+<script>console.log("total pages: <%= totalPages %>")</script>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -42,7 +116,7 @@ var testMode = 'false';
 
 function getMethod()
 {
-	return 'GET';	
+	return '<%= request.getMethod() %>';	
 }
 
 function getPostParams()
@@ -107,9 +181,9 @@ function initPageCommon()
 
 	iasUrl = 'http://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.com/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -628,11 +702,15 @@ function initPage()
 		trace("clear transType in B_04. ");
 	}
 		
-	
-	var pageCount = 'null';
+	<% if (noResults)  {%>
+	var pageCount = '0';
 	if (pageCount > 0)
 		document.getElementById("catalogFrame").focus();
-	
+	<% } else {%>
+	var pageCount = '<%= request.getParameter("p") %>';
+	if (pageCount > 0)
+		document.getElementById("catalogFrame").focus();
+	<% } %>
     
 }
 
@@ -868,8 +946,25 @@ function doNextPost() {
 <div align="left" id="listinfo" class="titleBlackL">
 <script language="JavaScript">
 	<!--
-	
-    document.write("Catalog".replace('<BR>', ' '));
+	<%
+		String t = "???platform.???";
+		if (request.getParameter("order") != null || request.getParameter("rec") != null || request.getParameter("publisher") != null) {
+			if (request.getParameter("order") != null && request.getParameter("order").equals("new")) {
+				t = "Newest Additions";
+			} else if (request.getParameter("rec") != null && request.getParameter("rec").equals("true")){
+				t = "Recommended Titles";
+			} else if (request.getParameter("publisher") != null) {
+				t = request.getParameter("publisher").substring(0, 1).toUpperCase() + request.getParameter("publisher").substring(1);
+			} else {
+				t = "Catalog";
+			}
+		} else if (request.getParameter("title") != null) { 
+			t = "Results for " + request.getParameter("title");
+		} else {
+			t = "Catalog";
+		}
+	%>
+    document.write("<%= t %>".replace('<BR>', ' '));
 	-->
 </script>
         </div>
@@ -1084,5 +1179,15 @@ function getIcrPurchaseInfo() {
 	}
 //-->
 </script>
+<%
 
-<script>console.log(`games: [{"id":"0001000048415A41","title1":"Photo Channel 1.1","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">This software can only be used with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"11/12/2007","added":"","publisher":"Nintendo","genre":"Channel update","points":"0","players":"For 1-4 players","rating":"","ratingdetails":"","link":"1yI3QyiEbvD6gR5lZfay_knj4FAuYeS0d","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/P/Photo%20Channel%20v1.0%20(World)%20(v65280)%20(Channel).wad","size":"409600","thumbnail":"FFFD0015","page":"1"},{"id":"00010000534F5545","title1":"The Legend of Zelda: Skyward Sword","title2":"Save Data Update Channel","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"12/22/2011","added":"","publisher":"Nintendo","genre":"Other","points":"0","players":"For 1 player(s)","rating":"","ratingdetails":"","link":"1oh3EiOvZeAMK1ZW8XDEO1rmdP7LfBHw1","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/L/Legend%20of%20Zelda,%20The%20-%20Skyward%20Sword%20-%20Save%20Data%20Update%20Channel%20(USA)%20(Channel).wad","size":"4849664","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148414445","title1":"Internet Channel","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    <img src=\"/oss/oss/common/images//banner/B_08_KeyboardCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text04-02\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software with the Wii Remote or with a standard USB keyboard.</div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"04/11/2007","added":"","publisher":"Nintendo","genre":"Internet Browser","points":"0","players":"For 1-4 players","rating":"","ratingdetails":"","link":"1HWNP9nIOsgrd7OEkDvlrHjSmMNwfJbgm","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/I/Internet%20Channel%20(USA)%20(v1024)%20(Channel).wad","size":"26558464","thumbnail":"FFFD000A","page":"1"},{"id":"0001000148414A45","title1":"Everybody Votes","title2":"Channel","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"02/13/2007","added":"","publisher":"Nintendo","genre":"Vote","points":"0","players":"For 1-6 players","rating":"","ratingdetails":"","link":"1qhFOvGBMMwaN0NSlWGBheyAvEbYzc4EQ","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/E/Everybody%20Votes%20Channel%20(USA)%20(v512)%20(Channel).wad","size":"7012352","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148415045","title1":"Check Mii Out Channel","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"11/11/2007","added":"","publisher":"Nintendo","genre":"Contest","points":"0","players":"For 1 player(s)","rating":"","ratingdetails":"","link":"1sOR51TMZg2TaARcQoGNyIwXu8E12d3Y_","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/C/Check%20Mii%20Out%20Channel%20(USA)%20(v512)%20(Channel).wad","size":"11845632","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148415445","title1":"Nintendo Channel","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    <img src=\"/oss/oss/common/images//banner/B_08_KeyboardCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text04-02\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software with the Wii Remote or with a standard USB keyboard.</div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"05/07/2008","added":"","publisher":"Nintendo","genre":"Information","points":"0","players":"For 1 player(s)","rating":"","ratingdetails":"","link":"1FERb_RVNrzT4_9PFtu-ODnlwad2sschC","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/N/Nintendo%20Channel%20(USA)%20(v1792)%20(Channel).wad","size":"13533184","thumbnail":"FFFD000F","page":"1"},{"id":"0001000148415745","title1":"Metroid<sup></sup> Prime 3 Preview","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"08/10/2007","added":"","publisher":"Nintendo","genre":"Preview","points":"0","players":"For 1 player(s)","rating":"T","ratingdetails":"Animated Blood, Violence","link":"1PJL2ucJt-MA0EcLHg_CYghqiFRO9CZmq","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/M/Metroid%20Prime%203%20Preview%20Channel%20(USA)%20(Channel).wad","size":"9142272","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148434645","title1":"Wii Speak Channel","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    <img src=\"/oss/oss/common/images//banner/B_08_SpeakCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text04-02\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">The Wii Speak microphone must be connected to your Wii console to use the Wii Speak Channel.</div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"12/05/2008","added":"","publisher":"Nintendo","genre":"Voice Communication","points":"0","players":"For 1-4 players","rating":"","ratingdetails":"","link":"1vvpy_21SRmW4Syx9eTAcI9Wrs5_aBf4l","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/W/Wii%20Speak%20Channel%202.0%20(USA)%20(v512)%20(Channel).wad","size":"6586368","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148434C45","title1":"Netflix","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"10/18/2010","added":"","publisher":"Netflix","genre":"Streaming Video","points":"0","players":"","rating":"","ratingdetails":"","link":"1yuG94gQV6DmgZlsk3fNzpsag8w_jj85d","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/N/Netflix%20(USA)%20(v2049)%20(Channel).wad","size":"8699904","thumbnail":"FFFD0005","page":"1"},{"id":"0001000148435145","title1":"Hulu Plus","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"02/16/2012","added":"","publisher":"Hulu","genre":"Subscription video-on-demand","points":"0","players":"","rating":"","ratingdetails":"","link":"11dKUj9uezghkauxckIGOVVjdiadDEnBi","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/H/Hulu%20Plus%20(USA)%20(v2)%20(Channel).wad","size":"7798784","thumbnail":"FFFD000E","page":"1"}]`)</script>
+JSONArray g = null;
+// Parse JSON response
+try {
+    g = new JSONArray(games);
+} catch (Exception e) {
+    g = new JSONArray("[{ id: '', title1: '', title2: '', console: '', controllers: '', region: '', language: '', attributes: '', date: '', added: '', publisher: '', genre: '', points: '', players: '', rating: '', ratingdetails: '', thumbnail: '', size: '', titleVersion: -1, page: -1 }]");
+}
+
+%>
+<script>console.log(`games: <%= games %>`)</script>

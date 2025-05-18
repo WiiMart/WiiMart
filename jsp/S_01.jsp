@@ -1,15 +1,15 @@
-
-
+<%@ page import = "java.io.*,java.util.*" %>
+<%@	page pageEncoding="utf-8" contentType="text/html; charset=UTF-8" %>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script type="text/javascript">
     var shop = new wiiShop();
     var unused = shop.connecting;
 	function getMethod() {
-		return 'GET';
+		return '<%= request.getMethod() %>';
 	}
 	function isConnectingPage() {
     	var isConnecting = '';
@@ -271,9 +271,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -563,7 +563,7 @@ function initPage()
 		        onclick="snd.playSE(cSE_Cancel)">
           </a>	
         </div>
-        <div id="underwordL" align="center" class="buttonTextBlackM buttonWord" style="position: absolute"><table width="100%" height="100%"><tr><td align="center" valign="middle">Back</tr></td></table></</div>
+        <div id="underwordL" align="center" class="buttonTextBlackM buttonWord" style="position: absolute"><table width="100%" height="100%"><tbody><tr><td align="center" valign="middle">Back</td></tr></tbody></table></div>
     </div>
 </body>
 </html>

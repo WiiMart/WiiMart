@@ -1,5 +1,6 @@
-
-
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ page buffer="8192kb" autoFlush="true" %>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -131,9 +132,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -438,5 +439,150 @@ function initPage()
 //-->
 </script>
 </head>
+<%
+String region = request.getParameter("region");
+String code = "45";
+if (region.equals("USA")) {
+	code = "45";
+} else if (region.equals("EUR")) {
+	code = "50";
+} else if (region.equals("JPN")) {
+	code = "4A";
+}
+%>
 <body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
 
+<% if (request.getParameter("p").equals("1")) { %>
+	<div id="text" style="overflow:hidden" class="textImportantInfo" >
+	<script>
+		if (ec.getSessionValue("currTitle") == "Wii Shop Channel") {
+			document.write("Welcome to the Wii Shop Channel! If you encounter any errors, ");
+		} else {
+			document.write("Welcome to WiiMart! If you encounter any errors, ");
+		}
+	</script>
+	<br>
+	be sure to report them in the discord server in #support.
+	<br><br>
+	Happy shopping!
+	
+	- Ocarina
+	</div>
+<% } else if (request.getParameter("p").equals("2")) { %>
+	<div id="text" style="overflow:hidden" class="textImportantInfo" ></div>
+	Wii Channels are now downloadable! 
+	<br>
+	Get them by clicking "Start Shopping" and then "Wii Channels"!
+</div>
+<% } else if (request.getParameter("p").equals("3")) { %>
+<div id="free">
+  <div id="text" style="position:absolute; left:10px; right:10px; z-index:1; height: 240px; max-height:240px;" class="textImportantInfo">
+    Eight Virtual Console™ titles and Two WiiWare™ titles were added to the catalog on<br>
+    May 14:
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">Sonic Blast</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">Sega Master System® - 500 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated E for Everyone by the ESRB</p><br>
+    Sonic Blast is a classic platformer developed by Aspect and released by Sega for the Game Gear in 1996. Join Sonic the Hedgehog and Knuckles the Echidna on an action-packed journey across 15 vibrant levels as they race to stop the evil Doctor Robotnik from harnessing the power of Chaos Emerald shards to strengthen his fortress. True to the classic Sonic formula, players dash, jump, and battle their way through swarms of robotic enemies while collecting golden rings. Special bonus stages challenge players to sprint through dynamic 3D-style courses, gathering rings to claim the elusive Chaos Emerald shards and edge closer to victory.
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">Knuckles Emerald Hunt</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">Sega Genesis® - 800 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;"Rated E for Everyone by the ESRB</p><br>
+    Knuckles Emerald Hunt is a ROM hack of Sonic the Hedgehog 2 for the Sega Genesis/Mega Drive, initially released on October 24th, 2015. Inspired by Sonic Adventure 2, this game adds a fresh twist to the classic game, it transforms each level into a treasure hunt as Knuckles searches for hidden Chaos Emeralds. Stages feature uniquely colored emeralds with varying locations, adding challenge and variety. Blending retro charm with modern mechanics, Knuckles Emerald Hunt offers a polished and exciting reimagining of a timeless classic.
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">Sonic & Ashuro</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">Sega Genesis® - 800 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated E for Everyone by the ESRB</p><br>
+    Sonic & Ashuro is a ROM hack of Sonic the Hedgehog for the Sega Genesis/Mega Drive, released September 16th, 2016. Featuring two characters from different universes, the game unfolds on a single screen. Though they share the same levels, each character offers a distinct gameplay experience. Zones are split into three acts, morning, day, and afternoon adding some unique visual variety. The game also includes custom special stages, unique animations, exclusive music, and character-specific abilities for a fresh, replayable experience.
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">The S Factor: Sonia & Silver</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">Sega Genesis® - 800 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated E for Everyone by the ESRB</p><br>
+    The S Factor: Sonia & Silver is a ROM hack of Sonic the Hedgehog for the Sega Genesis/Mega Drive, released on September 8th, 2013. It features two new playable characters: Sonia, Sonic’s sister from the SatAM series, and Silver, the psychokinetic hedgehog. Sonia uses powerful spin and axe moves, while Silver leverages psychic abilities to manipulate objects. The game includes redesigned levels like Spectra Valley, Arid Temple, and Destron City, and introduces a new villain, Eggman Nega, alongside his reprogrammed Team Metallix.
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">Sonic 2 Recreation</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">Sega Genesis® - 800 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated E for Everyone by the ESRBE</p><br>
+    Sonic 2 Recreation is a ROM hack of Sonic the Hedgehog 2 for the Sega Genesis/Mega Drive, first released on August 12th, 2013 during the Sonic Hacking Contest. This hack reimagines the classic game with new zones, bosses, and an engine inspired by Sonic 3 & Knuckles. Players can choose Sonic, Tails, Knuckles, or redhotsonic himself, each with unique abilities. Featuring portal-based level selection, reworked Special Stages, enhanced audio, and refined physics, the hack earned five awards at the 2012 contest, including Best Level Layouts and Most Innovative Feature.
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">Metal Sonic HYPERDRIVE</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">Sega Genesis® - 800 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated E for Everyone by the ESRB</p><br>
+    Metal Sonic HYPERDRIVE is a ROM hack of Sonic the Hedgehog for the Sega Genesis, released on December 30th, 2011. This hack reimagines the game with a Sonic CD-inspired style, featuring new zones, music, and playable characters like Metal Sonic, Sonic, Kirby, Somari, and Lone Devil. In a unique twist, Metal Sonic is reprogrammed by Tails to stop Dr. Robotnik. The game includes abilities like the Super Peel-Out and Hyperdrive Attacks, plus unlockable modes such as Survival and Master Quest for added challenge.
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">Sonic.EXE</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">Sega Genesis® - 800 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated T for Teen by the ESRB</p><br>
+    Sonic.EXE is a ROM hack of Sonic the Hedgehog for the Sega Genesis, originally released on April 12th, 2012. This 2024 remake enhances the original creepypasta with upgraded graphics, atmospheric audio, and refined gameplay, offering a more immersive horror experience. Featuring distorted visuals and an eerie sound design, players navigate familiar zones, now twisted to amplify the tension, as they follow the protagonist’s descent into madness while being tormented by the malevolent Sonic.EXE.
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">Somari the Adventurer</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">Sega Genesis® - 800 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated E for Everyone by the ESRB</p><br>
+    Somari the Adventurer is a ROM hack of Sonic the Hedgehog for the Sega Genesis, released on October 19th, 2015. This hack replaces Sonic with Mario, adding moves like the spin jump and backflip. Featuring a new Mushroom Kingdom Zone, it offers a fresh twist on classic Sonic gameplay. Praised for its creative concept, it blends Mario into the Sonic universe. With its charming crossover and smooth gameplay, Somari the Adventurer delivers a nostalgic experience for fans of both series.
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">Tails’ Nightmare</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">WiiWare - 700 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated T for Teen by the ESRB</p><br>
+    Tails’ Nightmare is a Flash game developed by TheBlox, released on October 30th, 2008. In this atmospheric platformer, players control Miles "Tails" Prower as he navigates a haunting wasteland, evading traps and the ominous Tails Doll. Powered by TheBlox's Cosmic Rush 2.0 engine, the game features smooth controls and eerie visuals. Though brief, it provides a memorable, spine-chilling experience that immerses players in a dark and unsettling world.
+    <br><br>
+
+    <a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold;">Tails’ Nightmare 2</a>
+    <p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">WiiWare - 700 Wii Points</p>
+    <p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated T for Teen by the ESRB</p><br>
+    Tails’ Nightmare 2 is a Flash game developed by TheBlox, released on September 16th, 2010. As the sequel to Tails' Nightmare, this atmospheric platformer follows Miles "Tails" Prower through a new haunting underground world, evading traps and more Tails Doll. New mechanics like wall jumping and rail grinding enhance the classic gameplay, while improved controls and a darker narrative make for a more immersive and challenging experience.
+
+    <hr style="margin-bottom:8px;">
+    <p style="font-weight:bold;">To find these newest additions, just select "Back" and <br> then "Start Shopping." Sonic Blast, Knuckles Emerald Hunt, Sonic & Ashuro, The S Factor: Sonia & Silver, Sonic 2 Recreation, Metal Sonic HYPERDRIVE, Sonic.EXE, Somari the Adventurer, Tails’ Nightmare, Tails’ Nightmare 2 can be found in the Virtual Console and WiiWare sections.</p>
+  </div>
+</div>
+<% } else if (request.getParameter("p").equals("5")) { %>
+	<div id="free">
+		<div id="text" style="position:absolute; left:10px; right:10px; z-index:1; height: 240px; max-height:240px;" class="textImportantInfo">
+		<h1>New <script>if (ec.getSessionValue("currTitle")=="Wii Shop Channel") {document.write("Wii Shop Channel")} else {document.write("WiiMart")};</script><br><br>Features!</h1>
+			Some people have been complaining about how the "debug" in the top left ruins the experience of a true Wii Shop Channel revival,
+			so a new feature in WiiMart is OG Mode! It will remove all debug text from the shop so it looks like the Wii Shop Channel back then!
+			<hr style="margin-bottom:8px;">
+			<p style="font-weight:bold;">To access this new feature, just select "Back" and then "Start Shopping." Go into settings and go to the very bottom to enable it!</p>
+		</div>
+	</div>
+<% } else if (request.getParameter("p").equals("6")) { %>
+<div id="free">
+    <div id="text" style="position:absolute; left:10px; right:10px; z-index:1;  height: 240px; max-height:240px;" class="textImportantInfo">
+After months of anticipation, the first Flash titles in the WiiWare™ <br>
+family of games are available from the Wii™ Shop Channel! <br>
+Nintendo's latest revolution in the video game world lets <br>
+developers of any size bring their innovative ideas and <br>
+engaging game play to eager consumer looking for <br>
+something new.
+<br><br>
+
+Easy to access and simple to use, WiiWare games will be available to download from the Wii Shop Channel at a cost starting at 500 Wii Points. <br> To date, a vast array of exciting and creative new projects are already in the pipeline, ensuring fresh concepts and content will frequently become available for all to enjoy. <br>  Players themselves will also become central to the creative process as their download choices and genre selection will become instrumental in helping developers determine future projects.
+
+
+<hr style="margin-bottom:8px;">
+<p style="font-weight:bold;">To find these newest Flash WiiWare™ additions, just select "Back" and <br> then "Start Shopping." They can all be found in the WiiWare section.</p>
+
+</div>
+  </div>
+<% } else { %>
+	<div id="text" style="overflow:hidden" class="textImportantInfo">
+	Welcome to the WiiMart! If you encounter any errors, 
+	<br>
+	be sure to report them in the discord server in #support.
+	<br><br>
+	Happy shopping!
+	
+	- Ocarina
+	</div>
+<% } %>
+</body>
+</html>

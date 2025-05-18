@@ -1,12 +1,62 @@
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.URLEncoder,java.net.URLDecoder,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*,java.util.stream.Collectors" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <a href="javascript:window.location.reload();">reload</a>
 <a href="javascript:window.history.go(-1)">back</a>
 
+<%
+String region3Letter = request.getParameter("region") == null ? "USA" : request.getParameter("region");
+region3Letter = region3Letter == "" ? "USA" : region3Letter;
+String language = request.getParameter("language") == null ? "en" : request.getParameter("language");
+
+String targetURL = "http://127.0.0.1:8082/W_01titles?region=" + region3Letter + "&language=" + language;
 
 
+StringBuilder res = new StringBuilder();
+String games = "";
+try {
+    URL url = new URL(targetURL);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
 
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	String line;
+	while ((line = reader.readLine()) != null) {
+	    res.append(line);
+	}
+	reader.close();
+	games = res.toString();
+    } else if (responseCode == 500) {
+	games = "[{ id: '', title1: '', title2: '', console: '', controllers: '', region: '', language: '', attributes: '', date: '', added: '', publisher: '', genre: '', points: '', players: '', rating: '', ratingdetails: '', thumbnail: '', size: '', titleVersion: -1, page: -1 }]";
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+} catch (Exception e) {
+	e.printStackTrace();
+	res.append("Error: ").append(e.getMessage());
+}
+%>
+
+<%
+JSONArray g = null;
+// Parse JSON response
+try {
+    g = new JSONArray(games);
+} catch (Exception e) {
+    g = new JSONArray("[{'recommendedTitles':[{ id: '', title1: '', title2: '', console: '', controllers: '', region: '', language: '', attributes: '', date: '', added: '', publisher: '', genre: '', points: '', players: '', rating: '', ratingdetails: '', thumbnail: '', size: '', titleVersion: -1, page: -1 }],'titleList1':[{ id: '', title1: '', title2: '', console: '', controllers: '', region: '', language: '', attributes: '', date: '', added: '', publisher: '', genre: '', points: '', players: '', rating: '', ratingdetails: '', thumbnail: '', size: '', titleVersion: -1, page: -1 }],'titleList2':[{ id: '', title1: '', title2: '', console: '', controllers: '', region: '', language: '', attributes: '', date: '', added: '', publisher: '', genre: '', points: '', players: '', rating: '', ratingdetails: '', thumbnail: '', size: '', titleVersion: -1, page: -1 }],'titleList3':[{ id: '', title1: '', title2: '', console: '', controllers: '', region: '', language: '', attributes: '', date: '', added: '', publisher: '', genre: '', points: '', players: '', rating: '', ratingdetails: '', thumbnail: '', size: '', titleVersion: -1, page: -1 }],'titleList4':[{ id: '', title1: '', title2: '', console: '', controllers: '', region: '', language: '', attributes: '', date: '', added: '', publisher: '', genre: '', points: '', players: '', rating: '', ratingdetails: '', thumbnail: '', size: '', titleVersion: -1, page: -1 }]}]");
+}
+JSONObject obj = g.getJSONObject(0);
+JSONArray rec = obj.getJSONArray("recommendedTitles");
+JSONArray tL1 = obj.getJSONArray("titleList1");
+JSONArray tL2 = obj.getJSONArray("titleList2");
+JSONArray tL3 = obj.getJSONArray("titleList3");
+JSONArray tL4 = obj.getJSONArray("titleList4");
+%>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -110,9 +160,9 @@ function initPageCommon()
 
 	iasUrl = 'https://oss-auth.thecheese.io/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -1301,67 +1351,23 @@ function initRecommendedTitles()
 {
   var recList = new Array();
   var title;
-    
+  <% for (int i = 0; i < rec.length(); i++) { %>
     title = new TitleInfo();
-      title.titleId = '00010001575A3645';
+      title.titleId = '<%= rec.getJSONObject(i).getString("id") %>';
 
-      title.nameFirstLine = 'Super Mario 63';
-      title.nameSecondLine = '';
-
-	  title.titleImage = null;
-    
-      title.titleImage = '/oss/ccs/00010001575A3645/FFFD0001';
-      MM_preloadImages('/oss/ccs/00010001575A3645/FFFD0001');
-    
-      title.isNew = 'true';
-      title.price = '500';
-      title.titleLicense = getTitleLicense(title.titleId);
-        recList[1] = title;
-      title = new TitleInfo();
-      title.titleId = '0001000146474245';
-
-      title.nameFirstLine = 'Bionic Commando';
-      title.nameSecondLine = '';
+      title.nameFirstLine = '<%= rec.getJSONObject(i).getString("title1") %>';
+      title.nameSecondLine = '<%= rec.getJSONObject(i).getString("title2") %>';
 
 	  title.titleImage = null;
     
-      title.titleImage = '/oss/ccs/0001000146474245/FFFD0001';
-      MM_preloadImages('/oss/ccs/0001000146474245/FFFD0001');
+      title.titleImage = '/oss/ccs/<%= rec.getJSONObject(i).getString("id") %>/<%= rec.getJSONObject(i).getString("thumbnail") %>';
+      MM_preloadImages('/oss/ccs/<%= rec.getJSONObject(i).getString("id") %>/<%= rec.getJSONObject(i).getString("thumbnail") %>');
     
-      title.isNew = 'true';
-      title.price = '500';
+      title.isNew = '<%= rec.getJSONObject(i).getString("isNew") %>';
+      title.price = '<%= rec.getJSONObject(i).getString("points") %>';
       title.titleLicense = getTitleLicense(title.titleId);
-        recList[2] = title;
-      title = new TitleInfo();
-      title.titleId = '000100014D534D45';
-
-      title.nameFirstLine = 'Spider-Man';
-      title.nameSecondLine = '';
-
-	  title.titleImage = null;
-    
-      title.titleImage = '/oss/ccs/000100014D534D45/FFFD0001';
-      MM_preloadImages('/oss/ccs/000100014D534D45/FFFD0001');
-    
-      title.isNew = 'true';
-      title.price = '600';
-      title.titleLicense = getTitleLicense(title.titleId);
-        recList[3] = title;
-      title = new TitleInfo();
-      title.titleId = '000100014A503145';
-
-      title.nameFirstLine = 'Super James Pond';
-      title.nameSecondLine = '';
-
-	  title.titleImage = null;
-    
-      title.titleImage = '/oss/ccs/000100014A503145/FFFD0001';
-      MM_preloadImages('/oss/ccs/000100014A503145/FFFD0001');
-    
-      title.isNew = 'true';
-      title.price = '800';
-      title.titleLicense = getTitleLicense(title.titleId);
-        recList[4] = title;
+    recList[<%= i+1 %>] = title;
+  <% } %>
   return recList;
 }
 
@@ -2649,33 +2655,28 @@ function add_scroll_counter()
       <div id="details04" class="posTitleDetails" nowrap><span class="style13"></span></div>
   </div>
 </div>
-  <div id="info02n" align="center">
-        <script language="JavaScript">if ('[NEW]Reminder: Wii Shop Closes Jan. 30, 2019'.indexOf('[NEW]', 0) != -1) {document.write('<img src="/oss/oss/common/images//banner/NEW_en.gif"> ');};</script>
+<div id="info02n" align="center">
       </div>
       <div id="info02">
         <div nowrap align="left" class="txt_info">
-          <script language="JavaScript">document.write('[NEW] Flash WiiWare has Arrived!'.replace('[NEW]', ''));</script>
+        <script>
+            if (ec.getSessionValue("currTitle")=="Wii Shop Channel") {
+                document.write("New Wii Shop Channel Features!");
+            } else {
+                document.write("New WiiMart Features!");
+            };
+        </script>
         </div>
       </div>
       <div id="infoShadow02"><img src="/oss/oss/common/images//spacer.gif" border="0" name="info02s" /></div>
-      <div id="infoSpacer02"><a href="javascript:showPage('W_02.jsp?p=6')"><img src="/oss/oss/common/images//spacer.gif" width="514" height="25" border="0" onMouseDown="MM_swapImage('info02s','','/oss/oss/common/images//banner/GifA_News_Press.png',1);" onMouseUp="MM_swapImage('info02s','','/oss/oss/common/images//banner/GifA_News_Over.png',1)" onClick="snd.playSE(cSE_Decide);" onmouseover="snd.playSE( cSE_Forcus ); MM_swapImage('info02s','','/oss/oss/common/images//banner/GifA_News_Over.png',1);move_fleeze_cursor();" onMouseOut="MM_swapImage('info02s','','/oss/oss/common/images//banner/GifA_News_noAction.png',1);" /></a></div>
-<div id="info03n" align="center">
-        <script language="JavaScript">if ('[NEW]Reminder: Wii Shop Closes Jan. 30, 2019'.indexOf('[NEW]', 0) != -1) {document.write('<img src="/oss/oss/common/images//banner/NEW_en.gif"> ');};</script>
-      </div>
-      <div id="info03">
-        <div nowrap align="left" class="txt_info">
-          <script language="JavaScript">document.write('[NEW] OG Mode now available!'.replace('[NEW]', ''));</script>
-        </div>
-      </div>
-      <div id="infoShadow03"><img src="/oss/oss/common/images//spacer.gif" border="0" name="info03s" /></div>
-      <div id="infoSpacer03"><a href="javascript:showPage('W_02.jsp?p=5')"><img src="/oss/oss/common/images//spacer.gif" width="514" height="25" border="0" onMouseDown="MM_swapImage('info03s','','/oss/oss/common/images//banner/GifA_News_Press.png',1);" onMouseUp="MM_swapImage('info03s','','/oss/oss/common/images//banner/GifA_News_Over.png',1)" onClick="snd.playSE(cSE_Decide);" onmouseover="snd.playSE( cSE_Forcus ); MM_swapImage('info03s','','/oss/oss/common/images//banner/GifA_News_Over.png',1);move_fleeze_cursor();" onMouseOut="MM_swapImage('info03s','','/oss/oss/common/images//banner/GifA_News_noAction.png',1);" /></a></div>
+      <div id="infoSpacer02"><a href="javascript:showPage('W_02.jsp?p=5')"><img src="/oss/oss/common/images//spacer.gif" width="514" height="25" border="0" onMouseDown="MM_swapImage('info02s','','/oss/oss/common/images//banner/GifA_News_Press.png',1);" onMouseUp="MM_swapImage('info02s','','/oss/oss/common/images//banner/GifA_News_Over.png',1)" onClick="snd.playSE(cSE_Decide);" onmouseover="snd.playSE( cSE_Forcus ); MM_swapImage('info02s','','/oss/oss/common/images//banner/GifA_News_Over.png',1);move_fleeze_cursor();" onMouseOut="MM_swapImage('info02s','','/oss/oss/common/images//banner/GifA_News_noAction.png',1);" /></a></div>
 
       <div id="info01n" align="center">
         <script language="JavaScript">if ('[NEW]Reminder: Wii Shop Closes Jan. 30, 2019'.indexOf('[NEW]', 0) != -1) {document.write('<img src="/oss/oss/common/images//banner/NEW_en.gif"> ');};</script>
       </div>
       <div id="info01">
         <div nowrap align="left" class="txt_info">
-          <script language="JavaScript">document.write('[NEW] Catalog updated! Games added April 23.'.replace('[NEW]', ''));</script>
+          <script language="JavaScript">document.write('Catalog updated! Games added May 14.'.replace('[NEW]', ''));</script>
         </div>
       </div>
       <div id="infoShadow01"><img src="/oss/oss/common/images//spacer.gif" border="0" name="info01s" /></div>
@@ -2686,10 +2687,10 @@ function add_scroll_counter()
             onClick="snd.playSE(cSE_Decide);" 
             onmouseover="snd.playSE( cSE_Forcus ); MM_swapImage('info01s','','/oss/oss/common/images//banner/GifA_News_Over.png',1);move_fleeze_cursor();" 
             onMouseOut="MM_swapImage('info01s','','/oss/oss/common/images//banner/GifA_News_noAction.png',1);" /></a></div>
-      <div id="info04n" align="center">
+      <div id="info03n" align="center">
         <!--<script language="JavaScript">if ('[NEW]Reminder: Wii Shop Closes Jan. 30, 2019'.indexOf('[NEW]', 0) != -1) {document.write('<img src="/oss/oss/common/images//banner/NEW_en.gif"> ');};</script>-->
       </div>
-      <div id="info04">
+      <div id="info03">
         <div nowrap align="left" class="txt_info">
           <script language="JavaScript">
           var str = "Welcome to WiiMart!";
@@ -2702,14 +2703,14 @@ function add_scroll_counter()
           </script>
         </div>
       </div>
-      <div id="infoShadow04"><img src="/oss/oss/common/images//spacer.gif" border="0" name="info04s" /></div>
-      <div id="infoSpacer04"><a href="javascript:showPage('W_02.jsp?p=1')">
+      <div id="infoShadow03"><img src="/oss/oss/common/images//spacer.gif" border="0" name="info03s" /></div>
+      <div id="infoSpacer03"><a href="javascript:showPage('W_02.jsp?p=1')">
         <img src="/oss/oss/common/images//spacer.gif" width="514" height="25" border="0" 
-            onMouseDown="MM_swapImage('info04s','','/oss/oss/common/images//banner/GifA_News_Press.png',1);" 
-            onMouseUp="MM_swapImage('info04s','','/oss/oss/common/images//banner/GifA_News_Over.png',1)" 
+            onMouseDown="MM_swapImage('info03s','','/oss/oss/common/images//banner/GifA_News_Press.png',1);" 
+            onMouseUp="MM_swapImage('info03s','','/oss/oss/common/images//banner/GifA_News_Over.png',1)" 
             onClick="snd.playSE(cSE_Decide);" 
-            onmouseover="snd.playSE( cSE_Forcus ); MM_swapImage('info04s','','/oss/oss/common/images//banner/GifA_News_Over.png',1);move_fleeze_cursor();" 
-            onMouseOut="MM_swapImage('info04s','','/oss/oss/common/images//banner/GifA_News_noAction.png',1);" /></a></div>
+            onmouseover="snd.playSE( cSE_Forcus ); MM_swapImage('info03s','','/oss/oss/common/images//banner/GifA_News_Over.png',1);move_fleeze_cursor();" 
+            onMouseOut="MM_swapImage('info03s','','/oss/oss/common/images//banner/GifA_News_noAction.png',1);" /></a></div>
       <!--<div id="info03n" align="center">
         <script language="JavaScript">if ('[NEW]Reminder: Wii Shop Closes Jan. 30, 2019'.indexOf('[NEW]', 0) != -1) {document.write('<img src="/oss/oss/common/images//banner/NEW_en.gif"> ');};</script>
       </div>

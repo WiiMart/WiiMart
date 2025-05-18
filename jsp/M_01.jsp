@@ -1,5 +1,5 @@
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 
 
 
@@ -150,9 +150,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -431,11 +431,13 @@ function needSyncEticket(progress)
 </script>
 <title>M_01.title</title>
 </head>
-
+<% String titleId = request.getParameter("titleId"); %>
 <body onload="initPageCommon();goodsfree2.focus();var shop = new wiiShop();var unused = shop.connecting;">
 <div id="goodsfree2" style="position:absolute; left:0px; top:0px; width:608px; height:456px; z-index:31; overflow:auto;">
-	
-  <iframe name="manualFrame" src="/oss/oss/ext/manual/null/FFFD1AAA/html/index.html?language=en&country=US&countryRegion=USA&region=USA&titleId=null" frameborder="0" scrolling="Auto" width="608" height="456"></iframe>
+	<%
+		String url = "/oss/oss/ext/manual/" + titleId + "/html/index.html?language=en&country=US&countryRegion=USA&region=USA&titleId=" + titleId;
+	%>
+  <iframe name="manualFrame" src="/oss/oss/ext/manual/<%= titleId %>/FFFD1AAA/html/index.html?language=en&country=US&countryRegion=USA&region=USA&titleId=<%= titleId %>" frameborder="0" scrolling="Auto" width="608" height="456"></iframe>
 </div>
 </body>
 </html>

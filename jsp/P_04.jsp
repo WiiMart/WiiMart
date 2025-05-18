@@ -1,5 +1,5 @@
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 
 
 
@@ -70,13 +70,62 @@ var testMode = 'false';
 
 function getMethod()
 {
-	return 'GET';	
+	return '<%= request.getMethod() %>';	
 }
 
 function getPostParams()
 {
 	var params = '';
-	
+	<%
+	if (request.getMethod().equals("POST")) {
+		// Read the POST body from the request
+		StringBuilder postBodyBuilder = new StringBuilder();
+    	String line;
+    	try (java.io.BufferedReader reader = request.getReader()) {
+        	while ((line = reader.readLine()) != null) {
+            	postBodyBuilder.append(line);
+        	}
+    	}
+    	String postBody = postBodyBuilder.toString();
+
+    	// Parse the parameters from the POST body
+    	java.util.Map<String, java.util.List<String>> parametersMap = new java.util.HashMap<>();
+		for (String pair : postBody.split("&")) {
+        	String[] keyValue = pair.split("=", 2);
+        	String key = java.net.URLDecoder.decode(keyValue[0], "UTF-8");
+        	String value = keyValue.length > 1 ? java.net.URLDecoder.decode(keyValue[1], "UTF-8") : "";
+        	parametersMap.computeIfAbsent(key, k -> new java.util.ArrayList<>()).add(value);
+    	}
+
+    	// Exclude these parameters
+    	java.util.Set<String> excludedParams = new java.util.HashSet<>();
+    	excludedParams.add("accountId");
+    	excludedParams.add("deviceId");
+    	excludedParams.add("serialNo");
+    	excludedParams.add("country");
+    	excludedParams.add("region");
+    	excludedParams.add("age");
+    	excludedParams.add("language");
+
+    	// Generate JavaScript code for the remaining parameters
+%> 
+<%
+    	boolean first = true;
+    	for (java.util.Map.Entry<String, java.util.List<String>> entry : parametersMap.entrySet()) {
+        	if (!excludedParams.contains(entry.getKey())) {
+            	for (String value : entry.getValue()) {
+%>
+    				<% if (!first) { %>
+    					params += "&";
+    				<% } %>
+    				params += '<%= entry.getKey() %>=<%= value %>';
+<%
+                	first = false;
+            	}
+        	}
+    	}
+	}
+%>
 	trace("getPostParams : " + params);
    	return params;
 }

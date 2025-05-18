@@ -1,7 +1,7 @@
-
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*,java.sql.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ page buffer="8192kb" autoFlush="true" %>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <button onclick="window.location.reload()">reload</button>
 <script>debugger</script>
 
@@ -153,9 +153,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -880,14 +880,92 @@ function getIcrPurchaseInfo() {
 }
 //-->
 </script>
+<%
+String titleId = request.getParameter("titleId") == null ? "" : request.getParameter("titleId");
+String targetURL = "http://127.0.0.1:8082/getTitle?titleId=" + titleId;
+%>
+<%
+StringBuilder res = new StringBuilder();
 
+try {
+    URL url2 = new URL(targetURL);
+    HttpURLConnection connection = (HttpURLConnection) url2.openConnection();
+    connection.setRequestMethod("GET");
 
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
 
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    while ((line = reader.readLine()) != null) {
+        res.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    e.printStackTrace();
+    res.append("Error: ").append(e.getMessage());
+}
+
+String games = res.toString();
+//Tmd size stuff
+String tmdUrl = "http://198.62.122.200/ccs/download/" + titleId + "/tmd";
+StringBuilder tmdRes = new StringBuilder();
+long tmdSize = 0;
+try {
+    URL url3 = new URL(tmdUrl);
+    HttpURLConnection connection = (HttpURLConnection) url3.openConnection();
+    connection.setRequestMethod("GET");
+    tmdSize = connection.getContentLengthLong();
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    //String contentLength = connection.getHeaderField("Content-Length");
+    //tmdSize = contentLength;
+    while ((line = reader.readLine()) != null) {
+        tmdRes.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    //e.printStacktrace(out);
+    res.append("Error: ").append(e.getMessage());
+}
+%>
+<%
+// Parse JSON response
+JSONObject title = new JSONObject(games);
+String id = title.getString("id").replace("00010002", "00010001");
+String title1 = title.getString("title1");
+String title2 = title.getString("title2");
+String platform = title.getString("console");
+if (platform.equals("WII")) {
+    platform = "Wii Channels";
+} else if (platform.equals("WIIWARE")) {
+    platform = "WiiWare";
+};
+String releaseDate = title.getString("date");
+String genre = title.getString("genre");
+String publisher = title.getString("publisher");
+String points = title.getString("points");
+String latestVersion = title.getString("titleVersion");
+String size = title.getString("size");
+%>
 <script type="text/JavaScript">
 <!--
-var titleId = '';
-var titleSize = '';
-var titlePoints = '';
+var titleId = '<%= request.getParameter("titleId") == null ? "" : request.getParameter("titleId") %>';
+var titleSize = '<%= size %>';
+var titlePoints = '<%= points %>';
 
 
 
@@ -900,13 +978,13 @@ var friendCode = nwc24.getFriendInfo(friendIndex, "userId");
 function initPage()
 {
 	initPageCommon();
-	var giftTitleUrl = 'B_22.jsp?titleId=&itemId=101449&recipient=null';
+	var giftTitleUrl = 'B_22.jsp?titleId=<%= id %>&itemId=101449&recipient=<%= request.getParameter("recipient") %>';
 	MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif','/oss/oss/common/images//banner/help_b.gif','/oss/oss/common/images//banner/top_b.gif');
 	setUnderButtonL(true, 'Yes', "javascript:showPage('" + giftTitleUrl + "')", "wiiSelectSound()");
 	setUnderButtonR(true, 'No', "javascript:showBack()", "wiiCancelSound()");
 	// show points
 	var t = ec.getTitleInfo (titleId);	
-	var latestVersion = parseInt('-1');
+	var latestVersion = parseInt('<%= latestVersion %>');
 	var currentBalance = getBalance();
 	var remainingBalance = currentBalance - titlePoints;
 	document.getElementById("pointcost01").innerHTML = 
@@ -1108,12 +1186,12 @@ function getUrlParameter(name) {
   </div>
 </div>
 <div style="overflow:hidden" nowrap id="TitleName1stline">
-  <div align="center" class="contentsBlueM"></div>
+  <div align="center" class="contentsBlueM"><%= title1 %></div>
 </div>
-
+<% if (title2 != "") { %>
 <div style="overflow:hidden" nowrap id="TitleName2stline">
-	<div align="center" class="contentsBlueM"></div>
+	<div align="center" class="contentsBlueM"><%= title2 %></div>
   </div>
-
+<% } %>
 </body>
 </html>

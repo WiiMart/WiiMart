@@ -1,22 +1,105 @@
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
-
-
-
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 
 
 
+
+
+<%
+String titleId = request.getParameter("titleId") == null ? "" : request.getParameter("titleId");
+String targetURL = "http://127.0.0.1:8082/getTitle?titleId=" + titleId;
+%>
 <script>
-    console.log("")
+    console.log("<%= titleId %>")
 </script>
+<%
+StringBuilder res = new StringBuilder();
 
+try {
+    URL url = new URL(targetURL);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    while ((line = reader.readLine()) != null) {
+        res.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    e.printStackTrace();
+    res.append("Error: ").append(e.getMessage());
+}
+
+String games = res.toString();
+//Tmd size stuff
+String tmdUrl = "http://198.62.122.200/ccs/download/" + titleId + "/tmd";
+StringBuilder tmdRes = new StringBuilder();
+long tmdSize = 0;
+try {
+    URL url = new URL(tmdUrl);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+    tmdSize = connection.getContentLengthLong();
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    //String contentLength = connection.getHeaderField("Content-Length");
+    //tmdSize = contentLength;
+    while ((line = reader.readLine()) != null) {
+        tmdRes.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    //e.printStacktrace(out);
+    res.append("Error: ").append(e.getMessage());
+}
+%>
 <script>
-	console.log('{"id":"","title1":"","title2":"","console":"","controllers":"","region":"","language":"","attributes":"","date":"","added":"","publisher":"","genre":"","points":"","players":"","rating":"","ratingdetails":"","thumbnail":"","size":"","titleVersion":-1,"page":-1}');
+	console.log('<%= games %>');
 </script>
-
+<%
+// Parse JSON response
+JSONObject title = new JSONObject(games);
+String id = title.getString("id");
+String thumbnail = title.getString("thumbnail");
+String title1 = title.getString("title1");
+String title2 = title.getString("title2");
+String platform = title.getString("console");
+if (platform.equals("WII")) {
+    platform = "Wii Channels";
+} else if (platform.equals("WIIWARE")) {
+    platform = "WiiWare";
+};
+String releaseDate = title.getString("date");
+String genre = title.getString("genre");
+String publisher = title.getString("publisher");
+String points = title.getString("points");
+String players = title.getString("players");
+String ratingDetails = title.getString("ratingdetails");
+String rating = title.getString("rating").toUpperCase();
+String controllers = title.getString("controllers");
+String size = title.getString("size");
+String latestVersion = title.getString("titleVersion");
+%>
 <script>
-    console.log("")
+    console.log("<%= id %>")
 </script>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -269,9 +352,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -870,19 +953,19 @@ var sdErrorMessage = ['An SD Card process failed.',
                       'An SD Card process failed.',
                       'There is not enough available space in Wii system memory.<BR>Create '+0+' block(s) of free space either by moving data to an SD Card or deleting data in the Wii console&rsquo;s Data Management screen.' ];
 
-var titleId = '';
-var titleSize = '';
-var titleTmdSize = '-1';
-var latestVersion = parseInt('-1');
+var titleId = '<%= titleId %>';
+var titleSize = '<%= size %>';
+var titleTmdSize = '<%= tmdSize %>';
+var latestVersion = parseInt('<%= latestVersion %>');
 
-var titlePoints = '';
+var titlePoints = '<%= points %>';
 
 var titleManager = new TitleManager(titleId, titleSize, titleTmdSize, latestVersion);
 //titleManager.traceLog();
 
 var titleSizeKB = titleManager.getTitleKBSize();
 var titleSizeBlock = 0;
-var sd = '';
+var sd = '<%= request.getParameter("SD") == null ? "" : request.getParameter("SD") %>';
 var redownloadFlagExt;
 var itemId;
 
@@ -907,7 +990,7 @@ function showSDSelection(checkSDFlag)
         var useCampaignCode = ec.getSessionValue("useCampaignCode");
 
         if (status == "receiving") {
-            setUnderButtonL(true, 'Later', "javascript:goGiftNext('0001000157414945')", "wiiCancelSound()");
+            setUnderButtonL(true, 'Later', "javascript:goGiftNext('<%= titleId %>')", "wiiCancelSound()");
         } else if (useCampaignCode == "true") {
             setUnderButtonL(true, 'Later', "javascript:showBack()", "wiiCancelSound()");
         } else {
@@ -944,24 +1027,24 @@ function showConfirmframe()
             var status = ec.getSessionValue("giftStatus");
             var useCampaignCode = ec.getSessionValue("useCampaignCode");
             if (status == "receiving" || useCampaignCode == "true") {
-                setUnderButtonL(true, 'Now', "javascript:showPage('B_10.jsp?SD=N&titleId=')", "wiiSelectSound()");
+                setUnderButtonL(true, 'Now', "javascript:showPage('B_10.jsp?SD=N&titleId=<%= titleId %>')", "wiiSelectSound()");
             } else {
-                setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=N&titleId=')", "wiiSelectSound()");
+                setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=N&titleId=<%= titleId %>')", "wiiSelectSound()");
             }
         } else {
-            setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=N&titleId=')", "wiiSelectSound()");
+            setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=N&titleId=<%= titleId %>')", "wiiSelectSound()");
         }
     } else {
         if (ecSupportsSession()) {
             var status = ec.getSessionValue("giftStatus");
             var useCampaignCode = ec.getSessionValue("useCampaignCode");
             if (status == "receiving" || useCampaignCode == "true") {
-                setUnderButtonL(true, 'Now', "javascript:showPage('B_10.jsp?SD=Y&titleId=')", "wiiSelectSound()");
+                setUnderButtonL(true, 'Now', "javascript:showPage('B_10.jsp?SD=Y&titleId=<%= titleId %>')", "wiiSelectSound()");
             } else {
-                setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=Y&titleId=')", "wiiSelectSound()");
+                setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=Y&titleId=<%= titleId %>')", "wiiSelectSound()");
             }
         } else {
-            setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=Y&titleId=')", "wiiSelectSound()");
+            setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=Y&titleId=<%= titleId %>')", "wiiSelectSound()");
         }
     }
 }
@@ -1184,21 +1267,21 @@ function initPage()
 		trace("useCampaignCode: " + useCampaignCode);
 	
 		if (status == "receiving") {
-			setUnderButtonL(true, 'Now', "javascript:showPage('B_10.jsp?SD=N&titleId=')", "wiiSelectSound()");
-			setUnderButtonR(true, 'Later', "javascript:goGiftNext('0001000157414945')", "wiiCancelSound()");
+			setUnderButtonL(true, 'Now', "javascript:showPage('B_10.jsp?SD=N&titleId=<%= titleId %>')", "wiiSelectSound()");
+			setUnderButtonR(true, 'Later', "javascript:goGiftNext('<%= titleId %>')", "wiiCancelSound()");
 			document.getElementById("confirmationMsg").innerHTML = 'Download this software to Wii system memory now?';
 			document.getElementById("confirmationMsgWithSD").innerHTML = 'Download this software to an SD<BR>Card now?';
 			document.getElementById("constElements").style.display='none';
 			document.getElementById("giftline").style.display='';
 			document.getElementById("giftcurrentBalance").innerHTML = getBalance();
 		} else if (useCampaignCode == "true") {
-			setUnderButtonL(true, 'Now', "javascript:showPage('B_10.jsp?SD=N&titleId=')", "wiiSelectSound()");
+			setUnderButtonL(true, 'Now', "javascript:showPage('B_10.jsp?SD=N&titleId=<%= titleId %>')", "wiiSelectSound()");
 			setUnderButtonR(true, 'Later', "javascript:showBack()", "wiiCancelSound()");
 			document.getElementById("confirmationMsg").innerHTML = 'Download this software to Wii<BR>system memory now?';
 			document.getElementById("confirmationMsgWithSD").innerHTML = 'Download this software to an SD<BR>Card now?';
 			disableWiiPointButton();
 		} else {
-			setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=N&titleId=')", "wiiSelectSound()");
+			setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=N&titleId=<%= titleId %>')", "wiiSelectSound()");
 			setUnderButtonR(true, 'No', "javascript:showOldPage('B_05.jsp')", "wiiCancelSound()");
 			document.getElementById("confirmationMsg").innerHTML = 'Download this software to Wii<BR>system memory now?';
 			document.getElementById("confirmationMsgWithSD").innerHTML = 'Download this software to an SD<BR>Card now?';
@@ -1206,7 +1289,7 @@ function initPage()
 		// ec.setSessionValue("useCampaignCode", null);
 		// trace("clear useCampaignCode in B_09. ");
 	} else {
-		setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=N&titleId=')", "wiiSelectSound()");
+		setUnderButtonL(true, 'Yes', "javascript:showPage('B_10.jsp?SD=N&titleId=<%= titleId %>')", "wiiSelectSound()");
 		setUnderButtonR(true, 'No', "javascript:showOldPage('B_05.jsp')", "wiiCancelSound()");
 	}
 
@@ -1468,7 +1551,7 @@ function initPage()
   <div align="right" class="catalogTitleBlack_01"></div>
 </div>
 <div id="pointword02">
-  <div align="right" class="contentsRedM"><script>document.append(Number(ec.getCachedBalance()) + Number(""))</script></div>
+  <div align="right" class="contentsRedM"><script>document.append(Number(ec.getCachedBalance()) + Number("<%= points %>"))</script></div>
 </div>
 <div id="pointword03">
   <div align="right" class="catalogTitleBlack_01"></div>
@@ -1513,9 +1596,13 @@ function initPage()
   </div>
 </div>
 <div style="overflow:hidden" nowrap id="TitleName1stline">
-  <div align="center" class="contentsBlueM"></div>
+  <div align="center" class="contentsBlueM"><%= title1 %></div>
 </div>
-
+<% if (!title2.equals("")) { %>
+  <div style="overflow:hidden" nowrap id="TitleName2stline">
+    <div align="center" class="contentsBlueM"><%= title2 %></div>
+  </div>
+<% } %>
 </div>
 
 
@@ -1557,7 +1644,7 @@ function initPage()
       </div>
     </div>
     <div id="spacer01">
-      <a id="NANDAnchor" href="javascript:onNANDButtonPressed('0001000157414945', '', redownloadFlagExt)">
+      <a id="NANDAnchor" href="javascript:onNANDButtonPressed('<%= titleId %>', '', redownloadFlagExt)">
         <img src="/oss/oss/common/images//spacer.gif" name="Image01s" width="236" height="184" border="0" id="Image01s" 
         onmouseover="MM_swapImage('Image01','','/oss/oss/common/images//banner/sdToNAND_b.png',1);snd.playSE( cSE_Forcus );" 
         onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" />
@@ -1578,7 +1665,7 @@ function initPage()
       </div>
     </div>
     <div id="spacer02">
-      <a id="SDAnchor" href="javascript:onSDButtonPressed('0001000157414945', '', redownloadFlagExt)">
+      <a id="SDAnchor" href="javascript:onSDButtonPressed('<%= titleId %>', '', redownloadFlagExt)">
         <img src="/oss/oss/common/images//spacer.gif" name="Image02s" width="236" height="184" border="0" id="Image02s" 
          onmouseover="MM_swapImage('Image02','','/oss/oss/common/images//banner/sdToSD_b.png',1);snd.playSE( cSE_Forcus );" 
          onmouseout="MM_swapImgRestore()" onclick="snd.playSE(cSE_Decide);" />

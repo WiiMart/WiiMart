@@ -1,7 +1,19 @@
-
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*,javafx.scene.web.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%
+	String pageParam = request.getParameter("p");
+	if (pageParam != null) {
+		pageParam = pageParam.replaceAll("&", "&amp")
+			.replaceAll("<", "&lt;")
+                        .replaceAll(">", "&gt;")
+                        .replaceAll("\"", "&quot;")
+                        .replaceAll("'", "&#x27;")
+                        .replaceAll("/", "&#x2F;");
+	} else {
+		pageParam = "1";
+	}
+%>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 
 
 
@@ -139,9 +151,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -707,8 +719,7 @@ function initPage()
 	  <a href="javascript:showBack()" id="underlinkL">
     	<img id="underimageL" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"  
     	onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
-    	onmouseout="MM_swapImgRestore()"
-      onclick="snd.playSE(cSE_Cancel)"/>
+    	onmouseout="MM_swapImgRestore()"/>
       </a>	
     </div>
     <div id="underwordL" align="center" class="buttonTextBlackM buttonWord"><table width="100%" height="100%"><tr><td align="center" valign="middle">Back</tr></td></table></div>
@@ -754,7 +765,7 @@ function initPage()
 <div class="titleBlackL" id="text01-01">
 <div align="left">Account Activity</div>
 </div>
-<div id="pageTotal" class="buttonTextBlackM">1/1</div>
+<div id="pageTotal" class="buttonTextBlackM"><%= pageParam %>/1</div>
 
 <div id="header01">
       <span id="dateHeader" style="line-height:16px" class="headerBlueS">Date</span>
@@ -942,7 +953,7 @@ function initPage()
 <div class="titleBlackL" id="text01-01">
 <div align="left">Account Activity</div>
 </div>
-<div id="pageTotal" class="buttonTextBlackM">1/1</div>
+<div id="pageTotal" class="buttonTextBlackM"><%= pageParam %>/1</div>
 
 
 

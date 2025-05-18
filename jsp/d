@@ -1,0 +1,17 @@
+<%	
+	   	class Params {
+			String name;
+			String value;
+
+    		// Constructor to initialize student object
+    		void Student(String name, String value) {
+        		this.name = name;
+        		this.value = value;
+    		}
+		}
+		Enumeration par = request.getParameterNames();
+		Params<String> k = new ArrayList<String>();
+		while (par.hasMoreElements()) {
+			k.add(new Params(par.nextElement(), request.getParameter(par.nextElement())));
+		}
+	%>

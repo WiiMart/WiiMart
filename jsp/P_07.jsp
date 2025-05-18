@@ -1,5 +1,5 @@
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 
 
 
@@ -144,7 +144,7 @@ function initPageCommon()
 
 	ccsUrl = 'http://ccs.cdn.thecheese.io/ccs/download';
 
-	ucsUrl = 'https://ccs.thecheese.io/ccs/download';
+	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -537,10 +537,10 @@ function select(index)
 		form.id = "ccardSelectForm";
 		form.innerHTML = "";
 		form.innerHTML += '<div id="commonFields"></div>';
-		form.innerHTML += '<input type="hidden" name="pointsValue" value="' + 'null' + '"/>';
-		form.innerHTML += '<input type="hidden" name="pointsCost" value="' + 'null' + '"/>';
-		form.innerHTML += '<input type="hidden" name="itemId" value="' + 'null' + '"/>';
-		form.innerHTML += '<input type="hidden" name="currency" value="' + 'null' + '"/>';
+		form.innerHTML += '<input type="hidden" name="pointsValue" value="' + '<%= request.getParameter("pointsValue") %>' + '"/>';
+		form.innerHTML += '<input type="hidden" name="pointsCost" value="' + '<%= request.getParameter("pointsCost") %>' + '"/>';
+		form.innerHTML += '<input type="hidden" name="itemId" value="' + '<%= request.getParameter("itemId") %>' + '"/>';
+		form.innerHTML += '<input type="hidden" name="currency" value="' + '<%= request.getParameter("currency") %>' + '"/>';
 		form.innerHTML += '<input type="hidden" name="cardType" value="' + companyNames[index] + '"/>';
 		document.body.appendChild(form);
 		initCommonFields("commonFields");

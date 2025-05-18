@@ -1,5 +1,5 @@
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*,javax.servlet.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 
 
 
@@ -69,7 +69,7 @@ var testMode = 'false';
 
 function getMethod()
 {
-	return 'GET';	
+	return '<%= request.getMethod() %>';	
 }
 
 function getPostParams()
@@ -134,9 +134,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -448,8 +448,10 @@ function initPage()
 </head>
 
 <body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
-
+<%
+	String titleId = request.getParameter("titleId");
+%>
 <div id="banner" style="position:absolute; left:209px; top:369px; width:190px; height:54px; z-index:1"><img src="/oss/oss/common/images//HealthAndSafety_image/B_12_banner_EN.gif" width="190" height="54"></div>
-<div id="spacer"><a href="javascript:goGiftNext('null')"><img src="/oss/oss/common/images//spacer.gif" width="190" height="54" border="0" onmouseover="wiiFocusSound();" onclick="wiiSelectSound();"></a></div>
+<div id="spacer"><a href="javascript:goGiftNext('<%= titleId %>')"><img src="/oss/oss/common/images//spacer.gif" width="190" height="54" border="0" onmouseover="wiiFocusSound();" onclick="wiiSelectSound();"></a></div>
 </body>
 </html>

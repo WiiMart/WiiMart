@@ -1,19 +1,71 @@
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
-
-
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 
 
+
+<%
+String titleId = request.getParameter("titleId") == null ? "" : request.getParameter("titleId");
+String targetURL = "http://127.0.0.1:8082/getTitle?titleId=" + titleId;
+%>
 <script>
-    console.log("")
+    console.log("<%= titleId %>")
 </script>
+<%
+StringBuilder res = new StringBuilder();
 
+try {
+    URL url = new URL(targetURL);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    while ((line = reader.readLine()) != null) {
+        res.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    e.printStackTrace();
+    res.append("Error: ").append(e.getMessage());
+}
+
+String games = res.toString();
+%>
 <script>
-	console.log('{"id":"","title1":"","title2":"","console":"","controllers":"","region":"","language":"","attributes":"","date":"","added":"","publisher":"","genre":"","points":"","players":"","rating":"","ratingdetails":"","thumbnail":"","size":"","titleVersion":-1,"page":-1}');
+	console.log('<%= games %>');
 </script>
-
+<%
+// Parse JSON response
+JSONObject title = new JSONObject(games);
+String id = title.getString("id");
+String thumbnail = title.getString("thumbnail");
+String title1 = title.getString("title1");
+String title2 = title.getString("title2");
+String platform = title.getString("console");
+if (platform.equals("WII")) {
+    platform = "Wii Channels";
+} else if (platform.equals("WIIWARE")) {
+    platform = "WiiWare";
+};
+String releaseDate = title.getString("date");
+String genre = title.getString("genre");
+String publisher = title.getString("publisher");
+String points = title.getString("points");
+String players = title.getString("players");
+String ratingDetails = title.getString("ratingdetails");
+String rating = title.getString("rating").toUpperCase();
+String controllers = title.getString("controllers");
+%>
 <script>
-    console.log("")
+    console.log("<%= id %>")
 </script>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -161,9 +213,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -578,11 +630,11 @@ function initPage()
 			setUnderButtonL(true, "Back", "javascript:showOldPage('B_05.jsp')", "snd.playSE(cSE_Cancel)");
 			if (showCtrlPage != "true") {
 				if (hasCautionItem2 == "true" || ((genreWifiPay == "true") && (wifiIndicator == WIFI_PARTIALLY_CHARGED || wifiIndicator == WIFI_ALL_CHARGED || wifiIndicator == WIFI_FREE_INPUT))) {
-					setUnderButtonR(true, "OK", "javascript:showPage('B_28.jsp?titleId=&itemId=&SD=')", "snd.playSE(cSE_Decide)");
+					setUnderButtonR(true, "OK", "javascript:showPage('B_28.jsp?titleId=<%= titleId %>&itemId=&SD=')", "snd.playSE(cSE_Decide)");
 				} else if (hasCautionItem3 == "true") {
-					setUnderButtonR(true, "OK", "javascript:showPage('B_29.jsp?titleId=&itemId=&SD=')", "snd.playSE(cSE_Decide)");
+					setUnderButtonR(true, "OK", "javascript:showPage('B_29.jsp?titleId=<%= titleId %>&itemId=&SD=')", "snd.playSE(cSE_Decide)");
 				} else {
-					setUnderButtonR(true, "OK", "javascript:showPage('B_18.jsp?titleId=&itemId=&SD=')", "snd.playSE(cSE_Decide)");
+					setUnderButtonR(true, "OK", "javascript:showPage('B_18.jsp?titleId=<%= titleId %>&itemId=&SD=')", "snd.playSE(cSE_Decide)");
 				}
 			}
 		} else if (giftStatus == "receiving") {
@@ -592,11 +644,11 @@ function initPage()
 				setUnderButtonL(true, "Back", "javascript:showBack()", "snd.playSE(cSE_Cancel)");
 			} else {
 				if (hasCautionItem2 == "true" || ((genreWifiPay == "true") && (wifiIndicator == WIFI_PARTIALLY_CHARGED || wifiIndicator == WIFI_ALL_CHARGED || wifiIndicator == WIFI_FREE_INPUT))) {
-					setUnderButtonR(true, "OK", "javascript:showPage('B_28.jsp?titleId=&itemId=&SD=')", "snd.playSE(cSE_Decide)");
+					setUnderButtonR(true, "OK", "javascript:showPage('B_28.jsp?titleId=<%= titleId %>&itemId=&SD=')", "snd.playSE(cSE_Decide)");
 				} else if (hasCautionItem3 == "true") {
-					setUnderButtonR(true, "OK", "javascript:showPage('B_29.jsp?titleId=&itemId=&SD=')", "snd.playSE(cSE_Decide)");
+					setUnderButtonR(true, "OK", "javascript:showPage('B_29.jsp?titleId=<%= titleId %>&itemId=&SD=')", "snd.playSE(cSE_Decide)");
 				} else {
-					setUnderButtonR(true, "OK", "javascript:showPage('B_09.jsp?titleId=&SD=')", "snd.playSE(cSE_Decide)");
+					setUnderButtonR(true, "OK", "javascript:showPage('B_09.jsp?titleId=<%= titleId %>&SD=')", "snd.playSE(cSE_Decide)");
 				}
 			}
 			document.getElementById("constElements").style.display='none';
@@ -604,7 +656,7 @@ function initPage()
 			document.getElementById("giftcurrentBalance").innerHTML = getBalance();
 		/* } else if (redownloadFlag == "true") {
 			setUnderButtonL(true, "Back", "javascript:showGiftTrans("+transId+")", "snd.playSE(cSE_Cancel)");
-			setUnderButtonR(true, "OK", "javascript:showPage('B_09.jsp?titleId=&SD=')", "snd.playSE(cSE_Decide)");
+			setUnderButtonR(true, "OK", "javascript:showPage('B_09.jsp?titleId=<%= titleId %>&SD=')", "snd.playSE(cSE_Decide)");
 		*/
 		} else {
 			var lastPageB08 = ec.getSessionValue("history.B_08.-1");
@@ -616,11 +668,11 @@ function initPage()
 			}
 			if (showCtrlPage != "true") {
 				if (hasCautionItem2 == "true" || ((genreWifiPay == "true") && (wifiIndicator == WIFI_PARTIALLY_CHARGED || wifiIndicator == WIFI_ALL_CHARGED || wifiIndicator == WIFI_FREE_INPUT))) {
-					setUnderButtonR(true, "OK", "javascript:showPage('B_28.jsp?titleId=&itemId=&SD=')", "snd.playSE(cSE_Decide)");
+					setUnderButtonR(true, "OK", "javascript:showPage('B_28.jsp?titleId=<%= titleId %>&itemId=&SD=')", "snd.playSE(cSE_Decide)");
 				} else if (hasCautionItem3 == "true") {
-					setUnderButtonR(true, "OK", "javascript:showPage('B_29.jsp?titleId=&itemId=&SD=')", "snd.playSE(cSE_Decide)");
+					setUnderButtonR(true, "OK", "javascript:showPage('B_29.jsp?titleId=<%= titleId %>&itemId=&SD=')", "snd.playSE(cSE_Decide)");
 				} else {
-					setUnderButtonR(true, "OK", "javascript:showPage('B_09.jsp?titleId=&SD=')", "snd.playSE(cSE_Decide)");
+					setUnderButtonR(true, "OK", "javascript:showPage('B_09.jsp?titleId=<%= titleId %>&SD=')", "snd.playSE(cSE_Decide)");
 				}
 			}
 		}
@@ -767,10 +819,10 @@ function initPage()
   <div align="center" ><img src="/oss/oss/common/images//banner/Purchasing_frame01.gif" width="500" height="280" /> </div>
 </div>
 <div id="TitleName1stline" nowrap>
-  <div align="center" class="contentsBlueM"></div>
+  <div align="center" class="contentsBlueM"><%= title1 %></div>
 </div>
 <div style="overflow:hidden" nowrap="" id="TitleName2stline">
-    <div align="center"><span class="contentsBlueM"></span></div>
+    <div align="center"><span class="contentsBlueM"><%= title2 %></span></div>
   </div>
 <div id="text02-01" >
   <div align="center" >
@@ -778,7 +830,7 @@ function initPage()
   </div>
 </div>
 
-	
+	<%= controllers %>
 
 <div id="text03-01">
     <div align="center" >

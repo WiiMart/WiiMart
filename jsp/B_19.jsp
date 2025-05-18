@@ -1,6 +1,87 @@
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%
+String titleId = request.getParameter("titleId") == null ? "" : request.getParameter("titleId");
+String targetURL = "http://127.0.0.1:8082/getTitle?titleId=" + titleId;
 
+StringBuilder res = new StringBuilder();
 
+try {
+    URL url = new URL(targetURL);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
 
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    while ((line = reader.readLine()) != null) {
+        res.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    //e.printStacktrace();
+}
+
+String games = res.toString();
+//Tmd size stuff
+String tmdUrl = "http://198.62.122.200/ccs/download/" + titleId + "/tmd";
+StringBuilder tmdRes = new StringBuilder();
+long tmdSize = 0;
+try {
+    URL url = new URL(tmdUrl);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+    tmdSize = connection.getContentLengthLong();
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    //String contentLength = connection.getHeaderField("Content-Length");
+    //tmdSize = contentLength;
+    while ((line = reader.readLine()) != null) {
+        tmdRes.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    //e.printStacktrace(out);
+    res.append("Error: ").append(e.getMessage());
+}
+// Parse JSON response
+JSONObject title = new JSONObject(games);
+String id = title.getString("id");
+String thumbnail = title.getString("thumbnail");
+String title1 = title.getString("title1");
+String title2 = title.getString("title2");
+String platform = title.getString("console");
+if (platform.equals("WII")) {
+    platform = "Wii Channels";
+} else if (platform.equals("WIIWARE")) {
+    platform = "WiiWare";
+};
+String releaseDate = title.getString("date");
+String genre = title.getString("genre");
+String publisher = title.getString("publisher");
+String points = title.getString("points");
+String players = title.getString("players");
+String ratingDetails = title.getString("ratingdetails");
+String rating = title.getString("rating").toUpperCase();
+String controllers = title.getString("controllers");
+String size = title.getString("size");
+String latestVersion = title.getString("titleVersion");
+%>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -118,9 +199,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -809,18 +890,18 @@ trace(checking);
 
 function giveGift()
 {
-	var nextUrl = 'B_21.jsp?titleId=&recipient=';
+	var nextUrl = 'B_21.jsp?titleId=<%= request.getParameter("titleId") == null ? "" : request.getParameter("titleId") %>&recipient=<%= request.getParameter("recipient") == null ? "" : request.getParameter("recipient") %>';
 	var messageElem = document.getElementById("message");
 	var msg = messageElem.value;
 	var transId = "";
 	var giftStatus;
 	var selectedMiiIdx;
-	var mesSendHeader = 'You have been sent a gift containing\n\n\nthrough the Wii Shop Channel. \n\n';
+	var mesSendHeader = 'You have been sent a gift containing\n<%= title1 %>\n<%= title2 %>\nthrough the Wii Shop Channel. \n\n';
 	var mesSendFooter = '【How to Get Your Gift】\nSelect the Start icon in the lower\nright to jump to the gift-receiving\npage. At that page, select the Receive\nicon. (If you do not see the Start\nicon, you will need to perform a\nsystem update before receiving your\ngift.) \nIf you do not choose to receive or\nreturn a gift within 45 days of the\ntime it was sent to you, it will be\nautomatically returned to the sender.';
 	var mesSendHeadLi = '【Message】\n';
 	var mesSendFootLi = '\n\n';
-	var mesRecvAccept = 'The gift you sent containing\n\n\nhas been received. ';
-	var mesRecvReject = 'The gift you sent containing\n\n\nhas been returned. ';
+	var mesRecvAccept = 'The gift you sent containing\n<%= title1 %>\n<%= title2 %>\nhas been received. ';
+	var mesRecvReject = 'The gift you sent containing\n<%= title1 %>\n<%= title2 %>\nhas been returned. ';
 	if (ecSupportsSession()) {
 		selectedMiiIdx = window.miiSelector.selectedMiiIdx;
 		trace("selectedMiiIdx::::"+selectedMiiIdx);
@@ -854,8 +935,8 @@ function giveGift()
 		showPage(nextUrl);
 	    }
 	} else {
-		var titleId = '';
-		var recipient = '';
+		var titleId = '<%= request.getParameter("titleId") == null ? "" : request.getParameter("titleId") %>';
+		var recipient = '<%= request.getParameter("recipient") == null ? "" : request.getParameter("recipient") %>';
 		showGiftMessageSent(titleId, recipient);
 	}
 }
@@ -875,7 +956,7 @@ function initPage()
       '/oss/oss/common/images/banner/B_20_MiiSelect_btn_b.png');
 	var nwc24 = new wiiNwc24 ;
 	if(!nwc24.sendable) nwc24.dispError();
-	var friendIndex = parseInt('');
+	var friendIndex = parseInt('<%= request.getParameter("recipient") == null ? "" : request.getParameter("recipient") %>');
 	var friendName = null;
 	friendName = nwc24.getFriendInfo(friendIndex, "name");
 	if (friendName != null)

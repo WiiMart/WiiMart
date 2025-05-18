@@ -1,5 +1,5 @@
-
-
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51,7 +51,7 @@ var testMode = 'false';
 
 function getMethod() 
 {
-	return "GET"
+	return "<%= request.getMethod() %>"
 }
 
 function getPostParams()
@@ -435,7 +435,7 @@ function handleError(progress)
 
 function gotoNext()
 {
-    var nextUrl = decodeURIComponent('');
+    var nextUrl = decodeURIComponent('<%=request.getParameter("next") == null ? "" : request.getParameter("next") %>');
     setCheckRegisterNeeded(false);
     replacePage(nextUrl);
 }

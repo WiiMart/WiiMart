@@ -1,7 +1,7 @@
-
-
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <script>debugger;</script>
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <a href="javascript:window.location.reload()">reload</a>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -144,9 +144,9 @@ function initPageCommon()
 
 	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -554,4 +554,37 @@ function initPage()
 <div id="goodsdetails">
   <div id="title02">
     <div nowrap align="center">
-		
+		<%
+		String titleString = "";
+		if (request.getParameter("p").equals("1")) {
+			titleString = "Welcome to WiiMart!";
+		} else if (request.getParameter("p").equals("2")) {
+			titleString = "[NEW] Wii Channels now display correctly!";
+		} else if (request.getParameter("p").equals("3")) {
+			titleString = "Catalog updated! Games added May 14.";
+		} else if (request.getParameter("p").equals("5")) {
+			titleString = "New WiiMart Features!";
+		} else if (request.getParameter("p").equals("6")) {
+			titleString = "[NEW] Flash WiiWare has Arrived!";
+		} else {
+			titleString = "Welcome to WiiMart!";
+		}
+		%>
+    <div align="left"><span style="overflow:hidden" class="headerWhiteM"><script language="JavaScript">
+		if (ec.getSessionValue("currTitle") == "Wii Shop Channel" && "<%= titleString %>" == "Welcome to WiiMart!") {
+			document.write('Welcome to the Wii Shop Channel'.replace('[NEW]', '<img src="/oss/oss/common/images//banner/NEW_en.gif"> '));
+		} else if (ec.getSessionValue("currTitle") == "Wii Shop Channel" && "<%= titleString %>" == "New WiiMart Features!") {
+			document.write("New Wii Shop Channel Features!");
+		} else {
+			document.write('<%= titleString %>'.replace('[NEW]', '<img src="/oss/oss/common/images//banner/NEW_en.gif">'));
+		}
+		</script></span></div>
+    </div>
+  </div>
+  <img src="/oss/oss/common/images//banner/box.gif" width="540" height="272" />
+  <div id="free">
+    <iframe src='W_02_1.jsp?p=<%= request.getParameter("p") %>&region=<%= request.getParameter("region") %>' frameborder="0" style="border:solid 1px #FFFFFF;" scrolling="Auto" width="530" height="240"></iframe>
+  </div>
+</div>
+</body>
+</html>
