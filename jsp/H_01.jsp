@@ -1,24 +1,12 @@
 <%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*,javafx.scene.web.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%
 	String pageParam = request.getParameter("p");
-	if (pageParam != null) {
-		pageParam = pageParam.replaceAll("&", "&amp")
-			.replaceAll("<", "&lt;")
-                        .replaceAll(">", "&gt;")
-                        .replaceAll("\"", "&quot;")
-                        .replaceAll("'", "&#x27;")
-                        .replaceAll("/", "&#x2F;");
-	} else {
-		pageParam = "1";
-	}
 %>
-<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
-
-
-
-
-
+<% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%>
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -40,8 +28,7 @@
 <!--  Technology, Inc.                                       -->
 <!--  -----------------------------------------------------  -->
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <!-- Main page -->
 <html>
@@ -765,7 +752,7 @@ function initPage()
 <div class="titleBlackL" id="text01-01">
 <div align="left">Account Activity</div>
 </div>
-<div id="pageTotal" class="buttonTextBlackM"><%= pageParam %>/1</div>
+<div id="pageTotal" class="buttonTextBlackM"><c:out value="${pageParam}" />/1</div>
 
 <div id="header01">
       <span id="dateHeader" style="line-height:16px" class="headerBlueS">Date</span>
@@ -953,7 +940,7 @@ function initPage()
 <div class="titleBlackL" id="text01-01">
 <div align="left">Account Activity</div>
 </div>
-<div id="pageTotal" class="buttonTextBlackM"><%= pageParam %>/1</div>
+<div id="pageTotal" class="buttonTextBlackM"><c:out value="${pageParam}"/>/1</div>
 
 
 
