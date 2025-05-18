@@ -1,5 +1,6 @@
 <%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.URLEncoder,java.net.URLDecoder,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*,java.util.stream.Collectors" %>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <%@ page buffer="8192kb" autoFlush="true" %>
 <%
@@ -58,7 +59,7 @@ if (games.equals("[]")) {
 <script>console.log("total pages: <%= totalPages %>")</script>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
 <head>
@@ -941,7 +942,7 @@ function doNextPost() {
 			t = "Catalog";
 		}
 	%>
-    document.write("<%= t %>".replace('<BR>', ' '));
+    document.write("<c:out value="${t}" escapeXml="true"/>");
 	-->
 </script>
         </div>
