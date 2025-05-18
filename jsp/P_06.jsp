@@ -1,5 +1,9 @@
 
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+
+
+
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+
 
 
 
@@ -36,14 +40,12 @@
     startLeft:    Furthest left location
  -->
 <html>
-	<head>
-		<script>
-			// prevent 209601 (idle on a page, times the user out)
-			var wiishop = new wiiShop();
-			const unused = wiishop.connecting;
-		</script>
-	
-	
+<head>
+	<script>
+		// prevent 209601 (idle on a page, times the user out)
+		var wiishop = new wiiShop();
+		const unused = wiishop.connecting;
+	</script>
 <title>WiiMart</title>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -146,13 +148,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.thecheese.io/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'https://ccs.thecheese.io/ccs/download';
+	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -162,8 +164,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -833,7 +835,7 @@ function next(selection)
 
 <div id="text01-01" class="titleBlackL">Wii Points Purchase</div>
 
-<div id="text02-01" align="center" class="contentsBlackM">Please select the number of Wii Points you want to buy. <small>DO NOT enter your credit card information, Wii Points don't cost money</small></div>
+<div id="text02-01" align="center" class="contentsBlackM">Please select the number of Wii Points you want to buy.</div>
 
 <div id='point01' style='display:none; left: 34.0px;' class='pointOption'>
 	<img src='/oss/oss/common/images//banner/add_points_a.gif' id='point01Img' class="ptImg"/>
@@ -897,6 +899,10 @@ function next(selection)
       </div>
     <div id="text_AU_lower" class="contentsBlackS">
 Please note that your credit card provider may impose a foreign transaction fee on this purchase. Please contact your provider for details.
+</div>
+
+<div id="disclaimer"  style="position:absolute; left:110px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
+  Please Note: Adding Wii Points does <span style="font-weight:bold; color:#34BEED;">NOT</span> require any credit info. <br> (any attempt to enter numbers will just randomize them)
 </div>
 
 <div id="errorMsg">

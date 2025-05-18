@@ -1,6 +1,35 @@
-
-
-
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,7 +42,13 @@
 <!-- Use bilingual icons if language is french or country is canada -->
 		<html>
 <head>
-  <!--  -----------------------------------------------------  -->
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+<!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->
@@ -114,13 +149,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -130,8 +165,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("60000"));
 	
@@ -809,18 +844,18 @@ trace(checking);
 
 function giveGift()
 {
-	var nextUrl = 'B_21.jsp?titleId=&recipient=';
+	var nextUrl = 'B_21.jsp?titleId=<%= request.getParameter("titleId") == null ? "" : request.getParameter("titleId") %>&itemId=101449&recipient=<%= request.getParameter("recipient") == null ? "" : request.getParameter("recipient") %>';
 	var messageElem = document.getElementById("message");
 	var msg = messageElem.value;
 	var transId = "";
 	var giftStatus;
 	var selectedMiiIdx;
-	var mesSendHeader = 'You have been sent a gift containing\n\n\nthrough the Wii Shop Channel. \n\n';
+	var mesSendHeader = 'You have been sent a gift containing\nWave Race® 64\nthrough the Wii Shop Channel. \n\n';
 	var mesSendFooter = '【How to Get Your Gift】\nSelect the Start icon in the lower\nright to jump to the gift-receiving\npage. At that page, select the Receive\nicon. (If you do not see the Start\nicon, you will need to perform a\nsystem update before receiving your\ngift.) \nIf you do not choose to receive or\nreturn a gift within 45 days of the\ntime it was sent to you, it will be\nautomatically returned to the sender.';
 	var mesSendHeadLi = '【Message】\n';
 	var mesSendFootLi = '\n\n';
-	var mesRecvAccept = 'The gift you sent containing\n\n\nhas been received. ';
-	var mesRecvReject = 'The gift you sent containing\n\n\nhas been returned. ';
+	var mesRecvAccept = 'The gift you sent containing\nWave Race® 64\nhas been received. ';
+	var mesRecvReject = 'The gift you sent containing\nWave Race® 64\nhas been returned. ';
 	if (ecSupportsSession()) {
 		selectedMiiIdx = window.miiSelector.selectedMiiIdx;
 		trace("selectedMiiIdx::::"+selectedMiiIdx);
@@ -854,8 +889,8 @@ function giveGift()
 		showPage(nextUrl);
 	    }
 	} else {
-		var titleId = '';
-		var recipient = '';
+		var titleId = '<%= request.getParameter("titleId") == null ? "" : request.getParameter("titleId") %>';
+		var recipient = '<%= request.getParameter("recipient") == null ? "" : request.getParameter("recipient") %>';
 		showGiftMessageSent(titleId, recipient);
 	}
 }
@@ -875,7 +910,7 @@ function initPage()
       '/oss/oss/common/images/banner/B_20_MiiSelect_btn_b.png');
 	var nwc24 = new wiiNwc24 ;
 	if(!nwc24.sendable) nwc24.dispError();
-	var friendIndex = parseInt('');
+	var friendIndex = parseInt('<%= request.getParameter("recipient") == null ? "" : request.getParameter("recipient") %>');
 	var friendName = null;
 	friendName = nwc24.getFriendInfo(friendIndex, "name");
 	if (friendName != null)

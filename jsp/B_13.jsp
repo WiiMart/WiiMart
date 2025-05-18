@@ -1,5 +1,5 @@
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*,javax.servlet.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
 
 
 
@@ -29,7 +29,13 @@
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
 <head>
-  <!--  -----------------------------------------------------  -->
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+<!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->
@@ -69,7 +75,7 @@ var testMode = 'false';
 
 function getMethod()
 {
-	return 'GET';	
+	return '<%= request.getMethod() %>';	
 }
 
 function getPostParams()
@@ -130,13 +136,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -146,8 +152,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -447,9 +453,11 @@ function initPage()
 </script>
 </head>
 
-<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
-
+<body onload="initPage();">
+<%
+	String titleId = request.getParameter("titleId");
+%>
 <div id="banner" style="position:absolute; left:209px; top:369px; width:190px; height:54px; z-index:1"><img src="/oss/oss/common/images//HealthAndSafety_image/B_12_banner_EN.gif" width="190" height="54"></div>
-<div id="spacer"><a href="javascript:goGiftNext('null')"><img src="/oss/oss/common/images//spacer.gif" width="190" height="54" border="0" onmouseover="wiiFocusSound();" onclick="wiiSelectSound();"></a></div>
+<div id="spacer"><a href="javascript:goGiftNext('<%= titleId %>')"><img src="/oss/oss/common/images//spacer.gif" width="190" height="54" border="0" onmouseover="wiiFocusSound();" onclick="wiiSelectSound();"></a></div>
 </body>
 </html>

@@ -1,17 +1,48 @@
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><button id="urlBtn" onclick="document.location.reload();">reload page</button>
-
-
-
-<script>console.log("total pages: 2")</script>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ page buffer="8192kb" autoFlush="true" %>
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
 <head>
-  
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+ <!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <link rel="shortcut icon" href="/oss/favicon.ico" /> 
 <link href="/oss/oss/common/css/oss.css" rel="stylesheet" type="text/css" />
@@ -28,13 +59,13 @@
 //-->
 </script>
 
-<SCRIPT language="JavaScript" src="/oss/oss/common/js/ec.js"></SCRIPT>
-<SCRIPT language="JavaScript" src='/oss/oss/common/js/error.js'></SCRIPT>
-<SCRIPT language="JavaScript" src="/oss/oss/common/js/buttons.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="/oss/oss/common/js/images.js"></SCRIPT>
-<SCRIPT language="JavaScript" src='/oss/oss/common/js/sound.js'></SCRIPT>
-<SCRIPT language="JavaScript" src="/oss/oss/common/js/shop.js"></SCRIPT>
-<SCRIPT language="JavaScript" src="/oss/oss/common/js/oss.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="/oss/oss/common/js//ec.js"></SCRIPT>
+<SCRIPT language="JavaScript" src='/oss/oss/common/js//error.js'></SCRIPT>
+<SCRIPT language="JavaScript" src="/oss/oss/common/js//buttons.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="/oss/oss/common/js//images.js"></SCRIPT>
+<SCRIPT language="JavaScript" src='/oss/oss/common/js//sound.js'></SCRIPT>
+<SCRIPT language="JavaScript" src="/oss/oss/common/js//shop.js"></SCRIPT>
+<SCRIPT language="JavaScript" src="/oss/oss/common/js//oss.js"></SCRIPT>
 
 <script type="text/JavaScript">
 <!--
@@ -103,13 +134,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'http://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'http://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.com/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -119,10 +150,10 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
-	ecTimeout = new ECTimeout(parseInt("900000"));
+	ecTimeout = new ECTimeout(parseInt("60000"));
 	
 	
 	currBalance = document.getElementById("currentBalance");
@@ -143,7 +174,7 @@ function initPageCommon()
 
 	
 	MM_preloadImages('/oss/oss/common/images//banner/under_banner_a.gif');
-	var supportsCreditCard = 'false';
+	var supportsCreditCard = 'true';
 	if (ecSupportsSession()) {
         	ec.setSessionValue("supportsCreditCard", supportsCreditCard);
     	}
@@ -159,7 +190,16 @@ function initPageCommon()
 	}
 }
 
-
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 
 
 // Takes a progress object and returns the OSS error message to be displayed to the user
@@ -601,14 +641,15 @@ body {
 }
 
 </style>
-<script type="text/javascript">
+<script type="text/JavaScript">
+<!--
 function initPage()
 {
 	initPageCommon();
         MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif','/oss/oss/common/images//banner/help_b.gif',
                          '/oss/oss/common/images//banner/top_b.gif','/oss/oss/common/images//banner/arrowL_page_b.gif',
                          '/oss/oss/common/images//banner/B_04_softbanner_b.gif',
-                         '/oss/oss/common/images//banner/B_04_softbanner_a.gif',
+                         '/oss/oss/common/images//banner/B_04_softbannerP_b.gif',
                          '/oss/oss/common/images//banner/arrowR_page_b.gif');
 
     setUnderButtonL(true, "Back", "javascript:showBack()", "wiiCancelSound()");
@@ -628,12 +669,12 @@ function initPage()
 		trace("clear transType in B_04. ");
 	}
 		
-	
-	var pageCount = 'null';
+  
+	var pageCount = '77';
 	if (pageCount > 0)
 		document.getElementById("catalogFrame").focus();
-	
-    
+
+
 }
 
 
@@ -677,13 +718,15 @@ function kdown()
 			case  40:
 				_obj.scrollTop += scroll_step;
 				break;
-      case 178:
+
+			case 178:
 				document.getElementById('arrowLImg').click();
 				break;
 
 			case 177:
 				document.getElementById('arrowRImg').click();
 				break;
+
 		}
 	}
 }
@@ -701,7 +744,7 @@ function doPrePost() {
 
 	var nowpreP = '0';
 	if (nowpreP < 1) {
-		nowpreP = '1';
+		nowpreP = '77';
 	}
 
 	var preP = 'p='+nowpreP;
@@ -738,7 +781,7 @@ function doNextPost() {
 	var j;
 
 	var nownextP = '2';
-	if (nownextP > 1) {
+	if (nownextP > 77) {
 		nownextP = 1;
 	}
 
@@ -763,15 +806,22 @@ function doNextPost() {
 	trace("in B_04 doNextPost, nextParams=" + nextParams);
 	doPost(secureUrl, nextParams);
 }
+
+//-->
 </script>
-<script src="/oss/oss/common/js/json2.js"></script>
-    <script src="/oss/oss/common/js/oss.js"></script>
-    <script src="/oss/oss/common/js/shop.js"></script>
-    
 </head>
 
 <body onkeypress="kdown();" onload="initPage();">
-
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 <div id="constElements">
   <div id="tophelpshadow"><img src="/oss/oss/common/images//banner/top_help_shadow01.gif" width="132" height="75" /></div>
   <div id="help">
@@ -800,7 +850,9 @@ function doNextPost() {
   <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>
   <div class="dot" id="upperLineLong" style="display:none">･･･････････････････････････････････････････････････････････････････････････</div>
   
-  <div id='balanceInfo'>
+  <div id='balanceInfo' onclick="showPoints(); wiiSelectSound();" 
+   onmouseover="MM_swapImage('PointSpacer','','/oss/oss/common/images//banner/Addpoints_everywhere.gif',1);wiiFocusSound();" 
+   onmouseout="MM_swapImgRestore();">
     <script type="text/JavaScript">MM_preloadImages('/oss/oss/common/images//banner/Addpoints_everywhere.gif');</script>
     <img src="/oss/oss/common/images//spacer.gif" name="PointSpacer" width="130" height="55" border="0"
      id='PointSpacer' style="position:absolute; top:376px; left:239px; z-index:20;"/>
@@ -810,7 +862,16 @@ function doNextPost() {
     <div id="point" class="wiiPoint"><span id="currentBalance"></span></div>
   </div>
 </div>
-
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 <script language="JavaScript">MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif');</script>
 <div id="underButtonL" style="display:none">
     <div id="underbannershadowL" class="buttonBannerShadow">
@@ -866,12 +927,9 @@ function doNextPost() {
 
 <div id="text01-01">
 <div align="left" id="listinfo" class="titleBlackL">
-<script language="JavaScript">
-	<!--
-	
-    document.write("Catalog".replace('<BR>', ' '));
-	-->
-</script>
+            <script language="JavaScript">
+                document.write("Catalog".replace('<BR>', ' '));
+            </script>
         </div>
     </div>
 
@@ -879,7 +937,33 @@ function doNextPost() {
 <div style="position:absolute; left:0px; top:0px; width:1px; height:1px; z-index:6;">
     <img src="/oss/oss/common/images//spacer.gif" name="ktouch" width="1" height="1" border="0" id="ktouch"/>
 </div>
+<div id="page">
+  <div align="right" class="buttonTextBlackM">
+    <div align="center">
+      1/77</div>
+  </div>
+</div>
 <div id="catalogFrame" class="catalogFrame">
+    <!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 <script type="text/JavaScript">
 <!--
 
@@ -911,6 +995,16 @@ function getSCAUserDiscountType(){
 
 //-->
 </script>
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 <script type="text/JavaScript">
 <!--
 
@@ -950,6 +1044,17 @@ function isICRExpired(){
 }
 //-->
 </script>
+
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 <script type="text/JavaScript">
 <!--
 
@@ -1065,8 +1170,8 @@ function getIcrPurchaseInfo() {
 }
 //-->
 </script>
-<script type="text/javascript">
-
+<script type="text/JavaScript">
+<!--
 	var giftTransTitles = null;
 	if (ecSupportsSession()) {
 	        giftTransTitles = ec.getSessionValue("giftTransTitles");
@@ -1085,4 +1190,1683 @@ function getIcrPurchaseInfo() {
 //-->
 </script>
 
-<script>console.log(`games: [{"id":"0001000048415A41","title1":"Photo Channel 1.1","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">This software can only be used with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"11/12/2007","added":"","publisher":"Nintendo","genre":"Channel update","points":"0","players":"For 1-4 players","rating":"","ratingdetails":"","link":"1yI3QyiEbvD6gR5lZfay_knj4FAuYeS0d","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/P/Photo%20Channel%20v1.0%20(World)%20(v65280)%20(Channel).wad","size":"409600","thumbnail":"FFFD0015","page":"1"},{"id":"00010000534F5545","title1":"The Legend of Zelda: Skyward Sword","title2":"Save Data Update Channel","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"12/22/2011","added":"","publisher":"Nintendo","genre":"Other","points":"0","players":"For 1 player(s)","rating":"","ratingdetails":"","link":"1oh3EiOvZeAMK1ZW8XDEO1rmdP7LfBHw1","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/L/Legend%20of%20Zelda,%20The%20-%20Skyward%20Sword%20-%20Save%20Data%20Update%20Channel%20(USA)%20(Channel).wad","size":"4849664","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148414445","title1":"Internet Channel","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    <img src=\"/oss/oss/common/images//banner/B_08_KeyboardCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text04-02\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software with the Wii Remote or with a standard USB keyboard.</div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"04/11/2007","added":"","publisher":"Nintendo","genre":"Internet Browser","points":"0","players":"For 1-4 players","rating":"","ratingdetails":"","link":"1HWNP9nIOsgrd7OEkDvlrHjSmMNwfJbgm","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/I/Internet%20Channel%20(USA)%20(v1024)%20(Channel).wad","size":"26558464","thumbnail":"FFFD000A","page":"1"},{"id":"0001000148414A45","title1":"Everybody Votes","title2":"Channel","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"02/13/2007","added":"","publisher":"Nintendo","genre":"Vote","points":"0","players":"For 1-6 players","rating":"","ratingdetails":"","link":"1qhFOvGBMMwaN0NSlWGBheyAvEbYzc4EQ","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/E/Everybody%20Votes%20Channel%20(USA)%20(v512)%20(Channel).wad","size":"7012352","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148415045","title1":"Check Mii Out Channel","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"11/11/2007","added":"","publisher":"Nintendo","genre":"Contest","points":"0","players":"For 1 player(s)","rating":"","ratingdetails":"","link":"1sOR51TMZg2TaARcQoGNyIwXu8E12d3Y_","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/C/Check%20Mii%20Out%20Channel%20(USA)%20(v512)%20(Channel).wad","size":"11845632","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148415445","title1":"Nintendo Channel","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    <img src=\"/oss/oss/common/images//banner/B_08_KeyboardCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text04-02\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software with the Wii Remote or with a standard USB keyboard.</div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"05/07/2008","added":"","publisher":"Nintendo","genre":"Information","points":"0","players":"For 1 player(s)","rating":"","ratingdetails":"","link":"1FERb_RVNrzT4_9PFtu-ODnlwad2sschC","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/N/Nintendo%20Channel%20(USA)%20(v1792)%20(Channel).wad","size":"13533184","thumbnail":"FFFD000F","page":"1"},{"id":"0001000148415745","title1":"Metroid<sup></sup> Prime 3 Preview","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"08/10/2007","added":"","publisher":"Nintendo","genre":"Preview","points":"0","players":"For 1 player(s)","rating":"T","ratingdetails":"Animated Blood, Violence","link":"1PJL2ucJt-MA0EcLHg_CYghqiFRO9CZmq","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/M/Metroid%20Prime%203%20Preview%20Channel%20(USA)%20(Channel).wad","size":"9142272","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148434645","title1":"Wii Speak Channel","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    <img src=\"/oss/oss/common/images//banner/B_08_SpeakCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text04-02\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">The Wii Speak microphone must be connected to your Wii console to use the Wii Speak Channel.</div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"12/05/2008","added":"","publisher":"Nintendo","genre":"Voice Communication","points":"0","players":"For 1-4 players","rating":"","ratingdetails":"","link":"1vvpy_21SRmW4Syx9eTAcI9Wrs5_aBf4l","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/W/Wii%20Speak%20Channel%202.0%20(USA)%20(v512)%20(Channel).wad","size":"6586368","thumbnail":"FFFD0001","page":"1"},{"id":"0001000148434C45","title1":"Netflix","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"10/18/2010","added":"","publisher":"Netflix","genre":"Streaming Video","points":"0","players":"","rating":"","ratingdetails":"","link":"1yuG94gQV6DmgZlsk3fNzpsag8w_jj85d","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/N/Netflix%20(USA)%20(v2049)%20(Channel).wad","size":"8699904","thumbnail":"FFFD0005","page":"1"},{"id":"0001000148435145","title1":"Hulu Plus","title2":"","console":"WII","controllers":"<div id=\"controller\" align=\"center\">  <img src=\"/oss/oss/common/images//banner/B_08_RvlCtrl.gif\" width=\"68\" height=\"51\" />    </div><div id=\"text03-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\">You can use this software only with the Wii Remote.</div>    </div>  </div>  <div id=\"text04-01\">    <div align=\"center\" >      <div align=\"left\" class=\"contentsBlackS\"></div>    </div>  </div>","region":"US","language":"EN","attributes":"","date":"02/16/2012","added":"","publisher":"Hulu","genre":"Subscription video-on-demand","points":"0","players":"","rating":"","ratingdetails":"","link":"11dKUj9uezghkauxckIGOVVjdiadDEnBi","mirror":"https://repo.mariocube.com/WADs/_WIIWARE,%20VC,%20DLC,%20Channels%20&%20IOS/H/Hulu%20Plus%20(USA)%20(v2)%20(Channel).wad","size":"7798784","thumbnail":"FFFD000E","page":"1"}]`)</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel01" style="position:absolute; left:0px; top:24px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          WiiWare</div>
+      <div class="contentsBlack" id="Publisher">
+          Nordcurrent</div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_1" class="catalogTitleBlack_01">101-in-1 Explosive Megamix</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/0001000157414945/FFFD0001" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE1" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle1" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink1">
+            <img name="ImageB1" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image1','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint1" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle1" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor1" href="" name="goTitleDetailsLink1">
+            <img name="ImageB1" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image1','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint1" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle1" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=0001000157414945')" target="_top" name="goTitleDetailsLink1">
+            <img name="ImageB1" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image1','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint1" class="catalogTitleBlackBold">
+          700 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle1" style="display:none">
+      </div>
+      <img id="ImageA1" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image1" width="488" height="91" border="0" id="Image1" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '0001000157414945';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle1").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor1").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle1").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle1").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('0001000157414945');
+		var latestVersion = parseInt('1');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE1').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('0001000157414945');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB1').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB1')[j].onmouseover = 'MM_swapImage("'+ 'Image1' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA1').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA1')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint1').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint1')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint1')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint1').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint1')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint1').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint1')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint1').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint1')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint1').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint1')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel02" style="position:absolute; left:0px; top:136px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          Nintendo 64</div>
+      <div class="contentsBlack" id="Publisher">
+          Nintendo</div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_2" class="catalogTitleBlack_01">1080° SNOWBOARDING</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/000100014E414F45/FFFD0000" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE2" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle2" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink2">
+            <img name="ImageB2" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image2','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint2" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle2" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor2" href="" name="goTitleDetailsLink2">
+            <img name="ImageB2" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image2','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint2" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle2" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=000100014E414F45')" target="_top" name="goTitleDetailsLink2">
+            <img name="ImageB2" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image2','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint2" class="catalogTitleBlackBold">
+          1,000 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle2" style="display:none">
+      </div>
+      <img id="ImageA2" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image2" width="488" height="91" border="0" id="Image2" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '000100014E414F45';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle2").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor2").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle2").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle2").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('000100014E414F45');
+		var latestVersion = parseInt('1');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE2').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('000100014E414F45');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB2').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB2')[j].onmouseover = 'MM_swapImage("'+ 'Image2' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA2').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA2')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint2').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint2')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint2')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint2').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint2')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint2').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint2')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint2').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint2')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint2').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint2')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel03" style="position:absolute; left:0px; top:248px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          Virtual Console Arcade</div>
+      <div class="contentsBlack" id="Publisher">
+          CAPCOM</div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_3" class="catalogTitleBlack_01">1942</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/0001000145353245/FFFD0000" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE3" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle3" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink3">
+            <img name="ImageB3" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image3','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint3" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle3" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor3" href="" name="goTitleDetailsLink3">
+            <img name="ImageB3" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image3','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint3" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle3" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=0001000145353245')" target="_top" name="goTitleDetailsLink3">
+            <img name="ImageB3" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image3','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint3" class="catalogTitleBlackBold">
+          800 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle3" style="display:none">
+      </div>
+      <img id="ImageA3" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image3" width="488" height="91" border="0" id="Image3" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '0001000145353245';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle3").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor3").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle3").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle3").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('0001000145353245');
+		var latestVersion = parseInt('1');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE3').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('0001000145353245');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB3').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB3')[j].onmouseover = 'MM_swapImage("'+ 'Image3' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA3').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA3')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint3').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint3')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint3')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint3').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint3')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint3').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint3')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint3').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint3')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint3').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint3')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel04" style="position:absolute; left:0px; top:360px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          WiiWare</div>
+      <div class="contentsBlack" id="Publisher">
+          QubicGames</div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_4" class="catalogTitleBlack_01">2 Fast 4 Gnomz</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/0001000157323445/FFFD0001" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE4" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle4" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink4">
+            <img name="ImageB4" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image4','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint4" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle4" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor4" href="" name="goTitleDetailsLink4">
+            <img name="ImageB4" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image4','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint4" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle4" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=0001000157323445')" target="_top" name="goTitleDetailsLink4">
+            <img name="ImageB4" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image4','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint4" class="catalogTitleBlackBold">
+          500 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle4" style="display:none">
+      </div>
+      <img id="ImageA4" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image4" width="488" height="91" border="0" id="Image4" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '0001000157323445';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle4").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor4").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle4").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle4").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('0001000157323445');
+		var latestVersion = parseInt('6');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE4').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('0001000157323445');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB4').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB4')[j].onmouseover = 'MM_swapImage("'+ 'Image4' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA4').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA4')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint4').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint4')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint4')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint4').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint4')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint4').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint4')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint4').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint4')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint4').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint4')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel05" style="position:absolute; left:0px; top:472px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          WiiWare</div>
+      <div class="contentsBlack" id="Publisher">
+          QubicGames</div>
+      <div style="overflow:hidden" nowrap id="TitleName2stline">
+          <span id="title2_5" class="catalogTitleBlack_01">Demo</span>
+        </div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_5" class="catalogTitleBlack_01">2 Fast 4 Gnomz</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/00010001584A4945/FFFD0001" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE5" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle5" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink5">
+            <img name="ImageB5" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image5','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint5" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle5" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor5" href="" name="goTitleDetailsLink5">
+            <img name="ImageB5" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image5','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint5" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle5" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=00010001584A4945')" target="_top" name="goTitleDetailsLink5">
+            <img name="ImageB5" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image5','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint5" class="catalogTitleBlackBold">
+          0 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle5" style="display:none">
+      </div>
+      <img id="ImageA5" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image5" width="488" height="91" border="0" id="Image5" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '00010001584A4945';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle5").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor5").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle5").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle5").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('00010001584A4945');
+		var latestVersion = parseInt('1');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE5').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('00010001584A4945');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB5').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB5')[j].onmouseover = 'MM_swapImage("'+ 'Image5' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA5').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA5')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint5').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint5')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint5')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint5').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint5')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint5').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint5')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint5').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint5')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint5').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint5')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel06" style="position:absolute; left:0px; top:584px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          NEOGEO</div>
+      <div class="contentsBlack" id="Publisher">
+          D4 Enterprise</div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_6" class="catalogTitleBlack_01">2020 SUPER BASEBALL</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/0001000145425545/FFFD0000" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE6" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle6" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink6">
+            <img name="ImageB6" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image6','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint6" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle6" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor6" href="" name="goTitleDetailsLink6">
+            <img name="ImageB6" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image6','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint6" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle6" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=0001000145425545')" target="_top" name="goTitleDetailsLink6">
+            <img name="ImageB6" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image6','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint6" class="catalogTitleBlackBold">
+          900 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle6" style="display:none">
+      </div>
+      <img id="ImageA6" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image6" width="488" height="91" border="0" id="Image6" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '0001000145425545';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle6").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor6").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle6").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle6").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('0001000145425545');
+		var latestVersion = parseInt('0');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE6').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('0001000145425545');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB6').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB6')[j].onmouseover = 'MM_swapImage("'+ 'Image6' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA6').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA6')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint6').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint6')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint6')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint6').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint6')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint6').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint6')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint6').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint6')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint6').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint6')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel07" style="position:absolute; left:0px; top:696px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          WiiWare</div>
+      <div class="contentsBlack" id="Publisher">
+          TECMO</div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_7" class="catalogTitleBlack_01">3-2-1, Rattle Battle!</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/0001000157435545/FFFD0000" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE7" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle7" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink7">
+            <img name="ImageB7" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image7','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint7" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle7" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor7" href="" name="goTitleDetailsLink7">
+            <img name="ImageB7" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image7','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint7" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle7" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=0001000157435545')" target="_top" name="goTitleDetailsLink7">
+            <img name="ImageB7" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image7','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint7" class="catalogTitleBlackBold">
+          500 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle7" style="display:none">
+      </div>
+      <img id="ImageA7" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image7" width="488" height="91" border="0" id="Image7" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '0001000157435545';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle7").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor7").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle7").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle7").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('0001000157435545');
+		var latestVersion = parseInt('2');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE7').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('0001000157435545');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB7').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB7')[j].onmouseover = 'MM_swapImage("'+ 'Image7' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA7').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA7')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint7').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint7')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint7')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint7').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint7')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint7').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint7')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint7').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint7')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint7').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint7')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel08" style="position:absolute; left:0px; top:808px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          WiiWare</div>
+      <div class="contentsBlack" id="Publisher">
+          Microforum</div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_8" class="catalogTitleBlack_01">3D Pixel Racing</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/0001000157334645/FFFD0001" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE8" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle8" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink8">
+            <img name="ImageB8" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image8','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint8" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle8" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor8" href="" name="goTitleDetailsLink8">
+            <img name="ImageB8" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image8','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint8" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle8" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=0001000157334645')" target="_top" name="goTitleDetailsLink8">
+            <img name="ImageB8" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image8','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint8" class="catalogTitleBlackBold">
+          500 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle8" style="display:none">
+      </div>
+      <img id="ImageA8" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image8" width="488" height="91" border="0" id="Image8" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '0001000157334645';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle8").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor8").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle8").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle8").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('0001000157334645');
+		var latestVersion = parseInt('2');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE8').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('0001000157334645');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB8').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB8')[j].onmouseover = 'MM_swapImage("'+ 'Image8' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA8').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA8')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint8').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint8')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint8')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint8').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint8')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint8').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint8')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint8').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint8')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint8').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint8')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel09" style="position:absolute; left:0px; top:920px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          WiiWare</div>
+      <div class="contentsBlack" id="Publisher">
+          Microforum</div>
+      <div style="overflow:hidden" nowrap id="TitleName2stline">
+          <span id="title2_9" class="catalogTitleBlack_01">Demo</span>
+        </div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_9" class="catalogTitleBlack_01">3D Pixel Racing</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/0001000158495A45/FFFD0001" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE9" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle9" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink9">
+            <img name="ImageB9" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image9','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint9" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle9" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor9" href="" name="goTitleDetailsLink9">
+            <img name="ImageB9" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image9','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint9" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle9" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=0001000158495A45')" target="_top" name="goTitleDetailsLink9">
+            <img name="ImageB9" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image9','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint9" class="catalogTitleBlackBold">
+          0 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle9" style="display:none">
+      </div>
+      <img id="ImageA9" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image9" width="488" height="91" border="0" id="Image9" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '0001000158495A45';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle9").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor9").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle9").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle9").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('0001000158495A45');
+		var latestVersion = parseInt('3');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE9').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('0001000158495A45');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB9').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB9')[j].onmouseover = 'MM_swapImage("'+ 'Image9' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA9').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA9')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint9').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint9')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint9')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint9').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint9')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint9').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint9')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint9').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint9')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint9').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint9')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+<!-- If trial internet channel, show B_02 with internet channel escape clause -->
+    <div id="panel010" style="position:absolute; left:0px; top:1032px; width:488px; height:91px; z-index:1">
+      <div class="contentsBlack" id="Platform">
+          WiiWare</div>
+      <div class="contentsBlack" id="Publisher">
+          Nordcurrent</div>
+      <div style="overflow:hidden" nowrap id="TitleName1stline">
+	  <span id="title1_10" class="catalogTitleBlack_01">5 Arcade Gems</span>
+      </div>
+      
+      <div id="ImageforCatalogpage">
+        <img src="/oss/ccs/0001000157354145/FFFD0001" width="96" height="72" />
+        </div>
+      
+      <div id="UPDATE10" style="display:none">
+        <div id="NEW1"><img src="/oss/oss/common/images//banner/new_update.png" width="150" height="23" /></div>
+            <div class="headerBlueM" id="NEWtext1"><div align="center">Updated!</div></div>
+          </div>
+      
+      <div id="giftTitle10" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showGiftTrans('')" target="_top" name="goTitleDetailsLink10">
+            <img name="ImageB10" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image10','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint10" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="storedGiftTitle10" style="display:none">     
+        <div id="spacer">
+          <a id="giftAnchor10" href="" name="goTitleDetailsLink10">
+            <img name="ImageB10" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+              onmouseover="MM_swapImage('Image10','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+              onmouseout="MM_swapImgRestore()" 
+              onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        <div id="points">
+          <div align="right" name="purchasePoint10" class="catalogTitleBlackBold">
+              Gift</div>
+        </div>
+      </div>
+      <div id="regularTitle10" style="display:none">
+        <div id="spacer">
+          <a href="javascript:showPage('B_05.jsp?titleId=0001000157354145')" target="_top" name="goTitleDetailsLink10">
+            <img name="ImageB10" src="/oss/oss/common/images//spacer.gif" width="488" height="91" border="0" 
+             onmouseover="MM_swapImage('Image10','','/oss/oss/common/images//banner/B_04_softbanner_b.gif',1);wiiFocusSound();" 
+             onmouseout="MM_swapImgRestore()" onclick="wiiSelectSound();"/>
+          </a>
+        </div>
+        
+        <div id="points">
+          <div align="right" name="purchasePoint10" class="catalogTitleBlackBold">
+          700 Wii Points</div>
+        </div>
+      </div>
+      <div id="scaTitle10" style="display:none">
+      </div>
+      <img id="ImageA10" src="/oss/oss/common/images//banner/B_04_softbanner_a.gif" name="Image10" width="488" height="91" border="0" id="Image10" />
+    </div>
+    	
+<script type="text/JavaScript">
+<!--
+	var giftTrans = '';
+	var titleId = '0001000157354145';
+	var transId = giftsArray[titleId];
+	
+	if ((giftTrans != null) && (giftTrans != "")) {
+		// list gifts only
+		document.getElementById("giftTitle10").style.display = '';
+	} else if (transId != null) {
+		// has pending gift(s). B-24 should be displayed instead of B-05 for the pending gift titles
+		document.getElementById("giftAnchor10").href = 'javascript:showGiftTrans('+transId+')';
+		document.getElementById("storedGiftTitle10").style.display = '';
+	} else {
+		// no pending gift
+		document.getElementById("regularTitle10").style.display = '';
+		var titleInfoVar = ec.getTitleInfo ('0001000157354145');
+		var latestVersion = parseInt('2');
+		if (isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+			document.getElementById('UPDATE10').style.display = ''; 
+		}
+		var titleLicense = getTitleLicense('0001000157354145');
+        //trace("SCATitleStatus"+getSCATitleStatus());
+		if (titleLicense == "Unlimited") {
+			// Already own this title
+			var len=document.getElementsByName('ImageB10').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+					document.getElementsByName('ImageB10')[j].onmouseover = 'MM_swapImage("'+ 'Image10' + '","","' + '/oss/oss/common/images/' + '/banner/B_04_softbannerP_b.gif",1); wiiFocusSound();'; 
+				}
+			}
+	
+			len=document.getElementsByName('ImageA10').length;
+			if (len >0) {
+				for(j=0;j<len;j++) {
+				document.getElementsByName('ImageA10')[j].src = '/oss/oss/common/images//banner/B_04_softbannerP_a.gif'; 
+				}
+			}
+	
+			len=document.getElementsByName('purchasePoint10').length;
+			if (!titleInfoVar.isOnDevice || isTitleUpdateAvailable(titleInfoVar, latestVersion)) {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint10')[j].innerHTML = 'Downloadable'; 
+					}
+				}
+			} else {
+				if (len >0) {
+					for(j=0;j<len;j++) {
+						document.getElementsByName('purchasePoint10')[j].innerHTML = 'Downloaded'; 
+					}
+				}
+			}
+
+
+            
+            if ( "SCAGOLD" == getSCAUserStatus() || "SCASILVER" == getSCAUserStatus() ){ 
+                if ( isScaGiftable(titleId) ) {
+                    len=document.getElementsByName('purchasePoint10').length;
+                    for(j=0;j<len;j++) {
+                        document.getElementsByName('purchasePoint10')[j].innerHTML = 'SCA Free Gift'; 
+                    }
+                }
+            }
+
+            
+
+
+		}else{
+            
+                    var icr_title_status        = '' ;
+                    var sca_title_gold_status   = '' ; 
+                    var sca_title_silver_status = '' ;
+
+                    if ( "ACTIVATED" == getICRUserStatus() && "ICR" == icr_title_status ) {
+                        len=document.getElementsByName('purchasePoint10').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint10')[j].innerHTML = 'One Free Title';
+                        }
+                    } else if ( "SCAGOLD" == getSCAUserStatus() && "SCAGOLD" == sca_title_gold_status )
+                    {
+                        len=document.getElementsByName('purchasePoint10').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint10')[j].innerHTML = 'Connection Ambassador 20'; 
+                        }
+                    } else if ( "SCASILVER" == getSCAUserStatus() && "SCASILVER" == sca_title_silver_status )
+                    {
+                        len=document.getElementsByName('purchasePoint10').length;
+                        for(j=0;j<len;j++) {
+                            document.getElementsByName('purchasePoint10')[j].innerHTML = 'Connection Ambassador 10'; 
+                        }
+                    } 
+
+                    
+        }
+	}
+//-->
+</script>
+
+</div>
+  
+  <div id="arrowL">
+   <a href="javascript:replacePage('B_04.jsp?p=77')" onmouseout="MM_swapImgRestore()" 
+  	   onmouseover="MM_swapImage('arrowLImg','','/oss/oss/common/images//banner/arrowL_page_b.gif',1);wiiFocusSound();"
+  	   onclick="wiiSelectSound();">
+   <input type=image src="/oss/oss/common/images//banner/arrowL_page_a.gif" name="ImageArrowL" width="52" height="52" border="0" id="arrowLImg" /></a>
+  </div>
+  <div id="arrowLshadow"><img src="/oss/oss/common/images//banner/top_help_shadow02.gif" width="71" height="72" /></div>
+<div id="arrowR">
+   <a href="javascript:replacePage('B_04.jsp?p=2')" onmouseout="MM_swapImgRestore()" 
+  	   onmouseover="MM_swapImage('arrowRImg','','/oss/oss/common/images//banner/arrowR_page_b.gif',1);wiiFocusSound();"
+	   onclick="wiiSelectSound();">
+	 <input type=image src="/oss/oss/common/images//banner/arrowR_page_a.gif" name="ImageArrowR" width="52" height="52" border="0" id="arrowRImg" />
+   </a>
+  </div>
+  <div id="arrowRshadow"><img src="/oss/oss/common/images//banner/top_help_shadow02.gif" width="71" height="72" /></div>
+<div id="icrExpirePage" style="display:none">
+  <div id="textIcrExpire">
+      <div align="center" class="contentsBlackM">
+          <table height="100%">
+              <tr>
+                  <td align="left" valign="middle">
+                      This offer has expired.<BR>You may no longer download a title for free.</td>
+              </tr>
+          </table>
+      </div>
+  </div>
+</div>
+
+
+</body>
+</html>

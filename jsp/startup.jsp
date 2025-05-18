@@ -1,5 +1,5 @@
-
-
+<%@ page import = "java.io.*,java.util.*,java.sql.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -26,7 +26,14 @@
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <!-- Main page -->
 <html>
-<head>
+	<head>
+		<script>
+			// prevent 209601 (idle on a page, times the user out)
+			var wiishop = new wiiShop();
+			const unused = wiishop.connecting;
+		</script>
+	
+	
   <title>Wii Shop Channel</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
   <style type="text/css">
@@ -627,7 +634,7 @@ function showCheckRegistered()
     var shop = new wiiShop();
     // Redirects to CheckRegistered.jsp with important device info	
     var ec = new ECommerceInterface ();
-    var url = "https://oss-auth.thecheese.io/oss/serv/CheckRegistered.jsp";
+    var url = "https://oss-auth.blinklab.com/oss/serv/CheckRegistered.jsp";
     var r = ec.getDeviceInfo();
     var shopAppTitleId = r.titleId;
     if (shopAppTitleId != null) {
@@ -654,7 +661,24 @@ function showCheckRegistered()
         url = addParam(url, "Serial", r.serial);
     }
     if (ec && "setSessionValue" in ec) {   
-
+<%  if (request.getParameter("initpage") != null) {
+    if (request.getParameter("titleId") != null) { %>
+        var titleId = '<%= request.getParameter("titleId") %>';
+        ec.setSessionValue("initialPage", "javascript:showTitle('" + titleId + "')");
+        ec.setSessionValue("shopEntryPage", "showTitle");
+        var launchcode = shop.launchCode;
+        if (launchcode == 4 || launchcode == 9 || launchcode == 10) {
+           	ec.setSessionValue("tid", titleId);
+           	url = addParam(url, "tid", titleId);
+           	url = addParam(url, "launchcode", launchcode);
+      	}
+<% } else if (request.getParameter("transId") != null) { %>
+		var transId = parseInt('<%= request.getParameter("transId") %>');
+      	ec.setSessionValue("initialPage", "javascript:showGiftTrans('" + transId + "')");
+      	ec.setSessionValue("shopEntryPage", "showGiftReceived");
+<% } 
+}
+%>
 
         ec.setSessionValue("state", 'init');
         

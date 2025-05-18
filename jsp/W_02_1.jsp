@@ -1,5 +1,5 @@
-
-
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -25,7 +25,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
-<head>
+	<head>
+		<script>
+			// prevent 209601 (idle on a page, times the user out)
+			var wiishop = new wiiShop();
+			const unused = wiishop.connecting;
+		</script>
+	
+	
   <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
@@ -127,13 +134,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -143,8 +150,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -438,5 +445,44 @@ function initPage()
 //-->
 </script>
 </head>
-<body onload="initPage();var shop = new wiiShop();var unused = shop.connecting;">
+<body onload="initPage();">
 
+<% if (request.getParameter("p").equals("1")) { %>
+	<div id="text" style="overflow:hidden" class="textImportantInfo" >
+	Welcome to the WiiMart! If you encounter any errors, 
+	<br>
+	be sure to report them in the discord server in #support.
+	<br><br>
+	Happy shopping!
+	
+	- Ocarina
+	</div>
+<% } else if (request.getParameter("p").equals("2")) { %>
+	<div id="text" style="overflow:hidden" class="textImportantInfo" ></div>
+	Wii Channels are now downloadable! 
+	<br>
+	Get them by clicking "Start Shopping" and then "Wii Channels"!
+</div>
+<% } else if (request.getParameter("p").equals("3")) { %>
+	<div id="free">
+		<div id="text" style="position:absolute; left:10px; right:10px; z-index:1; height: 240px; max-height:240px;" class="textImportantInfo">
+	Two Virtual Console™ title's were added to the catalog on<br>
+	March 26:
+	<br><br>
+	<a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold; ">Super Mario Bros.: The Lost Levels</a><p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">NES® - 500 Wii Points</p>
+	<p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated E for Everyone by the ESRB</p><br>
+	Originally released in Japan as Super Mario Bros.® 2, this game has previously made only brief cameo appearances in the Western hemisphere. <br> Now available on the Virtual Console in all of its original splendor, Mario fans will appreciate the familiar look and feel of the game, while finding that its updated game play creates an entirely new challenge. <br> No longer content just to wear different-colored overalls, Mario and Luigi also possess different skill sets (Mario can stop quicker, while Luigi can jump higher). <br> In addition to the classic enemies already known to fans worldwide, there are also Poison Mushrooms, backward Warp Zones, and the occasional wind gust (which can help or hinder your progress) to take into account. <br> And if that’s somehow not enough, expert players can go looking for the game’s secret worlds. So get ready to put your Mario skills to the ultimate test, and save the Princess again. <br> Just don’t be surprised if she’s in another castle!
+	<br><br>
+	<a id="linkimportantinfo" href="#" style="color:#34BEED; font-weight:bold; ">Super Mario All-Stars + Super Mario World</a><p id="gamelinksmallinfo" style="margin-top:-7px; color:#ACACAC; font-size:13px;">Super NES® - 800 Wii Points</p>
+	<p id="gamelinksmallinfo" style="margin-top:-15px; color:#ACACAC; font-size:15px;">Rated E for Everyone by the ESRB</p><br>
+	Discover the ultimate compilation of classic Mario adventures! Super Mario All-Stars + Super Mario World features five legendary Mario titles bundled together. <br> Experience Super Mario World alongside the beloved Super Mario Bros. games for the NES, all enhanced with 16-bit graphics and sound.<br> Each game stays true to the original while adding vibrant colors and smoother animations. <br> Join Mario and Luigi on their quests to rescue Princess Peach and restore peace to the Mushroom Kingdom. Dive into Super Mario Bros., Super Mario Bros. Lost Levels, Super Mario Bros. 2, Super Mario Bros. 3, and Super Mario World today! 
+	
+	<hr style="margin-bottom:8px;">
+	<p style="font-weight:bold;">To find these newest additions, just select "Back" and<br> then "Start Shopping." Super Mario Bros.: The Lost Levels and Super Mario All-Stars + Super Mario World can be found in the Virtual Console section.</p>
+	
+	</div>
+	  </div>
+<% } %>
+
+</body>
+</html>

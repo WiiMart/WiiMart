@@ -1,5 +1,5 @@
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
 
 
 
@@ -132,13 +132,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -148,8 +148,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -655,7 +655,7 @@ function initPage()
 
 <div id="inputs">
   <div id="text03-01" align="center" class="contentsBlueM">Please enter the Wii Download Ticket code.</div>
-  <form id="cardForm" action="https://oss-auth.thecheese.io/oss/serv/B_31.jsp" method="post" name="cardForm">
+  <form id="cardForm" action="https://oss-auth.blinklab.com/oss/serv/B_31.jsp" method="post" name="cardForm">
     <input type="hidden" name="rvconly" id="rvconly" value=""/>
   <div id="commonFields"></div>
   <div id="typefield">

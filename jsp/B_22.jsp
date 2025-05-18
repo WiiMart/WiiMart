@@ -1,6 +1,6 @@
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
 <button onclick="window.location.reload()">reload</button>
 <script>debugger</script>
 
@@ -46,7 +46,13 @@
 <!-- Use bilingual icons if language is french or country is canada -->
 		<html>
 <head>
-  <!--  -----------------------------------------------------  -->
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+<!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->
@@ -147,13 +153,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://oss-auth.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://oss-auth.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://198.62.122.200/ccs/download';
+	ccsUrl = 'http://ccs.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.thecheese.io/ccs/download';
+	ucsUrl = 'http://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -163,8 +169,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv";	
 
 	ecTimeout = new ECTimeout(parseInt("60000"));
 	
@@ -746,23 +752,101 @@ function getIcrPurchaseInfo() {
 }
 //-->
 </script>
+<%
+String titleId = request.getParameter("titleId") == null ? "" : request.getParameter("titleId");
+String targetURL = "http://127.0.0.1:8082/getTitle?titleId=" + titleId;
+%>
+<%
+StringBuilder res = new StringBuilder();
 
+try {
+    URL url2 = new URL(targetURL);
+    HttpURLConnection connection = (HttpURLConnection) url2.openConnection();
+    connection.setRequestMethod("GET");
 
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
 
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    while ((line = reader.readLine()) != null) {
+        res.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    e.printStackTrace();
+    res.append("Error: ").append(e.getMessage());
+}
+
+String games = res.toString();
+//Tmd size stuff
+String tmdUrl = "http://198.62.122.200/ccs/download/" + titleId + "/tmd";
+StringBuilder tmdRes = new StringBuilder();
+long tmdSize = 0;
+try {
+    URL url3 = new URL(tmdUrl);
+    HttpURLConnection connection = (HttpURLConnection) url3.openConnection();
+    connection.setRequestMethod("GET");
+    tmdSize = connection.getContentLengthLong();
+    int responseCode = connection.getResponseCode();
+    BufferedReader reader;
+
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    } else {
+        reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+    }
+
+    String line;
+    //String contentLength = connection.getHeaderField("Content-Length");
+    //tmdSize = contentLength;
+    while ((line = reader.readLine()) != null) {
+        tmdRes.append(line);
+    }
+    reader.close();
+} catch (Exception e) {
+    //e.printStacktrace(out);
+    res.append("Error: ").append(e.getMessage());
+}
+%>
+<%
+// Parse JSON response
+JSONObject title = new JSONObject(games);
+String id = title.getString("id").replace("00010002", "00010001");
+String title1 = title.getString("title1");
+String title2 = title.getString("title2");
+String platform = title.getString("console");
+if (platform.equals("WII")) {
+    platform = "Wii Channels";
+} else if (platform.equals("WIIWARE")) {
+    platform = "WiiWare";
+};
+String releaseDate = title.getString("date");
+String genre = title.getString("genre");
+String publisher = title.getString("publisher");
+String points = title.getString("points");
+String latestVersion = title.getString("titleVersion");
+String size = title.getString("size");
+%>
 <script type="text/JavaScript">
 <!--
 
 
-var titleId = '';
-var titleSize = '';
-var titlePoints = '';
+var titleId = '<%= titleId %>';
+var titleSize = '<%= size %>';
+var titlePoints = '<%= points %>';
 var titleIsGame = 'true';
-var price = new ECPrice('', 'POINTS');
+var price = new ECPrice('<%= points %>', 'POINTS');
 var itemId = "0";
 var limits = new ECTitleLimits();
 
 var nwc24 = new wiiNwc24 ;
-var friendIndex = parseInt('');
+var friendIndex = parseInt('<%= request.getParameter("recipient") == null ? "" : request.getParameter("recipient") %>');
 var friendName = nwc24.getFriendInfo(friendIndex, "name");
 friendName = encodeHTML(friendName);
 var friendCode = nwc24.getFriendInfo(friendIndex, "userId");
@@ -1055,13 +1139,8 @@ function getUrlParameter(name) {
 <div id="text02-01">
 </div>
 <div id="TitleName1stline" nowrap style="position:absolute; left:64px; top:90px; width:480px; overflow:hidden; z-index:34">
-  <div align="center" class="contentsBlueM"></div>
+  <div align="center" class="contentsBlueM">Wave Race<sup>&reg;</sup> 64</div>
 </div>
-
-<div id="TitleName2stline" nowrap style="position:absolute; left:64px; top:100px; width:480px; overflow:hidden; z-index:34">
-	<div align="center" class="contentsBlueM"></div>
-</div>
-
 <div style="position:absolute; left:27px; top:152px; width:554px; height:18px; z-index:25;">
   <div align="center" class="buttonTextBlackM">
      to <span id="recipientName"></span></div>

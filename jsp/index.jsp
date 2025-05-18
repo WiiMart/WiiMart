@@ -1,13 +1,20 @@
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
-<!--<a href="https://oss-auth.thecheese.io/oss/serv/debugMode.jsp">debug mode</a>
-<a href="https://oss-auth.thecheese.io/oss/serv/W_01.jsp">Click here to skip checking account status</a>-->
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+<a href="/startup?initpage=showGiftReceived&transId=7195906722">startup testing</a>
+<!--<a href="https://oss-auth.blinklab.com/oss/serv/debugMode.jsp">debug mode</a>
+<a href="https://oss-auth.blinklab.com/oss/serv/W_01.jsp">Click here to skip checking account status</a>-->
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <!-- Main page -->
 <html>
 <head>
-  <title>WiiMart</title>
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+<title>WiiMart</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
   <style type="text/css">
     /* GENERAL */
@@ -596,17 +603,17 @@ function onIsRegisteredDone(progress) {
   var info = ec.getDeviceInfo();
   trace(info.registrationStatus + " is the registration status");
   if (info.registrationStatus == "R") {
-    //top.location = "https://oss-auth.thecheese.io/oss/serv/CheckRegistered.jsp";
+    //top.location = "https://oss-auth.blinklab.com/oss/serv/CheckRegistered.jsp";
     //showCheckRegistered(true);
   } else {
     return;
   }
 }
 function isRegistered() {
-  var ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
-  var iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
-  var ccsUrl = 'http://oss-auth.thecheese.io/ccs/download';
-  var ucsUrl = 'http://ccs.thecheese.io/ccs/download';
+  var ecsUrl = 'https://oss-auth.blinklab.com/oss/ecs/services/ECommerceSOAP';
+  var iasUrl = 'https://oss-auth.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+  var ccsUrl = 'http://oss-auth.blinklab.com/ccs/download';
+  var ucsUrl = 'http://oss-auth.blinklab.com/ccs/download';
   ec.setWebSvcUrls(ecsUrl, iasUrl);
   ec.setContentUrls (ccsUrl, ucsUrl);
   opName = "checking registration status";
@@ -643,7 +650,7 @@ function showCheckRegistered()
     var shop = new wiiShop();
     // Redirects to CheckRegistered.jsp with important device info	
     var ec = new ECommerceInterface ();
-	var url = "https://oss-auth.thecheese.io/oss/serv/CheckRegistered.jsp";
+	var url = "https://oss-auth.blinklab.com/oss/serv/CheckRegistered.jsp";
     var r = ec.getDeviceInfo();
     var shopAppTitleId = r.titleId;
     if (shopAppTitleId != null) {
@@ -684,17 +691,17 @@ function showCheckRegistered()
   var info = ec.getDeviceInfo();
   trace(info.registrationStatus + " is the registration status");
   if (info.registrationStatus == "R") {
-    top.location = "https://oss-auth.thecheese.io/oss/serv/CheckRegistered.jsp";
+    top.location = "https://oss-auth.blinklab.com/oss/serv/CheckRegistered.jsp";
     //showCheckRegistered(true);
   } else {
     return;
   }
 }
 function isRegistered() {
-  var ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
-  var iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
-  var ccsUrl = 'http://oss-auth.thecheese.io/ccs/download';
-  var ucsUrl = 'http://ccs.thecheese.io/ccs/download';
+  var ecsUrl = 'https://oss-auth.blinklab.com/oss/ecs/services/ECommerceSOAP';
+  var iasUrl = 'https://oss-auth.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+  var ccsUrl = 'http://oss-auth.blinklab.com/ccs/download';
+  var ucsUrl = 'http://oss-auth.blinklab.com/ccs/download';
   ec.setWebSvcUrls(ecsUrl, iasUrl);
   ec.setContentUrls (ccsUrl, ucsUrl);
   opName = "checking registration status";

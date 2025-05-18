@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Debug</title>
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+      <title>Debug</title>
         <style>
             #consoleOutput {
                 top: 130px;
@@ -10,7 +16,7 @@
         </style>
 
     </head>    
-    <body onload="var ec = new ECommerceInterface();document.getElementById('consoleOutput').value = ec.getLog();document.getElementById('myP').innerText = ec.getLog();var x=new wiiShop();var unused=x.connecting;">
+    <body onload="var ec = new ECommerceInterface();document.getElementById('consoleOutput').value = ec.getLog();document.getElementById('myP').innerText = ec.getLog();">
         <a href="javascript:history.back()">Return to Shop</a>
         <a href="javascript:window.location.reload()">Reload</a>
         <textarea id="consoleOutput" rows="16" style="width: 100%" readonly>EC Logging</textarea>
@@ -18,7 +24,7 @@
         <script>
             function sendLog() {
                 var xml = new XMLHttpRequest();
-                xml.open('POST', 'https://oss-auth.thecheese.io/oss/ecs/log');
+                xml.open('POST', 'https://oss-auth.blinklab.com/oss/ecs/log');
                 xml.send(document.getElementById('myP').innerText);
                 xml.onreadystatechange = function(event) {
                     if (xml.status == 302) {

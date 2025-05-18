@@ -2,7 +2,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ page buffer="8192kb" autoFlush="true" %>
 <%@ page isErrorPage="true" %>
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
 <!-- 500 Page -->
 <html>
 <head>

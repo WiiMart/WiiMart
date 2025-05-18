@@ -1,5 +1,5 @@
 
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
 
 
 
@@ -28,14 +28,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Flush buffer before setting locale to ensure encoding is preserved -->
 <html>
-	<head>
-		<script>
-			// prevent 209601 (idle on a page, times the user out)
-			var wiishop = new wiiShop();
-			const unused = wiishop.connecting;
-		</script>
-	
-	
+<head>
+	<script>
+		// prevent 209601 (idle on a page, times the user out)
+		var wiishop = new wiiShop();
+		const unused = wiishop.connecting;
+	</script>
 <title>WiiMart</title>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -138,13 +136,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.thecheese.io/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'https://ccs.thecheese.io/ccs/download';
+	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -154,8 +152,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -666,8 +664,11 @@ function select(index)
     <div id="underword" align="center" class="buttonTextBlackM buttonWord"></div>
 </div>
 
+<div id="disclaimer" style="position:absolute; left:100px; top:80px; text-align:center; font-size:12px; color:#ACACAC;  ">
+  Please Note: Adding Wii Points does <span style="font-weight:bold; color:#34BEED;">NOT</span> require any credit info. <br> (any attempt to enter numbers will just randomize them)</div>
+</div>
 
-<div id="card01" name="cardJCB" >
+<div id="card01" name="cardJCB"  >
     <img src='/oss/oss/common/images//spacer.gif' class='cardSpacer' id="card01Spacer" 
     onmouseout="MM_swapImgRestore()" onclick="select(0)"
     onmouseover="MM_swapImage('card01Img','','/oss/oss/common/images//banner/card01_b.gif',1); wiiFocusSound();"/>
@@ -694,7 +695,8 @@ function select(index)
     <div id="text05-01" class="cardText buttonTextBlackM">Visa</div>
 </div>
 
+
 <div id="text01-01" class="titleBlackL">Wii Points Purchase</div>
-<div id="text02-01" class="catalogTitleBlack_02" align="left">Please select the credit-card type you would like to use to buy Wii Points. DO NOT enter your credit card information, Wii Points don't cost money</div>
+<div id="text02-01"  class="catalogTitleBlack_02" align="left" >Please select the credit-card type you would like to use to buy Wii Points.</div>
 </body>
 </html>

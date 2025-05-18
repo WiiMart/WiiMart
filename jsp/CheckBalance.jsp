@@ -1,5 +1,26 @@
-
-
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
+<!--  -----------------------------------------------------  -->
+<!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
+<!--  All Rights Reserved.                                   -->
+<!--                                                         -->
+<!--  This software contains confidential information and    -->
+<!--  trade secrets of Acer Cloud Technology, Inc.           -->
+<!--  Use, disclosure or reproduction is prohibited without  -->
+<!--  the prior express written permission of Acer Cloud     -->
+<!--  Technology, Inc.                                       -->
+<!--  -----------------------------------------------------  -->
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,7 +28,13 @@
 <!-- Main page -->
 <html>
 <head>
-  <!--  -----------------------------------------------------  -->
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+<!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->
@@ -40,23 +67,69 @@
 <SCRIPT language="JavaScript" src='/oss/oss/common/js//sound.js'></SCRIPT>
 <SCRIPT language="JavaScript" src="/oss/oss/common/js//shop.js"></SCRIPT>
 <SCRIPT language="JavaScript" src="/oss/oss/common/js//oss.js"></SCRIPT>
-<script>
-if (ec.getSessionValue("ogMode") != "true") {
-	document.write('<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>');
-}
-</script>
+
 <script type="text/javascript">
 <!--
 var testMode = 'false';
 
 function getMethod() 
 {
-	return "GET"
+	return "<%= request.getMethod() %>"
 }
 
 function getPostParams()
 {
 	var params = '';
+	<%
+	if (request.getMethod() == "POST") {
+		// Read the POST body from the request
+		StringBuilder postBodyBuilder = new StringBuilder();
+    	String line;
+    	try (java.io.BufferedReader reader = request.getReader()) {
+        	while ((line = reader.readLine()) != null) {
+            	postBodyBuilder.append(line);
+        	}
+    	}
+    	String postBody = postBodyBuilder.toString();
+
+    	// Parse the parameters from the POST body
+    	java.util.Map<String, java.util.List<String>> parametersMap = new java.util.HashMap<>();
+		for (String pair : postBody.split("&")) {
+        	String[] keyValue = pair.split("=", 2);
+        	String key = java.net.URLDecoder.decode(keyValue[0], "UTF-8");
+        	String value = keyValue.length > 1 ? java.net.URLDecoder.decode(keyValue[1], "UTF-8") : "";
+        	parametersMap.computeIfAbsent(key, k -> new java.util.ArrayList<>()).add(value);
+    	}
+
+    	// Exclude these parameters
+    	java.util.Set<String> excludedParams = new java.util.HashSet<>();
+    	excludedParams.add("accountId");
+    	excludedParams.add("deviceId");
+    	excludedParams.add("serialNo");
+    	excludedParams.add("country");
+    	excludedParams.add("region");
+    	excludedParams.add("age");
+    	excludedParams.add("language");
+
+    	// Generate JavaScript code for the remaining parameters
+%> 
+<%
+    	boolean first = true;
+    	for (java.util.Map.Entry<String, java.util.List<String>> entry : parametersMap.entrySet()) {
+        	if (!excludedParams.contains(entry.getKey())) {
+            	for (String value : entry.getValue()) {
+%>
+    				<% if (!first) { %>
+    					params += "&";
+    				<% } %>
+    				params += '<%= entry.getKey() %>=<%= value %>';
+<%
+                	first = false;
+            	}
+        	}
+    	}
+	}
+%>
    	return params;
 }
 
@@ -112,13 +185,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://oss-auth.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://oss-auth.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://oss-auth.thecheese.io/oss/ccs/download';
+	ccsUrl = 'http://oss-auth.blinklab.com/oss/ccs/download';
 
-	ucsUrl = 'http://oss-auth.thecheese.io/oss/ccs/download';
+	ucsUrl = 'http://oss-auth.blinklab.com/oss/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -128,8 +201,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -413,7 +486,7 @@ function needSyncEticket(progress)
 function showError(progress)
 {
    	setConnectingToServer(false);
- 	setUnderButton(true, shop.menuBtn, "javascript:top.location='https://oss-auth.thecheese.io/'", "wiiSelectSound();");
+ 	setUnderButton(true, shop.menuBtn, "javascript:top.location='https://oss-auth.blinklab.com/'", "wiiSelectSound();");
  	// Show error message and code
  	hideElement("text02-01");
 	var elem = document.getElementById("errorCodeText");
@@ -435,7 +508,7 @@ function handleError(progress)
 
 function gotoNext()
 {
-    var nextUrl = decodeURIComponent('');
+    var nextUrl = decodeURIComponent('<%=request.getParameter("next") == null ? "" : request.getParameter("next") %>');
     setCheckRegisterNeeded(false);
     replacePage(nextUrl);
 }
@@ -622,16 +695,9 @@ var icrExactDiscount = '';
 <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>
 
 <div class="titleBlueL" id="text01-01">
-  <script>document.write(ec.getSessionValue("currTitle"))</script></div>
+  WiiMart</div>
 <div align="center" class="titleBlueL" id="text02-01">
-<script>
-if (ec.getSessionValue("ogMode") == "true") {
-	document.write("Connecting. Please wait...")
-} else {
-	document.write("Checking your balance...")
-}
-</script>
-<!--  -----------------------------------------------------  -->
+	<script type="text/javascript">document.write(shop.connecting)</script><!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->

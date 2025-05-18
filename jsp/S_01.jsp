@@ -1,15 +1,15 @@
-
-
+<%@ page import = "java.io.*,java.util.*" %>
+<%@	page pageEncoding="utf-8" contentType="text/html; charset=UTF-8" %>
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script type="text/javascript">
     var shop = new wiiShop();
     var unused = shop.connecting;
 	function getMethod() {
-		return 'GET';
+		return '<%= request.getMethod() %>';
 	}
 	function isConnectingPage() {
     	var isConnecting = '';
@@ -25,7 +25,7 @@
 <SCRIPT language="JavaScript" src='/oss/oss/common/js//sound.js'></SCRIPT>
 <SCRIPT language="JavaScript" src="/oss/oss/common/js//shop.js"></SCRIPT>
 <SCRIPT language="JavaScript" src="/oss/oss/common/js//oss.js"></SCRIPT>
-<style>
+<style type="text/css">
 .catalogFrame {
 	position:absolute;
 	border:solid 1px #35beed;
@@ -178,13 +178,6 @@
 	height:94px;
 	z-index:34;
 }
-#changeTitle {
-	position:absolute;
-	left:0px;
-	width:477px;
-	height:94px;
-	z-index:34;
-}
 #regionSpacer {
 	position:absolute;
 	left:0px;
@@ -267,13 +260,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.larsenv.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -283,8 +276,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("60000"));
 	
@@ -328,7 +321,7 @@ function initPage()
     initPageCommon();
 
     //document.getElementById("catalogWiiU").style.display='none';
-    MM_preloadImages('/oss/oss/common/images/banner/under_banner_b.gif',
+    MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif',
             '/oss/oss/common/images//banner/help_b.gif',
             '/oss/oss/common/images//banner/icr_b_E.gif',
             '/oss/oss/common/images//banner/top_b.gif',
@@ -354,7 +347,7 @@ function initPage()
 }
 </script>
 <script type="text/javascript">
-	function doPreload() {
+	function PreloadImgs() {
 		MM_preloadImages('/oss/oss/common/images//banner/under_banner_b.gif',
 		'/oss/oss/common/images//banner/help_b.gif',
 		'/oss/oss/common/images//banner/icr_b_E.gif',
@@ -366,10 +359,11 @@ function initPage()
 		'/oss/oss/common/images//banner/gamecard_b.gif',
 		'/oss/oss/common/images//banner/connect_b.gif',
 		'/oss/oss/common/images//banner/mynintendo_b.gif',
-		'/oss/oss/common/images//banner/mynintendoEU_b.gif');
+		'/oss/oss/common/images//banner/mynintendoEU_b.gif',
+		'/oss/oss/common/images//banner/accessible_b.gif');
 	}	
 </script>
-<script type="text/javascript">window.onload = doPreload();</script>
+<script type="text/javascript">window.onload = PreloadImgs();</script>
 <script type="text/javascript">
 	var scroll_step = 30;
 	function kdown() {
@@ -387,14 +381,6 @@ function initPage()
     	}
 	}
 </script>
-<style type="text/css">
-	.blackTTLL {
-		font-family: "Wii NTLG PGothic JPN Regular";
-		font-size: 28px;
-		color: #323232;
-		font-weight: bold;
-	}	
-</style>
 <title>WiiMart</title>
 </head>
 <body onload="initPage();" style="overflow:hidden" onkeypress="kdown();">
@@ -433,7 +419,7 @@ function initPage()
   <img src="/oss/oss/common/images//banner/record_a.gif" name="Image10" border="0" id="Image10">
   <img id="recordSpacer" onmouseout="MM_swapImgRestore()" src="/oss/oss/common/images//spacer.gif" onmouseover="MM_swapImage('Image10','','/oss/oss/common/images//banner/record_b.gif',1);snd.playSE( cSE_Forcus );" onclick="showPage('S_09.jsp');snd.playSE( cSE_Decide );">
   <div id="usageRecordTxt">
-  <div class="headerBlueM" id="text04-01"><table height="100%"><tbody><tr><td align="left" valign="middle" style="color: #35beed; font-weight: bold;">Remove <script>document.write(ec.getSessionValue("currTitle"))</script> Account</td></tr></tbody></table></div>
+  <div class="headerBlueM" id="text04-01"><table height="100%"><tbody><tr><td align="left" valign="middle" style="color: #35beed; font-weight: bold;">Remove WiiMart Account</td></tr></tbody></table></div>
   </div>
 </div>
 
@@ -443,15 +429,6 @@ function initPage()
 	<img id="regionSpacer" onmouseout="MM_swapImgRestore()" src="/oss/oss/common/images//spacer.gif" onmouseover="MM_swapImage('Image15','','/oss/oss/common/images//banner/record_b.gif',1);snd.playSE( cSE_Forcus );" onclick="showPage('S_region.jsp');snd.playSE( cSE_Decide );">
 	<div id="usageRecordTxt">
 	<div class="headerBlueM" id="text04-01"><table height="100%"><tbody><tr><td align="left" valign="middle" style="color: #35beed; font-weight: bold;">Change Region</td></tr></tbody></table></div>
-	</div>
-  </div>
-
-<!-- Change mode -->
-<div id="changeTitle" style="top: 771px">
-	<img src="/oss/oss/common/images//banner/gamecard_a.gif" name="Image16" border="0" id="Image16">
-	<img id="regionSpacer" onmouseout="MM_swapImgRestore()" src="/oss/oss/common/images//spacer.gif" onmouseover="MM_swapImage('Image16','','/oss/oss/common/images//banner/gamecard_b.gif',1);snd.playSE( cSE_Forcus );" onclick="showPage('S_OG.jsp');snd.playSE( cSE_Decide );">
-	<div id="usageRecordTxt">
-		<div class="headerBlueM" id="text04-01"><table height="100%"><tbody><tr><td align="left" valign="middle" style="color: #35beed; font-weight: bold;">OG Mode</td></tr></tbody></table></div>
 	</div>
   </div>
 
@@ -548,22 +525,22 @@ function initPage()
             <span id="currentBalance"></span>
         </div>
     </div>
-    <div id="underButtonL">
-        <div id="underbannershadowL" class="buttonBannerShadow">
-             <img src="/oss/oss/common/images//banner/under_banner_shadow.gif" width="211" height="75">
-           </div>
-        <div id="underbannerL" class="buttonBanner">
-            <img src="/oss/oss/common/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL">
-        </div>
-        <div id="underspacerL" class="buttonSpacer">
-          <a href="javascript:showBack();" id="underlinkL">
-            <img id="underimageL" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"
-		        onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images/banner/under_banner_b.gif',1);snd.playSE(cSE_Forcus);"
-		        onmouseout="MM_swapImgRestore()"
-		        onclick="snd.playSE(cSE_Cancel)">
-          </a>	
-        </div>
-        <div id="underwordL" align="center" class="buttonTextBlackM buttonWord" style="position: absolute"><table width="100%" height="100%"><tr><td align="center" valign="middle">Back</tr></td></table></</div>
+<div id="underButtonL">
+    <div id="underbannershadowL" class="buttonBannerShadow">
+   	  <img src="/oss/oss/common/images//banner/under_banner_shadow.gif" width="211" height="75" />
+   	</div>
+    <div id="underbannerL" class="buttonBanner">
+    	<img src="/oss/oss/common/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL" />
     </div>
+    <div id="underspacerL" class="buttonSpacer">
+	  <a href="javascript:showHome()" id="underlinkL">
+    	<img id="underimageL" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"  
+    	onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
+    	onmouseout="MM_swapImgRestore()"
+	onclick="snd.playSE(cSE_Cancel)"/>
+      </a>	
+    </div>
+    <div id="underwordL" align="center" class="buttonTextBlackM buttonWord"><table width="100%" height="100%"><tr><td align="center" valign="middle">Back</tr></td></table></div>
+</div>
 </body>
 </html>

@@ -1,7 +1,9 @@
 
 
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
-<a href=javascript:window.location.reload();>reload</a>
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
+
+
+
 
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -130,13 +132,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://oss-auth.blinklab.com/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://oss-auth.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'https://oss-auth.blinklab.com/oss/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://oss-auth.blinklab.com/oss/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -146,8 +148,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	
@@ -557,8 +559,7 @@ function getTransactionID()
 	var info = ec.getPurchaseInfo();
 	trace("info : " + info);
 	if(info) {
-		trace("TransactionId from xml: " + extractFromXML(info, "TransactionId"));
-		return extractFromXML(info, "TransactionId");
+		return extractFromXML(info, "transId");
 	}
 	else
 		return null;
@@ -682,7 +683,7 @@ function handleP_14(progressData)
 		}
 	}
 	else {
-		code = OSS_ERROR_NO_PROGRESS;
+		coe = OSS_ERROR_NO_PROGRESS;
 	}
 
 	displayError(code, errorTxt);

@@ -1,7 +1,19 @@
-
-
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a>
+<%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*,javafx.scene.web.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%
+	String pageParam = request.getParameter("p");
+	if (pageParam != null) {
+		pageParam = pageParam.replaceAll("&", "&amp")
+			.replaceAll("<", "&lt;")
+                        .replaceAll(">", "&gt;")
+                        .replaceAll("\"", "&quot;")
+                        .replaceAll("'", "&#x27;")
+                        .replaceAll("/", "&#x2F;");
+	} else {
+		pageParam = "1";
+	}
+%>
+<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a>
 
 
 
@@ -34,7 +46,13 @@
 <!-- Main page -->
 <html>
 <head>
-  <!--  -----------------------------------------------------  -->
+  <script>
+    // prevent 209601 (idle on a page, times the user out)
+    var wiishop = new wiiShop();
+    const unused = wiishop.connecting;
+  </script>
+
+<!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
 <!--  All Rights Reserved.                                   -->
 <!--                                                         -->
@@ -135,13 +153,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://ecs.blinklab.com/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://ias.blinklab.com/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
+	ucsUrl = 'https://ccs.blinklab.com/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -151,8 +169,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
-	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
+	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
+	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("60000"));
 	
@@ -613,30 +631,6 @@ function needSyncEticket(progress)
         height: 42px;
         z-index: 81;
     }
-    #aabannerspace2 {
-        position: absolute;
-        left: 227px;
-        top: 0px;
-        width: 151px;
-        height: 42px;
-        z-index: 81;
-    }
-    #aabannerspace3 {
-        position: absolute;
-        left: 227px;
-        top: 0px;
-        width: 151px;
-        height: 42px;
-        z-index: 81;
-    }
-    #aabannerspace4 {
-        position: absolute;
-        left: 227px;
-        top: 0px;
-        width: 151px;
-        height: 42px;
-        z-index: 81;
-    }
 
     #pageTotal {
         position: absolute;
@@ -683,7 +677,7 @@ function initPage()
 </script>
 </head>
 
-<body onload="initPage()">
+<body onload="initPage();MM_preloadImages('/oss/oss/common/images//banner/account_activity.png');">
 
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -704,11 +698,11 @@ function initPage()
     	<img src="/oss/oss/common/images//banner/under_banner_a.gif" width="187" height="55" id="underImgL" />
     </div>
     <div id="underspacerL" class="buttonSpacer">
-	  <a href="javascript:showBack()" id="underlinkL">
+	  <a href="javascript:showHome()" id="underlinkL">
     	<img id="underimageL" src="/oss/oss/common/images//spacer.gif" width="187" height="55" border="0"  
     	onmouseover="MM_swapImage('underImgL','','/oss/oss/common/images//banner/under_banner_b.gif',1); snd.playSE( cSE_Forcus );" 
     	onmouseout="MM_swapImgRestore()"
-      onclick="snd.playSE(cSE_Cancel)"/>
+	onclick="snd.playSE(cSE_Cancel)"/>
       </a>	
     </div>
     <div id="underwordL" align="center" class="buttonTextBlackM buttonWord"><table width="100%" height="100%"><tr><td align="center" valign="middle">Back</tr></td></table></div>
@@ -747,14 +741,49 @@ function initPage()
     <div id="underword" align="center" class="buttonTextBlackM buttonWord"></div>
 </div>
 
+<div id='balanceInfo' onclick="showPoints(); wiiSelectSound();" 
+ onmouseover="MM_swapImage('PointSpacer','','/oss/oss/common/images//banner/Addpoints_everywhere.gif',1);wiiFocusSound();" 
+ onmouseout="MM_swapImgRestore();">
+  <script type="text/JavaScript">MM_preloadImages('/oss/oss/common/images//banner/Addpoints_everywhere.gif');</script>
+  <img src="/oss/oss/common/images//spacer.gif" name="PointSpacer" width="130" height="55" border="0"
+     id='PointSpacer' style="position:absolute; top:376px; left:239px; z-index:20;"/>
+  <div id="Wiipoint">
+    <div align="center" class="buttonTextBlackM">Wii Points</div>
+  </div>
+  <div id="point" class="wiiPoint"><span id="currentBalance"></span></div>
+</div>
+	
+<div id="constElements">
+  <div id="tophelpshadow"><img src="/oss/oss/common/images//banner/top_help_shadow01.gif" width="132" height="75" /></div>
+  <div id="help">
+    <img src="/oss/oss/common/images//banner/help_a.gif" name="ManualImage"
+     width="52" height="55" border="0" id="ManualImageID"  onmouseout="MM_swapImgRestore()" 
+     onmouseover="MM_swapImage('ManualImage','','/oss/oss/common/images//banner/help_b.gif',1); wiiFocusSound();"
+     onclick="showHelp(); wiiSelectSound();"/>
+    <img src="/oss/oss/common/images//banner/help_gray.gif" 
+     width="52" height="55" border="0" id="ManualGrayImageID" style="display:none" />
+    <img src="/oss/oss/common/images//spacer.gif" name="HelpSpacer" width="52" height="55" border="0"
+     id='HelpSpacer' style="position:absolute; top:0px; left:0px; display:none"/>
+  </div>
+
+  <div id="top">
+    <img src="/oss/oss/common/images//banner/top_a.gif" name="TopImage" 
+     width="52" height="55" border="0" id="TopImageID" onmouseout="MM_swapImgRestore()" 
+     onmouseover="MM_swapImage('TopImage','','/oss/oss/common/images//banner/top_b.gif',1); wiiFocusSound();"
+     onclick="showHome(); wiiCancelSound();"/>
+    <img src="/oss/oss/common/images//banner/top_gray.gif" 
+     width="52" height="55" border="0" id="TopGrayImageID" style="display:none" />
+    <img src="/oss/oss/common/images//spacer.gif" name="MainSpacer" width="52" height="55" border="0"
+     id='MainSpacer' style="position:absolute; top:0px; left:0px; display:none"/>
+  </div>
 
 <div class="dot" id="line01">･･･････････････････････････････････････････････････････････････････････････</div>
 <div class="dot" id="line02">･･･････････････････････････････････････････････････････････････････････････</div>
-  
+
 <div class="titleBlackL" id="text01-01">
 <div align="left">Account Activity</div>
 </div>
-<div id="pageTotal" class="buttonTextBlackM">1/1</div>
+<div id="pageTotal" class="buttonTextBlackM"><%= pageParam %>/1</div>
 
 <div id="header01">
       <span id="dateHeader" style="line-height:16px" class="headerBlueS">Date</span>
@@ -778,7 +807,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type01" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM01" align="center">typeofactivitiy</div> <!-- first typeofactivity -->
+           <div id="typeM01" align="center">typeofactivity</div> <!-- first typeofactivity -->
         </div>
        
         <div class="contentsBlack" id="content">
@@ -813,12 +842,11 @@ function initPage()
     </div>    
       <div id="row02">
         <div class="contentsBlack" id="date">
-          <div align="center">
-            <?=date("m/d/y")?></div>
+          <div align="center">dateofactivity</div>
         </div>
 
         <div class="contentsBlack" id="type02" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM02" align="center">typeofactivitiy</div>
+           <div id="typeM02" align="center">typeofactivity</div>
         </div>
        
         <div class="contentsBlack" id="content">
@@ -860,7 +888,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type03" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM03" align="center">typeofactivitiy</div>
+           <div id="typeM03" align="center">typeofactivity</div>
         </div>
        
         <div class="contentsBlack" id="content">
@@ -902,7 +930,7 @@ function initPage()
         </div>
 
         <div class="contentsBlack" id="type03" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
-           <div id="typeM03" align="center">typeofactivitiy</div>
+           <div id="typeM03" align="center">typeofactivity</div>
         </div>
        
         <div class="contentsBlack" id="content">
@@ -942,9 +970,188 @@ function initPage()
 <div class="titleBlackL" id="text01-01">
 <div align="left">Account Activity</div>
 </div>
-<div id="pageTotal" class="buttonTextBlackM">1/1</div>
+<div id="pageTotal" class="buttonTextBlackM"><%= pageParam %>/1</div>
 
+<div id="header01">
+      <span id="dateHeader" style="line-height:16px" class="headerBlueS">Date</span>
+    </div>
+    <div id="header02">
+      <span id="typeHeader" style="line-height:16px" class="headerBlueS">Type</span>
+    </div>
+    <div id="header03">
+      <span id="contentHeader" style="line-height:16px" class="headerBlueS">Content</span>
+    </div>
+    <div id="header04">
+      <span id="pointHeader" style="line-height:16px" class="headerBlueS">Wii Points</span>
+    </div>
+    <div id="header05">
+      <span id="balanceHeader" style="line-height:16px" class="headerBlueS">Current Point Balance</span>
+    </div>
+    <div id="row01">
+        <div class="contentsBlack" id="date">
+          <div align="center">
+            01/01/70</div> <!-- first date -->
+        </div>
 
+        <div class="contentsBlack" id="type01" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
+           <div id="typeM01" align="center">typeofactivity</div> <!-- first typeofactivity -->
+        </div>
+       
+        <div class="contentsBlack" id="content">
+          <div id="contentM01">
+            title01</div> <!-- first tn -->
+        </div>
+
+    <div id="aabannerspace">
+        <a href="#" onmouseover="snd.playSE( cSE_Forcus );" onclick="snd.playSE(cSE_Decide);">
+          <img src="/oss/oss/common/images//spacer.gif" width="151" height="42" border="0" id="Image1" 
+           onmouseover="MM_swapImage('Image11','','/oss/oss/common/images/banner/aa_banner_b.gif',1)" 
+           onmouseout="MM_swapImgRestore()" />
+        </a>
+      </div>
+      <div id="aabanner">
+        <img src="/oss/oss/common/images/banner/aa_banner_a.gif" width="151" height="42" id="Image11" />
+      </div>
+    <div id="cost">
+          <div align="right" class="contentsBlack">
+            <div align="center">points+or-</div></div> <!-- first removedBalance -->
+        </div>
+        <div id="balance">
+          <div align="right" class="contentsBlack">
+            <div align="center">null</div> <!-- first balanceAfterPurchase -->
+          </div>
+        </div>
+    <img src="/oss/oss/common/images/banner/account_activity.png" width="555" height="42" />
+      </div>
+      <div id="aabannershadow" style="position:absolute; left:245px; top:132px; width:170px; height:58px; z-index:78">
+      <img src="/oss/oss/common/images/banner/under_banner_shadow.gif" width="170" height="58" />
+    </div>    
+      <div id="row02">
+        <div class="contentsBlack" id="date">
+          <div align="center">dateofactivity</div>
+        </div>
+
+        <div class="contentsBlack" id="type02" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
+           <div id="typeM02" align="center">typeofactivity</div>
+        </div>
+       
+        <div class="contentsBlack" id="content">
+          <div id="contentM02">
+            title02</div>
+        </div>
+
+    <div id="aabannerspace">
+        <a href="#" onmouseover="snd.playSE( cSE_Forcus );" onclick="snd.playSE(cSE_Decide);">
+          <img src="/oss/oss/common/images//spacer.gif" width="151" height="42" border="0" id="Image2" 
+           onmouseover="MM_swapImage('Image12','','/oss/oss/common/images/banner/aa_banner_b.gif',1)" 
+           onmouseout="MM_swapImgRestore()" />
+        </a>
+      </div>
+      <div id="aabanner">
+        <img src="/oss/oss/common/images/banner/aa_banner_a.gif" width="151" height="42" id="Image12" />
+      </div>
+    <div id="cost">
+          <div align="right" class="contentsBlack">
+            <div align="center">
+                  
+                    points+or-</div>
+          </div>
+        </div>
+        <div id="balance">
+          <div align="right" class="contentsBlack">
+            <div align="center">null</div>
+          </div>
+        </div>
+    <img src="/oss/oss/common/images/banner/account_activity.png" width="555" height="42" />
+      </div>
+      <div id="aabannershadow" style="position:absolute; left:245px; top:191px; width:170px; height:58px; z-index:78">
+      <img src="/oss/oss/common/images/banner/under_banner_shadow.gif" width="170" height="58" />
+    </div>    
+      <div id="row03">
+        <div class="contentsBlack" id="date">
+          <div align="center">
+            dateofactivity</div>
+        </div>
+
+        <div class="contentsBlack" id="type03" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
+           <div id="typeM03" align="center">typeofactivity</div>
+        </div>
+       
+        <div class="contentsBlack" id="content">
+          <div id="contentM03">
+            title03</div>
+        </div>
+
+    <div id="aabannerspace">
+        <a href="#" onmouseover="snd.playSE( cSE_Forcus );" onclick="snd.playSE(cSE_Decide);">
+          <img src="/oss/oss/common/images//spacer.gif" width="151" height="42" border="0" id="Image3" 
+           onmouseover="MM_swapImage('Image13','','/oss/oss/common/images/banner/aa_banner_b.gif',1)" 
+           onmouseout="MM_swapImgRestore()" />
+        </a>
+      </div>
+      <div id="aabanner">
+        <img src="/oss/oss/common/images/banner/aa_banner_a.gif" width="151" height="42" id="Image13" />
+      </div>
+    <div id="cost">
+          <div align="right" class="contentsBlack">
+            <div align="center">
+                  
+                    points+or-</div>
+          </div>
+        </div>
+        <div id="balance">
+          <div align="right" class="contentsBlack">
+            <div align="center">null</div>
+          </div>
+        </div>
+    <img src="/oss/oss/common/images/banner/account_activity.png" width="555" height="42" />
+      </div>
+      <div id="aabannershadow" style="position:absolute; left:245px; top:250px; width:170px; height:58px; z-index:78">
+      <img src="/oss/oss/common/images/banner/under_banner_shadow.gif" width="170" height="58" />
+    </div>    
+    <div id="row04">
+        <div class="contentsBlack" id="date">
+          <div align="center">
+            dateofactivity</div>
+        </div>
+
+        <div class="contentsBlack" id="type03" style="position:absolute;left:89px;top:12px;width:136px;height:18px;z-index:82;">
+           <div id="typeM03" align="center">typeofactivity</div>
+        </div>
+       
+        <div class="contentsBlack" id="content">
+          <div id="contentM03">
+            title04</div>
+        </div>
+
+    <div id="aabannerspace">
+        <a href="#" onmouseover="snd.playSE( cSE_Forcus );" onclick="snd.playSE(cSE_Decide);">
+          <img src="/oss/oss/common/images//spacer.gif" width="151" height="42" border="0" id="Image4" 
+           onmouseover="MM_swapImage('Image14','','/oss/oss/common/images/banner/aa_banner_b.gif',1)" 
+           onmouseout="MM_swapImgRestore()" />
+        </a>
+      </div>
+      <div id="aabanner">
+        <img src="/oss/oss/common/images/banner/aa_banner_a.gif" width="151" height="42" id="Image14" />
+      </div>
+    <div id="cost">
+          <div align="right" class="contentsBlack">
+            <div align="center">
+                  
+                    points+or-</div>
+          </div>
+        </div>
+        <div id="balance">
+          <div align="right" class="contentsBlack">
+            <div align="center">null</div>
+          </div>
+        </div>
+    <img src="/oss/oss/common/images/banner/account_activity.png" width="555" height="42" />
+      </div>
+      <div id="aabannershadow" style="position:absolute; left:245px; top:309px; width:170px; height:58px; z-index:78">
+      <img src="/oss/oss/common/images/banner/under_banner_shadow.gif" width="170" height="58" />
+    </div>   
+</div>
 
 
 

@@ -1,2 +1,2 @@
-
-<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><h1>Uh oh!</h1>The server ran into an error and couldn't get the page for you.<br>There is nothing wrong on your end, so if you want to go back to the page you were at previously, click <a href="javascript:window.history.go(-1);">here</a>.
+<%@ page import = "java.io.*,java.util.*" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %><a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a><h1>Uh oh!</h1>The server ran into an error and couldn't get the page for you.<br>There is nothing wrong on your end, so if you want to go back to the page you were at previously, click <a href="javascript:window.history.go(-1);">here</a>.
