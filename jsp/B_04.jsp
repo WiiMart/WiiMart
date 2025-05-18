@@ -1,6 +1,6 @@
 <%@ page import = "java.io.*,java.util.*,java.net.http.*,java.net.URI,java.net.URLEncoder,java.net.URLDecoder,java.net.http.HttpResponse.BodyHandlers,java.net.HttpURLConnection,java.net.URL,java.nio.charset.StandardCharsets,org.json.*,java.util.stream.Collectors" %>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<a href="https://oss-auth.blinklab.com/oss/serv/debug.jsp">debug</a><button id="urlBtn" onclick="document.location.reload();">reload page</button>
+<a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><button id="urlBtn" onclick="document.location.reload();">reload page</button>
 <%@ page buffer="8192kb" autoFlush="true" %>
 <!--  -----------------------------------------------------  -->
 <!--  Copyright 2005-2014 Acer Cloud Technology, Inc.        -->
@@ -135,13 +135,13 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'http://ecs.blinklab.com/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'http://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'http://ias.blinklab.com/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'http://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
-	ccsUrl = 'http://ccs.cdn.blinklab.com/ccs/download';
+	ccsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 
-	ucsUrl = 'http://ccs.larsenv.com/ccs/download';
+	ucsUrl = 'http://ccs.larsenv.xyz/ccs/download';
 	
 
 	ec.setWebSvcUrls(ecsUrl, iasUrl);
@@ -151,8 +151,8 @@ function initPageCommon()
 
 	imagesPath = "/oss/oss/common/images/";
 	htmlPath = "/oss/oss/common/html";
-	ossPath = "https://oss-auth.blinklab.com/oss/serv/";
-	secureOssPath = "https://oss-auth.blinklab.com/oss/serv/";	
+	ossPath = "https://oss-auth.thecheese.io/oss/serv/";
+	secureOssPath = "https://oss-auth.thecheese.io/oss/serv/";	
 
 	ecTimeout = new ECTimeout(parseInt("900000"));
 	

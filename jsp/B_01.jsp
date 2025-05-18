@@ -140,9 +140,9 @@ function initPageCommon()
 	ec.cancelOperation();
 	
 
-	ecsUrl = 'https://ecs.thecheese.io/oss/ecs/services/ECommerceSOAP';
+	ecsUrl = 'https://oss-auth.thecheese.io/oss/ecs/services/ECommerceSOAP';
 
-	iasUrl = 'https://ias.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
+	iasUrl = 'https://oss-auth.thecheese.io/oss/ias/services/IdentityAuthenticationSOAP';
 
 	ccsUrl = 'http://ccs.cdn.larsenv.xyz/ccs/download';
 
