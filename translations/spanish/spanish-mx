@@ -63,10 +63,14 @@ Desarrollador
 Género
 // Add Wii Points menu
 Seleccione la cantidad de Puntos Wii que desea comprar. No ingrese su información bancaria, los Puntos Wii no cuestan dinero.
-1000 Puntos Wii - $200.00 MXN ($10.00 USD)
-2000 Puntos Wii - $400.00 MXN ($20.00 USD)
-3000 Puntos Wii - $600.00 MXN ($30.00 USD)
-5000 Puntos Wii - $1000.00 MXN ($50.00 USD)
+1000 Puntos Wii
+$200.00 MXN ($10.00 USD)
+2000 Puntos Wii
+$400.00 MXN ($20.00 USD)
+3000 Puntos Wii
+$600.00 MXN ($30.00 USD)
+5000 Puntos Wii
+$1000.00 MXN ($50.00 USD)
 //If you have 15000 points or more:
 Algunas opciones no están disponibles por que no puedes comprar esa cantidad de Puntos Wii, ya que causaría que tengas más de 20000 Puntos Wii.
 // Select Card menu
