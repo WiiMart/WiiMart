@@ -1,7 +1,7 @@
 <%@ page import = "java.io.*,java.util.*" %>
 <%@	page pageEncoding="utf-8" contentType="text/html; charset=UTF-8" %>
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <% if ((request.getParameter("og") == null ? "false" : request.getParameter("og")).equals("false")) {%><a href="https://oss-auth.thecheese.io/oss/serv/debug.jsp">debug</a><% } %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -563,7 +563,7 @@ function initPage()
 		        onclick="snd.playSE(cSE_Cancel)">
           </a>	
         </div>
-        <div id="underwordL" align="center" class="buttonTextBlackM buttonWord" style="position: absolute"><table width="100%" height="100%"><tbody><tr><td align="center" valign="middle">Back</td></tr></tbody></table></div>
+        <div id="underwordL" align="center" class="buttonTextBlackM buttonWord" style="position: absolute"><table width="100%" height="100%"><tr><td align="center" valign="middle">Back</td></tr></table></div>
     </div>
 </body>
 </html>
