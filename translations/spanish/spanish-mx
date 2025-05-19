@@ -1,0 +1,102 @@
+// Loading screens (saldo means balance)
+Comprobando si estás registrado...
+Registrando...
+Comprobando tu saldo...
+// Front page (what you first see, Wii Points are called Puntos Wii)
+WiiMart - Títulos recomendados
+Pokémon
+Un poco retro
+Solamente en formato digital
+Versiones de prueba
+// Announcements/Important info
+Información importante
+// - Welcome to WiiMart!
+¡Bienvenido a WiiMart!
+¡Bienvenido al proyecto WiiMart Revival!
+¡Bienvenido a WiiMart! Si encuentras algún error, asegúrate de decirnos en #support, en el servidor de Discord. ¡Feliz compra! 
+- Ocarina
+// - New WiiMart Features!
+¡Nuevas funciones de WiiMart!
+Varias personas se han quejado sobre cómo el botón "debug" en la esquina superior izquierda arruina la experiencia de un revival del Canal Tienda Wii, ¡así que una novedad en WiiMart es el Modo OG! Esta función quitará todos los textos de depuración (debug), ¡para que se vea como el Canal Tienda Wii hace tiempo!
+_________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Para acceder a esta nueva función solo presiona "Atrás" y luego "Entrar a la Tienda Wii". ¡Ve a Configuración y ve hasta el fondo de la lista para activarlo!
+// Start Shopping
+Entrar a la Tienda Wii
+// Main Menu (Lists Wii points, and contains the VC, WiiWare, and Wii Channels Descriptions and buttons along with the Account Activity, Downloaded Titles, Settings and features, and the Wii Menu and Shopping Guide button.)
+Puntos Wii
+Configuración y funciones
+Descargas realizadas
+Movimientos
+Guía de compras
+Menú de Wii
+Virtual Console
+¡Juegos clásicos de consolas anteriores!
+WiiWare
+¡Juegos exclusivos para Wii!
+Canales Wii
+¡Comprueba lo útiles que son los canales!
+Añadir Puntos Wii
+// VC menu
+Populares
+Recién agregados
+Buscar por categoría
+Buscar por nombre
+// WiiWare menu
+Populares
+Recién agregados
+Buscar por desarrollador
+Buscar por género
+Buscar por nombre
+// Settings and Features menu
+Opciones de regalo
+Código de descarga Wii
+Embajador de conexión
+Edición limitada
+Un juego gratis
+Vincular cuenta Club Nintendo
+Eliminar cuenta de WiiMart
+Cambiar región
+Modo OG
+//VC Search by category
+Plataforma
+Desarrollador
+Género
+// Add Wii Points menu
+Seleccione la cantidad de Puntos Wii que desea comprar. No ingrese su información bancaria, los Puntos Wii no cuestan dinero.
+Puntos Wii
+$200.00 MXN
+Puntos Wii
+$400.00 MXN
+Puntos Wii
+$600.00 MXN
+Puntos Wii
+$1000.00 MXN
+//If you have 15000 points or more:
+Algunas opciones no están disponibles por que no puedes comprar esa cantidad de Puntos Wii, ya que causaría que tengas más de 20000 Puntos Wii.
+// Select Card menu
+Seleccione el tipo de tarjeta que va a usar para comprar Puntos Wii. No ingrese su información bancaria, los Puntos Wii no cuestan dinero.
+// Credit card info menu
+Ingrese su información bancaria. 
+No ingrese su información bancaria, los Puntos Wii no cuestan dinero. (de todas maneras se aleatorizará)
+Número de tarjeta: 
+Fecha de Vencimiento:
+CVV:
+¿Qué es un CVV?
+Declaración de seguridad
+//Wii Points Purchase Confirmation
+Confirmar compra de Puntos Wii
+Los Puntos Wii no tienen valor monetario y no pueden ser intercambiados por dinero real. Todos los Puntos Wii y las descargas de software son para uso en una sola consola Wii, no son reembolsables ni transferibles.
+Puntos Wii         Puntos Wii
+Subtotal:
+Impuestos:
+Total:
+// added 
+Añadir Puntos Wii 
+.... Puntos Wii han sido añadidos a tu cuenta de WiiMart.
+Puntos Wii añadidos:
+Saldo final de Puntos Wii:
+OK
+Ver recibo
+// note: when it displays multiple options on both WiiWare and VC menu, and the options display "Titles:", translate to "Juegos:".
+// another note: The "Back" button is translated as "Atrás".
+
