@@ -942,7 +942,7 @@ function doNextPost() {
 			t = "Catalog";
 		}
 	%>
-    document.write("<c:out value="${t}" escapeXml="true"/>");
+    document.write("<%= ${fn:escapeXml(t)} %>");
 	-->
 </script>
         </div>
