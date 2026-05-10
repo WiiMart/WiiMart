@@ -10,6 +10,4 @@ If you want to learn more, [check out our website!](https://wiimart.org)
 The `<%`, `%>`, `<%= %>`, `<%@ %>` and `<%-- --%>` tags represent the start and end of Java code, as WiiMart runs off of JSP (Jakarta Server Pages [formerly Java Server Pages])
 The catalog server files are `main.mjs` and `games.mjs`. You can also find the EC log dumper in `main.mjs`.
 
-*WiiMart is not affiliated with Nintendo or any related parties.*
-
-*To contact, please send an email to support@wiimart.org.*
+*WiiMart is not affiliated with Nintendo or any related parties. To contact, please send an email to wiimart@post.com.*
