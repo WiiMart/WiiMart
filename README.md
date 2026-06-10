@@ -5,7 +5,7 @@
 WiiMart is a revival for the defunct Wii Shop Channel service. It was closed on January 30, 2019, making an entire library of digital-exclusive games get left behind. WiiMart brings back the experience of downloading and playing these titles with a revival of the Wii Shop Channel.
 
 ## This repository contains the source code of the frontend (what the user sees).
-If you want to learn more, [check out our website!](https://wiimart.org)
+If you want to learn more, [check out our website!](https://wiimart.org) Instructions for hosting can be found in [this README](www/README.md)
 
 The `<%`, `%>`, `<%= %>`, `<%@ %>` and `<%-- --%>` tags represent the start and end of Java code, as WiiMart runs off of JSP (Jakarta Server Pages [formerly Java Server Pages])
 The catalog server files are `main.mjs` and `games.mjs`. You can also find the EC log dumper in `main.mjs`.
