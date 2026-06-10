@@ -1,0 +1,10 @@
+var ec = new ECommerceInterface();
+var info = ec.getDeviceInfo();
+var progress = ec.checkDeviceStatus();
+var dlTask = new wiiDlTask();
+var keyboard = new wiiKeyboard();
+var mii = new wiiMii();
+var nwc24 = new wiiNwc24();
+var sdCard = new wiiSDCard();
+var wiiShop = new wiiShop();
+var sound = new wiiSound();

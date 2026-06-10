@@ -1,0 +1,198 @@
+/* H_01:  Transaction Record */
+
+
+
+#title {
+	position:absolute;
+	left:29px;
+	top:28px;
+	width:442px;
+	height:28px;
+	z-index:28;
+        align="left"
+}
+#arrowLshadow {	position:absolute;
+	left:388px;
+	top:373px;
+	width:71px;
+	height:72px;
+	z-index:1;
+}
+#arrowRshadow {	position:absolute;
+	left:516px;
+	top:373px;
+	width:71px;
+	height:72px;
+	z-index:2;
+}
+#header01 {
+	position:absolute;
+	left:30px;
+	top:100px;
+	width:80px;
+	height:16px;
+	z-index:71;
+        text-align:center;
+}
+#header02 {
+	position:absolute;
+	left:119px;
+	top:100px;
+	width:132px;
+	height:16px;
+	z-index:72;
+        text-align:center;
+}
+#header03 {
+	position:absolute;
+	left:259px;
+	top:100px;
+	width:141px;
+	height:16px;
+	z-index:73;
+        text-align:center;
+}
+#header04 {
+	position:absolute;
+	left:407px;
+	top:100px;
+	width:82px;
+	height:16px;
+	z-index:74;
+        text-align:center;
+}
+#header05 {
+	position:absolute;
+	left:495px;
+	top:84px;
+	width:80px;
+	height:16px;
+	z-index:75;
+        text-align:center;
+}
+
+#row01 {
+	position:absolute;
+	left:27px;
+	top:139px;
+	width:555px;
+	height:42px;
+	z-index:82;
+}
+#row02 {position:absolute;
+	left:27px;
+	top:198px;
+	width:555px;
+	height:42px;
+	z-index:81;
+}
+#row03 {
+	position:absolute;
+	left:27px;
+	top:257px;
+	width:555px;
+	height:42px;
+	z-index:80;
+}
+#row04 {
+	position:absolute;
+	left:27px;
+	top:316px;
+	width:555px;
+	height:42px;
+	z-index:79;
+}
+#date {
+	position:absolute;
+	left:-2px;
+	top:12px;
+	width:90px;
+	height:18px;
+	z-index:83;
+}
+#type {
+	position:absolute;
+	left:89px;
+	top:12px;
+	width:136px;
+	height:18px;
+	z-index:82;
+}
+#content {
+	position:absolute;
+	left:229px;
+	top:12px;
+	width:147px;
+	height:18px;
+	z-index:80;
+	overflow: hidden;
+}
+#content div {
+	position: relative;
+	top: -2px;
+	text-align: center;
+	overflow: hidden;
+}
+#cost {
+	position:absolute;
+	left:392px;
+	top:12px;
+	width:63px;
+	height:18px;
+	z-index:78;
+}
+#balance {
+	position:absolute;
+	left:479px;
+	top:12px;
+	width:63px;
+	height:18px;
+	z-index:77;
+}
+#aabanner {
+	position:absolute;
+	left:227px;
+	top:0px;
+	width:151px;
+	height:42px;
+	z-index:79;
+}
+#aabannerspace {
+	position:absolute;
+	left:227px;
+	top:0px;
+	width:151px;
+	height:42px;
+	z-index:81;
+}
+#pageTotal {
+	position:absolute;
+	left:440px;
+	top:385px;
+	width:92px;
+	height:36px;
+	z-index:20;
+        text-align:center;
+}
+.contentsBlackVS {
+	font-family: "Wii NTLG PGothic JPN Regular";
+	font-size: 13px;
+	color: #323232;
+	font-weight: normal;
+}
+#msg{
+        position:absolute;
+        left:36px;
+        top:88px;
+        width:540px;
+        height:277px;
+        z-index:37;
+}
+
+#statusMessage {
+	position:absolute;
+	left:104px;
+	top:125px;
+	width:400px;
+	height:195px;
+}

@@ -1,0 +1,59 @@
+<%-- common --%>
+<%@ page import="java.text.MessageFormat,java.nio.file.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	String lang = request.getParameter("language") == null ? "en" : request.getParameter("language");
+	String region = request.getParameter("region") == null ? "EUR" : request.getParameter("region");
+	// fall back to EUR+EN if no region
+	request.setAttribute("lang", lang);
+	request.setAttribute("region", region);
+%>
+<%
+	// 2nd: check if .properties file exists, else, fallback to USA+EN
+	String basename = "messages_"+region+"_"+lang+".properties";
+	Path path = Paths.get("/root/www/JSON/translations/"+basename);
+	InputStream strm = Files.newInputStream(path);
+	if (strm != null) {
+		request.setAttribute("bundle_exists", "true");
+	} else {
+		request.setAttribute("bundle_exists", "false");
+	}
+%>
+<%-- MUST BE SET ON EVERY PAGE FOR fmt --%>
+<c:if test="${bundle_exists eq 'true'}">
+<c:set var="basename" value="messages_${region}_${lang}" />
+</c:if>
+<c:if test="${bundle_exists eq 'false'}">
+<c:set var="basename" value="messages_EUR_en" />
+</c:if>
+<fmt:setBundle basename="${basename}" var="bundlefmt" />
+<%!
+	// IF region is JPN/KOR, language must be JP/KR
+	// NOTE: Switch to fmt for static strings, keep translate for dynamic (ex. msg.insufficientPoints)
+	public String translate(String namespace, String property, String lang, String region, String placeholder0, String placeholder1, String placeholder2) {
+		try {
+			// ex. messages_EUR_en.properties
+			String name = "messages_"+region+"_"+lang+".properties";
+			String ifinvalid = "???"+namespace+"."+property+"???"; // mimic fmt
+			InputStream f = this.getClass().getClassLoader().getResourceAsStream(name);
+			if (f == null) return ifinvalid; // invalid
+			Properties p = new Properties();
+			p.load(f);
+			String k = namespace + "." + property; // key
+			String tmp = p.getProperty(k); // template
+			if (tmp == null) return ifinvalid; // invalid
+			return MessageFormat.format(tmp, placeholder0, placeholder1, placeholder2);
+		} catch (FileNotFoundException e) {
+			return ".properties file not found for language" + lang;
+		} catch (IOException e) {
+			return "IOException!";
+		}
+	}
+
+	public String translateNoReplace(String namespace, String property, String lang, String region) {
+		return translate(namespace, property, lang, region, null, null, null);
+	}
+%>
+<%-- For korean language --%>
+<%@ include file="/oss/common/include/KoreaFix.jspf" %>

@@ -1,0 +1,17 @@
+/* Error class information */
+#errorText {
+	position:absolute;
+	left:66px;
+	top:111px;
+	width:476px;
+	height:176px;
+	z-index:40;
+}
+#errorCodeText {
+	position:absolute;
+	left:66px;
+	top:80px;
+	width:476px;
+	height:18px;
+	z-index:40;
+}

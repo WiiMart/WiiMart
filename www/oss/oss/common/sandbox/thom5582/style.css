@@ -1,0 +1,46 @@
+#operationsSelect {
+    border: 2px solid black;
+    position: absolute;
+    width: auto;
+    font-size:larger;
+    background-color: #FFFFFF
+}
+#nwc24Select {
+    border: 2px solid black;
+    position: absolute;
+    left: 152px;
+    font-size:larger;
+    background-color: #FFFFFF
+}
+#deviceInfoSelect {
+    border: 2px solid black;
+    position: absolute;
+    left: 237px;
+    font-size:larger;
+    background-color: #FFFFFF
+}
+#soundSelect {
+    border: 2px solid black;
+    position: absolute;
+    left: 351px;
+    font-size:larger;
+    background-color: #FFFFFF
+}
+#titleInfoSelect {
+    border: 2px solid black;
+    position: absolute;
+    left: 424px;
+    font-size:larger;
+    background-color: #FFFFFF
+}
+
+#nwc24Div {
+    display: none;
+}
+#deviceInfoDiv {
+    display: none;
+}
+#soundDiv {
+    display: none;
+}
+

@@ -1,0 +1,131 @@
+/* For S_18:  Helpee number Input Page for Helper */
+
+
+#text01-01 {
+	/* title */
+	position:absolute;
+	left:29px;
+	top:28px;
+	width:442px;
+	height:28px;
+	z-index:32;
+}
+#text02-01 {
+	position:absolute;
+	left:34px;
+	top:85px;
+	width:540px;
+	height:198px;
+	z-index:31;
+}
+#text03-01 {
+	position:absolute;
+	left:34px;
+	top:85px;
+	width:540px;
+	height:68px;
+	z-index:31;
+}
+#numberfield {
+	position:absolute;
+	left:100px;
+	top:263px;
+	width:408px;
+	height:50px;
+	z-index:27;
+}
+
+input {
+	font-family: "Wii NTLG Gothic JPN Regular";
+	font-size: 24px;
+	background-color: #FFFFFF;
+	letter-spacing: 0.1em;
+	text-align: left;
+	padding-left: 18px;
+}
+
+#banner01 {
+	position:absolute;
+	left:28px;
+	top:283px;
+	width:260px;
+	height:85px;
+	z-index:28;
+}
+#text01 {
+	position:absolute;
+	left:48px;
+	top:293px;
+	width:220px;
+	height:65px;
+	z-index:29;
+}
+#spacer01 {
+	position:absolute;
+	left:38px;
+	top:293px;
+	width:240px;
+	height:65px;
+	z-index:30;
+}
+
+#banner02 {
+	position:absolute;
+	left:320px;
+	top:283px;
+	width:260px;
+	height:85px;
+	z-index:28;
+}
+#text02 {
+	position:absolute;
+	left:340px;
+	top:293px;
+	width:220px;
+	height:65px;
+	z-index:29;
+}
+#spacer02 {
+	position:absolute;
+	left:330px;
+	top:293px;
+	width:240px;
+	height:65px;
+	z-index:30;
+}
+#explanationfield {
+	position:absolute;
+	left:47px;
+	top:106px;
+	width:513px;
+	height:132px;
+	z-index:31;
+}
+#explanationtext {
+	position:absolute;
+	left:18px;
+	top:47px;
+	width:540px;
+	height:198px;
+	z-index:31;
+	font-family: "Wii NTLG Gothic JPN Regular";
+	font-size: 16px;
+}
+
+#notefield{
+	position:absolute;
+	left:80px;
+	top:304px;
+	width:448px;
+	height:123px;
+	z-index:31;
+	text-align:center;
+}
+
+#statusMessage {
+	position:absolute;
+	left:54px;
+	top:85px;
+	width:500px;
+	height:202px;
+}

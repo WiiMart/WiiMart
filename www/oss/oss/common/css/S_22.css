@@ -1,0 +1,19 @@
+/* For S_22 :  SCA Activation Page */
+
+
+.countframe {
+	position:absolute;
+	left:24px;
+	top:222px;
+	width:540px;
+	height:198px;
+	z-index:31;
+}
+.countstar {
+	position:absolute;
+	left:24px;
+	top:222px;
+	width:540px;
+	height:198px;
+	z-index:31;
+}

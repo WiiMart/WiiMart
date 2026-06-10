@@ -1,0 +1,30 @@
+/* H_02:  Transaction Details */
+
+#text01-01 {
+	position:absolute;
+	left:29px;
+	top:28px;
+	width:442px;
+	height:28px;
+	z-index:28;
+}
+
+#receiptFrame {
+	position:absolute;
+	left:36px;
+	top:94px;
+	width:540px;
+	height:262px;
+	z-index:30;
+	overflow: auto;
+	border:solid 1px #35beed;
+}
+
+.receiptitem {
+    font-size: 18px;
+    color: #8c8c8c;
+}
+
+.right {
+    text-align: right;
+}

@@ -1,0 +1,8 @@
+Will not apply HSTS. The HSTS database must be a regular and non-world-writable file.
+ERROR: could not open HSTS store at '/home/ocarina/.wget-hsts'. HSTS will be disabled.
+--2025-03-26 18:26:38--  https://media.discordapp.net/attachments/1350094374666637373/1350096094629199954/gift_receive_a.gif?ex=67e55078
+Resolving media.discordapp.net (media.discordapp.net)... 162.159.133.232, 162.159.129.232, 162.159.130.232, ...
+Connecting to media.discordapp.net (media.discordapp.net)|162.159.133.232|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2025-03-26 18:26:38 ERROR 404: Not Found.
+

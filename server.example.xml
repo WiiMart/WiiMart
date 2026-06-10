@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+  <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+  <Listener className="org.apache.catalina.core.AprLifecycleListener"
+    useAprConnector="true" SSLEngine="on" SSLRandomSeed="builtin" />
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
+
+  <GlobalNamingResources>
+    <Resource name="UserDatabase" auth="Container"
+      type="org.apache.catalina.UserDatabase"
+      description="User database that can be updated and saved"
+      factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+      pathname="conf/tomcat-users.xml" />
+  </GlobalNamingResources>
+  <Service name="Catalina">
+
+    <!-- Define an SSL/TLS HTTP/1.1 Connector on port 443 with HTTP/2 -->
+    <Connector port="443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+        maxThreads="150" SSLEnabled="true"
+        maxParameterCount="1000"
+        keyAlias="server"
+        address="0.0.0.0"
+        URIEncoding="UTF-8"
+        sslEnabledProtocols="SSLv1,SSLv2,SSLv2Hello,SSLv3,TLSv1,TLSv1.1,TLSv1.2,TLSv1.3"
+        allowTrace="true"
+        allowHostHeaderMismatch="true"
+        relaxedPathChars="[]|"
+        relaxedQueryChars="[]|{}^`"
+        maxHttpHeaderSize="1048576"
+        clientAuth="false">
+        <SSLHostConfig protocols="SSLv1,SSLv2,SSLv2Hello,SSLv3,TLSv1,TLSv1.1,TLSv1.2,TLSv1.3"
+            ciphers="ALL:@SECLEVEL=0">
+            <Certificate certificateFile="certs/WiiMart.pem"
+                certificateKeyFile="certs/WiiMart.key"
+                SSLVerifyClient="none"
+                SSLCipherSuite="All:@SECLEVEL=0" />
+        </SSLHostConfig>
+    </Connector>
+    <Engine name="Catalina" defaultHost="oss-auth.a.taur.cloud">
+        <Realm className="org.apache.catalina.realm.LockOutRealm">
+            <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+                resourceName="UserDatabase" />
+        </Realm>
+        <Host name="oss-auth.a.taur.cloud" appBase="webapps/www"
+            unpackWARs="true" autoDeploy="true">
+            <Valve className="org.apache.catalina.valves.AccessLogValve"
+                buffered="false"
+                directory="logs"
+                prefix="wiimart"
+                suffix=".txt"
+                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+            <Context docBase="webapps/www" path="" reloadable="true" />
+        </Host>
+    </Engine>
+  </Service>
+</Server>

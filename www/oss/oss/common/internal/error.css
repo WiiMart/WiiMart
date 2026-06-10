@@ -1,0 +1,145 @@
+body {
+	background-color: #FFFFFF;
+}
+
+.titleBlue {
+	font-family: "Wii NTLG PGothic JPN Regular";
+	font-size: 28px;
+	color: #34BEED;
+	font-weight: bold;
+}
+
+.buttonTextBlackM {
+	font-family: "Wii NTLG PGothic JPN Regular";
+	font-size: 18px;
+	color: #323232;
+	font-weight: normal;
+	line-height: 20px;
+
+}
+
+.warningRed {
+	font-family: "Wii NTLG PGothic JPN Regular";
+	font-size: 22px;
+	color: #FF0000;
+	font-weight: normal;
+	line-height: 25px;
+
+}
+
+.textRed {
+	font-family: "Wii NTLG PGothic JPN Regular";
+	font-size: 16px;
+	color: #FF0000;
+	font-weight: normal;
+}
+
+.dot {
+	font-family: "Wii NTLG PGothic JPN Regular";
+	font-size: 16px;
+	color: #8C8C8C;
+
+}
+
+#title {
+	position:absolute;
+	left:29px;
+	top:28px;
+	width:554px;
+	height:28px;
+	z-index:6;
+}
+
+#line01 {
+	position:absolute;
+	left:4px;
+	top:59px;
+	width:600px;
+	height:10px;
+	z-index:5;
+}
+
+#line02 {
+	position:absolute;
+	left:4px;
+	top:363px;
+	width:600px;
+	height:10px;
+	z-index:5;
+}
+
+#underspacerL {
+	position:absolute;
+	left:25px;
+	top:379px;
+	width:187px;
+	height:55px;
+	z-index:4;
+}
+
+
+#underspacerR {
+	position:absolute;
+	left:399px;
+	top:379px;
+	width:187px;
+	height:55px;
+	z-index:4;
+}
+
+#underwordL {
+	position:absolute;
+	left:27px;
+	top:394px;
+	width:185px;
+	height:22px;
+	z-index:3;
+}
+
+#underwordR {
+	position:absolute;
+	left:400px;
+	top:394px;
+	width:185px;
+	height:22px;
+	z-index:3;
+}
+
+#underbannerL {
+	position:absolute;
+	left:25px;
+	top:379px;
+	width:187px;
+	height:55px;
+	z-index:2;
+
+}
+
+#underbannerR {
+	position:absolute;
+	left:399px;
+	top:379px;
+	width:187px;
+	height:55px;
+	z-index:2;
+
+}
+
+#underbannershadowL {
+	position:absolute;
+	left:13px;
+	top:371px;
+	width:211px;
+	height:75px;
+	z-index:1;
+
+}
+
+#underbannershadowR {
+	position:absolute;
+	left:387px;
+	top:371px;
+	width:211px;
+	height:75px;
+	z-index:1;
+}

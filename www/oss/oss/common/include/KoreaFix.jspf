@@ -1,0 +1,19 @@
+<%--
+The Korean Wii Shop (HABK) uses a different font, called "Wii-kr_Round Gothic B", which was not included in the main shop (HABA).
+Including this file will fix the font if the shop is patched to include that font.
+This file is a simple JSP check to see if the Wiis region/language is korean, and if it is, it applies said font to every HTML element.
+(dont worry this is a JSP comment, no one can see this from viewing the source.)
+--%>
+<% if (lang.equals("ko") && region.equals("KOR")) { %>
+<!-- KoreaFix.jspf Start -->
+<style type="text/css">
+	* {
+		font-family: "Wii-kr_Round Gothic B" !important;
+	}
+	/* Dots fix (They appear shorter with the Korean font) */
+	.dot, #line01, #line02, #upperLineLong {
+		font-family: "Wii NTLG PGothic JPN Regular" !important;
+	}
+</style>
+<!-- KoreaFix.jspf End -->
+<% } %>

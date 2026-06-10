@@ -1,0 +1,129 @@
+/* S_20:  Transaction Record */
+
+
+#title {
+	position:absolute;
+	left:29px;
+	top:28px;
+	width:442px;
+	height:28px;
+	z-index:28;
+}
+#arrowLshadow {	
+    position:absolute;
+	left:388px;
+	top:373px;
+	width:71px;
+	height:72px;
+	z-index:1;
+}
+#arrowRshadow {	
+    position:absolute;
+	left:516px;
+	top:373px;
+	width:71px;
+	height:72px;
+	z-index:2;
+}
+#header01 {
+	position:absolute;
+	left:27px;
+	top:95px;
+	width:148px;
+	height:15px;
+	z-index:71;
+}
+#header02 {
+	position:absolute;
+	left:175px;
+	top:95px;
+	width:240px;
+	height:15px;
+	z-index:73;
+}
+#header03 {
+	position:absolute;
+	left:415px;
+	top:95px;
+	width:167px;
+	height:15px;
+	z-index:75;
+}
+
+#row01 {
+	position:absolute;
+	left:27px;
+	top:139px;
+	width:555px;
+	height:42px;
+	z-index:82;
+}
+#row02 {
+    position:absolute;
+	left:27px;
+    top:189px;
+	width:555px;
+	height:42px;
+	z-index:81;
+}
+#row03 {
+	position:absolute;
+	left:27px;
+    top:239px;
+	width:555px;
+	height:42px;
+	z-index:80;
+}
+#row04 {
+	position:absolute;
+	left:27px;
+    top:289px;
+	width:555px;
+	height:42px;
+	z-index:79;
+}
+.frame {
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+.wiiNum {
+    display:table;
+    position:absolute;
+	left:0px;
+	top:0px;
+	width:148px;
+	height:42px;
+	z-index:83;
+}
+.status {
+    display:table;
+    position:absolute;
+	left:148px;
+	top:0px;
+	width:240px;
+	height:42px;
+	z-index:82;
+}
+.date {
+    display:table;
+    position:absolute;
+	left:388px;
+	top:0px;
+	width:167px;
+	height:42px;
+	z-index:77;
+}
+#page {
+	position:absolute;
+	left:440px;
+	top:385px;
+	width:92px;
+	height:36px;
+	z-index:20;
+}
+
+.contentsBlackS {
+    line-height:1;
+}
+

@@ -1,0 +1,278 @@
+{
+    "USA": {
+        "rec": [
+            {
+                "titleId": "000100014C414245",
+                "isNew": "true"
+            },
+            {
+                "titleId": "000100014E414345",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157334345",
+                "isNew": "true"
+            },
+            {
+                "titleId": "0001000148433445",
+                "isNew": "true"
+            }
+        ],
+        "t1": [
+            {
+                "titleId": "0001000157505345",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157424D45",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014E414B45",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014E414E45",
+                "isNew": "false"
+            }
+        ],
+        "t2": [
+            {
+                "titleId": "000100014E414245",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000146435745",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000146414D45",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014D414845",
+                "isNew": "false"
+            }
+        ],
+        "t3": [
+            {
+                "titleId": "0001000157505345",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157474F45",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157545045",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157444D45",
+                "isNew": "false"
+            }
+        ],
+        "t4": [
+            {
+                "titleId": "0001000158484145",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000158494A45",
+                "isNew": "false"
+            },
+            {
+                "titleId": "00010001584A4945",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000158493245",
+                "isNew": "false"
+            }
+        ]
+    },
+    "EUR": {
+        "rec": [
+            {
+                "titleId": "000100014E414350",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014C414250",
+                "isNew": "true"
+            },
+            {
+                "titleId": "0001000157334350",
+                "isNew": "true"
+            },
+            {
+                "titleId": "0001000148435750",
+                "isNew": "true"
+            }
+        ],
+        "t1": [
+            {
+                "titleId": "0001000157505350",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157424D50",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014E414B50",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014E414E50",
+                "isNew": "false"
+            }
+        ],
+        "t2": [
+            {
+                "titleId": "000100014E414250",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000146435750",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000146414D50",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014D414850",
+                "isNew": "false"
+            }
+        ],
+        "t3": [
+            {
+                "titleId": "0001000157505350",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157474F50",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157545050",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157444D50",
+                "isNew": "false"
+            }
+        ],
+        "t4": [
+            {
+                "titleId": "000100014A414150",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000158494A50",
+                "isNew": "false"
+            },
+            {
+                "titleId": "00010001584A4950",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000158493250",
+                "isNew": "false"
+            }
+        ]
+    },
+    "JPN": {
+        "rec": [
+            {
+                "titleId": "000100014C414245",
+                "isNew": "true"
+            },
+            {
+                "titleId": "000100014E414345",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157334345",
+                "isNew": "true"
+            },
+            {
+                "titleId": "0001000148433445",
+                "isNew": "true"
+            }
+        ],
+        "t1": [
+            {
+                "titleId": "000100015750534A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157424D4A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014E41424A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014E414A4A",
+                "isNew": "false"
+            }
+        ],
+        "t2": [
+            {
+                "titleId": "000100014E41424A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014643574A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000146414D4A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100014D41484A",
+                "isNew": "false"
+            }
+        ],
+        "t3": [
+            {
+                "titleId": "000100015750534A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157474F4A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100015754504A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000157444D4A",
+                "isNew": "false"
+            }
+        ],
+        "t4": [
+            {
+                "titleId": "000100014641414A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "0001000158494A4A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "00010001584A494A",
+                "isNew": "false"
+            },
+            {
+                "titleId": "000100015849324A",
+                "isNew": "false"
+            }
+        ]
+    }
+}

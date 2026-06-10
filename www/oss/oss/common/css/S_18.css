@@ -1,0 +1,192 @@
+/* For S_18:  Helpee number Input Page for Helper */
+
+#notefield{
+	position:absolute;
+	left:40px;
+	top:255px;
+	width:528px;
+	height:123px;
+	z-index:31;
+	text-align:center;
+}
+
+
+#text01-01 {
+	/* title */
+	position:absolute;
+	left:29px;
+	top:28px;
+	width:442px;
+	height:28px;
+	z-index:32;
+}
+#text02-01 {
+	position:absolute;
+	left:34px;
+	top:85px;
+	width:540px;
+	height:198px;
+	z-index:31;
+}
+#text03-01 {
+	position:absolute;
+	left:34px;
+	top:85px;
+	width:540px;
+	height:68px;
+	z-index:31;
+}
+#numberfield {
+	position:absolute;
+	left:100px;
+	top:200px;
+	width:408px;
+	height:50px;
+	z-index:27;
+}
+
+input {
+	font-family: "Wii NTLG Gothic JPN Regular";
+	font-size: 24px;
+	background-color: #FFFFFF;
+	letter-spacing: 0.1em;
+	text-align: left;
+	padding-left: 18px;
+}
+
+#registhelper {
+    position:absolute;
+    left:28px;
+    top:283px;
+    width:260px;
+    height:85px;
+}
+
+#text01 {
+	position:absolute;
+    display:table;
+	left:20px;
+	top:10px;
+	width:220px;
+	height:65px;
+	z-index:29;
+}
+
+#status {
+    position:absolute;
+    left:320px;
+    top:283px;
+    width:260px;
+    height:85px;
+}
+
+#text02 {
+	position:absolute;
+    display:table;
+	left:20px;
+	top:10px;
+	width:220px;
+	height:65px;
+	z-index:29;
+}
+.banner {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100px;
+    height:100px;
+    z-index:28;
+}
+
+.spacer{
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:240px;
+    height:65px;
+    z-index:30;
+}
+
+#step {
+    position:absolute;
+    left:24px;
+	top:85px;
+	width:540px;
+	height:198px;
+	z-index:31;
+}
+#countframe {
+    position:absolute;
+    left:24px;
+	top:222px;
+	width:540px;
+	height:198px;
+	z-index:31;
+}
+#countstar {
+    position:absolute;
+    left:24px;
+	top:222px;
+	width:540px;
+	height:198px;
+	z-index:31;
+}
+/*
+//#statusMessage {
+//    display:none;
+//}
+//
+//#successMessage {
+//    display:none;
+//}
+*/
+#member_id_area {
+	position: absolute;
+	left: 24px;
+	top:85px;
+	width:580px;
+	height:198px;
+	z-index:31;
+	margin:0;
+	padding:0;
+}
+
+#gold_text {
+	position: absolute;
+	left:0px;
+	top:30px;
+	width:100%;
+	height:100%;
+	text-align: center;
+	z-index:31;
+	margin:0;
+	padding:0;
+	font-family: "Wii NTLG PGothic JPN Regular";
+	font-size: 20px;
+	color: #6A081F;
+	font-weight: normal;
+}
+
+#gold_attention{
+	position: absolute;
+	left:0px;
+	top:105px;
+	width:100%;
+	height:100%;
+	text-align: center;
+	z-index:31;
+	margin:0;
+	padding:0;
+}
+
+
+/*from S_16.css*/
+#text00-01 {
+	position:absolute;
+	left:29px;
+	top:28px;
+	width:442px;
+	height:28px;
+	z-index:62;
+    text-align:"left";
+}
